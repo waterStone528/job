@@ -1,0 +1,4 @@
+C:\Users\雄\SkyDrive\job\康宝\program\KbAPI_V2.0\KbAPI_V2.0_CL\bin\Debug\KbAPI_CL.dll
+C:\Users\雄\SkyDrive\job\康宝\program\KbAPI_V2.0\KbAPI_V2.0_CL\bin\Debug\KbAPI_CL.pdb
+C:\Users\雄\SkyDrive\job\康宝\program\KbAPI_V2.0\KbAPI_V2.0_CL\obj\Debug\KbAPI_CL.dll
+C:\Users\雄\SkyDrive\job\康宝\program\KbAPI_V2.0\KbAPI_V2.0_CL\obj\Debug\KbAPI_CL.pdb

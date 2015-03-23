@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="949612d7c2b444e7b7157f65b5398c37" Name="Diagram1">
+        <EntityTypeShape EntityType="KbAPI.API.Models.EF.KbEntities.P0101" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KbAPI.API.Models.EF.KbEntities.P0103" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KbAPI.API.Models.EF.KbEntities.P0104" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KbAPI.API.Models.EF.KbEntities.P0301" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KbAPI.API.Models.EF.KbEntities.P0302" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="KbAPI.API.Models.EF.KbEntities.P0401" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KbAPI.API.Models.EF.KbEntities.V0301" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="KbAPI.API.Models.EF.KbEntities.FK_P0301_P03021" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KbAPI.API.Models.EF.KbEntities.P0102" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="KbAPI.API.Models.EF.KbEntities.FK_P0102_P0101" />
+        <EntityTypeShape EntityType="KbAPI.API.Models.EF.KbEntities.P0109" Width="1.5" PointX="3.25" PointY="5" />
+        <AssociationConnector Association="KbAPI.API.Models.EF.KbEntities.FK_P0109_P0101" />
+        <EntityTypeShape EntityType="KbAPI.API.Models.EF.KbEntities.P0201" Width="1.5" PointX="10.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

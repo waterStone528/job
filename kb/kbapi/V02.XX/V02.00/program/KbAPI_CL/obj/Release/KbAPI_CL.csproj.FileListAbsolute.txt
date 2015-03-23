@@ -1,0 +1,5 @@
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0_CL\bin\Release\KbAPI_CL.dll
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0_CL\bin\Release\KbAPI_CL.pdb
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0_CL\obj\Release\KbAPI_CL.csprojResolveAssemblyReference.cache
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0_CL\obj\Release\KbAPI_CL.dll
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0_CL\obj\Release\KbAPI_CL.pdb

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\雄\Desktop\kbapi2.0</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/12/2015 09:30:20</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>03/12/2015 09:30:20</publishTime>
+    </File>
+    <File Include="bin/KbAPI.dll">
+      <publishTime>03/20/2015 08:43:30</publishTime>
+    </File>
+    <File Include="bin/KbAPI_CL.dll">
+      <publishTime>03/16/2015 09:41:31</publishTime>
+    </File>
+    <File Include="HtmlPage1.html">
+      <publishTime>03/12/2015 13:47:46</publishTime>
+    </File>
+    <File Include="Models/EF/Model1.edmx.diagram">
+      <publishTime>03/18/2015 16:34:38</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/12/2015 09:30:33</publishTime>
+    </File>
+    <File Include="Port.ashx">
+      <publishTime>03/12/2015 13:57:27</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/16/2015 09:41:37</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

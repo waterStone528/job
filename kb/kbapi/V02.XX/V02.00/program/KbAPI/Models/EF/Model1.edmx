@@ -1,0 +1,969 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KbAPI.API.Models.EF.KbEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="P0101">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="phoneLoginEmail" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="nowQuestionGroupId" Type="int" Nullable="false" />
+          <Property Name="testTimes" Type="int" Nullable="false" />
+          <Property Name="testedTimes" Type="int" />
+          <Property Name="constitutionType" Type="nchar" MaxLength="50" />
+          <Property Name="possibleConstitutionType" Type="nchar" MaxLength="50" />
+          <Property Name="gender" Type="bit" />
+          <Property Name="birthday" Type="date" />
+          <Property Name="registerTime" Type="datetime" />
+          <Property Name="lastUseTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="P0102">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="pinHZScore" Type="int" />
+          <Property Name="qiXZScore" Type="int" />
+          <Property Name="yangXZScore" Type="int" />
+          <Property Name="yinXZScore" Type="int" />
+          <Property Name="tanSZScore" Type="int" />
+          <Property Name="shiRZScore" Type="int" />
+          <Property Name="xueYZScore" Type="int" />
+          <Property Name="qiYZScore" Type="int" />
+          <Property Name="teBZScore" Type="int" />
+          <Property Name="times" Type="int" />
+          <Property Name="testTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="P0103">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="birthDay" Type="datetime" />
+          <Property Name="gender" Type="bit" />
+          <Property Name="q1" Type="int" />
+          <Property Name="q2" Type="int" />
+          <Property Name="q3" Type="int" />
+          <Property Name="q4" Type="int" />
+          <Property Name="q5" Type="int" />
+          <Property Name="q6" Type="int" />
+          <Property Name="q7" Type="int" />
+          <Property Name="q8" Type="int" />
+          <Property Name="q9" Type="int" />
+          <Property Name="q10" Type="int" />
+          <Property Name="q11" Type="int" />
+          <Property Name="q12" Type="int" />
+          <Property Name="q13" Type="int" />
+          <Property Name="q14" Type="int" />
+          <Property Name="q15" Type="int" />
+          <Property Name="q16" Type="int" />
+          <Property Name="q17" Type="int" />
+          <Property Name="q18" Type="int" />
+          <Property Name="q19" Type="int" />
+          <Property Name="q20" Type="int" />
+          <Property Name="q21" Type="int" />
+          <Property Name="q22" Type="int" />
+          <Property Name="q23" Type="int" />
+          <Property Name="q24" Type="int" />
+          <Property Name="q25" Type="int" />
+          <Property Name="q26" Type="int" />
+          <Property Name="q27" Type="int" />
+          <Property Name="q28" Type="int" />
+          <Property Name="q29" Type="int" />
+          <Property Name="q30" Type="int" />
+          <Property Name="q31" Type="int" />
+          <Property Name="q32" Type="int" />
+          <Property Name="q33" Type="int" />
+          <Property Name="q34" Type="int" />
+          <Property Name="q35" Type="int" />
+          <Property Name="q36" Type="int" />
+          <Property Name="q37" Type="int" />
+          <Property Name="q38" Type="int" />
+          <Property Name="q39" Type="int" />
+          <Property Name="q40" Type="int" />
+          <Property Name="q41" Type="int" />
+          <Property Name="q42" Type="int" />
+          <Property Name="q41q42" Type="int" />
+          <Property Name="q43" Type="int" />
+          <Property Name="q44" Type="int" />
+          <Property Name="q45" Type="int" />
+          <Property Name="q46" Type="int" />
+          <Property Name="q47" Type="int" />
+          <Property Name="q48" Type="int" />
+          <Property Name="q49" Type="int" />
+          <Property Name="q50" Type="int" />
+          <Property Name="q51" Type="int" />
+          <Property Name="q52" Type="int" />
+          <Property Name="q53" Type="int" />
+          <Property Name="q54" Type="int" />
+          <Property Name="q55" Type="int" />
+          <Property Name="q56" Type="int" />
+          <Property Name="q57" Type="int" />
+          <Property Name="q58" Type="int" />
+          <Property Name="q59" Type="int" />
+          <Property Name="q60" Type="int" />
+          <Property Name="q61" Type="int" />
+        </EntityType>
+        <EntityType Name="P0104">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="testTime" Type="datetime" Nullable="false" />
+          <Property Name="times" Type="int" />
+          <Property Name="birthDay" Type="datetime" />
+          <Property Name="gender" Type="bit" />
+          <Property Name="q1" Type="int" />
+          <Property Name="q2" Type="int" />
+          <Property Name="q3" Type="int" />
+          <Property Name="q4" Type="int" />
+          <Property Name="q5" Type="int" />
+          <Property Name="q6" Type="int" />
+          <Property Name="q7" Type="int" />
+          <Property Name="q8" Type="int" />
+          <Property Name="q9" Type="int" />
+          <Property Name="q10" Type="int" />
+          <Property Name="q11" Type="int" />
+          <Property Name="q12" Type="int" />
+          <Property Name="q13" Type="int" />
+          <Property Name="q14" Type="int" />
+          <Property Name="q15" Type="int" />
+          <Property Name="q16" Type="int" />
+          <Property Name="q17" Type="int" />
+          <Property Name="q18" Type="int" />
+          <Property Name="q19" Type="int" />
+          <Property Name="q20" Type="int" />
+          <Property Name="q21" Type="int" />
+          <Property Name="q22" Type="int" />
+          <Property Name="q23" Type="int" />
+          <Property Name="q24" Type="int" />
+          <Property Name="q25" Type="int" />
+          <Property Name="q26" Type="int" />
+          <Property Name="q27" Type="int" />
+          <Property Name="q28" Type="int" />
+          <Property Name="q29" Type="int" />
+          <Property Name="q30" Type="int" />
+          <Property Name="q31" Type="int" />
+          <Property Name="q32" Type="int" />
+          <Property Name="q33" Type="int" />
+          <Property Name="q34" Type="int" />
+          <Property Name="q35" Type="int" />
+          <Property Name="q36" Type="int" />
+          <Property Name="q37" Type="int" />
+          <Property Name="q38" Type="int" />
+          <Property Name="q39" Type="int" />
+          <Property Name="q40" Type="int" />
+          <Property Name="q41" Type="int" />
+          <Property Name="q42" Type="int" />
+          <Property Name="q41q42" Type="int" />
+          <Property Name="q43" Type="int" />
+          <Property Name="q44" Type="int" />
+          <Property Name="q45" Type="int" />
+          <Property Name="q46" Type="int" />
+          <Property Name="q47" Type="int" />
+          <Property Name="q48" Type="int" />
+          <Property Name="q49" Type="int" />
+          <Property Name="q50" Type="int" />
+          <Property Name="q51" Type="int" />
+          <Property Name="q52" Type="int" />
+          <Property Name="q53" Type="int" />
+          <Property Name="q54" Type="int" />
+          <Property Name="q55" Type="int" />
+          <Property Name="q56" Type="int" />
+          <Property Name="q57" Type="int" />
+          <Property Name="q58" Type="int" />
+          <Property Name="q59" Type="int" />
+          <Property Name="q60" Type="int" />
+          <Property Name="q61" Type="int" />
+        </EntityType>
+        <EntityType Name="P0109">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="longitude" Type="char" MaxLength="50" />
+          <Property Name="latitude" Type="char" MaxLength="50" />
+          <Property Name="publicIp" Type="char" MaxLength="15" />
+          <Property Name="privateIp" Type="char" MaxLength="15" />
+          <Property Name="modelStr" Type="nchar" MaxLength="255" />
+          <Property Name="systemVersion" Type="char" MaxLength="50" />
+          <Property Name="modelType" Type="int" />
+          <Property Name="appVersion" Type="char" MaxLength="20" />
+          <Property Name="useTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="P0201">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="questionKey" Type="char" MaxLength="10" />
+          <Property Name="sequenceId" Type="int" />
+          <Property Name="questionGroupId" Type="int" />
+          <Property Name="idInQuestionGroup" Type="int" />
+          <Property Name="questionContent" Type="nchar" MaxLength="250" />
+          <Property Name="questionImage" Type="image" />
+          <Property Name="calculateType" Type="bit" />
+          <Property Name="constitutionType" Type="nchar" MaxLength="10" />
+          <Property Name="updateCode" Type="int" />
+          <Property Name="pVersion" Type="int" />
+        </EntityType>
+        <EntityType Name="P0301">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foodId" Type="int" Nullable="false" />
+          <Property Name="type" Type="int" />
+          <Property Name="constitutionType" Type="nchar" MaxLength="3" />
+          <Property Name="ifDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="P0302">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="foodType" Type="int" />
+          <Property Name="image" Type="image" />
+          <Property Name="imageHeightCal" Type="int" />
+          <Property Name="nutrition" Type="nchar" MaxLength="255" />
+          <Property Name="efficacy" Type="nchar" MaxLength="255" />
+          <Property Name="updateCode" Type="int" />
+          <Property Name="pVersion" Type="int" />
+        </EntityType>
+        <EntityType Name="P0401">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="question" Type="nvarchar" MaxLength="250" />
+          <Property Name="answer" Type="ntext" />
+          <Property Name="updateCode" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Kangbao.dbo.V0301' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V0301">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="foodType" Type="int" />
+          <Property Name="image" Type="image" />
+          <Property Name="nutrition" Type="nchar" MaxLength="255" />
+          <Property Name="efficacy" Type="nchar" MaxLength="255" />
+          <Property Name="type" Type="int" />
+          <Property Name="constitutionType" Type="nchar" MaxLength="3" />
+          <Property Name="updateCode" Type="int" />
+          <Property Name="ifDelete" Type="bit" />
+          <Property Name="imageHeightCal" Type="int" />
+        </EntityType>
+        <Association Name="FK_P0102_P0101">
+          <End Role="P0101" Type="Self.P0101" Multiplicity="1" />
+          <End Role="P0102" Type="Self.P0102" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="P0101">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="P0102">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_P0109_P0101">
+          <End Role="P0101" Type="Self.P0101" Multiplicity="1" />
+          <End Role="P0109" Type="Self.P0109" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="P0101">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="P0109">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_P0301_P03021">
+          <End Role="P0302" Type="Self.P0302" Multiplicity="1" />
+          <End Role="P0301" Type="Self.P0301" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="P0302">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="P0301">
+              <PropertyRef Name="foodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KbAPIAPIModelsEFKbEntitiesStoreContainer">
+          <EntitySet Name="P0101" EntityType="Self.P0101" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P0102" EntityType="Self.P0102" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P0103" EntityType="Self.P0103" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P0104" EntityType="Self.P0104" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P0109" EntityType="Self.P0109" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P0201" EntityType="Self.P0201" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P0301" EntityType="Self.P0301" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P0302" EntityType="Self.P0302" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P0401" EntityType="Self.P0401" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V0301" EntityType="Self.V0301" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V0301].[id] AS [id], 
+    [V0301].[name] AS [name], 
+    [V0301].[foodType] AS [foodType], 
+    [V0301].[image] AS [image], 
+    [V0301].[nutrition] AS [nutrition], 
+    [V0301].[efficacy] AS [efficacy], 
+    [V0301].[type] AS [type], 
+    [V0301].[constitutionType] AS [constitutionType], 
+    [V0301].[updateCode] AS [updateCode], 
+    [V0301].[ifDelete] AS [ifDelete], 
+    [V0301].[imageHeightCal] AS [imageHeightCal]
+    FROM [dbo].[V0301] AS [V0301]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_P0102_P0101" Association="Self.FK_P0102_P0101">
+            <End Role="P0101" EntitySet="P0101" />
+            <End Role="P0102" EntitySet="P0102" />
+          </AssociationSet>
+          <AssociationSet Name="FK_P0109_P0101" Association="Self.FK_P0109_P0101">
+            <End Role="P0101" EntitySet="P0101" />
+            <End Role="P0109" EntitySet="P0109" />
+          </AssociationSet>
+          <AssociationSet Name="FK_P0301_P03021" Association="Self.FK_P0301_P03021">
+            <End Role="P0302" EntitySet="P0302" />
+            <End Role="P0301" EntitySet="P0301" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KbAPI.API.Models.EF.KbEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="P0101">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="phoneLoginEmail" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="nowQuestionGroupId" Type="Int32" Nullable="false" />
+          <Property Name="testTimes" Type="Int32" Nullable="false" />
+          <Property Name="testedTimes" Type="Int32" />
+          <Property Name="constitutionType" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="possibleConstitutionType" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="registerTime" Type="DateTime" Precision="3" />
+          <Property Name="lastUseTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="gender" Type="Boolean" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="P0102" Relationship="KbAPI.API.Models.EF.KbEntities.FK_P0102_P0101" FromRole="P0101" ToRole="P0102" />
+          <NavigationProperty Name="P0109" Relationship="KbAPI.API.Models.EF.KbEntities.FK_P0109_P0101" FromRole="P0101" ToRole="P0109" />
+        </EntityType>
+        <EntityType Name="P0103">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="birthDay" Type="DateTime" Precision="3" />
+          <Property Name="gender" Type="Boolean" />
+          <Property Name="q1" Type="Int32" />
+          <Property Name="q2" Type="Int32" />
+          <Property Name="q3" Type="Int32" />
+          <Property Name="q4" Type="Int32" />
+          <Property Name="q5" Type="Int32" />
+          <Property Name="q6" Type="Int32" />
+          <Property Name="q7" Type="Int32" />
+          <Property Name="q8" Type="Int32" />
+          <Property Name="q9" Type="Int32" />
+          <Property Name="q10" Type="Int32" />
+          <Property Name="q11" Type="Int32" />
+          <Property Name="q12" Type="Int32" />
+          <Property Name="q13" Type="Int32" />
+          <Property Name="q14" Type="Int32" />
+          <Property Name="q15" Type="Int32" />
+          <Property Name="q16" Type="Int32" />
+          <Property Name="q17" Type="Int32" />
+          <Property Name="q18" Type="Int32" />
+          <Property Name="q19" Type="Int32" />
+          <Property Name="q20" Type="Int32" />
+          <Property Name="q21" Type="Int32" />
+          <Property Name="q22" Type="Int32" />
+          <Property Name="q23" Type="Int32" />
+          <Property Name="q24" Type="Int32" />
+          <Property Name="q25" Type="Int32" />
+          <Property Name="q26" Type="Int32" />
+          <Property Name="q27" Type="Int32" />
+          <Property Name="q28" Type="Int32" />
+          <Property Name="q29" Type="Int32" />
+          <Property Name="q30" Type="Int32" />
+          <Property Name="q31" Type="Int32" />
+          <Property Name="q32" Type="Int32" />
+          <Property Name="q33" Type="Int32" />
+          <Property Name="q34" Type="Int32" />
+          <Property Name="q35" Type="Int32" />
+          <Property Name="q36" Type="Int32" />
+          <Property Name="q37" Type="Int32" />
+          <Property Name="q38" Type="Int32" />
+          <Property Name="q39" Type="Int32" />
+          <Property Name="q40" Type="Int32" />
+          <Property Name="q41" Type="Int32" />
+          <Property Name="q42" Type="Int32" />
+          <Property Name="q41q42" Type="Int32" />
+          <Property Name="q43" Type="Int32" />
+          <Property Name="q44" Type="Int32" />
+          <Property Name="q45" Type="Int32" />
+          <Property Name="q46" Type="Int32" />
+          <Property Name="q47" Type="Int32" />
+          <Property Name="q48" Type="Int32" />
+          <Property Name="q49" Type="Int32" />
+          <Property Name="q50" Type="Int32" />
+          <Property Name="q51" Type="Int32" />
+          <Property Name="q52" Type="Int32" />
+          <Property Name="q53" Type="Int32" />
+          <Property Name="q54" Type="Int32" />
+          <Property Name="q55" Type="Int32" />
+          <Property Name="q56" Type="Int32" />
+          <Property Name="q57" Type="Int32" />
+          <Property Name="q58" Type="Int32" />
+          <Property Name="q59" Type="Int32" />
+          <Property Name="q60" Type="Int32" />
+          <Property Name="q61" Type="Int32" />
+        </EntityType>
+        <EntityType Name="P0104">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="testTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="birthDay" Type="DateTime" Precision="3" />
+          <Property Name="gender" Type="Boolean" />
+          <Property Name="q1" Type="Int32" />
+          <Property Name="q2" Type="Int32" />
+          <Property Name="q3" Type="Int32" />
+          <Property Name="q4" Type="Int32" />
+          <Property Name="q5" Type="Int32" />
+          <Property Name="q6" Type="Int32" />
+          <Property Name="q7" Type="Int32" />
+          <Property Name="q8" Type="Int32" />
+          <Property Name="q9" Type="Int32" />
+          <Property Name="q10" Type="Int32" />
+          <Property Name="q11" Type="Int32" />
+          <Property Name="q12" Type="Int32" />
+          <Property Name="q13" Type="Int32" />
+          <Property Name="q14" Type="Int32" />
+          <Property Name="q15" Type="Int32" />
+          <Property Name="q16" Type="Int32" />
+          <Property Name="q17" Type="Int32" />
+          <Property Name="q18" Type="Int32" />
+          <Property Name="q19" Type="Int32" />
+          <Property Name="q20" Type="Int32" />
+          <Property Name="q21" Type="Int32" />
+          <Property Name="q22" Type="Int32" />
+          <Property Name="q23" Type="Int32" />
+          <Property Name="q24" Type="Int32" />
+          <Property Name="q25" Type="Int32" />
+          <Property Name="q26" Type="Int32" />
+          <Property Name="q27" Type="Int32" />
+          <Property Name="q28" Type="Int32" />
+          <Property Name="q29" Type="Int32" />
+          <Property Name="q30" Type="Int32" />
+          <Property Name="q31" Type="Int32" />
+          <Property Name="q32" Type="Int32" />
+          <Property Name="q33" Type="Int32" />
+          <Property Name="q34" Type="Int32" />
+          <Property Name="q35" Type="Int32" />
+          <Property Name="q36" Type="Int32" />
+          <Property Name="q37" Type="Int32" />
+          <Property Name="q38" Type="Int32" />
+          <Property Name="q39" Type="Int32" />
+          <Property Name="q40" Type="Int32" />
+          <Property Name="q41" Type="Int32" />
+          <Property Name="q42" Type="Int32" />
+          <Property Name="q41q42" Type="Int32" />
+          <Property Name="q43" Type="Int32" />
+          <Property Name="q44" Type="Int32" />
+          <Property Name="q45" Type="Int32" />
+          <Property Name="q46" Type="Int32" />
+          <Property Name="q47" Type="Int32" />
+          <Property Name="q48" Type="Int32" />
+          <Property Name="q49" Type="Int32" />
+          <Property Name="q50" Type="Int32" />
+          <Property Name="q51" Type="Int32" />
+          <Property Name="q52" Type="Int32" />
+          <Property Name="q53" Type="Int32" />
+          <Property Name="q54" Type="Int32" />
+          <Property Name="q55" Type="Int32" />
+          <Property Name="q56" Type="Int32" />
+          <Property Name="q57" Type="Int32" />
+          <Property Name="q58" Type="Int32" />
+          <Property Name="q59" Type="Int32" />
+          <Property Name="q60" Type="Int32" />
+          <Property Name="q61" Type="Int32" />
+          <Property Name="times" Type="Int32" />
+        </EntityType>
+        <EntityType Name="P0301">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="foodId" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="constitutionType" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="ifDelete" Type="Boolean" />
+          <NavigationProperty Name="P0302" Relationship="Self.FK_P0301_P03021" FromRole="P0301" ToRole="P0302" />
+        </EntityType>
+        <EntityType Name="P0302">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="foodType" Type="Int32" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="imageHeightCal" Type="Int32" />
+          <Property Name="nutrition" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="efficacy" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="updateCode" Type="Int32" />
+          <Property Name="pVersion" Type="Int32" />
+          <NavigationProperty Name="P0301" Relationship="Self.FK_P0301_P03021" FromRole="P0302" ToRole="P0301" />
+        </EntityType>
+        <EntityType Name="P0401">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="question" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updateCode" Type="Int32" />
+        </EntityType>
+        <EntityType Name="V0301">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="foodType" Type="Int32" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="nutrition" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="efficacy" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="constitutionType" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="updateCode" Type="Int32" />
+          <Property Name="ifDelete" Type="Boolean" />
+          <Property Name="imageHeightCal" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_P0301_P03021">
+          <End Role="P0302" Type="Self.P0302" Multiplicity="1" />
+          <End Role="P0301" Type="Self.P0301" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="P0302">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="P0301">
+              <PropertyRef Name="foodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="P0101" EntityType="Self.P0101" />
+          <EntitySet Name="P0103" EntityType="Self.P0103" />
+          <EntitySet Name="P0104" EntityType="Self.P0104" />
+          <EntitySet Name="P0301" EntityType="Self.P0301" />
+          <EntitySet Name="P0302" EntityType="Self.P0302" />
+          <EntitySet Name="P0401" EntityType="Self.P0401" />
+          <EntitySet Name="V0301" EntityType="Self.V0301" />
+          <AssociationSet Name="FK_P0301_P03021" Association="Self.FK_P0301_P03021">
+            <End Role="P0302" EntitySet="P0302" />
+            <End Role="P0301" EntitySet="P0301" />
+          </AssociationSet>
+          <EntitySet Name="P0102" EntityType="KbAPI.API.Models.EF.KbEntities.P0102" />
+          <AssociationSet Name="FK_P0102_P0101" Association="KbAPI.API.Models.EF.KbEntities.FK_P0102_P0101">
+            <End Role="P0101" EntitySet="P0101" />
+            <End Role="P0102" EntitySet="P0102" />
+          </AssociationSet>
+          <EntitySet Name="P0109" EntityType="KbAPI.API.Models.EF.KbEntities.P0109" />
+          <AssociationSet Name="FK_P0109_P0101" Association="KbAPI.API.Models.EF.KbEntities.FK_P0109_P0101">
+            <End Role="P0101" EntitySet="P0101" />
+            <End Role="P0109" EntitySet="P0109" />
+          </AssociationSet>
+          <EntitySet Name="P0201" EntityType="KbAPI.API.Models.EF.KbEntities.P0201" />
+        </EntityContainer>
+        <EntityType Name="P0102">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="pinHZScore" Type="Int32" />
+          <Property Name="qiXZScore" Type="Int32" />
+          <Property Name="yangXZScore" Type="Int32" />
+          <Property Name="yinXZScore" Type="Int32" />
+          <Property Name="tanSZScore" Type="Int32" />
+          <Property Name="shiRZScore" Type="Int32" />
+          <Property Name="xueYZScore" Type="Int32" />
+          <Property Name="qiYZScore" Type="Int32" />
+          <Property Name="teBZScore" Type="Int32" />
+          <Property Name="times" Type="Int32" />
+          <Property Name="testTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="P0101" Relationship="KbAPI.API.Models.EF.KbEntities.FK_P0102_P0101" FromRole="P0102" ToRole="P0101" />
+        </EntityType>
+        <Association Name="FK_P0102_P0101">
+          <End Type="KbAPI.API.Models.EF.KbEntities.P0101" Role="P0101" Multiplicity="1" />
+          <End Type="KbAPI.API.Models.EF.KbEntities.P0102" Role="P0102" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="P0101">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="P0102">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="P0109">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="longitude" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="latitude" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="publicIp" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="privateIp" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="modelStr" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="systemVersion" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="modelType" Type="Int32" />
+          <Property Name="appVersion" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="useTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="P0101" Relationship="KbAPI.API.Models.EF.KbEntities.FK_P0109_P0101" FromRole="P0109" ToRole="P0101" />
+        </EntityType>
+        <Association Name="FK_P0109_P0101">
+          <End Type="KbAPI.API.Models.EF.KbEntities.P0101" Role="P0101" Multiplicity="1" />
+          <End Type="KbAPI.API.Models.EF.KbEntities.P0109" Role="P0109" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="P0101">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="P0109">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="P0201">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="questionKey" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="sequenceId" Type="Int32" />
+          <Property Name="questionGroupId" Type="Int32" />
+          <Property Name="idInQuestionGroup" Type="Int32" />
+          <Property Name="questionContent" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="questionImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="calculateType" Type="Boolean" />
+          <Property Name="constitutionType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="updateCode" Type="Int32" />
+          <Property Name="pVersion" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KbAPIAPIModelsEFKbEntitiesStoreContainer" CdmEntityContainer="KbEntities">
+          <EntitySetMapping Name="P0101">
+            <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0101">
+              <MappingFragment StoreEntitySet="P0101">
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="phoneLoginEmail" ColumnName="phoneLoginEmail" />
+                <ScalarProperty Name="nowQuestionGroupId" ColumnName="nowQuestionGroupId" />
+                <ScalarProperty Name="testTimes" ColumnName="testTimes" />
+                <ScalarProperty Name="testedTimes" ColumnName="testedTimes" />
+                <ScalarProperty Name="constitutionType" ColumnName="constitutionType" />
+                <ScalarProperty Name="possibleConstitutionType" ColumnName="possibleConstitutionType" />
+                <ScalarProperty Name="registerTime" ColumnName="registerTime" />
+                <ScalarProperty Name="lastUseTime" ColumnName="lastUseTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P0103">
+            <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0103">
+              <MappingFragment StoreEntitySet="P0103">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="birthDay" ColumnName="birthDay" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="q1" ColumnName="q1" />
+                <ScalarProperty Name="q2" ColumnName="q2" />
+                <ScalarProperty Name="q3" ColumnName="q3" />
+                <ScalarProperty Name="q4" ColumnName="q4" />
+                <ScalarProperty Name="q5" ColumnName="q5" />
+                <ScalarProperty Name="q6" ColumnName="q6" />
+                <ScalarProperty Name="q7" ColumnName="q7" />
+                <ScalarProperty Name="q8" ColumnName="q8" />
+                <ScalarProperty Name="q9" ColumnName="q9" />
+                <ScalarProperty Name="q10" ColumnName="q10" />
+                <ScalarProperty Name="q11" ColumnName="q11" />
+                <ScalarProperty Name="q12" ColumnName="q12" />
+                <ScalarProperty Name="q13" ColumnName="q13" />
+                <ScalarProperty Name="q14" ColumnName="q14" />
+                <ScalarProperty Name="q15" ColumnName="q15" />
+                <ScalarProperty Name="q16" ColumnName="q16" />
+                <ScalarProperty Name="q17" ColumnName="q17" />
+                <ScalarProperty Name="q18" ColumnName="q18" />
+                <ScalarProperty Name="q19" ColumnName="q19" />
+                <ScalarProperty Name="q20" ColumnName="q20" />
+                <ScalarProperty Name="q21" ColumnName="q21" />
+                <ScalarProperty Name="q22" ColumnName="q22" />
+                <ScalarProperty Name="q23" ColumnName="q23" />
+                <ScalarProperty Name="q24" ColumnName="q24" />
+                <ScalarProperty Name="q25" ColumnName="q25" />
+                <ScalarProperty Name="q26" ColumnName="q26" />
+                <ScalarProperty Name="q27" ColumnName="q27" />
+                <ScalarProperty Name="q28" ColumnName="q28" />
+                <ScalarProperty Name="q29" ColumnName="q29" />
+                <ScalarProperty Name="q30" ColumnName="q30" />
+                <ScalarProperty Name="q31" ColumnName="q31" />
+                <ScalarProperty Name="q32" ColumnName="q32" />
+                <ScalarProperty Name="q33" ColumnName="q33" />
+                <ScalarProperty Name="q34" ColumnName="q34" />
+                <ScalarProperty Name="q35" ColumnName="q35" />
+                <ScalarProperty Name="q36" ColumnName="q36" />
+                <ScalarProperty Name="q37" ColumnName="q37" />
+                <ScalarProperty Name="q38" ColumnName="q38" />
+                <ScalarProperty Name="q39" ColumnName="q39" />
+                <ScalarProperty Name="q40" ColumnName="q40" />
+                <ScalarProperty Name="q41" ColumnName="q41" />
+                <ScalarProperty Name="q42" ColumnName="q42" />
+                <ScalarProperty Name="q41q42" ColumnName="q41q42" />
+                <ScalarProperty Name="q43" ColumnName="q43" />
+                <ScalarProperty Name="q44" ColumnName="q44" />
+                <ScalarProperty Name="q45" ColumnName="q45" />
+                <ScalarProperty Name="q46" ColumnName="q46" />
+                <ScalarProperty Name="q47" ColumnName="q47" />
+                <ScalarProperty Name="q48" ColumnName="q48" />
+                <ScalarProperty Name="q49" ColumnName="q49" />
+                <ScalarProperty Name="q50" ColumnName="q50" />
+                <ScalarProperty Name="q51" ColumnName="q51" />
+                <ScalarProperty Name="q52" ColumnName="q52" />
+                <ScalarProperty Name="q53" ColumnName="q53" />
+                <ScalarProperty Name="q54" ColumnName="q54" />
+                <ScalarProperty Name="q55" ColumnName="q55" />
+                <ScalarProperty Name="q56" ColumnName="q56" />
+                <ScalarProperty Name="q57" ColumnName="q57" />
+                <ScalarProperty Name="q58" ColumnName="q58" />
+                <ScalarProperty Name="q59" ColumnName="q59" />
+                <ScalarProperty Name="q60" ColumnName="q60" />
+                <ScalarProperty Name="q61" ColumnName="q61" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P0104">
+            <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0104">
+              <MappingFragment StoreEntitySet="P0104">
+                <ScalarProperty Name="times" ColumnName="times" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="testTime" ColumnName="testTime" />
+                <ScalarProperty Name="birthDay" ColumnName="birthDay" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="q1" ColumnName="q1" />
+                <ScalarProperty Name="q2" ColumnName="q2" />
+                <ScalarProperty Name="q3" ColumnName="q3" />
+                <ScalarProperty Name="q4" ColumnName="q4" />
+                <ScalarProperty Name="q5" ColumnName="q5" />
+                <ScalarProperty Name="q6" ColumnName="q6" />
+                <ScalarProperty Name="q7" ColumnName="q7" />
+                <ScalarProperty Name="q8" ColumnName="q8" />
+                <ScalarProperty Name="q9" ColumnName="q9" />
+                <ScalarProperty Name="q10" ColumnName="q10" />
+                <ScalarProperty Name="q11" ColumnName="q11" />
+                <ScalarProperty Name="q12" ColumnName="q12" />
+                <ScalarProperty Name="q13" ColumnName="q13" />
+                <ScalarProperty Name="q14" ColumnName="q14" />
+                <ScalarProperty Name="q15" ColumnName="q15" />
+                <ScalarProperty Name="q16" ColumnName="q16" />
+                <ScalarProperty Name="q17" ColumnName="q17" />
+                <ScalarProperty Name="q18" ColumnName="q18" />
+                <ScalarProperty Name="q19" ColumnName="q19" />
+                <ScalarProperty Name="q20" ColumnName="q20" />
+                <ScalarProperty Name="q21" ColumnName="q21" />
+                <ScalarProperty Name="q22" ColumnName="q22" />
+                <ScalarProperty Name="q23" ColumnName="q23" />
+                <ScalarProperty Name="q24" ColumnName="q24" />
+                <ScalarProperty Name="q25" ColumnName="q25" />
+                <ScalarProperty Name="q26" ColumnName="q26" />
+                <ScalarProperty Name="q27" ColumnName="q27" />
+                <ScalarProperty Name="q28" ColumnName="q28" />
+                <ScalarProperty Name="q29" ColumnName="q29" />
+                <ScalarProperty Name="q30" ColumnName="q30" />
+                <ScalarProperty Name="q31" ColumnName="q31" />
+                <ScalarProperty Name="q32" ColumnName="q32" />
+                <ScalarProperty Name="q33" ColumnName="q33" />
+                <ScalarProperty Name="q34" ColumnName="q34" />
+                <ScalarProperty Name="q35" ColumnName="q35" />
+                <ScalarProperty Name="q36" ColumnName="q36" />
+                <ScalarProperty Name="q37" ColumnName="q37" />
+                <ScalarProperty Name="q38" ColumnName="q38" />
+                <ScalarProperty Name="q39" ColumnName="q39" />
+                <ScalarProperty Name="q40" ColumnName="q40" />
+                <ScalarProperty Name="q41" ColumnName="q41" />
+                <ScalarProperty Name="q42" ColumnName="q42" />
+                <ScalarProperty Name="q41q42" ColumnName="q41q42" />
+                <ScalarProperty Name="q43" ColumnName="q43" />
+                <ScalarProperty Name="q44" ColumnName="q44" />
+                <ScalarProperty Name="q45" ColumnName="q45" />
+                <ScalarProperty Name="q46" ColumnName="q46" />
+                <ScalarProperty Name="q47" ColumnName="q47" />
+                <ScalarProperty Name="q48" ColumnName="q48" />
+                <ScalarProperty Name="q49" ColumnName="q49" />
+                <ScalarProperty Name="q50" ColumnName="q50" />
+                <ScalarProperty Name="q51" ColumnName="q51" />
+                <ScalarProperty Name="q52" ColumnName="q52" />
+                <ScalarProperty Name="q53" ColumnName="q53" />
+                <ScalarProperty Name="q54" ColumnName="q54" />
+                <ScalarProperty Name="q55" ColumnName="q55" />
+                <ScalarProperty Name="q56" ColumnName="q56" />
+                <ScalarProperty Name="q57" ColumnName="q57" />
+                <ScalarProperty Name="q58" ColumnName="q58" />
+                <ScalarProperty Name="q59" ColumnName="q59" />
+                <ScalarProperty Name="q60" ColumnName="q60" />
+                <ScalarProperty Name="q61" ColumnName="q61" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P0301">
+            <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0301">
+              <MappingFragment StoreEntitySet="P0301">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="foodId" ColumnName="foodId" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="constitutionType" ColumnName="constitutionType" />
+                <ScalarProperty Name="ifDelete" ColumnName="ifDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P0302">
+            <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0302">
+              <MappingFragment StoreEntitySet="P0302">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="foodType" ColumnName="foodType" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="imageHeightCal" ColumnName="imageHeightCal" />
+                <ScalarProperty Name="nutrition" ColumnName="nutrition" />
+                <ScalarProperty Name="efficacy" ColumnName="efficacy" />
+                <ScalarProperty Name="updateCode" ColumnName="updateCode" />
+                <ScalarProperty Name="pVersion" ColumnName="pVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P0401">
+            <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0401">
+              <MappingFragment StoreEntitySet="P0401">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="question" ColumnName="question" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+                <ScalarProperty Name="updateCode" ColumnName="updateCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V0301">
+            <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.V0301">
+              <MappingFragment StoreEntitySet="V0301">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="foodType" ColumnName="foodType" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="nutrition" ColumnName="nutrition" />
+                <ScalarProperty Name="efficacy" ColumnName="efficacy" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="constitutionType" ColumnName="constitutionType" />
+                <ScalarProperty Name="updateCode" ColumnName="updateCode" />
+                <ScalarProperty Name="ifDelete" ColumnName="ifDelete" />
+                <ScalarProperty Name="imageHeightCal" ColumnName="imageHeightCal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P0102">
+            <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0102">
+              <MappingFragment StoreEntitySet="P0102">
+                <ScalarProperty Name="testTime" ColumnName="testTime" />
+                <ScalarProperty Name="times" ColumnName="times" />
+                <ScalarProperty Name="teBZScore" ColumnName="teBZScore" />
+                <ScalarProperty Name="qiYZScore" ColumnName="qiYZScore" />
+                <ScalarProperty Name="xueYZScore" ColumnName="xueYZScore" />
+                <ScalarProperty Name="shiRZScore" ColumnName="shiRZScore" />
+                <ScalarProperty Name="tanSZScore" ColumnName="tanSZScore" />
+                <ScalarProperty Name="yinXZScore" ColumnName="yinXZScore" />
+                <ScalarProperty Name="yangXZScore" ColumnName="yangXZScore" />
+                <ScalarProperty Name="qiXZScore" ColumnName="qiXZScore" />
+                <ScalarProperty Name="pinHZScore" ColumnName="pinHZScore" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P0109">
+            <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0109">
+              <MappingFragment StoreEntitySet="P0109">
+                <ScalarProperty Name="useTime" ColumnName="useTime" />
+                <ScalarProperty Name="appVersion" ColumnName="appVersion" />
+                <ScalarProperty Name="modelType" ColumnName="modelType" />
+                <ScalarProperty Name="systemVersion" ColumnName="systemVersion" />
+                <ScalarProperty Name="modelStr" ColumnName="modelStr" />
+                <ScalarProperty Name="privateIp" ColumnName="privateIp" />
+                <ScalarProperty Name="publicIp" ColumnName="publicIp" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P0201">
+            <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0201">
+              <MappingFragment StoreEntitySet="P0201">
+                <ScalarProperty Name="pVersion" ColumnName="pVersion" />
+                <ScalarProperty Name="updateCode" ColumnName="updateCode" />
+                <ScalarProperty Name="constitutionType" ColumnName="constitutionType" />
+                <ScalarProperty Name="calculateType" ColumnName="calculateType" />
+                <ScalarProperty Name="questionImage" ColumnName="questionImage" />
+                <ScalarProperty Name="questionContent" ColumnName="questionContent" />
+                <ScalarProperty Name="idInQuestionGroup" ColumnName="idInQuestionGroup" />
+                <ScalarProperty Name="questionGroupId" ColumnName="questionGroupId" />
+                <ScalarProperty Name="sequenceId" ColumnName="sequenceId" />
+                <ScalarProperty Name="questionKey" ColumnName="questionKey" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

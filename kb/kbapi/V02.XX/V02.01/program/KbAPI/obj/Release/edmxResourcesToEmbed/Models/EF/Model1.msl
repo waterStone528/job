@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KbAPIAPIModelsEFKbEntitiesStoreContainer" CdmEntityContainer="KbEntities">
+    <EntitySetMapping Name="P0101">
+      <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0101">
+        <MappingFragment StoreEntitySet="P0101">
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="phoneLoginEmail" ColumnName="phoneLoginEmail" />
+          <ScalarProperty Name="nowQuestionGroupId" ColumnName="nowQuestionGroupId" />
+          <ScalarProperty Name="testTimes" ColumnName="testTimes" />
+          <ScalarProperty Name="testedTimes" ColumnName="testedTimes" />
+          <ScalarProperty Name="constitutionType" ColumnName="constitutionType" />
+          <ScalarProperty Name="possibleConstitutionType" ColumnName="possibleConstitutionType" />
+          <ScalarProperty Name="registerTime" ColumnName="registerTime" />
+          <ScalarProperty Name="lastUseTime" ColumnName="lastUseTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P0103">
+      <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0103">
+        <MappingFragment StoreEntitySet="P0103">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="birthDay" ColumnName="birthDay" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="q1" ColumnName="q1" />
+          <ScalarProperty Name="q2" ColumnName="q2" />
+          <ScalarProperty Name="q3" ColumnName="q3" />
+          <ScalarProperty Name="q4" ColumnName="q4" />
+          <ScalarProperty Name="q5" ColumnName="q5" />
+          <ScalarProperty Name="q6" ColumnName="q6" />
+          <ScalarProperty Name="q7" ColumnName="q7" />
+          <ScalarProperty Name="q8" ColumnName="q8" />
+          <ScalarProperty Name="q9" ColumnName="q9" />
+          <ScalarProperty Name="q10" ColumnName="q10" />
+          <ScalarProperty Name="q11" ColumnName="q11" />
+          <ScalarProperty Name="q12" ColumnName="q12" />
+          <ScalarProperty Name="q13" ColumnName="q13" />
+          <ScalarProperty Name="q14" ColumnName="q14" />
+          <ScalarProperty Name="q15" ColumnName="q15" />
+          <ScalarProperty Name="q16" ColumnName="q16" />
+          <ScalarProperty Name="q17" ColumnName="q17" />
+          <ScalarProperty Name="q18" ColumnName="q18" />
+          <ScalarProperty Name="q19" ColumnName="q19" />
+          <ScalarProperty Name="q20" ColumnName="q20" />
+          <ScalarProperty Name="q21" ColumnName="q21" />
+          <ScalarProperty Name="q22" ColumnName="q22" />
+          <ScalarProperty Name="q23" ColumnName="q23" />
+          <ScalarProperty Name="q24" ColumnName="q24" />
+          <ScalarProperty Name="q25" ColumnName="q25" />
+          <ScalarProperty Name="q26" ColumnName="q26" />
+          <ScalarProperty Name="q27" ColumnName="q27" />
+          <ScalarProperty Name="q28" ColumnName="q28" />
+          <ScalarProperty Name="q29" ColumnName="q29" />
+          <ScalarProperty Name="q30" ColumnName="q30" />
+          <ScalarProperty Name="q31" ColumnName="q31" />
+          <ScalarProperty Name="q32" ColumnName="q32" />
+          <ScalarProperty Name="q33" ColumnName="q33" />
+          <ScalarProperty Name="q34" ColumnName="q34" />
+          <ScalarProperty Name="q35" ColumnName="q35" />
+          <ScalarProperty Name="q36" ColumnName="q36" />
+          <ScalarProperty Name="q37" ColumnName="q37" />
+          <ScalarProperty Name="q38" ColumnName="q38" />
+          <ScalarProperty Name="q39" ColumnName="q39" />
+          <ScalarProperty Name="q40" ColumnName="q40" />
+          <ScalarProperty Name="q41" ColumnName="q41" />
+          <ScalarProperty Name="q42" ColumnName="q42" />
+          <ScalarProperty Name="q41q42" ColumnName="q41q42" />
+          <ScalarProperty Name="q43" ColumnName="q43" />
+          <ScalarProperty Name="q44" ColumnName="q44" />
+          <ScalarProperty Name="q45" ColumnName="q45" />
+          <ScalarProperty Name="q46" ColumnName="q46" />
+          <ScalarProperty Name="q47" ColumnName="q47" />
+          <ScalarProperty Name="q48" ColumnName="q48" />
+          <ScalarProperty Name="q49" ColumnName="q49" />
+          <ScalarProperty Name="q50" ColumnName="q50" />
+          <ScalarProperty Name="q51" ColumnName="q51" />
+          <ScalarProperty Name="q52" ColumnName="q52" />
+          <ScalarProperty Name="q53" ColumnName="q53" />
+          <ScalarProperty Name="q54" ColumnName="q54" />
+          <ScalarProperty Name="q55" ColumnName="q55" />
+          <ScalarProperty Name="q56" ColumnName="q56" />
+          <ScalarProperty Name="q57" ColumnName="q57" />
+          <ScalarProperty Name="q58" ColumnName="q58" />
+          <ScalarProperty Name="q59" ColumnName="q59" />
+          <ScalarProperty Name="q60" ColumnName="q60" />
+          <ScalarProperty Name="q61" ColumnName="q61" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P0104">
+      <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0104">
+        <MappingFragment StoreEntitySet="P0104">
+          <ScalarProperty Name="times" ColumnName="times" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="testTime" ColumnName="testTime" />
+          <ScalarProperty Name="birthDay" ColumnName="birthDay" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="q1" ColumnName="q1" />
+          <ScalarProperty Name="q2" ColumnName="q2" />
+          <ScalarProperty Name="q3" ColumnName="q3" />
+          <ScalarProperty Name="q4" ColumnName="q4" />
+          <ScalarProperty Name="q5" ColumnName="q5" />
+          <ScalarProperty Name="q6" ColumnName="q6" />
+          <ScalarProperty Name="q7" ColumnName="q7" />
+          <ScalarProperty Name="q8" ColumnName="q8" />
+          <ScalarProperty Name="q9" ColumnName="q9" />
+          <ScalarProperty Name="q10" ColumnName="q10" />
+          <ScalarProperty Name="q11" ColumnName="q11" />
+          <ScalarProperty Name="q12" ColumnName="q12" />
+          <ScalarProperty Name="q13" ColumnName="q13" />
+          <ScalarProperty Name="q14" ColumnName="q14" />
+          <ScalarProperty Name="q15" ColumnName="q15" />
+          <ScalarProperty Name="q16" ColumnName="q16" />
+          <ScalarProperty Name="q17" ColumnName="q17" />
+          <ScalarProperty Name="q18" ColumnName="q18" />
+          <ScalarProperty Name="q19" ColumnName="q19" />
+          <ScalarProperty Name="q20" ColumnName="q20" />
+          <ScalarProperty Name="q21" ColumnName="q21" />
+          <ScalarProperty Name="q22" ColumnName="q22" />
+          <ScalarProperty Name="q23" ColumnName="q23" />
+          <ScalarProperty Name="q24" ColumnName="q24" />
+          <ScalarProperty Name="q25" ColumnName="q25" />
+          <ScalarProperty Name="q26" ColumnName="q26" />
+          <ScalarProperty Name="q27" ColumnName="q27" />
+          <ScalarProperty Name="q28" ColumnName="q28" />
+          <ScalarProperty Name="q29" ColumnName="q29" />
+          <ScalarProperty Name="q30" ColumnName="q30" />
+          <ScalarProperty Name="q31" ColumnName="q31" />
+          <ScalarProperty Name="q32" ColumnName="q32" />
+          <ScalarProperty Name="q33" ColumnName="q33" />
+          <ScalarProperty Name="q34" ColumnName="q34" />
+          <ScalarProperty Name="q35" ColumnName="q35" />
+          <ScalarProperty Name="q36" ColumnName="q36" />
+          <ScalarProperty Name="q37" ColumnName="q37" />
+          <ScalarProperty Name="q38" ColumnName="q38" />
+          <ScalarProperty Name="q39" ColumnName="q39" />
+          <ScalarProperty Name="q40" ColumnName="q40" />
+          <ScalarProperty Name="q41" ColumnName="q41" />
+          <ScalarProperty Name="q42" ColumnName="q42" />
+          <ScalarProperty Name="q41q42" ColumnName="q41q42" />
+          <ScalarProperty Name="q43" ColumnName="q43" />
+          <ScalarProperty Name="q44" ColumnName="q44" />
+          <ScalarProperty Name="q45" ColumnName="q45" />
+          <ScalarProperty Name="q46" ColumnName="q46" />
+          <ScalarProperty Name="q47" ColumnName="q47" />
+          <ScalarProperty Name="q48" ColumnName="q48" />
+          <ScalarProperty Name="q49" ColumnName="q49" />
+          <ScalarProperty Name="q50" ColumnName="q50" />
+          <ScalarProperty Name="q51" ColumnName="q51" />
+          <ScalarProperty Name="q52" ColumnName="q52" />
+          <ScalarProperty Name="q53" ColumnName="q53" />
+          <ScalarProperty Name="q54" ColumnName="q54" />
+          <ScalarProperty Name="q55" ColumnName="q55" />
+          <ScalarProperty Name="q56" ColumnName="q56" />
+          <ScalarProperty Name="q57" ColumnName="q57" />
+          <ScalarProperty Name="q58" ColumnName="q58" />
+          <ScalarProperty Name="q59" ColumnName="q59" />
+          <ScalarProperty Name="q60" ColumnName="q60" />
+          <ScalarProperty Name="q61" ColumnName="q61" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P0301">
+      <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0301">
+        <MappingFragment StoreEntitySet="P0301">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="foodId" ColumnName="foodId" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="constitutionType" ColumnName="constitutionType" />
+          <ScalarProperty Name="ifDelete" ColumnName="ifDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P0302">
+      <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0302">
+        <MappingFragment StoreEntitySet="P0302">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="foodType" ColumnName="foodType" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="imageHeightCal" ColumnName="imageHeightCal" />
+          <ScalarProperty Name="nutrition" ColumnName="nutrition" />
+          <ScalarProperty Name="efficacy" ColumnName="efficacy" />
+          <ScalarProperty Name="updateCode" ColumnName="updateCode" />
+          <ScalarProperty Name="pVersion" ColumnName="pVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P0401">
+      <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0401">
+        <MappingFragment StoreEntitySet="P0401">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="question" ColumnName="question" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+          <ScalarProperty Name="updateCode" ColumnName="updateCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V0301">
+      <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.V0301">
+        <MappingFragment StoreEntitySet="V0301">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="foodType" ColumnName="foodType" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="nutrition" ColumnName="nutrition" />
+          <ScalarProperty Name="efficacy" ColumnName="efficacy" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="constitutionType" ColumnName="constitutionType" />
+          <ScalarProperty Name="updateCode" ColumnName="updateCode" />
+          <ScalarProperty Name="ifDelete" ColumnName="ifDelete" />
+          <ScalarProperty Name="imageHeightCal" ColumnName="imageHeightCal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P0102">
+      <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0102">
+        <MappingFragment StoreEntitySet="P0102">
+          <ScalarProperty Name="testTime" ColumnName="testTime" />
+          <ScalarProperty Name="times" ColumnName="times" />
+          <ScalarProperty Name="teBZScore" ColumnName="teBZScore" />
+          <ScalarProperty Name="qiYZScore" ColumnName="qiYZScore" />
+          <ScalarProperty Name="xueYZScore" ColumnName="xueYZScore" />
+          <ScalarProperty Name="shiRZScore" ColumnName="shiRZScore" />
+          <ScalarProperty Name="tanSZScore" ColumnName="tanSZScore" />
+          <ScalarProperty Name="yinXZScore" ColumnName="yinXZScore" />
+          <ScalarProperty Name="yangXZScore" ColumnName="yangXZScore" />
+          <ScalarProperty Name="qiXZScore" ColumnName="qiXZScore" />
+          <ScalarProperty Name="pinHZScore" ColumnName="pinHZScore" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P0109">
+      <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0109">
+        <MappingFragment StoreEntitySet="P0109">
+          <ScalarProperty Name="useTime" ColumnName="useTime" />
+          <ScalarProperty Name="appVersion" ColumnName="appVersion" />
+          <ScalarProperty Name="modelType" ColumnName="modelType" />
+          <ScalarProperty Name="systemVersion" ColumnName="systemVersion" />
+          <ScalarProperty Name="modelStr" ColumnName="modelStr" />
+          <ScalarProperty Name="privateIp" ColumnName="privateIp" />
+          <ScalarProperty Name="publicIp" ColumnName="publicIp" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="P0201">
+      <EntityTypeMapping TypeName="KbAPI.API.Models.EF.KbEntities.P0201">
+        <MappingFragment StoreEntitySet="P0201">
+          <ScalarProperty Name="pVersion" ColumnName="pVersion" />
+          <ScalarProperty Name="updateCode" ColumnName="updateCode" />
+          <ScalarProperty Name="constitutionType" ColumnName="constitutionType" />
+          <ScalarProperty Name="calculateType" ColumnName="calculateType" />
+          <ScalarProperty Name="questionImage" ColumnName="questionImage" />
+          <ScalarProperty Name="questionContent" ColumnName="questionContent" />
+          <ScalarProperty Name="idInQuestionGroup" ColumnName="idInQuestionGroup" />
+          <ScalarProperty Name="questionGroupId" ColumnName="questionGroupId" />
+          <ScalarProperty Name="sequenceId" ColumnName="sequenceId" />
+          <ScalarProperty Name="questionKey" ColumnName="questionKey" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

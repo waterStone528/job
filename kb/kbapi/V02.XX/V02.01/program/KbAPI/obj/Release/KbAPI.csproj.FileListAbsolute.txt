@@ -1,0 +1,12 @@
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0\bin\KbAPI.dll.config
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0\bin\KbAPI.dll
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0\bin\KbAPI.pdb
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0\bin\EntityFramework.dll
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0\bin\EntityFramework.SqlServer.dll
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0\bin\KbAPI_CL.dll
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0\bin\KbAPI_CL.pdb
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0\bin\EntityFramework.xml
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0\bin\EntityFramework.SqlServer.xml
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0\obj\Release\KbAPI.csprojResolveAssemblyReference.cache
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0\obj\Release\KbAPI.dll
+C:\Users\雄\SkyDrive\job\康宝\program\KangBao\V02.XX\program\KbAPI_V2.0\obj\Release\KbAPI.pdb
