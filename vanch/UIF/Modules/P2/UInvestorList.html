@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--投资方信息-->
+    <div class="UInvestorList" style="width:1024px;">
+        <div class="InvestorList" style="position: absolute; right: 0px; top: 0px; left: 0px; bottom: 80px; color: white; overflow: auto; scrollbar-arrow-color: #313136; scrollbar-base-color: #313136; scrollbar-track-color: black; transition: right ease 0.5s; ">
+            <table class="TbList" style="width:100%;">
+                <thead>
+                    <tr>
+                        <td style="min-width:80px;">投资方编号</td>
+                        <td>投资主体</td>
+                        <td data-btid="1" data-ft="2" onmouseup="P201.HButton(this)">投资金额<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                        <td>投资区域</td>
+                        <td>融资主体</td>
+                        <td data-btid="2" data-ft="2" onmouseup="P201.HButton(this)">投资案例<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <table>
+                <tbody class="TemplateTBody">
+                    <tr class="Template" style="text-align:center;display:none;"><td>X</td><td>X</td><td>><label>X</label>万元</td><td><label>X</label><label>X</label></td><td>X</td><td>N0D1</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="GeneralItem" style=" position: absolute; left: 105%; right: -62%; top: 0px; bottom: 40px; overflow: auto; scrollbar-arrow-color: #313136; scrollbar-base-color: #313136; scrollbar-track-color: black; transition: all ease 0.5s; ">
+            <table class="InvestorInfo" style="width: 100%; color: white; ">
+                <tr>
+                    <td class="ItemTitle">用户编号</td>
+                    <td class="ItemText">X</td>
+                    <td class="ItemTitle">姓名</td>
+                    <td class="ItemText">***</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">出生日期</td>
+                    <td class="ItemText">DYYYY/MM/DD</td>
+                    <td class="ItemTitle">性别</td>
+                    <td class="ItemText">X</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">户口地址</td>
+                    <td class="ItemText">X</td>
+                    <td class="ItemTitle">身份证号</td>
+                    <td class="ItemText">X</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">手机</td>
+                    <td class="ItemText">***</td>
+                    <td class="ItemTitle">邮箱</td>
+                    <td class="ItemText">X</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">婚姻情况</td>
+                    <td class="ItemText">X</td>
+                    <td class="ItemTitle">生育情况</td>
+                    <td class="ItemText">X</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">当前住址</td>
+                    <td class="ItemText" colspan="3">***</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">工作单位</td>
+                    <td class="ItemText" colspan="3">***</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">单位性质</td>
+                    <td class="ItemText">X</td>
+                    <td class="ItemTitle">入职时间</td>
+                    <td class="ItemText">DYYYY/MM/DD</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">工作电话</td>
+                    <td class="ItemText">X</td>
+                    <td class="ItemTitle">职务</td>
+                    <td class="ItemText">X</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">单位总机</td>
+                    <td class="ItemText">X</td>
+                    <td class="ItemTitle">单位网址</td>
+                    <td class="ItemText">X</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">投资主体</td>
+                    <td class="ItemText">X</td>
+                    <td class="ItemTitle">融资主体</td>
+                    <td class="ItemText">X</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">抵押率</td>
+                    <td><<label class="ItemText">P2D0</label></td>
+                    <td class="ItemTitle">保证方式</td>
+                    <td class="ItemText">X</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">投资区域</td>
+                    <td><label class="ItemText">X</label><label class="ItemText">X</label></td>
+                    <td class="ItemTitle">投资金额</td>
+                    <td>><label class="ItemText">N2D0</label>万元</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">利率要求</td>
+                    <td>><label class="ItemText">P2D0</label></td>
+                    <td class="ItemTitle">投资期限</td>
+                    <td><label class="ItemText">N0D1</label>~<label class="ItemText">N0D1</label>天</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">抵押要求</td>
+                    <td class="ItemText" colspan="3"></td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">投资案例</td>
+                    <td><label class="ItemText">N0D1</label></td>
+                    <td class="ItemTitle">案例金额</td>
+                    <td><label class="ItemText">N2D0</label>万元</td>
+                </tr>
+            </table>
+        </div>
+        <div class="memo" style="position:absolute;left:0px;bottom:-10px;">
+            <ul>
+                <li style="display:none;">请选择投资方再按确定。</li>
+                <li>按确定后将消费<label class="ItemText">N2D0</label>个V币,当前账户余额为<label class="ItemText">N2D0</label>V币</li>
+                <li>推荐为主动向指定投资方发送预约，债权暂时不在公共页展示；</li>
+            </ul>
+        </div>
+        <div class="Bt" style="position:absolute; right:0px; bottom:5px;"><div class="ABt" onmousedown="P201.BtAction(this, 0);" onmouseup="P201.BtAction(this, 11);">确定</div></div>
+        <div style="position:absolute;bottom:5px;right:150px;"><table class="GeneralItem"><tr><td class="ItemTitle">交易密码</td><td class="ItemTextInp"><input class="TradePW" type="password" /></td></tr></table> </div>
+
+    </div>
+</body>
+</html>

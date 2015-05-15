@@ -1,0 +1,537 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>VANCH凡奇金融 - 资产购买</title>
+    <link rel="stylesheet" type="text/css" href="ComStyle.css" />
+    <script type="text/javascript" src="ComScript\CommCtrl.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body onresize="bodyresize()" onload="bodyLoad()">
+    <!--页面动态功能处理-->
+    <script type="text/javascript">
+        function bodyLoadScript() {
+            ToolBar.querySelectorAll("div")[0].onmouseup();
+        }
+        function bodyResizeScript() {
+
+        }
+        function LoadRemItems() {
+            RemItemsLoading = true;
+            LoadingBoxCtl(1);
+            switch (MToolBar.BtID) {
+                case 1:
+                    if (parseInt(Continue.innerText) == 1) {
+                        Continue.innerText = 0;
+                        P401.STR.EVP40102(P401.LoadItem.First, P401.LoadItem.From, P401.LoadItem.Num);
+                    }
+                    break;
+                case 2:
+                    if (parseInt(Continue.innerText) == 1) {
+                        Continue.innerText = 0;
+                        P402.STR.EVP40202(P402.LoadItem.First, P402.LoadItem.From, P402.LoadItem.Num);
+                    }
+                    break;
+                case 3:
+                    if (parseInt(Continue.innerText) == 1) {
+                        Continue.innerText = 0;
+                        P404.STR.EVP40402(P404.LoadItem.First, P404.LoadItem.From, P404.LoadItem.Num);
+                    }
+                    break;
+            }
+            RemItemsLoading = false;
+        }
+    </script>
+
+    <!--发布资产-->
+    <script type="text/javascript">
+        var P401 = {
+            FocusItem: Object,
+            LoadItem: { First: "", From: 0, Num: 10 },
+            Del: function () {
+                if (ItemContainer.contains(this.FocusItem.parentNode)) { ItemContainer.removeChild(this.FocusItem.parentNode); };
+                ReCalcItemSize();
+            },
+            BtAction: function (BtObj, Act) {
+                switch (Act) {
+                    case 3:
+                        BtStatusClass(BtObj, 1); 
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        MovingBoxCTL.Prepare(ItemNo + " - 资产详情", document.querySelector(".UAssetInfo"));
+                        MovingBoxi.querySelector("textarea").value = BtObj.getAttribute("data-val");
+                        MovingBoxCTL.Open();
+                        break;
+                    case 4:
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1)
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        MovingBoxCTL.Prepare(ItemNo + " - 出售方：" + BtObj.innerText, document.querySelector(".USalerInfo"));
+                        this.STR.EVP40103(ItemSN, BtObj.DspV);
+                        break;
+                    default:
+                        BtStatusClass(BtObj, 2);
+                        break;
+                }
+            },
+            UIP: {
+                SvrFee: 500,
+                BuyAmt: { Min: 0, Max: 999999 },
+                CancelReason: [{ ID: "A01", Value: "出售方信用问题" }, { ID: "A02", Value: "出售方配合问题" }, { ID: "A01", Value: "资产问题" }, { ID: "A01", Value: "价格问题" }, { ID: "A01", Value: "购买方自身问题" }, { ID: "A01", Value: "其他原因" }],
+            },
+            STR: {
+                EVP40101: function (Num) {
+                    ///<summary>页面初始化</summary><param name="Num">信息数量</param>
+                    var AssetList = JSON.stringify([
+                    { ItemSN: "A002", No: "U20164811", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万，最高时间可达268公里/小时！" },
+                    { ItemSN: "A001", No: "U20164812", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A003", No: "U20164813", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A004", No: "U20164814", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A005", No: "U20164815", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A006", No: "U20164816", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164817", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164818", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" }]);
+                    setTimeout("P401.UID.P40101('U20164811','刘德华');", 500);
+                    setTimeout("P401.UID.P40102('" + AssetList + "');", 500);
+                },
+                EVP40102: function (First, From, Num) {
+                    ///<summary>加载更多信息</summary><param name="First">第一条信息的编号</param><param name="From">开始位置</param><param name="Num">信息数量</param>
+                    var AssetList = JSON.stringify([
+                    { ItemSN: "A001", No: "U20164811", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万，最高时间可达268公里/小时！" },
+                    { ItemSN: "A001", No: "U20164812", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164813", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164814", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164815", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164816", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164817", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164818", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" }]);
+                    setTimeout("P401.UID.P40102('" + AssetList + "');", 1000);
+                },
+                EVP40103: function (ItemSN, SalerNo) {
+                    ///<summary>加载出售方信息</summary></param name="ItemSN">资产号</param><param name="SalerNo">出售方编号</param>
+                    console.log(ItemSN);
+                    var Saler = { No: "U20156065", Name: "张学友", BirthDay: "1965/08/09", Sex: "男", CardAddress: "中国香港", CardID: "789454*", Mobile: "170****6666", Email: "zhangxueyou@qq.com", Marry: "已婚", Breed: "已育", LivePro: "浙江", LiveCity: "宁波", LiveStreet: "高新区", SuccessCase: 10 };
+                    setTimeout("P401.UID.P40103('" + JSON.stringify(Saler) + "')", 1000);
+                }
+            },
+            UID: {
+                P40101: function (First, UserName) {
+                    ///<summary>页面初始化</summary></param name="First">第一条信息的编号</param><param name="UserName">用户姓名</param>
+                    P401.LoadItem.First = First;
+                    LoginAction(UserName);
+                },
+                P40102: function (AssetList) {
+                    ///<summary>加载信息</summary>
+                    if (MToolBar.BtID != 1) { return; }
+                    if (AssetList == "") { Continue.innerText = 1; LoadingBoxCtl(0); LastItem = 1; return;}
+                    var AssetInfo = JSON.parse(AssetList); P401.LoadItem.From += AssetInfo.length;
+                    for (var i in AssetInfo) {
+                        var NewItemTemplate = P401i.children[0].cloneNode(true);
+                        NewItemTemplate.querySelectorAll(".ItemText")[0].DspV = AssetInfo[i].No;
+                        NewItemTemplate.querySelectorAll(".ItemText")[1].DspV = AssetInfo[i].Source;
+                        NewItemTemplate.querySelectorAll(".ItemText")[2].DspV = AssetInfo[i].Type;
+                        NewItemTemplate.querySelectorAll(".ItemText")[3].DspV = AssetInfo[i].GetTime;
+                        NewItemTemplate.querySelectorAll(".BBtInTd")[0].DspV = AssetInfo[i].Saler;
+                        NewItemTemplate.querySelectorAll(".ItemText")[5].DspV = AssetInfo[i].GetAmt;
+                        NewItemTemplate.querySelectorAll(".ItemText")[6].DspV = AssetInfo[i].Appraiser;
+                        NewItemTemplate.querySelectorAll(".ItemText")[7].DspV = AssetInfo[i].MarketAmt;
+                        NewItemTemplate.querySelectorAll(".ItemText")[8].DspV = AssetInfo[i].AssetArea;
+                        NewItemTemplate.querySelectorAll(".ItemText")[9].DspV = AssetInfo[i].SaleAmt;
+                        NewItemTemplate.querySelectorAll(".ItemText")[10].DspV = AssetInfo[i].Use;
+                        NewItemTemplate.querySelectorAll(".BBtInTd")[1].setAttribute("data-val", AssetInfo[i].Ramerks);
+                        NewItemTemplate.querySelector(".Hidden").DspV = AssetInfo[i].ItemSN;
+                        ItemContainer.appendChild(NewItemTemplate);
+                    }
+                    ReCalcItemSize();
+                    Continue.innerText = 1; LoadingBoxCtl(0);
+                },
+                P40103: function (Saler) {
+                    ///<summary>载入出售方信息</summary><param name="Saler">出售方</param>
+                    var Saler = eval('(' + Saler + ')');
+                    var MI = MovingBoxi.querySelectorAll(".ItemText");
+                    MI[0].DspV = Saler.No; MI[2].DspV = Saler.BirthDay; MI[3].DspV = Saler.Sex; MI[4].DspV = Saler.CardAddress; MI[5].DspV = Saler.CardID;
+                    MI[8].DspV = Saler.Marry; MI[9].DspV = Saler.Breed;  MI[13].DspV = Saler.SuccessCase;
+                    MovingBoxCTL.Open(); LoadingBoxCtl(0);
+                }
+            },
+        }
+    </script>
+
+    <!--预约中资产-->
+    <script type="text/javascript">
+        var P402 = {
+            LoadItem: { First: "", From: 0, Num: 10 },
+            FocusItem: Object,
+            Del: function () {
+                if (ItemContainer.contains(this.FocusItem.parentNode)) { ItemContainer.removeChild(this.FocusItem.parentNode); };
+                ReCalcItemSize();
+            },
+            BtAction: function (BtObj, Act) {
+                switch (Act) {
+                    case 1:
+                        BtStatusClass(BtObj, 1);
+                        if (!IRC.IntervalNumber(MovingBoxi.querySelector("input"), MovingBoxi.querySelector("input").value, P401.UIP.BuyAmt)) { return; };
+                        if (BtObj.getAttribute("data-btst") != "D")
+                        {
+                            BtObj.setAttribute("data-btst", "D");
+                            TransingStatus.SetStatus(1);
+                            this.STR.EVP40205(this.FocusItem.parentNode.querySelector(".Hidden").DspV, MovingBoxi.querySelector("input").value);
+                        }
+                        break;
+                    case 2:
+                        BtStatusClass(BtObj, 1);
+                        P402.FocusItem = BtObj;
+                        MovingBoxCTL.Prepare(BtObj.parentElement.querySelectorAll(".ItemText")[0].innerText + " - 资产购买", document.querySelector(".UExpenditure02"));
+                        IRC.Init(MovingBoxi.querySelector("input"), MovingBoxi.querySelector("input").value, P401.UIP.BuyAmt.Min + "~" + P401.UIP.BuyAmt.Max);
+                        MovingBoxCTL.Open();
+                        break;
+                    case 3:
+                        BtStatusClass(BtObj, 1);
+                        P402.FocusItem = BtObj;
+                        MovingBoxCTL.Prepare(BtObj.parentElement.querySelectorAll(".ItemText")[0].innerText + " - 取消原因", document.querySelector(".UCancelReason"));
+                        for (var i in P401.UIP.CancelReason) { MovingBoxi.querySelector("select").options.add(new Option(P401.UIP.CancelReason[i].Value, P401.UIP.CancelReason[i].ID)); }
+                        MovingBoxCTL.Open();
+                        break;
+                    case 4:
+                        BtStatusClass(BtObj, 1);
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].innerText;
+                        MovingBoxCTL.Prepare(ItemNo + " - 资产详情", document.querySelector(".UAssetInfo"));
+                        MovingBoxi.querySelector("textarea").value = BtObj.getAttribute("data-val");
+                        MovingBoxCTL.Open();
+                        break;
+                    case 5:
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].innerText;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").innerText;
+                        MovingBoxCTL.Prepare(ItemNo + " - 出售方：" + BtObj.innerText, document.querySelector(".USalerInfo"));
+                        this.STR.EVP40204(ItemSN, BtObj.innerText);
+                        break;
+                    case 6:
+                        BtStatusClass(BtObj, 1);
+                        if (MovingBoxi.querySelector("select").value == "" || MovingBoxi.querySelector("select").value == "-1") { IRC.ErrTip(MovingBoxi.querySelector("select"), "必填"); return; };
+                        if (BtObj.getAttribute("data-btst") != "D") {
+                            BtObj.setAttribute("data-btst", "D");
+                            TransingStatus.SetStatus(1);
+                            this.STR.EVP40206(this.FocusItem.parentNode.querySelector(".Hidden").innerText, MovingBoxi.querySelector("select").value);
+                        }
+                        break;
+                    case 7:
+                        if (MovingBoxi.querySelector(".TradePW").value == "") { IRC.ErrTip(MovingBoxi.querySelector(".TradePW"), "必填"); return; }
+                        if (BtObj.getAttribute("data-btst") != "D") {
+                            BtObj.setAttribute("data-btst", "D");
+                            TransingStatus.SetStatus(1);
+                            var ItemSN = this.FocusItem.parentElement.querySelector(".Hidden").innerText;
+                            this.STR.EVP40201(ItemSN, MovingBoxi.querySelector(".TradePW").value);
+                        }
+                        break;
+                    case 8:
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        this.FocusItem = BtObj;
+                        MovingBoxCTL.Prepare(this.FocusItem.parentElement.querySelectorAll(".ItemText")[0].innerText + " - 预约", document.querySelector(".UExpenditure01"));
+                        this.STR.EVP40207();
+                        break;
+                    default:
+                        BtStatusClass(BtObj, 2);
+                        break;
+                }
+            },
+            UIP: { },
+            STR: {
+                EVP40201: function (ItemSN, TradePW) {
+                    ///<summary>预约发出服务</summary><param name="ItemSN">项目编号</param><param name="TradePW">交易密码</param>
+                    console.log(ItemSN);
+                    setTimeout("P402.UID.P40201(true);", 1000);
+                },
+                EVP40202: function (Num) {
+                    ///<summary>页面初始化</summary><param name="Num">信息数量</param>
+                    var AssetList = JSON.stringify([
+                    { ItemSN: "A001", No: "U20164811", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万，最高时间可达268公里/小时！" },
+                    { ItemSN: "A002", No: "U20164812", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A003", No: "U20164813", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A004", No: "U20164814", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A005", No: "U20164815", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A006", No: "U20164816", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A007", No: "U20164817", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164818", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" }]);
+                    setTimeout("P402.UID.P40202('U20164811');", 500);
+                    setTimeout("P402.UID.P40203('" + AssetList + "');", 500);
+                },
+                EVP40203: function (First, From, Num) {
+                    ///<summary>加载更多信息</summary><param name="First">第一条信息的编号</param><param name="From">开始位置</param><param name="Num">信息数量</param>
+                    var AssetList = JSON.stringify([
+                    { ItemSN: "A001", No: "U20164811", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万，最高时间可达268公里/小时！" },
+                    { ItemSN: "A001", No: "U20164812", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164813", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164814", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164815", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164816", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164817", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164818", Type: "汽车", Source: "购买", GetAmt: 100, Use: "自用", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" }]);
+                    setTimeout("P402.UID.P40203('" + AssetList + "');", 1000);
+                },
+                EVP40204: function (ItemSN, SalerNo) {
+                    ///<summary>加载出售方信息</summary><param name="ItemSN">资产号</param><param name="SalerNo">出售方编号</param>
+                    console.log(ItemSN);
+                    var Saler = { No: "U20156065", Name: "张学友", BirthDay: "1965/08/09", Sex: "男", CardAddress: "中国香港", CardID: "789454*", Mobile: "170****6666", Email: "zhangxueyou@qq.com", Marry: "已婚", Breed: "已育", LivePro: "浙江", LiveCity: "宁波", LiveStreet: "高新区", SuccessCase: 10 };
+                    setTimeout("P402.UID.P40204('" + JSON.stringify(Saler) + "');", 1000);
+                },
+                EVP40205: function (ItemSN, Amt) {
+                    ///<summary>资产购买</summary><param name="ItemSN">资产号</param><param name="Amt">资产金额</param>
+                    console.log(Amt);
+                    setTimeout("P402.UID.P40205(true);", 1000);
+                },
+                EVP40206: function (ItemSN, Reason) {
+                    ///<summary>取消预约</summary><param name="ItemSN">资产号</param><param name="Reason">取消原因</param>
+                    console.log(ItemSN);
+                    setTimeout("P402.UID.P40205(true);", 1000);
+                },
+                EVP40207: function () {
+                    ///<summary>资产预约移出框</summary>
+                    setTimeout("P402.UID.P40207(200,15000);", 1000);
+                },
+            },
+            UID: {
+                P40201: function (Res) {
+                    ///<summary>返回预约结果</summary><param name="Res">true Or false</param>
+                    if (Res) {
+                        TransingStatus.SetStatus(3);
+                        P402.Del(); MovingBoxCTL.Close();
+                    } else {
+                        TransingStatus.SetStatus(2);
+                    }
+                    MovingBoxi.querySelector(".Bt").setAttribute("data-btst", "E");
+                },
+                P40202: function (First) {
+                    ///<summary>页面初始化</summary><param name="First">第一条信息的编号</param>
+                    P402.LoadItem.First = First;
+                },
+                P40203: function (AssetList) {
+                    ///<summary>加载信息</summary>
+                    if (MToolBar.BtID != 2) { return; }
+                    if (AssetList == "") { Continue.innerText = 1; LoadingBoxCtl(0); LastItem = 1; return; }
+                    var AssetInfo = JSON.parse(AssetList); P402.LoadItem.From += AssetInfo.length;
+                    for (var i in AssetInfo) {
+                        var NewItemTemplate = P402i.children[0].cloneNode(true);
+                        NewItemTemplate.querySelectorAll(".ItemText")[0].DspV = AssetInfo[i].No;
+                        NewItemTemplate.querySelectorAll(".ItemText")[1].DspV = AssetInfo[i].Source;
+                        NewItemTemplate.querySelectorAll(".ItemText")[2].DspV = AssetInfo[i].Type;
+                        NewItemTemplate.querySelectorAll(".ItemText")[3].DspV = AssetInfo[i].GetTime;
+                        NewItemTemplate.querySelectorAll(".BBtInTd")[0].DspV = AssetInfo[i].Saler;
+                        NewItemTemplate.querySelectorAll(".ItemText")[5].DspV = AssetInfo[i].GetAmt;
+                        NewItemTemplate.querySelectorAll(".ItemText")[6].DspV = AssetInfo[i].Appraiser;
+                        NewItemTemplate.querySelectorAll(".ItemText")[7].DspV = AssetInfo[i].MarketAmt;
+                        NewItemTemplate.querySelectorAll(".ItemText")[8].DspV = AssetInfo[i].AssetArea;
+                        NewItemTemplate.querySelectorAll(".ItemText")[9].DspV = AssetInfo[i].SaleAmt;
+                        NewItemTemplate.querySelectorAll(".ItemText")[10].DspV = AssetInfo[i].Use;
+                        NewItemTemplate.querySelectorAll(".BBtInTd")[1].setAttribute("data-val", AssetInfo[i].Ramerks);
+                        NewItemTemplate.querySelector(".Hidden").DspV = AssetInfo[i].ItemSN;
+                        ItemContainer.appendChild(NewItemTemplate);
+                    }
+                    ReCalcItemSize();
+                    Continue.innerText = 1; LoadingBoxCtl(0);
+                },
+                P40204: function (Saler) {
+                    ///<summary>载入出售方信息</summary><param name="Saler">出售方</param>
+                    var Saler = eval('(' + Saler + ')');
+                    var MI = MovingBoxi.querySelectorAll(".ItemText");
+                    MI[0].DspV = Saler.No; MI[1].innerText = Saler.Name; MI[2].DspV = Saler.BirthDay; MI[3].DspV = Saler.Sex; MI[4].DspV = Saler.CardAddress; MI[5].DspV = Saler.CardID; MI[6].innerText = Saler.Mobile;
+                    MI[7].innerText = Saler.Email; MI[8].DspV = Saler.Marry; MI[9].DspV = Saler.Breed; MI[10].innerText = Saler.LivePro; MI[11].innerText = Saler.LiveCity; MI[12].innerText = Saler.LiveStreet; MI[13].DspV = Saler.SuccessCase;
+                    MovingBoxCTL.Open(); LoadingBoxCtl(0);
+                },
+                P40205: function (Res) {
+                    if (Res) {
+                        P402.Del(); TransingStatus.SetStatus(3);
+                        MovingBoxCTL.Close();
+                    } else {
+                        TransingStatus.SetStatus(2);
+                    }
+                    MovingBoxi.querySelector(".Bt").setAttribute("data-btst", "E");
+                },
+                P40207: function (SvrFee, MyVB) {
+                    ///<summary>资产预约移出框</summary><param name="SvrFee">预约消费</param><param name="MyVB">账户余额</param>
+                    MovingBoxi.querySelectorAll(".ItemText")[0].DspV = MyVB;
+                    MovingBoxi.querySelectorAll(".ItemText")[1].DspV = SvrFee;
+                    MovingBoxCTL.Open(); LoadingBoxCtl(0);
+                },
+            },
+        }
+    </script>
+
+    <!--已购买资产-->
+    <script type="text/javascript">
+        var P404 = {
+            LoadItem: { First: "", From: 0, Num: 10 },
+            FocusItem: Object,
+            Del: function () {
+                if (ItemContainer.contains(this.FocusItem.parentNode)) { ItemContainer.removeChild(this.FocusItem.parentNode); };
+                ReCalcItemSize();
+            },
+            BtAction: function (BtObj, Act) {
+                switch (Act) {
+                    case 1:
+                        BtStatusClass(BtObj, 1);
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].innerText;
+                        MovingBoxCTL.Prepare(ItemNo + " - 资产详情", document.querySelector(".UAssetInfo"));
+                        MovingBoxi.querySelector("textarea").value = BtObj.getAttribute("data-val");
+                        MovingBoxCTL.Open();
+                        break;
+                    case 2:
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].innerText;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").innerText;
+                        MovingBoxCTL.Prepare(ItemNo + " - 出售方：" + BtObj.innerText, document.querySelector(".USalerInfo"));
+                        this.STR.EVP40403(ItemSN, BtObj.DspV);
+                        break;
+                    case 3:
+                        BtStatusClass(BtObj, 1);
+                        this.FocusItem = BtObj;
+                        if (BtObj.getAttribute("data-btst") != "D") {
+                            BtObj.setAttribute("data-btst", "D");
+                            TransingStatus.SetStatus(1);
+                            this.STR.EVP40404(BtObj.parentNode.querySelector(".Hidden").DspV);
+                        }
+                        break;
+                    default:
+                        BtStatusClass(BtObj, 2);
+                        break;
+                }
+            },
+            UIP: { },
+            STR: {
+                EVP40401: function (Num) {
+                    ///<summary>页面初始化</summary><param name="Num">信息数量</param>
+                    var AssetList = JSON.stringify([
+                    { ItemSN: "A001", No: "U20164811", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "131", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万，最高时间可达268公里/小时！" },
+                    { ItemSN: "A002", No: "U20164812", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "132", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A003", No: "U20164813", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "133", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A004", No: "U20164814", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "134", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A005", No: "U20164815", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "135", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A006", No: "U20164816", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "137", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164817", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "136", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164818", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "138", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" }]);
+                    setTimeout("P404.UID.P40401('U20164811');", 500);
+                    setTimeout("P404.UID.P40402('" + AssetList + "');", 500);
+                },
+                EVP40402: function (First, From, Num) {
+                    ///<summary>加载更多信息</summary><param name="First">第一条信息的编号</param><param name="From">开始位置</param><param name="Num">信息数量</param>
+                    var AssetList = JSON.stringify([
+                    { ItemSN: "A001", No: "U20164811", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "131", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万，最高时间可达268公里/小时！" },
+                    { ItemSN: "A001", No: "U20164812", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "132", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164813", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "133", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164814", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "134", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164815", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "135", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164816", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "137", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164817", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "136", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" },
+                    { ItemSN: "A001", No: "U20164818", Type: "汽车", Source: "购买", GetAmt: 100, BuyAmt: "138", Appraiser: "任达华", MarketAmt: 120, AssetArea: "浙江", Saler: "U20156065", SaleAmt: 105, GetTime: "2014/07/03", Ramerks: "保时捷-卡宴 里程20万公里，2011年买进，改装费20万！" }]);
+                    setTimeout("P404.UID.P40402('" + AssetList + "');", 1000);
+                },
+                EVP40403: function (ItemSN, SalerNo) {
+                    ///<summary>加载出售方信息</summary><param name="ItemSN">资产编号</param><param name="SalerNo">出售方编号</param>  
+                    console.log(ItemSN);
+                    var Saler = { No: "U20156065", Name: "张学友", BirthDay: "1965/08/09", Sex: "男", CardAddress: "中国香港", CardID: "789454*", Mobile: "170****6666", Email: "zhangxueyou@qq.com", Marry: "已婚", Breed: "已育", LivePro: "浙江", LiveCity: "宁波", LiveStreet: "高新区", SuccessCase: 10 };
+                    setTimeout("P404.UID.P40403('" + JSON.stringify(Saler) + "');", 1000);
+                },
+                EVP40404: function (ItemSN) {
+                    ///<summary>取消预约</summary><param name="ItemSN">资产号</param>
+                    console.log(ItemSN);
+                    setTimeout("P404.UID.P40404(true);", 1000);
+                },
+            },
+            UID: {
+                P40401: function (First) {
+                    ///<summary>页面初始化</summary><param name="First">第一条信息的编号</param>
+                    P404.LoadItem.First = First;
+                },
+                P40402: function (AssetList) {
+                    ///<summary>加载信息</summary>
+                    if (MToolBar.BtID != 3) { return; }
+                    if (AssetList == "") { Continue.innerText = 1; LoadingBoxCtl(0); LastItem = 1; return;}
+                    var AssetInfo = JSON.parse(AssetList); P404.LoadItem.From += AssetInfo.length;
+                    for (var i in AssetInfo) {
+                        var NewItemTemplate = P404i.children[0].cloneNode(true);
+                        NewItemTemplate.querySelectorAll(".ItemText")[0].DspV = AssetInfo[i].No;
+                        NewItemTemplate.querySelectorAll(".ItemText")[1].DspV = AssetInfo[i].Source;
+                        NewItemTemplate.querySelectorAll(".ItemText")[2].DspV = AssetInfo[i].Type;
+                        NewItemTemplate.querySelectorAll(".ItemText")[3].DspV = AssetInfo[i].GetTime;
+                        NewItemTemplate.querySelectorAll(".BBtInTd")[0].DspV = AssetInfo[i].Saler;
+                        NewItemTemplate.querySelectorAll(".ItemText")[5].DspV = AssetInfo[i].GetAmt;
+                        NewItemTemplate.querySelectorAll(".ItemText")[6].DspV = AssetInfo[i].Appraiser;
+                        NewItemTemplate.querySelectorAll(".ItemText")[7].DspV = AssetInfo[i].MarketAmt;
+                        NewItemTemplate.querySelectorAll(".ItemText")[8].DspV = AssetInfo[i].AssetArea;
+                        NewItemTemplate.querySelectorAll(".ItemText")[9].DspV = AssetInfo[i].SaleAmt;
+                        NewItemTemplate.querySelectorAll(".BBtInTd")[1].setAttribute("data-val", AssetInfo[i].Ramerks);
+                        NewItemTemplate.querySelectorAll(".ItemText")[11].DspV = AssetInfo[i].BuyAmt;
+                        NewItemTemplate.querySelector(".Hidden").DspV = AssetInfo[i].ItemSN;
+                        ItemContainer.appendChild(NewItemTemplate);
+                    }
+                    ReCalcItemSize();
+                    Continue.innerText = 1; LoadingBoxCtl(0);
+                },
+                P40403: function (Saler) {
+                    ///<summary>载入出售方信息</summary><param name="Saler">出售方</param>
+                    var Saler = eval('(' + Saler + ')');
+                    var MI = MovingBoxi.querySelectorAll(".ItemText");
+                    MI[0].DspV = Saler.No; MI[1].innerText = Saler.Name; MI[2].DspV = Saler.BirthDay; MI[3].DspV = Saler.Sex; MI[4].DspV = Saler.CardAddress; MI[5].DspV = Saler.CardID; MI[6].innerText = Saler.Mobile;
+                    MI[7].innerText = Saler.Email; MI[8].DspV = Saler.Marry; MI[9].DspV = Saler.Breed; MI[10].innerText = Saler.LivePro; MI[11].innerText = Saler.LiveCity; MI[12].innerText = Saler.LiveStreet; MI[13].DspV = Saler.SuccessCase;
+                    MovingBoxCTL.Open(); LoadingBoxCtl(0);
+                },
+                P40404: function (Res, ErrTxt) {
+                    if (Res) {
+                        P404.Del(); TransingStatus.SetStatus(3);
+                    } else {
+                        TransingStatus.SetStatus(2, ErrTxt);
+                    }
+                    P404.FocusItem.setAttribute("data-btst", "E");
+                },
+            },
+        }
+    </script>
+
+    <!--选项卡-->
+    <script type="text/javascript">
+        var MToolBar = {
+            LastObj: null,
+            BtID: 0,
+            BtAction: function (obj, act, BtID) {//1:down,2:up
+                if (BtStatusClass(obj, 0) == 4) { return; }
+                if (act == 1) { BtStatusClass(obj, 2); return; }
+                if (this.LastObj != null) { BtStatusClass(this.LastObj, 1); }
+                if (act == 2) { BtStatusClass(obj, 4); }
+                this.LastObj = obj; this.BtID = BtID;
+                switch (BtID) {
+                    case 1: ItemContainer.innerHTML = ""; LoadingBoxCtl(1); P401.LoadItem.First = 0; P401.LoadItem.From = 0; LastItem = 0; P401.STR.EVP40101(20); break;
+                    case 2: ItemContainer.innerHTML = ""; LoadingBoxCtl(1); P402.LoadItem.First = 0; P402.LoadItem.From = 0; LastItem = 0; P402.STR.EVP40202(20); break;
+                    case 3: ItemContainer.innerHTML = ""; LoadingBoxCtl(1); P404.LoadItem.First = 0; P404.LoadItem.From = 0; LastItem = 0; P404.STR.EVP40401(20); break;
+                    default: break;
+                }
+            }
+        };
+    </script>
+
+    <!--主要显示区-->
+    <div id="TopBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules\TopBar.html"></iframe></div>
+    <div id="MainZone" onscroll="ScrollTracker(this)">
+        <div class="LocationBar"><label>你的位置</label><a style="cursor: pointer;" onclick="javascript: LoadingBoxCtl(1); location.href = 'P802.html'">用户中心</a>&nbsp;-&nbsp;资产购买</div>
+        <div id="ToolBar" class="UToolBBBG">
+            <div class="UToolBBBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 1)">寻找资产</div>
+            <div class="UToolBBBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 2)">预约中资产</div>
+            <div class="UToolBBBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 3)">已购资产</div>
+        </div>
+        <div id="ItemContainer"></div>
+        <iframe style="height:0px;width:0px;visibility:collapse;" id="ItemSi" onload="ReCalcItemSize();"></iframe>
+    </div>
+    <div id="BottomBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules/BottomBar.html"></iframe></div>
+    <div class="MaskLayer" onmouseup="MovingBoxCTL.Close();"></div>
+    <div id="Continue">1</div>
+    <!--异步模版加载区-->
+    <script type="text/javascript">
+        LoadTP("P401", "", "P4");LoadTP("P402", "", "P4");LoadTP("P404", "", "P4");
+        LoadTP("UAssetInfo", "", "P4"); LoadTP("USalerInfo", "", "P4");
+        LoadTP("UExpenditure01", "", "P4"); LoadTP("UExpenditure02", "", "P4");
+        LoadTP("LoadingBox"); LoadTP("TransingBox"); LoadJS("TransingBox"); LoadJS("InpRulesCk");
+        LoadTP("MovingBox", "MovingBoxi.style.display = '';"); LoadJS("MovingBox");
+        LoadTP("UCancelReason", "", "P4");
+    </script>
+</body>
+</html>

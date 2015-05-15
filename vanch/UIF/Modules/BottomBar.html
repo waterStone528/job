@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="BottomBari">
+        <div id="BottomBar" class="BottomBar-BarInfo-Init_Hidden" onmouseup="if (BottomBar.className != 'BottomBar-BarInfo_Show') { BottomBar.className = 'BottomBar-BarInfo_Show'; MainZone.setAttribute('onmouseup', 'if (BottomBar.className != \'BottomBar-BarInfo_Hidden\') { BottomBar.className = \'BottomBar-BarInfo_Hidden\'; };'); };" >
+            <div id="BottomBarInfo" class="BottomBarInfo_Initial_AllHidden">
+                <div id="BottomBarLeftInfo">&nbsp;</div>
+                <div id="BottomBarRightInfo">&nbsp;</div>
+                <div class="Item" onmouseup="FreeInfo(this, 1);"><h3>公司简介</h3></div>
+                <div class="Line"><h3>&nbsp;</h3></div>
+                <div class="Item" onmouseup="FreeInfo(this, 6);"><h3>安全保障</h3></div>
+                <div class="Line"><h3>&nbsp;</h3></div>
+                <div class="Item" onmouseup="FreeInfo(this, 8);"><h3>帮助说明</h3></div>
+                <div class="Line"><h3>&nbsp;</h3></div>
+                <div class="Item" onmouseup="FreeInfo(this, 7);"><h3>动态信息</h3></div>
+                <div class="Line"><h3>&nbsp;</h3></div>
+                <div class="Item" onmouseup="FreeInfo(this, 2);"><h3>岗位招聘</h3></div>
+                <div class="Line"><h3>&nbsp;</h3></div>
+                <div class="Item" onmouseup="FreeInfo(this, 3);"><h3>联系我们</h3></div>
+                <div class="Line"><h3>&nbsp;</h3></div>
+                <!--<div style="display: inline-block; height: 50px; width: 1px; margin: 20px; font-size: 24px; background-color: #ffffff; opacity: 0.1; ">&nbsp;</div>
+            <div style="display: inline-block; height: 50px; margin: 20px; padding-left: 140px; font-size: 24px; background: url('http://img.webscan.360.cn/status/pai/hash/9dc62a146c1bc7ba5178613f5f868402') no-repeat; background-position: left center; background-size: contain; ">&nbsp;</div>-->
+            </div>
+            <div id="BottomSign"><span class="MoreLeft">.....</span><label style="margin-right:10px;">CopyRight  © 2010-2015&nbsp;凡奇投资有限公司 版权所有</label><label style="margin-right:10px;">全国统一服务热线：0574-87155555 &nbsp;(B20140626)</label> <a href="#" style=" color: #909091;"> 浙ICP备13024458号</a><span class="MoreRight">.....</span></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        parent.BottomBari.innerHTML = BottomBari.innerHTML;
+    </script>
+</body>
+</html>

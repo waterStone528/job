@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div style="float: left; cursor: pointer; height: 180px" class="ItemSize GeneralItem" onmouseup="location.href = 'P803.html'">
+        <div class="UToolBCBG" style="margin-left: 10px;margin-top:10px;margin-right:10px; position: relative; font-weight: 700; ">安全管理</div>
+        <table width="100%" style="margin-left:10px;padding:0px;" border="0">
+            <!--Sever need give the value in TD zone witch TD has id value-->
+            <tr><td class="ItemTitle">安全等级</td><td class="ItemText" data-fmt="X"></td><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText">&nbsp;</td></tr>
+            <tr><td class="ItemTitle">绑定手机</td><td class="ItemText" data-fmt="X"></td><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText">&nbsp;</td></tr>
+            <tr><td class="ItemTitle">绑定邮箱</td><td class="ItemText" colspan="3" data-fmt="X"></td></tr>
+            <tr><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText">&nbsp;</td><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText">&nbsp;</td></tr>
+        </table>
+    </div>
+    <div id="Continue">0</div><!--server need return a value 1 to continue load,0 means this is last one and to stop-->
+    <script type="text/javascript">
+        parent.ItemContainer.appendChild(document.body.children[0]);
+        parent.ItemContainer.innerHTML = parent.ItemContainer.innerHTML;
+        parent.LastItem = 1;
+        parent.LoadingBoxCtl(0);
+        parent.P802.STR.EVP80200();
+    </script>
+</body>
+</html>

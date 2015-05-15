@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <div id="UserRegBox" style="width:100%;height:100%;">
+        <div id="UserRegBoxElms">
+            <div class="ItemText"><input class="URLInp" type="text" placeholder="手机号" value="手机号" onfocus="if (this.value == this.placeholder) { this.value = ''; this.className += ' URLInpI'; UserRegSendSMS.style.display = ''; }" onblur="    if (this.value.length < 1) { this.value = this.placeholder; this.className = this.className.replace(' URLInpI', ''); UserRegSendSMS.style.display = 'none'; }" /></div>
+            <div style="height: 20px;">&nbsp;</div>
+            <div class="ItemText"><input class="URLInp URLInpI" id="URegPwd1" type="password" style="display:none;" onblur="if (this.value.length < 1) { this.style.display = 'none'; URegPwd1P.style.display = ''; }" /></div>
+            <div class="ItemText"><input class="URLInp" id="URegPwd1P" type="text" placeholder="登录密码" value="登录密码" onfocus="if (this.value == this.placeholder) { this.style.display = 'none'; URegPwd1.style.display = ''; URegPwd1.focus(); }"></div>
+            <div style="height: 20px;">&nbsp;</div>
+            <div class="ItemText"><input class="URLInp URLInpI" id="URegPwd2" type="password" style="display:none;" onblur="if (this.value.length < 1) { this.style.display = 'none'; URegPwd2p.style.display = ''; }" /></div>
+            <div class="ItemText"><input class="URLInp" id="URegPwd2p" type="text" placeholder="确认密码" value="确认密码" onfocus="if (this.value == this.placeholder) { this.style.display = 'none'; URegPwd2.style.display = ''; URegPwd2.focus(); }"></div>
+            <div style="height: 20px;">&nbsp;</div>
+            <div class="ItemText"><input class="URLInp" type="text" placeholder="真实姓名" value="真实姓名" onfocus="if (this.value == this.placeholder) { this.value = ''; this.className += ' URLInpI' }" onblur="if (this.value.length < 1) { this.value = this.placeholder; this.className =this.className.replace(' URLInpI',''); }" /></div>
+            <div style="height: 20px;">&nbsp;</div>
+            <div class="ItemText"><input class="URLInp" type="text" placeholder="身份证号" value="身份证号" onfocus="if (this.value == this.placeholder) { this.value = ''; this.className += ' URLInpI' }" onblur="if (this.value.length < 1) { this.value = this.placeholder; this.className =this.className.replace(' URLInpI',''); }" /></div>
+            <div style="height: 20px;line-height:18px;">&nbsp;<a id="UserRegSendSMS" class="URLSmallTextBt" style="display:none;" onmouseup="Reg.BtAction(this, 1);">发送短信验证码</a></div>
+            <div class="ItemText"><input class="URLInp" type="text" placeholder="短信验证码" value="短信验证码" onfocus="if (this.value == this.placeholder) { this.value = ''; this.className += ' URLInpI' }" onblur="if (this.value.length < 1) { this.value = this.placeholder; this.className =this.className.replace(' URLInpI',''); }" /></div>
+            <div style="height: 20px;">&nbsp;</div>
+            <div><div class="UpDownButton MHand" style="position:absolute;left:50px;" onmouseup="Reg.UserAgreen(this);"></div>我己同意 <label class="BBtInTd" onmousedown="Reg.BtAction(this, 0)" onmouseup="Reg.BtAction(this, 4)">用户注册协议</label></div>
+            <div class="memo" style="height: 20px;">&nbsp;</div>
+            <button class="URLBt" onmousedown="Reg.BtAction(this, 0)" onmouseup="Reg.BtAction(this, 2)">注册</button>
+            <div style="height: 20px;">&nbsp;</div>
+            <button class="URLBt" onmousedown="Reg.BtAction(this, 0)" onmouseup="Reg.BtAction(this, 3)">取消</button>
+            <div style="height: 20px;">&nbsp;</div>
+            <div id="UserRegBoxDis" style="color:yellow;"></div>
+        </div>
+        <div class="UserRegAgreem" style="width:500px; right: -500px;top: 0px; bottom: 0px;position: absolute; background-color: #222226; transition: right 1s ease; padding: 0px;border: 0px;margin: 0px;">
+            <div class="Title" style="position: absolute;top: 0px;left: 0px;right: 0px;height: 35px;"><label style="margin-top: 10px;margin-left: 20px;text-align:left; display: block; font-size: 15px;color: #fff; font-weight: 600;">用户注册协议</label></div>
+            <div class="Content" style="position: absolute; top: 50px;left: 25px;right: 15px;bottom: 15px;">
+                <div style="position:absolute; top:0px; bottom:25px; left:0px; right:0px; background-color: white; color: #313136; word-break: break-all; overflow: auto; scrollbar-arrow-color: #313136; scrollbar-base-color: #313136; scrollbar-track-color: black; ">
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    X
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

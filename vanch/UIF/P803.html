@@ -1,0 +1,368 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>VANCH凡奇金融 - 安全管理</title>
+    <link rel="stylesheet" type="text/css" href="ComStyle.css" />
+    <script type="text/javascript" src="ComScript\CommCtrl.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body onresize="bodyresize()" onload="bodyLoad()">
+    <!--页面动态功能处理-->
+    <script type="text/javascript">
+        function bodyLoadScript() {
+            ModLoad("01");
+        }
+        function bodyResizeScript() { }
+
+        function LoadRemItems() { }
+
+        function ModLoad(ModNo) {
+            LoadMod("P803" + ModNo, "", "P803");
+            ReCalcItemSize();
+        }
+
+        var P803 = {
+            CAPTCHA: "",
+            UIP: {
+                SMSFee: { Price: 3 },  //短信费用 3V币/条
+                UserInfo: { Mobile: 137, Email: null }
+            },
+            STR: {
+                EVP80306: function () {
+                    ///<summary>初始化页面</summary>
+                    P803.UID.P80306("刘德华");
+                    P803.UID.P80312("AccountSMS", 1);
+                    P803.UID.P80312("AccountEmail", 1);
+                    P803.UID.P80312("TimeOutSMS", 1);
+                    P803.UID.P80312("TimeOutEmail", 0);
+                    P803.UID.P80312("BookSMS", 1);
+                    P803.UID.P80312("BookEmail", 1);
+                },
+                EVP80307: function (Mobile, ACT) {
+                    ///<summary>发送验证码</summary><param name="ACT">0:原手机号码;1:新手机号码;2:修改密码</param>
+
+                    /*后台产生验证码*/
+                },
+                EVP80308: function (Phone1, Code1, Phone2, Code2) { setTimeout("P803.UID.P80308(1)", 1000); },
+                EVP80309: function (OldPassword, NewOldPassword) { setTimeout("P803.UID.P80309(2)", 1000); },
+                EVP80310: function (CodeNew, OldPassword) { setTimeout("P803.UID.P80310(2)", 1000); },
+                EVP80311: function (OldEmail, NewEmail) { setTimeout("P803.UID.P80311(0)", 1000); },
+                EVP80312: function (ParamName, Value) {
+                    setTimeout("P803.UID.P80312('" + ParamName + "','" + Value + "')", 200);
+                },
+            },
+            UID: {
+                P80306: function (UserName) {
+                    ///<summary>页面初始化</summary><param name="UserName">用户姓名</param>
+                    LoginAction(UserName);
+                    ItemContainer.querySelector(".memo label").innerText = P803.UIP.SMSFee.Price;
+                },
+                P80308: function (Res) {
+                    ///<summary>提交手机绑定后得到的结果</summary>
+                    ///<param name="Res">1:绑定成功;0:操作失败 不返回结果:2:新手机的验证码错误;3:新手机的验证码错误</param>
+                    if (Res == 0) { TransingStatus.SetStatus(2); }
+                    if (Res == 2) { TransingStatus.SetStatus(2, "原手机的验证码不正确"); }
+                    if (Res == 3) { TransingStatus.SetStatus(2, "新手机的验证码不正确"); }
+                    if (Res == 1) { TransingStatus.SetStatus(3); P803.STR.EVP80306(); }
+
+                    M1Submit.setAttribute("data-btst", "E");
+                },
+                P80309: function (Res) {
+                    ///<summary>修改登录密码后得到的结果</summary>
+                    ///<param name="Res">1:修改成功;0:操作失败 不返回结果:2:原密码不正确;</param>
+                    if (Res == 0) { TransingStatus.SetStatus(2); }
+                    if (Res == 2) { TransingStatus.SetStatus(2, "原密码不正确"); }
+                    if (Res == 1) { TransingStatus.SetStatus(3); M2Bind.style.display = ""; M2Submit.style.display = "none"; }
+                    M2Submit.setAttribute("data-btst", "E");
+                },
+                P80310: function (Res) {
+                    ///<summary>修改交易密码后得到的结果</summary>
+                    ///<param name="Res">1:修改成功;0:操作失败 不返回结果:2:验证码不正确;</param>
+                    if (Res == 0) { TransingStatus.SetStatus(2); }
+                    if (Res == 2) { TransingStatus.SetStatus(2, "验证码不正确"); }
+                    if (Res == 1) { TransingStatus.SetStatus(3);M3Bind.style.display = ""; M3Submit.style.display = "none";}
+                    M3Submit.setAttribute("data-btst", "E");
+                },
+                P80311: function (Res) {
+                    ///<summary>邮箱绑定后得到的结果</summary>
+                    ///<param name="Res">1:修改成功;0:操作失败 不返回结果:2:原邮箱不正确</param>
+                    if (Res == 0) { TransingStatus.SetStatus(2); }
+                    if (Res == 2) { TransingStatus.SetStatus(2, "原邮箱不正确"); }
+                    if (Res == 1) { TransingStatus.SetStatus(3); M4Bind.style.display = ""; M4Submit.style.display = "none"; }
+                    M4Submit.setAttribute("data-btst", "E");
+                },
+                P80312: function (ParamName, Value) {
+                ///<summary>参数设定后得到的结果</summary>
+                ///<param name="ParamName">参数名</param><param name="Value">参数的值</param>
+                switch (ParamName){
+                    case "AccountSMS":
+                        ItemContainer.querySelectorAll(".UpDownButton")[0].setAttribute('data-sw', Value);
+                        ItemContainer.querySelectorAll(".UpDownButton")[0].setAttribute("data-btst", "E");
+                        break;
+                    case "AccountEmail":
+                        ItemContainer.querySelectorAll(".UpDownButton")[1].setAttribute('data-sw', Value);
+                        ItemContainer.querySelectorAll(".UpDownButton")[1].setAttribute("data-btst", "E");
+                        break;
+                    case "TimeOutSMS":
+                        ItemContainer.querySelectorAll(".UpDownButton")[2].setAttribute('data-sw', Value);
+                        ItemContainer.querySelectorAll(".UpDownButton")[2].setAttribute("data-btst", "E");
+                        break;
+                    case "TimeOutEmail":
+                        ItemContainer.querySelectorAll(".UpDownButton")[3].setAttribute('data-sw', Value);
+                        ItemContainer.querySelectorAll(".UpDownButton")[3].setAttribute("data-btst", "E");
+                        break;
+                    case "BookSMS":
+                        ItemContainer.querySelectorAll(".UpDownButton")[4].setAttribute('data-sw', Value);
+                        ItemContainer.querySelectorAll(".UpDownButton")[4].setAttribute("data-btst", "E");
+                        break;
+                    case "BookEmail":
+                        ItemContainer.querySelectorAll(".UpDownButton")[5].setAttribute('data-sw', Value);
+                        ItemContainer.querySelectorAll(".UpDownButton")[5].setAttribute("data-btst", "E");
+                        break;
+                }
+                },
+            },
+        }
+
+
+        var P80301 = {
+            RebateIntvID1: 0, RebateIntvID2: 0, TimeS: 60,
+            BtAction: function (BtObj, Act) {
+                switch (Act) {
+                    case 1:
+                        BtStatusClass(BtObj, 1);
+                        var Mod01 = ItemContainer.querySelector(".ItemSize");
+                        if (this.InterCk()) {
+                            if (BtObj.getAttribute("data-btst") != "D") {
+                                TransingStatus.SetStatus(1);
+                                P803.STR.EVP80308(Mod01.querySelectorAll(".ItemTextInp>input")[0].value, Mod01.querySelectorAll(".ItemTextInp>input")[1].value, Mod01.querySelectorAll(".ItemTextInp>input")[2].value, Mod01.querySelectorAll(".ItemTextInp>input")[3].value);
+                                BtObj.setAttribute("data-btst", "D");
+                            }
+                        }
+                        break
+                    case 2:
+                        var MobileInp = BtObj.parentElement.querySelectorAll(".ItemTextInp>input")[0];
+                        if (MobileInp.value == "") { IRC.ErrTip(MobileInp, "必填"); BtStatusClass(BtObj, 1); } else if (MobileInp.value != P803.UIP.UserInfo.Mobile) { IRC.ErrTip(MobileInp, "手机号码不正确"); BtStatusClass(BtObj, 1); } else {
+                            if (BtObj.getAttribute("data-btst") != "D") {
+                                BtObj.setAttribute("data-btst", "D");
+                                P803.STR.EVP80307(MobileInp.value, 1);
+                                P80301.WaitTime1(this.TimeS);
+                            }
+                        }
+                        break;
+                    case 3:
+                        var MobileInp = BtObj.parentElement.querySelectorAll(".ItemTextInp>input")[0];
+                        if (MobileInp.value == "") { IRC.ErrTip(MobileInp, "必填"); BtStatusClass(BtObj, 1); } else if (MobileInp.value.length < 11) { IRC.ErrTip(MobileInp, "手机号码不正确"); BtStatusClass(BtObj, 1); } else {
+                            if (BtObj.getAttribute("data-btst") != "D") {
+                                BtObj.setAttribute("data-btst", "D");
+                                P803.STR.EVP80307(MobileInp.value, 2);
+                                P80301.WaitTime2(this.TimeS);
+                            }
+                        }
+                        break;
+                    default:
+                        BtStatusClass(BtObj, 2);
+                        break
+                }
+            },
+            WaitTime1: function (S) {
+                window.clearInterval(this.RebateIntvID1);
+                Send1.innerText = "已发送(" + S + ")";S--
+                this.RebateIntvID1 = window.setInterval("P80301.WaitTime1(" + S + ");", 1000);
+                if (S < 0) {
+                    Send1.innerText = "发验证码";Send1.setAttribute("data-btst", "E");
+                    window.clearInterval(this.RebateIntvID1);
+                    BtStatusClass(Send1, 1);
+                }
+            },
+            WaitTime2: function (S) {
+                window.clearInterval(this.RebateIntvID2);
+                Send2.innerText = "已发送(" + S + ")"; S--
+                this.RebateIntvID2 = window.setInterval("P80301.WaitTime2(" + S + ");", 1000);
+                if (S < 0) {
+                    Send2.setAttribute("data-btst", "E"); Send2.innerText = "发验证码";
+                    window.clearInterval(this.RebateIntvID2);
+                    BtStatusClass(Send2, 1);
+                }
+
+            },
+            Edit: function (BtObj, Act) {
+                if (Act == 1) {
+                    BtStatusClass(BtObj, 1);
+                    M1Submit.style.display = ""; M1Bind.style.display = 'none';
+                    BtObj.parentNode.querySelector(".MLayer").style.visibility = "hidden";
+                } else { BtStatusClass(BtObj, 2); }
+            },
+            InterCk: function () {
+                var Pass = true;
+                var Mod01 = ItemContainer.querySelectorAll(".ItemSize")[0];
+                if (Mod01.querySelectorAll(".ItemTextInp>input")[0].value == "") {
+                    IRC.ErrTip(Mod01.querySelectorAll(".ItemTextInp>input")[0], "必填"); Pass = false;
+                } else if (Mod01.querySelectorAll(".ItemTextInp>input")[0].value != P803.UIP.UserInfo.Mobile) {
+                    IRC.ErrTip(Mod01.querySelectorAll(".ItemTextInp>input")[0], "手机号码不正确"); Pass = false;
+                }
+
+                if (Mod01.querySelectorAll(".ItemTextInp>input")[2].value == "") {
+                    IRC.ErrTip(Mod01.querySelectorAll(".ItemTextInp>input")[2], "必填"); Pass = false;
+                } else if (Mod01.querySelectorAll(".ItemTextInp>input")[2].value.length < 11) {
+                    IRC.ErrTip(Mod01.querySelectorAll(".ItemTextInp>input")[2], "手机号码不正确"); Pass = false;
+                }
+
+                if (Mod01.querySelectorAll(".ItemTextInp>input")[1].value == "") { IRC.ErrTip(Mod01.querySelectorAll(".ItemTextInp>input")[1], "必填"); Pass = false; }
+                if (Mod01.querySelectorAll(".ItemTextInp>input")[3].value == "") { IRC.ErrTip(Mod01.querySelectorAll(".ItemTextInp>input")[3], "必填"); Pass = false; }
+                return Pass
+            }
+        }
+
+        var P80302 = {
+            Edit: function (BtObj, Act) {
+                if (Act == 1) {
+                    BtStatusClass(BtObj, 1);
+                    M2Submit.style.display = ""; M2Bind.style.display = 'none';
+                    BtObj.parentNode.querySelector(".MLayer").style.visibility = "hidden";
+                } else { BtStatusClass(BtObj, 2); }
+            },
+            BtAction: function (BtObj, Act) {
+                if (Act == 1) {
+                    BtStatusClass(BtObj, 1);
+                    var Mod2Inp = BtObj.parentNode.querySelectorAll(".ItemTextInp>input");
+                    if (this.InterCk(BtObj)) {
+                        if (BtObj.getAttribute("data-btst") != "D") {
+                            TransingStatus.SetStatus(1);
+                            P803.STR.EVP80309(Mod2Inp[0].value, Mod2Inp[1].value)
+                            BtObj.setAttribute("data-btst", "D");
+                        }
+                    }
+
+                } else { BtStatusClass(BtObj, 2); }
+            },
+            InterCk: function (BtObj) {
+                var Mod2Inp = BtObj.parentNode.querySelectorAll(".ItemTextInp>input");
+                var Pass = true;
+                if (Mod2Inp[0].value.length == 0) { IRC.ErrTip(Mod2Inp[0], "必填"); Pass = false; }
+                if (Mod2Inp[1].value.length == 0) { IRC.ErrTip(Mod2Inp[1], "必填"); Pass = false; }
+                if (Mod2Inp[2].value.length == 0) { IRC.ErrTip(Mod2Inp[2], "必填"); Pass = false; }
+                if (Mod2Inp[2].value != Mod2Inp[1].value) { IRC.ErrTip(Mod2Inp[2], "密码不一致"); IRC.ErrTip(Mod2Inp[1], "密码不一致"); Pass = false; }
+                return Pass;
+            }
+        }
+
+        var P80303 = {
+            RebateIntvID: 0, TimeS: 60,
+            WaitTime: function (S) {
+                window.clearInterval(this.RebateIntvID);
+                Send3.innerText = "已发送(" + S + ")"; S--
+                this.RebateIntvID = window.setInterval("P80303.WaitTime(" + S + ");", 1000);
+                if (S < 0) {
+                    Send3.innerText = "发验证码"; Send3.setAttribute("data-btst", "E");
+                    window.clearInterval(this.RebateIntvID);
+                    BtStatusClass(Send3, 1);
+                }
+            },
+            Edit: function (BtObj, Act) {
+                if (Act == 1) {
+                    BtStatusClass(BtObj, 1);
+                    M3Submit.style.display = ""; M3Bind.style.display = 'none';
+                    BtObj.parentNode.querySelector(".MLayer").style.visibility = "hidden";
+                } else { BtStatusClass(BtObj, 2); }
+            },
+            BtAction: function (BtObj, Act) {
+                switch (Act) {
+                    case 1:
+                        BtStatusClass(BtObj, 1);
+                        var Mod03Inp = BtObj.parentNode.querySelectorAll(".ItemTextInp>input")
+                        if (this.InterCk(BtObj)) {
+                            if (BtObj.getAttribute("data-btst") != "D") {
+                                TransingStatus.SetStatus(1);
+                                P803.STR.EVP80310(Mod03Inp[0].value, Mod03Inp[1].value);
+                                BtObj.setAttribute("data-btst", "D");
+                            }
+                        }
+                        break
+                    case 2:
+                        var PasswordInp = BtObj.parentElement.querySelectorAll(".ItemTextInp>input")[0];
+                        if (BtObj.getAttribute("data-btst") != "D") {
+                            BtObj.setAttribute("data-btst", "D");
+                            P803.STR.EVP80307(P803.UIP.UserInfo.Mobile, 3);
+                            P80303.WaitTime(this.TimeS);
+                        }
+                        break;
+                    default:
+                        BtStatusClass(BtObj, 2);
+                        break
+                }
+            },
+            InterCk: function (BtObj) {
+                var Mod3Inp = BtObj.parentNode.querySelectorAll(".ItemTextInp>input");
+                var Pass = true;
+                if (Mod3Inp[0].value.length == 0) { IRC.ErrTip(Mod3Inp[0], "必填"); Pass = false; }
+                if (Mod3Inp[1].value.length == 0) { IRC.ErrTip(Mod3Inp[1], "必填"); Pass = false; }
+                if (Mod3Inp[2].value.length == 0) { IRC.ErrTip(Mod3Inp[2], "必填"); Pass = false; }
+                if (Mod3Inp[1].value != Mod3Inp[2].value) { IRC.ErrTip(Mod3Inp[1], "密码不一致"); IRC.ErrTip(Mod3Inp[2], "密码不一致"); Pass = false; }
+                return Pass;
+            }
+        }
+
+        var P80304 = {
+            Edit: function (BtObj, Act) {
+                if (Act == 1) {
+                    BtStatusClass(BtObj, 1);
+                    M4Submit.style.display = ""; M4Bind.style.display = 'none';
+                    BtObj.parentNode.querySelector(".MLayer").style.visibility = "hidden";
+                } else { BtStatusClass(BtObj, 2); }
+            },
+            BtAction: function (BtObj, Act) {
+                if (Act == 1) {
+                    BtStatusClass(BtObj, 1);
+                    var Mod4Inp = BtObj.parentNode.querySelectorAll(".ItemTextInp>input");
+                    if (this.InterCk(BtObj)) {
+                        if (BtObj.getAttribute("data-btst") != "D") {
+                            TransingStatus.SetStatus(1);
+                            P803.STR.EVP80311(Mod4Inp[0].value, Mod4Inp[1].value)
+                            BtObj.setAttribute("data-btst", "D");
+                        }
+                    }
+                } else { BtStatusClass(BtObj, 2); }
+            },
+            InterCk: function (BtObj) {
+                var Mod2Inp = BtObj.parentNode.querySelectorAll(".ItemTextInp>input");
+                var Pass = true;
+                if (P803.UIP.UserInfo.Email != null) { if (Mod2Inp[0].value.length == 0) { IRC.ErrTip(Mod2Inp[0], "必填"); Pass = false; } }
+                if (Mod2Inp[1].value.length == 0) { IRC.ErrTip(Mod2Inp[1], "必填"); Pass = false; }
+                if (Mod2Inp[2].value.length == 0) { IRC.ErrTip(Mod2Inp[2], "必填"); Pass = false; }
+                if (Mod2Inp[2].value != Mod2Inp[1].value) { IRC.ErrTip(Mod2Inp[2], "邮箱地址不一致"); IRC.ErrTip(Mod2Inp[1], "邮箱地址不一致"); Pass = false; }
+                return Pass;
+            }
+        }
+
+        var P80305 = {
+            ParamSet: function (BtObj,Name) {
+                if (BtObj.getAttribute("data-btst") != "D") {
+                    BtObj.setAttribute("data-btst", "D");
+                    if (BtObj.getAttribute('data-sw') == '1') {
+                        P803.STR.EVP80312(Name, 0);
+                    } else {
+                        P803.STR.EVP80312(Name, 1);
+                    }
+                    BtObj.className = BtObj.className;
+                }
+            },
+        };
+
+    </script>
+    <!--主要显示区-->
+    <div id="TopBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules\TopBar.html"></iframe></div>
+    <div id="MainZone" onscroll="ScrollTracker(this)">
+        <div class="LocationBar"><label>你的位置</label><a style="cursor:pointer" onclick="javascript:LoadingBoxCtl(1);location.href='P802.html'">用户中心</a>&nbsp;-&nbsp;安全管理</div>
+        <div id="ItemContainer"></div>
+        <iframe style="height:0px;width:0px;visibility:collapse;" id="ItemSi" onload="ReCalcItemSize();"></iframe>
+    </div>
+    <div id="BottomBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules/BottomBar.html"></iframe></div>
+    <!--异步数据加载区-->
+    <script type="text/javascript">LoadTP("LoadingBox"); LoadTP("TransingBox"); LoadJS("InpRulesCk"); LoadJS("TransingBox"); </script>
+
+</body>
+</html>

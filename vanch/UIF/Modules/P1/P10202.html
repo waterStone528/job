@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div style="float: left;" class="ItemSize GeneralItem">
+        <table style="padding: 0px; width: 100%;" border="0">
+            <!--Sever need give the value in TD zone witch TD has id value-->
+            <tr><td class="ItemTitle">债权编号</td><td class="ItemText">X</td><td class="ItemTitle">融资金额</td><td><label class="ItemText">N2D0</label>万元</td></tr>
+            <tr><td class="ItemTitle">保证方式</td><td class="ItemText">X</td><td class="ItemTitle">借款期限</td><td><label class="ItemText">N0D1</label>天</td></tr>
+            <tr><td class="ItemTitle">还款方式</td><td class="ItemText">X</td><td class="ItemTitle">日利率</td><td class="ItemText">P2D1</td></tr>
+            <tr>
+                <td class="ItemTitle">抵押物</td><td class="ItemText"><label class="BBtInTd" onmousedown="P102.BtAction(this, 0);" onmouseup="P102.BtAction(this, 6);">X</label></td>
+                <td class="ItemTitle">债权区域</td><td><label class="ItemText">X</label><label class="ItemText">X</label></td>
+            </tr>
+            <tr>
+                <td class="ItemTitle">资金用途</td><td class="ItemText">X</td>
+                <td class="ItemTitle">还款来源</td><td class="ItemText">X</td>
+            </tr>
+            <tr>
+                <td class="ItemTitle">融资方</td>
+                <td class="ItemText">
+                    <label style="float: left;margin-right:5px;" class="BBtInTd" onmousedown="P102.BtAction(this, 0);" onmouseup="P102.BtAction(this, 5);">X</label>
+                    <div style="float: left; color: #d57e17;margin-right:5px; display:none;" class="BBtInTd">企</div>
+                    <div style="float:left; display:none;" class="BBtInTd"><i class="icon-stop" style="color: #d51717; font-size: 17px; cursor: pointer;"></i></div>
+                </td>
+                <td class="ItemTitle">财务顾问</td>
+                <td class="ItemText">
+                    <label class="BBtInTd" style="float:left;" onmousedown="P102.BtAction(this, 0);" onmouseup="P102.GetAdviser(this);">选择顾问</label>
+                    <div style="float:left;display:none;" onmouseup="P102.BtAction(this, 11);" class="BBtInTd"><i class="icon-comtime" style="color: #cf8800; font-size: 17px; margin-left: 5px; cursor: pointer; "></i></div>
+                </td>
+            </tr>
+        </table>
+        <span class="Hidden">X</span>
+        <div class="BBt" style="float:right;" onmousedown="P102.BtAction(this, 0)" onmouseup="P102.BtAction(this, 9)">拒绝</div>
+        <div class="BBt" style="float:right;" onmousedown="P102.BtAction(this, 0)" onmouseup="P102.BtAction(this, 2)">投资</div>
+    </div>
+</body>
+</html>

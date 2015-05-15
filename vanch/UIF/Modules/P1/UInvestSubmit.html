@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--投资确认-->
+    <div class="UInvestSubmit" style="width:550px;">
+        <div style="position: absolute; left:0px; right:0px; top:0px; bottom:50px; color:white; overflow: auto; scrollbar-arrow-color: #313136; scrollbar-base-color: #313136; scrollbar-track-color: black; ">
+            <table class="GeneralItem">
+                <tr>
+                    <td class="ItemTitle">债权编号</td>
+                    <td class="ItemText" style="width:130px;">X</td>
+                    <td class="ItemTitle">投资金额</td>
+                    <td class="ItemTextInp"><input type="text" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P101.UIP.InvestAmt);" /></td><td>万</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">投资日期</td>
+                    <td class="ItemTextInp"><div class="ItemDateInp" onmouseup="CControl.ItemInfoDsp(this, 1, 'P102.ExpireTime()')"></div></td>
+                    <td class="ItemTitle">到期日期</td>
+                    <td class="ItemTextInp"><div class="ItemDateInp" onmouseup="CControl.ItemInfoDsp(this);"></div></td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">还款方式</td>
+                    <td class="ItemTextInp"><select><option value="-1"></option></select></td>
+                    <td class="ItemTitle">日利率</td>
+                    <td class="ItemTextInp"><input type="text" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P101.UIP.InvestRate);" /></td><td>%</td>
+                </tr>
+            </table>
+        </div>
+        <div class="memo" style="position:absolute;left:-10px; bottom:0px;">
+            <ul>
+                <li>请确认融资方收到投资款项后完成此操作</li>
+            </ul>
+        </div>
+        <div class="Bt BBt" style="position:absolute; right:0px; bottom:5px;" onmousedown="P102.BtAction(this, 0)" onmouseup="P102.BtAction(this,3); ">确认</div>
+    </div>
+</body>
+</html>

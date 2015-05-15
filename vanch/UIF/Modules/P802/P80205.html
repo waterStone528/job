@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div style="float: left; cursor: pointer; height: 180px; display:none;" class="ItemSize GeneralItem" onmouseup="location.href = 'P5.html'">
+        <div class="UToolBCBG" style="margin-left: 10px; margin-top: 10px; margin-right: 10px; position: relative; font-weight: 700; ">财务顾问</div>
+        <div id="UDataSvr">
+            <table width="390" class="borders" style="margin-left:10px;padding:0px; " border="0" cellpadding="0" cellspacing="0">
+                <!--Sever need give the value in TD zone witch TD has id value-->
+                <tr><td class="ItemTitle">预约中</td><td class="ItemText" data-fmt="N0D1">0</td><td width="97">&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td class="ItemTitle">服务中</td><td class="ItemText" data-fmt="N0D1">0</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td class="ItemTitle">已结案</td><td class="ItemText" data-fmt="N0D1">0</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            </table>
+        </div>
+        <div id="NeedProt" style="text-align: center;">
+            <div style="position: relative; top: 36px; font-size: x-large;">
+                申请中...
+            </div>
+        </div>
+    </div>
+    <!--<div id="Continue">0</div>server need return a value 1 to continue load,0 means this is last one and to stop-->
+    
+    <script type="text/javascript">
+        parent.ItemContainer.appendChild(document.body.children[0])
+        parent.LoadSvr("P80206");
+
+    </script>
+</body>
+</html>

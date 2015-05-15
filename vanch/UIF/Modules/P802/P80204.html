@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div style="float: left; cursor: pointer; height: 180px; display:none;" class="ItemSize GeneralItem" onmouseup="location.href = 'P4.html'">
+        <div class="UToolBBBG" style="margin-left: 10px; margin-top: 10px; margin-right: 10px; position: relative; font-weight: 700;">资产购买</div>
+        <div id="UDataSvr">
+            <table style="margin-left: 10px; padding: 0px; width: 100%; border:0;">
+                <!--Sever need give the value in TD zone witch TD has id value-->
+                <tr><td class="ItemTitle">预约中</td><td class="ItemText" data-fmt="N0D1">0</td><td class="ItemText">&nbsp;</td><td class="ItemText">&nbsp;</td></tr>
+                <tr><td class="ItemTitle">已成交</td><td class="ItemText" data-fmt="N0D1">0</td><td class="ItemText">&nbsp;</td><td class="ItemText">&nbsp;</td></tr>
+            </table>
+        </div>
+        <div id="NeedProt" style="text-align: center;">
+            <div style="position: relative; top: 36px; font-size: x-large;">
+                申请
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        parent.ItemContainer.appendChild(document.body.children[0])
+        parent.LoadSvr("P80205");
+    </script>
+</body>
+</html>

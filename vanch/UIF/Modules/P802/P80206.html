@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div style="float: left; cursor: pointer; height: 180px" class="ItemSize GeneralItem" onmouseup="location.href = 'P801.html'">
+        <div class="UToolBCBG" style="margin-left: 10px; margin-top: 10px; margin-right: 10px; position: relative; font-weight: 700; ">基本信息</div>
+        <div id="UDataSvr">
+            <table style="margin-left: 10px; padding: 0px; width: 100%; border:0;">
+                <!--Sever need give the value in TD zone witch TD has id value-->
+                <tr><td class="ItemTitle">用户编号</td><td class="ItemText" data-fmt="X"></td></tr>
+                <tr><td class="ItemTitle">姓名</td><td class="ItemText" data-fmt="X"></td></tr>
+                <tr><td class="ItemTitle">身份证号</td><td class="ItemText" data-fmt="X"></td></tr>
+            </table>
+        </div>
+    </div>
+    <div id="Continue">0</div><!--server need return a value 1 to continue load,0 means this is last one and to stop-->
+    <script type="text/javascript">
+        parent.ItemContainer.appendChild(document.body.children[0]);
+        parent.LoadSvr("P80207");
+    </script>
+</body>
+</html>

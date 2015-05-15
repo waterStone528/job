@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="expires" content="0" />
+    <title></title>
+</head>
+<body>
+    <div style="float: left;" class="ItemSize GeneralItem">
+        <div class="UToolBCBG" style="position: relative; font-weight: 700; ">家庭信息</div>
+        <div id="Mod02App" style="height: 300px; ">
+            <div class="MLayer" style="position:absolute;top:50px;bottom:50px;left:0px; right:0px;background-color: black;opacity:.00; filter: alpha(opacity=00);z-index:10;"></div>
+            <table width=" 100%" style="position: relative; padding: 0px;" border="0">
+                <!--Sever need give the value in TD zone witch TD has id value-->
+                <tr>
+                    <td class="ItemTitle">配偶姓名</td>
+                    <td class="ItemTextInp" data-ctem="0"><input type="text" /></td>
+                    <td class="ItemTitle">手机</td>
+                    <td class="ItemTextInp" data-ctem="0"><input type="text"/></td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">身份证号</td>
+                    <td class="ItemTextInp" colspan="3" data-ctem="0"><input type="text" /></td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">所在单位</td>
+                    <td class="ItemTextInp" colspan="3" data-ctem="0"><input type="text" /></td>
+                </tr>
+
+                <tr>
+                    <td class="ItemTitle" style="width:50px;">家属姓名</td>
+                    <td class="ItemText">
+                        <label class="ItemTextInp" style="width: 62%; margin:-1px; display: inline-block;"><input type="text" style="display:inline" /></label>
+                        <label class="ItemTextInp"><select style="display: inline-block; margin: -1px; width: 30%; "><option value="-1"></option></select></label>
+                    </td>
+                    <td class="ItemTitle">手机</td>
+                    <td class="ItemTextInp"><input type="text" /></td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">身份证号</td>
+                    <td class="ItemTextInp" colspan="4"><input type="text" /></td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">所在单位</td>
+                    <td class="ItemTextInp" colspan="4"><input type="text" /></td>
+                </tr>
+            </table>
+        </div>
+        <div class="ButtonBar" style="position:absolute; bottom:10px;right:5px;">
+            <div class="CBt" onmousedown="P80102.Edit(this, 0)" onmouseup="P80102.Edit(this, 1)">修改</div>
+            <div class="CBt" style="display:none;" onmousedown="P80102.Save(this, 0)" onmouseup="P80102.Save(this, 2)">保存</div>
+        </div>
+    </div>
+</body>
+</html>

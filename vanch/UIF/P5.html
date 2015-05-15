@@ -1,0 +1,922 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>VANCH凡奇金融 - 财务顾问</title>
+    <link rel="stylesheet" type="text/css" href="ComStyle.css" />
+    <script type="text/javascript" src="ComScript\CommCtrl.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body onresize="bodyresize()" onload="bodyLoad()">
+    <!--页面动态功能处理-->
+    <script type="text/javascript">
+        function bodyLoadScript() {
+            ToolBar.querySelectorAll("div")[0].onmouseup();
+        }
+        function bodyResizeScript() {
+        }
+
+        function LoadRemItems() {
+            RemItemsLoading = true;
+            LoadingBoxCtl(1);
+            switch (MToolBar.BtID) {
+                case 1:
+                    if (parseInt(Continue.innerText) == 1) {
+                        Continue.innerText = 0;
+                        P502.STR.EVP50203(P502.LoadItem.First, P502.LoadItem.From, P502.LoadItem.Num);
+                    }
+                    break;
+                case 2:
+                    if (parseInt(Continue.innerText) == 1) {
+                        Continue.innerText = 0;
+                        P503.STR.EVP50302(P503.LoadItem.First, P503.LoadItem.From, P503.LoadItem.Num);
+                    }
+                    break;
+                case 3:
+                    if (parseInt(Continue.innerText) == 1) {
+                        Continue.innerText = 0;
+                        P50401.STR.EVP5040102(P50401.LoadItem.First, P50401.LoadItem.From, P50401.LoadItem.Num);
+                    }
+                    break;
+                case 4:
+                    if (parseInt(Continue.innerText) == 1) {
+                        Continue.innerText = 0;
+                        P50402.STR.EVP5040202(P50402.LoadItem.First, P50402.LoadItem.From, P50402.LoadItem.Num);
+                    }
+                    break;
+            }
+            RemItemsLoading = false;
+        }
+    </script>
+
+    <!--预约中债权-->
+    <script type="text/javascript">
+        var P502 = {
+            FocusItem: Object,
+            LoadItem: { First: "", From: 0, Num: 10 },
+            BtAction: function (BtObj, Act, BtID) {
+                switch (Act) {
+                    case 1:                     //接受预约
+                        this.FocusItem = BtObj;
+                        BtStatusClass(BtObj, 1);
+                        if (BtObj.getAttribute("data-btst") != "D") {
+                            BtObj.setAttribute("data-btst", "D");
+                            TransingStatus.SetStatus(1);
+                            this.STR.EVP50202(BtObj.parentElement.querySelector(".Hidden").DspV);
+                        }
+                        break;
+                    case 2:                     //拒绝预约移出框
+                        BtStatusClass(BtObj, 1);
+                        this.FocusItem = BtObj
+                        var ItemNo = BtObj.parentElement.querySelectorAll(".ItemText")[0].innerText;
+                        MovingBoxCTL.Prepare(ItemNo + " - 拒绝原因", document.querySelector(".UReasonReject01"));
+                        var SltConfigData = JSON.parse(P502.UIP.SltConfigData);
+                        for (var i in SltConfigData) { if (SltConfigData[i].Type == 22) { MovingBoxi.querySelector("select").options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID)); } }
+                        MovingBoxCTL.Open();
+                        break;
+                    case 3:                     //融资方信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        MovingBoxCTL.Prepare(ItemNo + " - 融资方：" + BtObj.innerText, document.querySelector(".UFinancerInfo"));
+                        this.STR.EVP50204(ItemSN, BtObj.DspV);
+                        break;
+                    case 4:                     //抵押物信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        MovingBoxCTL.Prepare(ItemNo + " - 抵押物：" + BtObj.innerText, document.querySelector(".USecurities"));
+                        this.STR.EVP50205(ItemSN);
+                        break;
+                    case 5:                     //投资方信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        MovingBoxCTL.Prepare(ItemNo + " - 投资方：" + BtObj.innerText, document.querySelector(".UInvestorInfo"));
+                        this.STR.EVP50206(ItemSN, BtObj.DspV);
+                        break;
+                    case 6:                     //提交拒绝预约原因
+                        BtStatusClass(BtObj, 1);
+                        if (MovingBoxi.querySelector("select").value == "-1" || MovingBoxi.querySelector("select").value == "") { IRC.ErrTip(MovingBoxi.querySelector("select"), "必填"); return; }
+                        if (BtObj.getAttribute("data-btst") != "D") {
+                            BtObj.setAttribute("data-btst", "D");
+                            TransingStatus.SetStatus(1);
+                            this.STR.EVP50208(this.FocusItem.parentElement.querySelector(".Hidden").DspV, MovingBoxi.querySelector("select").value);
+                        }
+                        break;
+                    case 7:                     //企业信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        MovingBoxCTL.Prepare(ItemNo + " - 企业信息", document.querySelector(".UCompanyInfo"));
+                        this.STR.EVP50207(ItemSN);
+                        break;
+                    default:
+                        BtStatusClass(BtObj, 2);
+                        break;
+                }
+            },
+            Del: function () {
+                if (ItemContainer.contains(this.FocusItem.parentNode)) { ItemContainer.removeChild(this.FocusItem.parentNode); };
+                ReCalcItemSize();
+            },
+            UIP: {
+                SltConfigData: JSON.stringify([
+                { Type: 7, ID: 1, Name: "住宅房" }, { Type: 7, ID: 2, Name: "办公楼" }, { Type: 7, ID: 3, Name: "商铺" }, { Type: 7, ID: 4, Name: "工业用地" }, { Type: 7, ID: 5, Name: "商业用地" }, { Type: 7, ID: 6, Name: "汽车" },
+                { Type: 7, ID: 7, Name: "贵金属" }, { Type: 7, ID: 8, Name: "收藏品" }, { Type: 7, ID: 9, Name: "股权" }, { Type: 7, ID: 10, Name: "债券" }, { Type: 7, ID: 10, Name: "混合资产" }, { Type: 7, ID: 11, Name: "厂房" }, { Type: 7, ID: 12, Name: "其它" },
+                { Type: 22, ID: "A1", Name: "项目问题" }, { Type: 22, ID: "A1", Name: "融资方问题" }, { Type: 22, ID: "A1", Name: "投资方问题" }, { Type: 22, ID: "A1", Name: "顾问费问题" }, { Type: 22, ID: "A1", Name: "其它原因" },
+                { Type: 23, ID: "A1", Name: "融资方资信问题" }, { Type: 23, ID: "A1", Name: "融资方配合问题" }, { Type: 23, ID: "A1", Name: "抵押物问题" }, { Type: 23, ID: "A1", Name: "利率问题" }, { Type: 23, ID: "A1", Name: "还款方式问题" },
+                { Type: 23, ID: "A1", Name: "资金用途问题" }, { Type: 23, ID: "A1", Name: "还款来源问题" }, { Type: 23, ID: "A1", Name: "融资金额问题" }, { Type: 23, ID: "A1", Name: "投资方自身原因" }, { Type: 23, ID: "A1", Name: "其他原因" }]),
+            },
+            STR: {
+                EVP50201: function (Num) {
+                    ///<summary>页面初始化</summary><param name="Num">信息数量</param>
+                   var BorrowList= JSON.stringify([
+                   { ItemSN: "A001", No: "U12155411", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 365, PaymentWay: "先息后本", DayRate: 0.25, Borrower: "U98335548", IsCompany: "0", Area1: "浙江", Area2: "宁波", FundPurpose: "过桥资金", PawnName: "贵金属", Invester: "U11111158", AdviserFee: "1.9" },
+                   { ItemSN: "A002", No: "U12155412", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 270, PaymentWay: "月付利息", DayRate: 0.25, Borrower: "U98324483", IsCompany: "0", Area1: "浙江", Area2: "温州", FundPurpose: "日常消费", PawnName: "汽车", Invester: "U11111158", AdviserFee: "2" },
+                   { ItemSN: "A003", No: "U12155418", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 360, PaymentWay: "月付利息", DayRate: 0.25, Borrower: "U98343554", IsCompany: "1", Area1: "浙江", Area2: "宁波", FundPurpose: "日常经营", PawnName: "贵金属", Invester: "U11111158", AdviserFee: "3.5" },
+                   { ItemSN: "A004", No: "U12155413", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 180, PaymentWay: "先息后本", DayRate: 0.25, Borrower: "U98334548", IsCompany: "0", Area1: "浙江", Area2: "杭州", FundPurpose: "日常经营", PawnName: "汽车", Invester: "U11111158", AdviserFee: "0.6" },
+                   { ItemSN: "A005", No: "U12155414", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 720, PaymentWay: "到期本息", DayRate: 0.25, Borrower: "U94565481", IsCompany: "1", Area1: "浙江", Area2: "宁波", FundPurpose: "日常经营", PawnName: "住宅房", Invester: "U11111158", AdviserFee: "0.45" },
+                   { ItemSN: "A001", No: "U12155448", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 650, PaymentWay: "等额本息", DayRate: 0.25, Borrower: "U98345555", IsCompany: "0", Area1: "浙江", Area2: "杭州", FundPurpose: "转贷资金", PawnName: "汽车", Invester: "U11111158", AdviserFee: "1.05" },
+                   { ItemSN: "A001", No: "U12134534", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 180, PaymentWay: "等额本息", DayRate: 0.25, Borrower: "U98335548", IsCompany: "0", Area1: "浙江", Area2: "金华", FundPurpose: "日常消费", PawnName: "汽车", Invester: "U11111158", AdviserFee: "0.76" }]);
+                   setTimeout("P502.UID.P50201('U12155411','刘德华');", 500);
+                   setTimeout("P502.UID.P50203('" + BorrowList + "');", 500);
+                },
+                EVP50203: function (First, From, Num) {
+                    ///<summary>加载更多信息</summary><param name="First">第一条信息的编号</param><param name="From">开始位置</param><param name="Num">信息数量</param>
+                    var BorrowList = JSON.stringify([
+                    { ItemSN: "A001", No: "U12155411", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 365, PaymentWay: "先息后本", DayRate: 0.25, Borrower: "U98335548", IsCompany: "0", Area1: "浙江", Area2: "宁波", FundPurpose: "过桥资金", PawnName: "贵金属", Invester: "U11111158", AdviserFee: "1.9" },
+                    { ItemSN: "A002", No: "U12155412", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 270, PaymentWay: "月付利息", DayRate: 0.25, Borrower: "U98324483", IsCompany: "0", Area1: "浙江", Area2: "温州", FundPurpose: "日常消费", PawnName: "汽车", Invester: "U11111158", AdviserFee: "2" },
+                    { ItemSN: "A003", No: "U12155418", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 360, PaymentWay: "月付利息", DayRate: 0.25, Borrower: "U98343554", IsCompany: "1", Area1: "浙江", Area2: "宁波", FundPurpose: "日常经营", PawnName: "贵金属", Invester: "U11111158", AdviserFee: "3.5" },
+                    { ItemSN: "A004", No: "U12155413", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 180, PaymentWay: "先息后本", DayRate: 0.25, Borrower: "U98334548", IsCompany: "0", Area1: "浙江", Area2: "杭州", FundPurpose: "日常经营", PawnName: "汽车", Invester: "U11111158", AdviserFee: "0.6" },
+                    { ItemSN: "A005", No: "U12155414", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 720, PaymentWay: "到期本息", DayRate: 0.25, Borrower: "U94565481", IsCompany: "1", Area1: "浙江", Area2: "宁波", FundPurpose: "日常经营", PawnName: "住宅房", Invester: "U11111158", AdviserFee: "0.45" },
+                    { ItemSN: "A006", No: "U12155448", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 650, PaymentWay: "等额本息", DayRate: 0.25, Borrower: "U98345555", IsCompany: "0", Area1: "浙江", Area2: "杭州", FundPurpose: "转贷资金", PawnName: "汽车", Invester: "U11111158", AdviserFee: "1.05" },
+                    { ItemSN: "A001", No: "U12134534", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 180, PaymentWay: "等额本息", DayRate: 0.25, Borrower: "U98335548", IsCompany: "0", Area1: "浙江", Area2: "金华", FundPurpose: "日常消费", PawnName: "汽车", Invester: "U11111158", AdviserFee: "0.76" }]);
+                    setTimeout("P502.UID.P50203('" + BorrowList + "');", 1000);
+                },
+                EVP50202: function (ItemSN) {
+                    ///<summary>接受预约事件</summary><param name="ItemSN">债权编号</param>
+                    console.log(ItemSN);
+                    setTimeout("P502.UID.P50202(true);", 1000);
+                },
+                EVP50204: function (ItemSN, BorrowerNo) {
+                    ///<summary>融资方信息</summary><param name="ItemSN">债权编号</param><param name="BorrowerNo">融资方编号</param>
+                    console.log(ItemSN);
+                    var BorrowerInfo = { No: "U25184488", BirthDay: "1967/04/09", Sex: "男", CardAddress: "浙江宁波", CardID: "330723*", Marry: "已婚", Breed: "已育", Health: "健康", IsSafety: "是", School: "宁波江东实验小学", Edu: "小学", ComProperty: "信息产业", JobTime: "2000/01/01", Job: "程序员", MTotalIn: "1.2", MTotalOut: "0.7", MClearIn: "0.3", TotalAsset: "200", TotalDebt: "0", ClearAsset: "100", CourtsExe: "无", CreditState: "正常", CaseNum: "9", CaseTotalAmt: "183", NowDebtNum: "0", NowTotalDebtAmt: "0", NowOverdue: "1", OverdueAmt: "15", HistoryOverdue: "4", RegTime: "2009/09/12" };
+                    setTimeout("P502.UID.P50204('" + JSON.stringify(BorrowerInfo) + "');", 1000);
+                },
+                EVP50205: function (ItemSN) {
+                    ///<summary>抵押物信息</summary><param name="ItemSN">债权编号</param>
+                    console.log(ItemSN);
+                    var PawnInfo = { Name: "汽车", Source: "赠送", Address: "浙江宁波", BTime: "2014/01/01", Holder: "刘德华", BPrice: "15", Use: "闲置", MPrice: "18", SType: "一次抵押", AO: "宁波公证", Seal: "未查封", RechtNo: "No.15846", Remarks: "全新的哦" };
+                    setTimeout("P502.UID.P50205('" + JSON.stringify(PawnInfo) + "');", 1000);
+                },
+                EVP50206: function (ItemSN, InvesterNo) {
+                    ///<summary>投资方信息</summary><param name="ItemSN">债权编号</param><param name="InvesterNo">投资方编号</param>
+                    console.log(ItemSN);
+                    var InvesterInfo = { No: "U25100000", Name: "郭富城", BirthDay: "1967/04/09", Sex: "男", CardAddress: "浙江宁波", CardID: "330723*", Mobile: "137****7777", Email: "guofucheng@163.com", Marry: "已婚", Breed: "已育", LivePro: "浙江", LiveCity: "宁波", LiveStreet: "高新区", Company: "中国大陆娱乐圈", ComProperty: "信息产业", JobTime: "2000/01/01", JobTel: "0574-88888888", Job: "程序员", CompanyTel: "0574-88888888", CompanyWeb: "www.baidu.com", InvestBody: "个人", BorrowBody: "个人", PawnRate: "0.125", AssureWay: "抵押", InvestArea1: "浙江", InvestArea2: "宁波", InvestAmt: "1", DayRate: "0.2", InvestLimitMin: "1", InvestLimitMax: "720", Pawn: ",1,5,7,9,11,12,", InvestCase: "15", CaseAmt: "260" };
+                    setTimeout("P502.UID.P50206('" + JSON.stringify(InvesterInfo) + "');", 1000);
+                },
+                EVP50207: function (ItemSN) {
+                    ///<summary>企业信息</summary><param name="ItemSN">债权编号</param>
+                    console.log(ItemSN);
+                    var CompanyInfo = { Name: "阿里巴巴", Address: "杭州", RegTime: "2001/01/01", RegPrice: "1500", Trade: "信息产业", LegalPerson: "马云", MaxShareHolder: "马云", ShareHolderNum: "100", StaffNum: "2000", TotalAsset: "9980", TotalBorrow: "2", NowBorrow: "2", ClearAsset: "5800", SalesAmt: "200", TaxSalesAmt: "150", ClearProfit: "100", CourtsExe: "无", CreditState: "正常" };
+                    setTimeout("P502.UID.P50207('" + JSON.stringify(CompanyInfo) + "');", 1000);
+                },
+                EVP50208: function (ItemSN, RejectNo) {
+                    ///<summary>拒绝预约</summary><param name="ItemSN">债权编号</param><param name="RejectNo">拒绝理由</param>
+                    console.log(ItemSN);
+                    setTimeout("P502.UID.P50208(true);", 1000);
+                }
+            },
+            UID: {
+                P50201: function (First, UserName) {
+                    ///<summary>页面初始化</summary></param name="First">第一条信息的编号</param><param name="UserName">用户姓名</param>
+                    P502.LoadItem.First = First;
+                    LoginAction(UserName);
+                },
+                P50203: function (BorrowList) {
+                    ///<summary>加载项目信息</summary>
+                    if (MToolBar.BtID != 1) { return; }
+                    if (BorrowList == "") { Continue.innerText = 1; LoadingBoxCtl(0); LastItem = 1; return; }
+                    var BorrowInfo = JSON.parse(BorrowList); P502.LoadItem.From += BorrowInfo.length;
+                    for (var i in BorrowInfo) {
+                        var NewItemTemplate = P502i.children[0].cloneNode(true);
+                        NewItemTemplate.querySelectorAll(".ItemText")[0].DspV = BorrowInfo[i].No;
+                        NewItemTemplate.querySelectorAll(".ItemText")[1].DspV = BorrowInfo[i].BorrowAmt;
+                        NewItemTemplate.querySelectorAll(".ItemText")[2].DspV = BorrowInfo[i].AssureWay;
+                        NewItemTemplate.querySelectorAll(".ItemText")[3].DspV = BorrowInfo[i].BorrowLimit;
+                        NewItemTemplate.querySelectorAll(".ItemText")[4].DspV = BorrowInfo[i].PaymentWay;
+                        NewItemTemplate.querySelectorAll(".ItemText")[5].DspV = BorrowInfo[i].DayRate;
+                        NewItemTemplate.querySelectorAll(".ItemText")[6].DspV = BorrowInfo[i].FundPurpose;
+                        NewItemTemplate.querySelectorAll(".ItemText")[7].DspV = BorrowInfo[i].Area1;
+                        NewItemTemplate.querySelectorAll(".ItemText")[8].DspV = BorrowInfo[i].Area2;
+                        NewItemTemplate.querySelectorAll(".ItemText")[9].querySelectorAll(".CBtInTd")[0].DspV = BorrowInfo[i].Borrower;
+                        if (BorrowInfo[i].IsCompany > 0) { NewItemTemplate.querySelectorAll(".ItemText")[9].querySelectorAll(".CBtInTd")[1].style.display = ""; }
+                        if (BorrowInfo[i].PawnName == "无" || BorrowInfo[i].PawnName == "") { NewItemTemplate.querySelectorAll(".ItemText")[10].DspV = "无"; } else { NewItemTemplate.querySelectorAll(".ItemText")[10].querySelector(".CBtInTd").DspV = BorrowInfo[i].PawnName; }
+                        NewItemTemplate.querySelectorAll(".ItemText")[11].querySelector(".CBtInTd").DspV = BorrowInfo[i].Invester;
+                        NewItemTemplate.querySelectorAll(".ItemText")[12].DspV = BorrowInfo[i].AdviserFee;
+                        NewItemTemplate.querySelector(".Hidden").DspV = BorrowInfo[i].ItemSN;
+                        ItemContainer.appendChild(NewItemTemplate);
+                    }
+                    ReCalcItemSize();
+                    Continue.innerText = 1; LoadingBoxCtl(0);
+                },
+                P50202: function (Res) {
+                    ///<summary>接受预约后返回事件</summary><param name="Res">true O false</param><param name="ErrTxt">失败原因</param>
+                    if (Res) {
+                        TransingStatus.SetStatus(3);
+                        P502.Del();
+                    } else {
+                        TransingStatus.SetStatus(2);
+                    }
+                    P502.FocusItem.setAttribute("data-btst", "E");
+                },
+                P50204: function (BorrowerInfo) {
+                    ///<summary>加载融资方信息</summary><param name="Borrower">融资方信息</param>
+                    var Borrower = eval('(' + BorrowerInfo + ')');
+                    var MB = MovingBoxi.querySelectorAll(".ItemText");
+                    MB[0].DspV = Borrower.No; MB[2].DspV = Borrower.BirthDay; MB[3].DspV = Borrower.Sex; MB[4].DspV = Borrower.CardAddress; MB[5].DspV = Borrower.CardID; MB[8].DspV = Borrower.Marry; MB[9].DspV = Borrower.Breed; MB[10].DspV = Borrower.Health; MB[11].DspV = Borrower.IsSafety;
+                    MB[13].DspV = Borrower.School; MB[14].DspV = Borrower.Edu; MB[17].DspV = Borrower.ComProperty; MB[18].DspV = Borrower.JobTime; MB[20].DspV = Borrower.Job; MB[25].DspV = Borrower.MTotalIn; MB[26].DspV = Borrower.MTotalOut; MB[27].DspV = Borrower.MClearIn; MB[28].DspV = Borrower.TotalAsset;
+                    MB[29].DspV = Borrower.TotalDebt; MB[30].DspV = Borrower.ClearAsset; MB[31].DspV = Borrower.CourtsExe; MB[32].DspV = Borrower.CreditState;
+                    MB[41].DspV = Borrower.CaseNum; MB[42].DspV = Borrower.CaseTotalAmt; MB[43].DspV = Borrower.NowDebtNum; MB[44].DspV = Borrower.NowTotalDebtAmt; MB[45].DspV = Borrower.NowOverdue; MB[46].DspV = Borrower.OverdueAmt; MB[47].DspV = Borrower.HistoryOverdue; MB[48].DspV = Borrower.RegTime;
+                    LoadingBoxCtl(0); MovingBoxCTL.Open();
+                },
+                P50205: function (PawnInfo) {
+                    ///<summary>加载抵押物信息</summary><param name="Borrower">抵押物信息</param>
+                    var Pawn = eval('(' + PawnInfo + ')');
+                    var MB = MovingBoxi.querySelectorAll(".ItemText");
+                    MB[0].DspV = Pawn.Name; MB[1].DspV = Pawn.Source; MB[2].DspV = Pawn.Address; MB[3].DspV = Pawn.BTime; MB[4].DspV = Pawn.Holder; MB[5].DspV = Pawn.BPrice; MB[6].DspV = Pawn.Use; MB[7].DspV = Pawn.MPrice; MB[8].DspV = Pawn.SType;
+                    MB[9].DspV = Pawn.AO; MB[10].DspV = Pawn.Seal; MB[11].DspV = Pawn.RechtNo; MovingBoxi.querySelector("textarea").value = Pawn.Remarks;
+                    LoadingBoxCtl(0); MovingBoxCTL.Open();
+                },
+                P50206: function (InvesterInfo) {
+                    ///<summary>加载投资方信息</summary><param name="Borrower">投资方信息</param>
+                    var Invester = eval('(' + InvesterInfo + ')');
+                    var MB = MovingBoxi.querySelectorAll(".ItemText");
+                    MB[0].DspV = Invester.No; MB[1].DspV = Invester.Name; MB[2].DspV = Invester.BirthDay; MB[3].DspV = Invester.Sex; MB[4].DspV = Invester.CardAddress; MB[5].DspV = Invester.CardID; MB[6].DspV = Invester.Mobile; MB[7].DspV = Invester.Email; MB[8].DspV = Invester.Marry; MB[9].DspV = Invester.Breed; MB[10].DspV = Invester.LivePro;
+                    MB[11].DspV = Invester.LiveCity; MB[12].DspV = Invester.LiveStreet; MB[13].DspV = Invester.Company; MB[14].DspV = Invester.ComProperty; MB[15].DspV = Invester.JobTime; MB[16].DspV = Invester.JobTel; MB[17].DspV = Invester.Job; MB[18].DspV = Invester.CompanyTel; MB[19].DspV = Invester.CompanyWeb; MB[20].DspV = Invester.InvestBody;
+                    MB[21].DspV = Invester.BorrowBody; MB[22].DspV = Invester.PawnRate; MB[23].DspV = Invester.AssureWay; MB[24].DspV = Invester.InvestArea1; MB[25].DspV = Invester.InvestArea2; MB[26].DspV = Invester.InvestAmt; MB[27].DspV = Invester.DayRate; MB[28].DspV = Invester.InvestLimitMin;
+                    MB[29].DspV = Invester.InvestLimitMax; MB[31].DspV = Invester.InvestCase; MB[32].DspV = Invester.CaseAmt;
+                    var SltConfigData = JSON.parse(P502.UIP.SltConfigData);
+                    Str = " <table style=\"width:100%\"><tr>"; var s = 0;
+                    for (var i in SltConfigData) {
+                        if (SltConfigData[i].Type == 7 && SltConfigData[i].Name != "混合资产") {
+                            s++;
+                            Str += "<td><div class=\"UpDownButton\" data-id=\"" + SltConfigData[i].ID + "\" ></div>" + SltConfigData[i].Name + "</td>";
+                            if (s % 3 == 0) { Str += "</tr><tr>"; }
+                        }
+                    }
+                    Str += "</tr></table>";
+                    MovingBoxi.querySelectorAll(".ItemText")[30].innerHTML = Str;
+                    var PawnSlt = Invester.Pawn.split(",");
+                    for (var i = 0; i < PawnSlt.length; i++) { if (PawnSlt[i].length >= 2) { MB[30].querySelector("[data-id='" + PawnSlt[i] + "']").setAttribute("data-sw", "1"); } }
+                    MovingBoxCTL.Open(); LoadingBoxCtl(0);
+                },
+                P50207: function (CompanyInfo) {
+                    ///<summary>加载企业信息</summary><param name="Borrower">企业信息</param>
+                    var Company = eval('(' + CompanyInfo + ')');
+                    var MB = MovingBoxi.querySelectorAll(".ItemText");
+                    MB[0].DspV = Company.Name; MB[1].DspV = Company.Address; MB[2].DspV = Company.RegTime; MB[3].DspV = Company.RegPrice; MB[4].DspV = Company.Trade; MB[5].DspV = Company.LegalPerson; MB[6].DspV = Company.MaxShareHolder; MB[7].DspV = Company.ShareHolderNum; MB[8].DspV = Company.StaffNum;
+                    MB[9].DspV = Company.TotalAsset; MB[10].DspV = Company.TotalBorrow; MB[11].DspV = Company.NowBorrow; MB[12].DspV = Company.ClearAsset; MB[13].DspV = Company.SalesAmt; MB[14].DspV = Company.TaxSalesAmt; MB[15].DspV = Company.ClearProfit; MB[16].DspV = Company.CourtsExe; MB[17].DspV = Company.CreditState;
+                    LoadingBoxCtl(0); MovingBoxCTL.Open();
+                },
+                P50208: function (Res) {
+                    ///<summary>拒绝预约后返回事件</summary><param name="Res">true O false</param><param name="ErrTxt">失败原因</param>
+                    if (Res) {
+                        TransingStatus.SetStatus(3);
+                        P502.Del(); MovingBoxCTL.Close();
+                    } else {
+                        TransingStatus.SetStatus(2);
+                    }
+                    P502.FocusItem.setAttribute("data-btst", "E");
+                }
+            },
+        }
+    </script>
+
+    <!--审核中债权-->
+    <script type="text/javascript">
+        var P503 = {
+            LoadItem: { First: "", From: 0, Num: 10 },
+            FocusItem: Object,
+            Del: function () {
+                if (ItemContainer.contains(this.FocusItem.parentNode)) { ItemContainer.removeChild(this.FocusItem.parentNode); };
+                ReCalcItemSize();
+            },
+            BtAction: function (BtObj, Act) {
+                switch (Act) {
+                    case 1:                     //审核通过
+                        this.FocusItem = BtObj; BtStatusClass(BtObj, 1); TransingStatus.SetStatus(1);
+                        var ItemSN = BtObj.parentElement.querySelector(".Hidden").DspV;
+                        if (BtObj.getAttribute("data-btst") != "D") {
+                            BtObj.setAttribute("data-btst", "D");
+                            this.STR.EVP50303(ItemSN);
+                        }
+                        break;
+                    case 2:                     //审核未过原因移出框
+                        BtStatusClass(BtObj, 1); this.FocusItem = BtObj;
+                        var ItemNo = BtObj.parentElement.querySelectorAll(".ItemText")[0].innerText;
+                        MovingBoxCTL.Prepare(ItemNo + " - 未过原因", document.querySelector(".UReasonReject02"));
+                        var SltConfigData = JSON.parse(P502.UIP.SltConfigData);
+                        for (var i in SltConfigData) { if (SltConfigData[i].Type == 23) { MovingBoxi.querySelector("select").options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID)); } }
+                        MovingBoxCTL.Open();
+                        break;
+                    case 3:                     //融资方信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1); this.FocusItem = BtObj.parentElement;
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelector(".ItemText").DspV;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        MovingBoxCTL.Prepare(ItemNo + " - 融资方：" + BtObj.innerText, document.querySelector(".UFinancerInfo"));
+                        this.STR.EVP50304(ItemSN, BtObj.innerText);
+                        break;
+                    case 4:                     //投资方信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        MovingBoxCTL.Prepare(ItemNo + " - 投资方：" + BtObj.innerText, document.querySelector(".UInvestorInfo"));
+                        this.STR.EVP50307(ItemSN);
+                        break;
+                    case 5:                     //抵押物信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        MovingBoxCTL.Prepare(ItemNo + " - 抵押物：" + BtObj.innerText, document.querySelector(".USecurities"));
+                        this.STR.EVP50306(ItemSN);
+                        break;
+                    case 6:                     //企业信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var Title = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        MovingBoxCTL.Prepare(Title + " - 企业信息", document.querySelector(".UCompanyInfo"));
+                        this.STR.EVP50308(ItemSN);
+                        break;
+                    case 9:                     //提交审核未过原因
+                        BtStatusClass(BtObj, 1);
+                        var ItemNo = this.FocusItem.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = this.FocusItem.parentElement.querySelector(".Hidden").DspV;
+                        if (MovingBoxi.querySelector("select").value == "-1" || MovingBoxi.querySelector("select").value == "") { IRC.ErrTip(MovingBoxi.querySelector("select"), "必填"); return;}
+                        if (BtObj.getAttribute("data-btst") != "D") {
+                            TransingStatus.SetStatus(1);
+                            BtObj.setAttribute("data-btst", "D"); 
+                            this.STR.EVP50309(ItemSN, MovingBoxi.querySelector("select").value);
+                        }
+                        break;
+                    case 10:                    //删除债权信息
+                        BtStatusClass(BtObj, 1);
+                        this.FocusItem = BtObj;
+                        if (BtObj.getAttribute("data-btst") != "D") {
+                            BtObj.setAttribute("data-btst", "D");
+                            TransingStatus.SetStatus(1);
+                            var ItemSN = BtObj.parentElement.querySelector(".Hidden").DspV;
+                            this.STR.EVP50310(ItemSN);
+                        }
+                        break;
+                    default:
+                        BtStatusClass(BtObj, 2);
+                        break;
+                }
+            },
+            UIP: {  },
+            STR: {
+                EVP50301: function (Num) {
+                    ///<summary>页面初始化</summary><param name="Num">信息数量</param>
+                    var BorrowList = JSON.stringify([
+                    { ItemSN: "A001", No: "U12155411", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 365, PaymentWay: "先息后本", DayRate: 0.25, Borrower: "U98335548", IsCompany: "0", Area1: "浙江", Area2: "宁波", FundPurpose: "过桥资金", IsCancel: 1, PawnName: "贵金属", Invester: "U11111158", AdviserFee: "1.9" },
+                    { ItemSN: "A002", No: "U12155412", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 270, PaymentWay: "月付利息", DayRate: 0.25, Borrower: "U98324483", IsCompany: "0", Area1: "浙江", Area2: "温州", FundPurpose: "日常消费", IsCancel: 0, PawnName: "汽车", Invester: "U11111158", AdviserFee: "2" },
+                    { ItemSN: "A003", No: "U12155418", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 360, PaymentWay: "月付利息", DayRate: 0.25, Borrower: "U98343554", IsCompany: "1", Area1: "浙江", Area2: "宁波", FundPurpose: "日常经营", IsCancel: 0, PawnName: "无", Invester: "U11111158", AdviserFee: "3.5" },
+                    { ItemSN: "A004", No: "U12155413", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 180, PaymentWay: "先息后本", DayRate: 0.25, Borrower: "U98334548", IsCompany: "0", Area1: "浙江", Area2: "杭州", FundPurpose: "日常经营", IsCancel: 0, PawnName: "汽车", Invester: "U11111158", AdviserFee: "0.6" },
+                    { ItemSN: "A005", No: "U12155414", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 720, PaymentWay: "到期本息", DayRate: 0.25, Borrower: "U94565481", IsCompany: "1", Area1: "浙江", Area2: "宁波", FundPurpose: "日常经营", IsCancel: 1, PawnName: "住宅房", Invester: "U11111158", AdviserFee: "0.45" },
+                    { ItemSN: "A006", No: "U12155448", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 650, PaymentWay: "等额本息", DayRate: 0.25, Borrower: "U98345555", IsCompany: "0", Area1: "浙江", Area2: "杭州", FundPurpose: "转贷资金", IsCancel: 1, PawnName: "汽车", Invester: "U11111158", AdviserFee: "1.05" },
+                    { ItemSN: "A001", No: "U12156547", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 365, PaymentWay: "到期本息", DayRate: 0.25, Borrower: "U98335548", IsCompany: "0", Area1: "浙江", Area2: "温州", FundPurpose: "转贷资金", IsCancel: 0, PawnName: "住宅房", Invester: "U11111158", AdviserFee: "0.91" },
+                    { ItemSN: "A001", No: "U12134534", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 180, PaymentWay: "等额本息", DayRate: 0.25, Borrower: "U98335548", IsCompany: "0", Area1: "浙江", Area2: "金华", FundPurpose: "日常消费", IsCancel: 0, PawnName: "汽车", Invester: "U11111158", AdviserFee: "0.76" }]);
+                    setTimeout("P503.UID.P50301('U12155411');", 500);
+                    setTimeout("P503.UID.P50302('" + BorrowList + "');", 500);
+                },//页面初始化
+                EVP50302: function (First, From, Num) {
+                    ///<summary>加载更多信息</summary><param name="First">第一条信息的编号</param><param name="From">开始位置</param><param name="Num">信息数量</param>
+                    var BorrowList = JSON.stringify([
+                    { ItemSN: "A001", No: "U12155411", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 365, PaymentWay: "先息后本", DayRate: 0.25, Borrower: "U98335548", IsCompany: "0", Area1: "浙江", Area2: "宁波", FundPurpose: "过桥资金", IsCancel: 1, PawnName: "贵金属", Invester: "U11111158", AdviserFee: "1.9" },
+                    { ItemSN: "A002", No: "U12155412", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 270, PaymentWay: "月付利息", DayRate: 0.25, Borrower: "U98324483", IsCompany: "0", Area1: "浙江", Area2: "温州", FundPurpose: "日常消费", IsCancel: 0, PawnName: "汽车", Invester: "U11111158", AdviserFee: "2" },
+                    { ItemSN: "A003", No: "U12155418", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 360, PaymentWay: "月付利息", DayRate: 0.25, Borrower: "U98343554", IsCompany: "1", Area1: "浙江", Area2: "宁波", FundPurpose: "日常经营", IsCancel: 0, PawnName: "无", Invester: "U11111158", AdviserFee: "3.5" },
+                    { ItemSN: "A004", No: "U12155413", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 180, PaymentWay: "先息后本", DayRate: 0.25, Borrower: "U98334548", IsCompany: "0", Area1: "浙江", Area2: "杭州", FundPurpose: "日常经营", IsCancel: 0, PawnName: "汽车", Invester: "U11111158", AdviserFee: "0.6" },
+                    { ItemSN: "A005", No: "U12155414", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 720, PaymentWay: "到期本息", DayRate: 0.25, Borrower: "U94565481", IsCompany: "1", Area1: "浙江", Area2: "宁波", FundPurpose: "日常经营", IsCancel: 1, PawnName: "住宅房", Invester: "U11111158", AdviserFee: "0.45" },
+                    { ItemSN: "A006", No: "U12155448", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 650, PaymentWay: "等额本息", DayRate: 0.25, Borrower: "U98345555", IsCompany: "0", Area1: "浙江", Area2: "杭州", FundPurpose: "转贷资金", IsCancel: 1, PawnName: "汽车", Invester: "U11111158", AdviserFee: "1.05" },
+                    { ItemSN: "A001", No: "U12156547", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 365, PaymentWay: "到期本息", DayRate: 0.25, Borrower: "U98335548", IsCompany: "0", Area1: "浙江", Area2: "温州", FundPurpose: "转贷资金", IsCancel: 0, PawnName: "住宅房", Invester: "U11111158", AdviserFee: "0.91" },
+                    { ItemSN: "A001", No: "U12134534", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 180, PaymentWay: "等额本息", DayRate: 0.25, Borrower: "U98335548", IsCompany: "0", Area1: "浙江", Area2: "金华", FundPurpose: "日常消费", IsCancel: 0, PawnName: "汽车", Invester: "U11111158", AdviserFee: "0.76" }]);
+                    setTimeout("P503.UID.P50302('" + BorrowList + "');", 1000);
+                },//加载更多信息
+                EVP50303: function (ItemSN) {
+                    ///<summary>审核通过事件</summary><param name="ItemSN">债权编号</param>
+                    console.log(ItemSN);
+                    setTimeout("P503.UID.P50303(true);", 1000);
+                },//审核通过事件
+                EVP50304: function (ItemSN, UserSN) {
+                    ///<summary>融资方信息</summary><param name="ItemSN">债权编号</param><param name="UserSN">融资方编号</param>
+                    console.log(ItemSN);
+                    var BorrowerInfo = { No: "U25184488", Name: "牛德华", BirthDay: "1967/04/09", Sex: "男", CardAddress: "浙江宁波", CardID: "330723*", Mobile: "137****8888", Email: "niudehua@163.com", Marry: "已婚", Breed: "已育", Health: "健康", IsSafety: "是", LivePro: "浙江", LiveCity: "宁波", LiveStreet: "高新区", School: "宁波江东实验小学", Edu: "小学", EduNo: "No.1215877", Company: "中国大陆娱乐圈", ComProperty: "国有企业", JobTime: "2000/01/01", JobTel: "0574-88888888", Job: "程序员", CompanyTel: "0574-88888888", CompanyWeb: "www.baidu.com", ColleagueName: "张学友", ColleagueTel: "137****9999", SpouseName: "张曼玉", SpouseTel: "137****7777", SpouseCardID: "330729*", SpouseCompany: "中国大陆娱乐圈", FamilyName: "刘星", FamilyTel: "137****6666", FamilyCardID: "330729*", FamilyCompany: "中国大陆娱乐圈", MTotalIn: "1.2", MTotalOut: "0.7", MClearIn: "0.3", TotalAsset: "200", TotalDebt: "0", ClearAsset: "100", CourtsExe: "无", CreditState: "正常", CaseNum: "9", CaseTotalAmt: "183", NowDebtNum: "0", NowTotalDebtAmt: "0", NowOverdue: "1", OverdueAmt: "15", HistoryOverdue: "4", RegTime: "2009/09/12" };
+                    setTimeout("P503.UID.P50304('" + JSON.stringify(BorrowerInfo) + "');", 1000);
+                },//融资方当前信息
+                EVP50306: function (ItemSN) {
+                    ///<summary>抵押物信息</summary><param name="ItemSN">抵押物编号</param>
+                    console.log(ItemSN);
+                    var PawnInfo = { Name: "汽车", Source: "赠送", Address: "浙江宁波", BTime: "2014/01/01", Holder: "刘德华", BPrice: "15", Use: "闲置", MPrice: "18", SType: "一次抵押", AO: "宁波公证", Seal: "未查封", RechtNo: "No.15846", Remarks: "全新的哦" };
+                    setTimeout("P503.UID.P50306('" + JSON.stringify(PawnInfo) + "');", 1000);
+                },//抵押物信息
+                EVP50307: function (ItemSN, UserSN) {
+                    ///<summary>投资方信息</summary><param name="ItemSN">抵押物编号</param><param name="UserSN">投资方编号</param>
+                    console.log(ItemSN);
+                    var InvesterInfo = { No: "U25100000", Name: "郭富城", BirthDay: "1967/04/09", Sex: "男", CardAddress: "浙江宁波", CardID: "330723*", Mobile: "137****7777", Email: "guofucheng@163.com", Marry: "已婚", Breed: "已育", LivePro: "浙江", LiveCity: "宁波", LiveStreet: "高新区", Company: "中国大陆娱乐圈", ComProperty: "信息产业", JobTime: "2000/01/01", JobTel: "0574-88888888", Job: "程序员", CompanyTel: "0574-88888888", CompanyWeb: "www.baidu.com", InvestBody: "个人", BorrowBody: "个人", PawnRate: "0.125", AssureWay: "抵押", InvestArea1: "浙江", InvestArea2: "宁波", InvestAmt: "1", DayRate: "0.2", InvestLimitMin: "1", InvestLimitMax: "720", Pawn: ",1,5,7,9,11,12,", InvestCase: "15", CaseAmt: "260" };
+                    setTimeout("P503.UID.P50307('" + JSON.stringify(InvesterInfo) + "');", 1000);
+                },//投资方信息
+                EVP50308: function (ItemSN) {
+                    ///<summary>企业信息</summary><param name="Borrower">企业信息</param>
+                    console.log(ItemSN);
+                    var CompanyInfo = { Name: "阿里巴巴", Address: "杭州", RegTime: "2001/01/01", RegPrice: "1500", Trade: "信息产业", LegalPerson: "马云", MaxShareHolder: "马云", ShareHolderNum: "100", StaffNum: "2000", TotalAsset: "9980", TotalBorrow: "2", NowBorrow: "2", ClearAsset: "5800", SalesAmt: "200", TaxSalesAmt: "150", ClearProfit: "100", CourtsExe: "无", CreditState: "正常" };
+                    setTimeout("P503.UID.P50308('" + JSON.stringify(CompanyInfo) + "');", 1000);
+                },//企业信息
+                EVP50309: function (ItemSN, RejectNo) {
+                    console.log(ItemSN);
+                    ///<summary>审核未过事件</summary><param name="ItemNo">债权编号</param><param name="RejectNo">未通过理由</param>
+                    setTimeout("P503.UID.P50309(true);", 1000);
+                },//审核未过事件
+                EVP50310: function (ItemSN) {
+                    console.log(ItemSN);
+                    ///<summary>删除债权</summary><param name="ItemNo">债权编号</param>
+                    setTimeout("P503.UID.P50310(true);", 1000);
+                }//删除债权
+            },
+            UID: {
+                P50301: function (First) {
+                    ///<summary>页面初始化</summary></param name="First">第一条信息的编号</param>
+                    P503.LoadItem.First = First;
+                },
+                P50302: function (BorrowList) {
+                    ///<summary>加载项目信息</summary>
+                    if (MToolBar.BtID != 2) { return; }
+                    if (BorrowList == "") { Continue.innerText = 1; LoadingBoxCtl(0); LastItem = 1; return; }
+                    var BorrowInfo = JSON.parse(BorrowList); P503.LoadItem.From += BorrowInfo.length;
+                    for (var i in BorrowInfo) {
+                        var NewItemTemplate = P503i.children[0].cloneNode(true);
+                        NewItemTemplate.querySelectorAll(".ItemText")[0].DspV = BorrowInfo[i].No;
+                        NewItemTemplate.querySelectorAll(".ItemText")[1].DspV = BorrowInfo[i].BorrowAmt;
+                        NewItemTemplate.querySelectorAll(".ItemText")[2].DspV = BorrowInfo[i].AssureWay;
+                        NewItemTemplate.querySelectorAll(".ItemText")[3].DspV = BorrowInfo[i].BorrowLimit;
+                        NewItemTemplate.querySelectorAll(".ItemText")[4].DspV = BorrowInfo[i].PaymentWay;
+                        NewItemTemplate.querySelectorAll(".ItemText")[5].DspV = BorrowInfo[i].DayRate;
+                        NewItemTemplate.querySelectorAll(".ItemText")[6].DspV = BorrowInfo[i].FundPurpose;
+                        NewItemTemplate.querySelectorAll(".ItemText")[7].DspV = BorrowInfo[i].Area1;
+                        NewItemTemplate.querySelectorAll(".ItemText")[8].DspV = BorrowInfo[i].Area2;
+                        NewItemTemplate.querySelectorAll(".ItemText")[9].querySelectorAll(".CBtInTd")[0].DspV = BorrowInfo[i].Borrower;
+                        if (BorrowInfo[i].IsCompany > 0) { NewItemTemplate.querySelectorAll(".ItemText")[9].querySelectorAll(".CBtInTd")[1].style.display = ""; }
+                        NewItemTemplate.querySelectorAll(".ItemText")[10].querySelector(".CBtInTd").DspV = BorrowInfo[i].Invester;
+                        if (BorrowInfo[i].PawnName == "无" || BorrowInfo[i].PawnName == "") { NewItemTemplate.querySelectorAll(".ItemText")[11].DspV = "无"; } else { NewItemTemplate.querySelectorAll(".ItemText")[11].querySelector(".CBtInTd").DspV = BorrowInfo[i].PawnName; }
+                        NewItemTemplate.querySelectorAll(".ItemText")[12].DspV = BorrowInfo[i].AdviserFee;
+                        if (BorrowInfo[i].IsCancel > 0) {
+                            NewItemTemplate.querySelectorAll(".CBt")[0].style.display = "none";
+                            NewItemTemplate.querySelectorAll(".CBt")[1].style.display = "none";
+                            NewItemTemplate.querySelectorAll(".CBt")[2].style.display = "";
+                        }
+                        NewItemTemplate.querySelector(".Hidden").DspV = BorrowInfo[i].ItemSN;
+                        ItemContainer.appendChild(NewItemTemplate);
+                    }
+                    ReCalcItemSize();
+                    Continue.innerText = 1; LoadingBoxCtl(0);
+                },
+                P50303: function (Res) {
+                    ///<summary>审核通过加载事件</summary></param name="Res">true Or false</param>
+                    if (Res) {
+                        TransingStatus.SetStatus(3);
+                        P503.Del();
+                    } else {
+                        TransingStatus.SetStatus(2, ErrTxt);
+                    }
+                    P503.FocusItem.setAttribute("data-btst", "E");
+                },
+                P50304: function (BorrowerInfo) {
+                    ///<summary>融资方信息</summary><param name="Borrower">融资方信息</param>
+                    var Borrower = eval('(' + BorrowerInfo + ')');
+                    var MB = MovingBoxi.querySelectorAll(".ItemText");
+                    MB[0].DspV = Borrower.No; MB[1].innerText = Borrower.Name; MB[2].DspV = Borrower.BirthDay; MB[3].DspV = Borrower.Sex; MB[4].DspV = Borrower.CardAddress; MB[5].DspV = Borrower.CardID; MB[6].innerText = Borrower.Mobile; MB[7].innerText = Borrower.Email; MB[8].DspV = Borrower.Marry; MB[9].DspV = Borrower.Breed; MB[10].DspV = Borrower.Health; MB[11].DspV = Borrower.IsSafety;
+                    MB[12].querySelectorAll("label")[0].innerText = Borrower.LivePro; MB[12].querySelectorAll("label")[1].innerText = Borrower.LiveCity; MB[12].querySelectorAll("label")[2].innerText = Borrower.LiveStreet; MB[13].DspV = Borrower.School; MB[14].DspV = Borrower.Edu; MB[15].innerText = Borrower.EduNo; MB[16].innerText = Borrower.Company; MB[17].DspV = Borrower.ComProperty;
+                    MB[18].DspV = Borrower.JobTime; MB[19].innerText = Borrower.JobTel; MB[20].DspV = Borrower.Job; MB[21].innerText = Borrower.CompanyTel; MB[22].innerText = Borrower.CompanyWeb; MB[23].innerText = Borrower.ColleagueName; MB[24].innerText = Borrower.ColleagueTel; MB[25].DspV = Borrower.MTotalIn; MB[26].DspV = Borrower.MTotalOut; MB[27].DspV = Borrower.MClearIn;
+                    MB[28].DspV = Borrower.TotalAsset; MB[29].DspV = Borrower.TotalDebt; MB[30].DspV = Borrower.ClearAsset; MB[31].DspV = Borrower.CourtsExe; MB[32].DspV = Borrower.CreditState; MB[33].innerText = Borrower.SpouseName; MB[34].innerText = Borrower.SpouseTel; MB[35].innerText = Borrower.SpouseCardID; MB[36].innerText = Borrower.SpouseCompany; MB[37].innerText = Borrower.FamilyName;
+                    MB[38].innerText = Borrower.FamilyTel; MB[39].innerText = Borrower.FamilyCardID; MB[40].innerText = Borrower.FamilyCompany; MB[41].DspV = Borrower.CaseNum; MB[42].DspV = Borrower.CaseTotalAmt; MB[43].DspV = Borrower.NowDebtNum; MB[44].DspV = Borrower.NowTotalDebtAmt; MB[45].DspV = Borrower.NowOverdue; MB[46].DspV = Borrower.OverdueAmt; MB[47].DspV = Borrower.HistoryOverdue; MB[48].DspV = Borrower.RegTime;
+                    LoadingBoxCtl(0); MovingBoxCTL.Open();
+                },
+                P50306: function (PawnInfo) {
+                    ///<summary>加载抵押物信息</summary></param name="Pawn">抵押物信息</param>
+                    var Pawn = eval('(' + PawnInfo + ')');
+                    var MB = MovingBoxi.querySelectorAll(".ItemText");
+                    MB[0].DspV = Pawn.Name; MB[1].DspV = Pawn.Source; MB[2].DspV = Pawn.Address; MB[3].DspV = Pawn.BTime; MB[4].DspV = Pawn.Holder; MB[5].DspV = Pawn.BPrice; MB[6].DspV = Pawn.Use; MB[7].DspV = Pawn.MPrice; MB[8].DspV = Pawn.SType;
+                    MB[9].DspV = Pawn.AO; MB[10].DspV = Pawn.Seal; MB[11].DspV = Pawn.RechtNo; MovingBoxi.querySelector("textarea").value = Pawn.Remarks;
+                    LoadingBoxCtl(0); MovingBoxCTL.Open();
+                },
+                P50307: function (InvesterInfo) {
+                    ///<summary>加载投资方信息</summary></param name="Invester">投资方信息</param>
+                    var Invester = eval('(' + InvesterInfo + ')');
+                    var MB = MovingBoxi.querySelectorAll(".ItemText");
+                    MB[0].DspV = Invester.No; MB[1].DspV = Invester.Name; MB[2].DspV = Invester.BirthDay; MB[3].DspV = Invester.Sex; MB[4].DspV = Invester.CardAddress; MB[5].DspV = Invester.CardID; MB[6].DspV = Invester.Mobile; MB[7].DspV = Invester.Email; MB[8].DspV = Invester.Marry; MB[9].DspV = Invester.Breed; MB[10].DspV = Invester.LivePro;
+                    MB[11].DspV = Invester.LiveCity; MB[12].DspV = Invester.LiveStreet; MB[13].DspV = Invester.Company; MB[14].DspV = Invester.ComProperty; MB[15].DspV = Invester.JobTime; MB[16].DspV = Invester.JobTel; MB[17].DspV = Invester.Job; MB[18].DspV = Invester.CompanyTel; MB[19].DspV = Invester.CompanyWeb; MB[20].DspV = Invester.InvestBody;
+                    MB[21].DspV = Invester.BorrowBody; MB[22].DspV = Invester.PawnRate; MB[23].DspV = Invester.AssureWay; MB[24].DspV = Invester.InvestArea1; MB[25].DspV = Invester.InvestArea2; MB[26].DspV = Invester.InvestAmt; MB[27].DspV = Invester.DayRate; MB[28].DspV = Invester.InvestLimitMin;
+                    MB[29].DspV = Invester.InvestLimitMax; MB[31].DspV = Invester.InvestCase; MB[32].DspV = Invester.CaseAmt;
+                    var SltConfigData = JSON.parse(P502.UIP.SltConfigData);
+                    Str = " <table style=\"width:100%\"><tr>"; var s = 0;
+                    for (var i in SltConfigData) {
+                        if (SltConfigData[i].Type == 7 && SltConfigData[i].Name != "混合资产") {
+                            s++;
+                            Str += "<td><div class=\"UpDownButton\" data-id=\"" + SltConfigData[i].ID + "\"></div>" + SltConfigData[i].Name + "</td>";
+                            if (s % 3 == 0) { Str += "</tr><tr>"; }
+                        }
+                    }
+                    Str += "</tr></table>";
+                    MovingBoxi.querySelectorAll(".ItemText")[30].innerHTML = Str;
+                    var PawnSlt = Invester.Pawn.split(",");
+                    for (var i = 0; i < PawnSlt.length; i++) { if (PawnSlt[i].length >= 2) { MB[30].querySelector("[data-id='" + PawnSlt[i] + "']").setAttribute("data-sw", "1"); } }
+                    MovingBoxCTL.Open(); LoadingBoxCtl(0);
+                },
+                P50308: function (CompanyInfo) {
+                    ///<summary>加载企业信息</summary></param name="Company">企业信息</param>
+                    var Company = eval('(' + CompanyInfo + ')');
+                    var MB = MovingBoxi.querySelectorAll(".ItemText");
+                    MB[0].DspV = Company.Name; MB[1].DspV = Company.Address; MB[2].DspV = Company.RegTime; MB[3].DspV = Company.RegPrice; MB[4].DspV = Company.Trade; MB[5].DspV = Company.LegalPerson; MB[6].DspV = Company.MaxShareHolder; MB[7].DspV = Company.ShareHolderNum; MB[8].DspV = Company.StaffNum;
+                    MB[9].DspV = Company.TotalAsset; MB[10].DspV = Company.TotalBorrow; MB[11].DspV = Company.NowBorrow; MB[12].DspV = Company.ClearAsset; MB[13].DspV = Company.SalesAmt; MB[14].DspV = Company.TaxSalesAmt; MB[15].DspV = Company.ClearProfit; MB[16].DspV = Company.CourtsExe; MB[17].DspV = Company.CreditState;
+                    LoadingBoxCtl(0); MovingBoxCTL.Open();
+                },
+                P50309: function (Res) {
+                    ///<summary>审核未通过后返回事件</summary></param name="Res">true Or false</param></param name="ErrTxt">失败原因</param>
+                    if (Res) {
+                        TransingStatus.SetStatus(3);
+                        P503.Del(); MovingBoxCTL.Close();
+                    } else {
+                        TransingStatus.SetStatus(2, ErrTxt);
+                    }
+                    MovingBoxi.querySelector(".Bt").setAttribute("data-btst", "E");
+                },
+                P50310: function (Res) {
+                    ///<summary>审核未通过后返回事件</summary></param name="Res">true Or false</param></param name="ErrTxt">失败原因</param>
+                    if (Res) {
+                        TransingStatus.SetStatus(3);
+                        P503.Del(); MovingBoxCTL.Close();
+                    } else {
+                        TransingStatus.SetStatus(2, ErrTxt);
+                    }
+                    P503.FocusItem.setAttribute("data-btst", "E");
+                }
+            },
+        }
+    </script>
+
+    <!--已审核债权-->
+    <script type="text/javascript">
+        var P50401 = {
+            FocusItem: Object,
+            LoadItem: { First: "", From: 0, Num: 10 },
+            Del: function () {
+                if (ItemContainer.contains(this.FocusItem)) { ItemContainer.removeChild(this.FocusItem); };
+                ReCalcItemSize();
+            },
+            BtAction: function (BtObj, Act) {
+                switch (Act) {
+                    case 1:                     //融资方信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1); this.FocusItem = BtObj.parentElement;
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        MovingBoxCTL.Prepare(ItemNo + " - 融资方：" + BtObj.innerText, document.querySelector(".UFinancerInfo"));
+                        if (this.FocusItem.parentElement.parentElement.querySelectorAll(".ItemText")[11].DspV != "未投资") { MovingBoxi.querySelector(".Bt").innerHTML = "<div class=\"CBt\" onmousedown=\"P50401.BtAction(this,0)\" onmouseup=\"P50401.BtAction(this,5)\" style=\"right:120px;\">历史信息</div><div class=\"CBtD\" data-btst=\"D\" >当前信息</div>"; }
+                        this.STR.EVP5040103(ItemSN, BtObj.innerText);
+                        break;
+                    case 2:                     //投资方信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        MovingBoxCTL.Prepare(ItemNo + " - 投资方：" + BtObj.innerText, document.querySelector(".UInvestorInfo"));
+                        this.STR.EVP5040106(ItemSN, BtObj.innerText);
+                        break;
+                    case 3:                     //抵押物信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        MovingBoxCTL.Prepare(ItemNo + " - 抵押物：" + BtObj.innerText, document.querySelector(".USecurities"));
+                        this.STR.EVP5040105(ItemSN);
+                        break;
+                    case 4:                     //企业信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var ItemNo = BtObj.parentElement.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = BtObj.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        MovingBoxCTL.Prepare(ItemNo + " - 企业信息", document.querySelector(".UCompanyInfo"));
+                        this.STR.EVP5040107(ItemSN);
+                        break;
+                    case 5:                     //融资方历史信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var ItemNo = this.FocusItem.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = this.FocusItem.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        var UserSN = BtObj.parentNode.parentNode.querySelectorAll(".ItemText")[0].DspV;
+                        MovingBoxi.querySelector(".Bt").innerHTML = "<div class=\"CBtD\" data-btst=\"D\" style=\"right:120px;\">历史信息</div><div class=\"CBt\" onmousedown=\"P50401.BtAction(this,0)\" onmouseup=\"P50401.BtAction(this,6);\" >当前信息</div>";
+                        this.STR.EVP5040104(ItemSN, UserSN);
+                        break;
+                    case 6:                     //融资方当前信息
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        var ItemNo = this.FocusItem.parentElement.parentElement.querySelectorAll(".ItemText")[0].DspV;
+                        var ItemSN = this.FocusItem.parentElement.parentElement.parentElement.parentElement.querySelector(".Hidden").DspV;
+                        var UserSN = BtObj.parentNode.parentNode.querySelectorAll(".ItemText")[0].DspV;
+                        MovingBoxi.querySelector(".Bt").innerHTML = "<div class=\"CBt\" onmousedown=\"P50401.BtAction(this,0)\" onmouseup=\"P50401.BtAction(this,5)\" style=\"right:120px;\">历史信息</div><div class=\"CBtD\" data-btst=\"D\" >当前信息</div>";
+                        this.STR.EVP5040103(ItemSN, UserSN);
+                        break;
+                    default:
+                        BtStatusClass(BtObj, 2);
+                        break;
+                }
+            },
+            UIP: { },
+            STR: {
+                EVP5040101: function (Num) {
+                    ///<summary>页面初始化</summary><param name="Num">信息数量</param>
+                    var BorrowList = JSON.stringify([
+                    { ItemSN: "A001", No: "U12155411", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 365, PaymentWay: "先息后本", DayRate: 0.25, Invester: "U11111158", Borrower: "U98335548", IsCompany: "0", FundPurpose: "过桥资金", ExamineState: "审核通过", PawnName: "贵金属", InvestPro: "未投资", AdviserFee: "1.9" },
+                    { ItemSN: "A002", No: "U12155412", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 270, PaymentWay: "月付利息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98324483", IsCompany: "1", FundPurpose: "日常消费", ExamineState: "审核未过", PawnName: "无", InvestPro: "未投资", AdviserFee: "2" },
+                    { ItemSN: "A003", No: "U12154345", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 180, PaymentWay: "等额本息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98335548", IsCompany: "1", FundPurpose: "日常经营", ExamineState: "审核通过", PawnName: "汽车", InvestPro: "已投资", AdviserFee: "0.85" },
+                    { ItemSN: "A004", No: "U12156547", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 365, PaymentWay: "到期本息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98335548", IsCompany: "0", FundPurpose: "转贷资金", ExamineState: "审核未过", PawnName: "住宅房", InvestPro: "已投资", AdviserFee: "0.91" },
+                    { ItemSN: "A005", No: "U12156547", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 365, PaymentWay: "到期本息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98335548", IsCompany: "0", FundPurpose: "转贷资金", ExamineState: "审核通过", PawnName: "住宅房", InvestPro: "逾期中", AdviserFee: "0.91" },
+                    { ItemSN: "A006", No: "U12156547", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 365, PaymentWay: "到期本息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98335548", IsCompany: "0", FundPurpose: "转贷资金", ExamineState: "审核未过", PawnName: "住宅房", InvestPro: "逾期中", AdviserFee: "0.91" }]);
+                    setTimeout("P50401.UID.P5040101('U12155411');", 500);
+                    setTimeout("P50401.UID.P5040102('" + BorrowList + "');", 500);
+                },//页面初始化
+                EVP5040102: function (First, From, Num) {
+                    ///<summary>加载更多信息</summary><param name="First">第一条信息的编号</param><param name="From">开始位置</param><param name="Num">信息数量</param>
+                    var BorrowList = JSON.stringify([
+                    { ItemSN: "A001", No: "U12155411", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 365, PaymentWay: "先息后本", DayRate: 0.25, Invester: "U11111158", Borrower: "U98335548", IsCompany: "0", FundPurpose: "过桥资金", ExamineState: "审核通过", PawnName: "贵金属", InvestPro: "未投资", AdviserFee: "1.9" },
+                    { ItemSN: "A002", No: "U12155412", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 270, PaymentWay: "月付利息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98324483", IsCompany: "1", FundPurpose: "日常消费", ExamineState: "审核未过", PawnName: "无", InvestPro: "未投资", AdviserFee: "2" },
+                    { ItemSN: "A003", No: "U12154345", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 180, PaymentWay: "等额本息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98335548", IsCompany: "1", FundPurpose: "日常经营", ExamineState: "审核通过", PawnName: "汽车", InvestPro: "已投资", AdviserFee: "0.85" },
+                    { ItemSN: "A004", No: "U12156547", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 365, PaymentWay: "到期本息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98335548", IsCompany: "0", FundPurpose: "转贷资金", ExamineState: "审核未过", PawnName: "住宅房", InvestPro: "已投资", AdviserFee: "0.91" },
+                    { ItemSN: "A005", No: "U12156547", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 365, PaymentWay: "到期本息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98335548", IsCompany: "0", FundPurpose: "转贷资金", ExamineState: "审核通过", PawnName: "住宅房", InvestPro: "逾期中", AdviserFee: "0.91" },
+                    { ItemSN: "A006", No: "U12156547", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 365, PaymentWay: "到期本息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98335548", IsCompany: "0", FundPurpose: "转贷资金", ExamineState: "审核未过", PawnName: "住宅房", InvestPro: "逾期中", AdviserFee: "0.91" }]);
+                    setTimeout("P50401.UID.P5040102('" + BorrowList + "');", 1000);
+                },//加载更多信息
+                EVP5040103: function (ItemSN, UserSN) {
+                    ///<summary>融资方当前信息</summary><param name="ItemNo">ItemSN</param><param name="UserSN">融资方编号</param>
+                    console.log(ItemSN);
+                    var BorrowerInfo= { No: "U25184488", Name: "牛德华", BirthDay: "1967/04/09", Sex: "男", CardAddress: "浙江宁波", CardID: "330723*", Mobile: "137****8888", Email: "niudehua@163.com", Marry: "已婚", Breed: "已育", Health: "健康", IsSafety: "是", LivePro: "浙江", LiveCity: "宁波", LiveStreet: "高新区", School: "宁波江东实验小学", Edu: "小学", EduNo: "No.1215877", Company: "中国大陆娱乐圈", ComProperty: "国有企业", JobTime: "2000/01/01", JobTel: "0574-88888888", Job: "程序员", CompanyTel: "0574-88888888", CompanyWeb: "www.baidu.com", ColleagueName: "张学友", ColleagueTel: "137****9999", SpouseName: "张曼玉", SpouseTel: "137****7777", SpouseCardID: "330729*", SpouseCompany: "中国大陆娱乐圈", FamilyName: "刘星", FamilyTel: "137****6666", FamilyCardID: "330729*", FamilyCompany: "中国大陆娱乐圈", MTotalIn: "1.2", MTotalOut: "0.7", MClearIn: "0.3", TotalAsset: "200", TotalDebt: "0", ClearAsset: "100", CourtsExe: "无", CreditState: "正常", CaseNum: "9", CaseTotalAmt: "183", NowDebtNum: "0", NowTotalDebtAmt: "0", NowOverdue: "1", OverdueAmt: "15", HistoryOverdue: "4", RegTime: "2009/09/12" };
+                    setTimeout("P50401.UID.P5040103('" + JSON.stringify(BorrowerInfo) + "');", 1000);
+                },//融资方当前信息
+                EVP5040104: function (ItemSN, UserSN) {
+                    ///<summary>融资方历史信息</summary><param name="ItemSN">债权编号</param><param name="UserSN">融资方编号</param>
+                    console.log(ItemSN);
+                    var BorrowerInfo= { No: "U25184488", Name: "牛德华", BirthDay: "1967/04/09", Sex: "男", CardAddress: "浙江宁波", CardID: "330723*", Mobile: "137****8888", Email: "niudehua@163.com", Marry: "已婚", Breed: "已育", Health: "健康", IsSafety: "是", LivePro: "浙江", LiveCity: "宁波", LiveStreet: "高新区", School: "宁波江东实验小学", Edu: "小学", EduNo: "No.1215877", Company: "中国大陆娱乐圈", ComProperty: "国有企业", JobTime: "2000/01/01", JobTel: "0574-88888888", Job: "程序员", CompanyTel: "0574-88888888", CompanyWeb: "www.baidu.com", ColleagueName: "张学友", ColleagueTel: "137****9999", SpouseName: "张曼玉", SpouseTel: "137****7777", SpouseCardID: "330729*", SpouseCompany: "中国大陆娱乐圈", FamilyName: "刘星", FamilyTel: "137****6666", FamilyCardID: "330729*", FamilyCompany: "中国大陆娱乐圈", MTotalIn: "1.2", MTotalOut: "0.7", MClearIn: "0.3", TotalAsset: "200", TotalDebt: "0", ClearAsset: "100", CourtsExe: "无", CreditState: "正常", CaseNum: "9", CaseTotalAmt: "183", NowDebtNum: "0", NowTotalDebtAmt: "0", NowOverdue: "1", OverdueAmt: "15", HistoryOverdue: "4", RegTime: "2009/09/12" };
+                    setTimeout("P50401.UID.P5040104('" + JSON.stringify(BorrowerInfo) + "');", 1000);
+                },//融资方历史信息
+                EVP5040105: function (ItemSN) {
+                    ///<summary>抵押物信息</summary><param name="ItemSN">债权编号</param><param name="ItemSN">抵押物编号</param>
+                    console.log(ItemSN);
+                    var PawnInfo = { Name: "汽车", Source: "赠送", Address: "浙江宁波", BTime: "2014/01/01", Holder: "刘德华", BPrice: "15", Use: "闲置", MPrice: "18", SType: "一次抵押", AO: "宁波公证", Seal: "未查封", RechtNo: "No.15846", Remarks: "全新的哦" };
+                    setTimeout("P50401.UID.P5040105('" + JSON.stringify(PawnInfo) + "');", 1000);
+                },//抵押物信息
+                EVP5040106: function (ItemSN, UserSN) {
+                    ///<summary>投资方信息</summary><param name="ItemSN">债权编号</param><param name="UserSN">投资方编号</param>
+                    console.log(ItemSN);
+                    var InvesterInfo = { No: "U25100000", Name: "郭富城", BirthDay: "1967/04/09", Sex: "男", CardAddress: "浙江宁波", CardID: "330723*", Mobile: "137****7777", Email: "guofucheng@163.com", Marry: "已婚", Breed: "已育", LivePro: "浙江", LiveCity: "宁波", LiveStreet: "高新区", Company: "中国大陆娱乐圈", ComProperty: "信息产业", JobTime: "2000/01/01", JobTel: "0574-88888888", Job: "程序员", CompanyTel: "0574-88888888", CompanyWeb: "www.baidu.com", InvestBody: "个人", BorrowBody: "个人", PawnRate: "0.125", AssureWay: "抵押", InvestArea1: "浙江", InvestArea2: "宁波", InvestAmt: "1", DayRate: "0.2", InvestLimitMin: "1", InvestLimitMax: "720", Pawn: ",1,5,7,9,11,12,", InvestCase: "15", CaseAmt: "260" };
+                    setTimeout("P50401.UID.P5040106('" + JSON.stringify(InvesterInfo) + "');", 1000);
+                },//投资方信息
+                EVP5040107: function (ItemSN) {
+                    ///<summary>企业信息</summary><param name="ItemSN">债权编号</param>
+                    console.log(ItemSN);
+                    var CompanyInfo = { Name: "阿里巴巴", Address: "杭州", RegTime: "2001/01/01", RegPrice: "1500", Trade: "信息产业", LegalPerson: "马云", MaxShareHolder: "马云", ShareHolderNum: "100", StaffNum: "2000", TotalAsset: "9980", TotalBorrow: "2", NowBorrow: "2", ClearAsset: "5800", SalesAmt: "200", TaxSalesAmt: "150", ClearProfit: "100", CourtsExe: "无", CreditState: "正常" };
+                    setTimeout("P50401.UID.P5040107('" + JSON.stringify(CompanyInfo) + "');", 1000);
+                },//企业信息
+            },
+            UID: {
+                P5040101: function (First) {
+                    ///<summary>初始化页面</summary><param name="First">第一条信息的编号</param>
+                    P50401.LoadItem.First = First;
+                },
+                P5040102: function (BorrowList) {
+                    ///<summary>加载项目信息</summary>
+                    if (MToolBar.BtID != 3) { return; }
+                    if (BorrowList == "") { Continue.innerText = 1; LoadingBoxCtl(0); LastItem = 1; return;}
+                    var BorrowInfo = JSON.parse(BorrowList); P50401.LoadItem.From += BorrowInfo.length;
+                    for (var i in BorrowInfo) {
+                        var NewItemTemplate = P50401i.children[0].cloneNode(true);
+                        NewItemTemplate.querySelectorAll(".ItemText")[0].DspV = BorrowInfo[i].No;
+                        NewItemTemplate.querySelectorAll(".ItemText")[1].DspV = BorrowInfo[i].BorrowAmt;
+                        NewItemTemplate.querySelectorAll(".ItemText")[2].DspV = BorrowInfo[i].AssureWay;
+                        NewItemTemplate.querySelectorAll(".ItemText")[3].DspV = BorrowInfo[i].BorrowLimit;
+                        NewItemTemplate.querySelectorAll(".ItemText")[4].DspV = BorrowInfo[i].PaymentWay;
+                        NewItemTemplate.querySelectorAll(".ItemText")[5].DspV = BorrowInfo[i].DayRate;
+                        NewItemTemplate.querySelectorAll(".ItemText")[6].querySelector(".CBtInTd").DspV = BorrowInfo[i].Invester;
+                        NewItemTemplate.querySelectorAll(".ItemText")[8].querySelectorAll(".CBtInTd")[0].DspV = BorrowInfo[i].Borrower;
+                        if (BorrowInfo[i].IsCompany > 0) { NewItemTemplate.querySelectorAll(".ItemText")[8].querySelectorAll(".CBtInTd")[1].style.display = ""; }
+                        if (BorrowInfo[i].PawnName == "无" || BorrowInfo[i].PawnName == "") { NewItemTemplate.querySelectorAll(".ItemText")[7].DspV = "无"; } else { NewItemTemplate.querySelectorAll(".ItemText")[7].querySelector(".CBtInTd").DspV = BorrowInfo[i].PawnName; }
+                        NewItemTemplate.querySelectorAll(".ItemText")[9].DspV = BorrowInfo[i].ExamineState;
+                        NewItemTemplate.querySelectorAll(".ItemText")[10].DspV = BorrowInfo[i].AdviserFee;
+                        NewItemTemplate.querySelectorAll(".ItemText")[11].DspV = BorrowInfo[i].InvestPro;
+                        NewItemTemplate.querySelector(".Hidden").DspV = BorrowInfo[i].ItemSN;
+                        ItemContainer.appendChild(NewItemTemplate);
+                    }
+                    ReCalcItemSize();
+                    Continue.innerText = 1; LoadingBoxCtl(0);
+                },
+                P5040103: function (BorrowerInfo) {
+                    ///<summary>加载融资方当前信息</summary><param name="BorrowerInfo">融资方信息</param>
+                    var Borrower = eval('(' + BorrowerInfo + ')');
+                    var MB = MovingBoxi.querySelectorAll(".ItemText");
+                    MB[0].DspV = Borrower.No; MB[1].innerText = Borrower.Name; MB[2].DspV = Borrower.BirthDay; MB[3].DspV = Borrower.Sex; MB[4].DspV = Borrower.CardAddress; MB[5].DspV = Borrower.CardID; MB[6].innerText = Borrower.Mobile; MB[7].innerText = Borrower.Email; MB[8].DspV = Borrower.Marry; MB[9].DspV = Borrower.Breed; MB[10].DspV = Borrower.Health; MB[11].DspV = Borrower.IsSafety;
+                    MB[12].querySelectorAll("label")[0].innerText = Borrower.LivePro; MB[12].querySelectorAll("label")[1].innerText = Borrower.LiveCity; MB[12].querySelectorAll("label")[2].innerText = Borrower.LiveStreet; MB[13].DspV = Borrower.School; MB[14].DspV = Borrower.Edu; MB[15].innerText = Borrower.EduNo; MB[16].innerText = Borrower.Company; MB[17].DspV = Borrower.ComProperty;
+                    MB[18].DspV = Borrower.JobTime; MB[19].innerText = Borrower.JobTel; MB[20].DspV = Borrower.Job; MB[21].innerText = Borrower.CompanyTel; MB[22].innerText = Borrower.CompanyWeb; MB[23].innerText = Borrower.ColleagueName; MB[24].innerText = Borrower.ColleagueTel; MB[25].DspV = Borrower.MTotalIn; MB[26].DspV = Borrower.MTotalOut; MB[27].DspV = Borrower.MClearIn;
+                    MB[28].DspV = Borrower.TotalAsset; MB[29].DspV = Borrower.TotalDebt; MB[30].DspV = Borrower.ClearAsset; MB[31].DspV = Borrower.CourtsExe; MB[32].DspV = Borrower.CreditState; MB[33].innerText = Borrower.SpouseName; MB[34].innerText = Borrower.SpouseTel; MB[35].innerText = Borrower.SpouseCardID; MB[36].innerText = Borrower.SpouseCompany; MB[37].innerText = Borrower.FamilyName;
+                    MB[38].innerText = Borrower.FamilyTel; MB[39].innerText = Borrower.FamilyCardID; MB[40].innerText = Borrower.FamilyCompany; MB[41].DspV = Borrower.CaseNum; MB[42].DspV = Borrower.CaseTotalAmt; MB[43].DspV = Borrower.NowDebtNum; MB[44].DspV = Borrower.NowTotalDebtAmt; MB[45].DspV = Borrower.NowOverdue; MB[46].DspV = Borrower.OverdueAmt; MB[47].DspV = Borrower.HistoryOverdue; MB[48].DspV = Borrower.RegTime;
+                    LoadingBoxCtl(0); MovingBoxCTL.Open();
+                },
+                P5040104: function (BorrowerInfo) {
+                    ///<summary>加载融资方历史信息</summary><param name="BorrowerInfo">融资方信息</param>
+                    var Borrower = eval('(' + BorrowerInfo + ')');
+                    var MB = MovingBoxi.querySelectorAll(".ItemText");
+                    MB[0].DspV = Borrower.No; MB[1].innerText = Borrower.Name; MB[2].DspV = Borrower.BirthDay; MB[3].DspV = Borrower.Sex; MB[4].DspV = Borrower.CardAddress; MB[5].DspV = Borrower.CardID; MB[6].innerText = Borrower.Mobile; MB[7].innerText = Borrower.Email; MB[8].DspV = Borrower.Marry; MB[9].DspV = Borrower.Breed; MB[10].DspV = Borrower.Health; MB[11].DspV = Borrower.IsSafety;
+                    MB[12].querySelectorAll("label")[0].innerText = Borrower.LivePro; MB[12].querySelectorAll("label")[1].innerText = Borrower.LiveCity; MB[12].querySelectorAll("label")[2].innerText = Borrower.LiveStreet; MB[13].DspV = Borrower.School; MB[14].DspV = Borrower.Edu; MB[15].innerText = Borrower.EduNo; MB[16].innerText = Borrower.Company; MB[17].DspV = Borrower.ComProperty;
+                    MB[18].DspV = Borrower.JobTime; MB[19].innerText = Borrower.JobTel; MB[20].DspV = Borrower.Job; MB[21].innerText = Borrower.CompanyTel; MB[22].innerText = Borrower.CompanyWeb; MB[23].innerText = Borrower.ColleagueName; MB[24].innerText = Borrower.ColleagueTel; MB[25].DspV = Borrower.MTotalIn; MB[26].DspV = Borrower.MTotalOut; MB[27].DspV = Borrower.MClearIn;
+                    MB[28].DspV = Borrower.TotalAsset; MB[29].DspV = Borrower.TotalDebt; MB[30].DspV = Borrower.ClearAsset; MB[31].DspV = Borrower.CourtsExe; MB[32].DspV = Borrower.CreditState; MB[33].innerText = Borrower.SpouseName; MB[34].innerText = Borrower.SpouseTel; MB[35].innerText = Borrower.SpouseCardID; MB[36].innerText = Borrower.SpouseCompany; MB[37].innerText = Borrower.FamilyName;
+                    MB[38].innerText = Borrower.FamilyTel; MB[39].innerText = Borrower.FamilyCardID; MB[40].innerText = Borrower.FamilyCompany; MB[41].DspV = Borrower.CaseNum; MB[42].DspV = Borrower.CaseTotalAmt; MB[43].DspV = Borrower.NowDebtNum; MB[44].DspV = Borrower.NowTotalDebtAmt; MB[45].DspV = Borrower.NowOverdue; MB[46].DspV = Borrower.OverdueAmt; MB[47].DspV = Borrower.HistoryOverdue; MB[48].DspV = Borrower.RegTime;
+                    LoadingBoxCtl(0); MovingBoxCTL.Open();
+                },
+                P5040105: function (PawnInfo) {
+                    ///<summary>加载抵押物信息</summary></param name="PawnInfo">抵押物信息</param>
+                    var Pawn = eval('(' + PawnInfo + ')');
+                    var MB = MovingBoxi.querySelectorAll(".ItemText");
+                    MB[0].DspV = Pawn.Name; MB[1].DspV = Pawn.Source; MB[2].DspV = Pawn.Address; MB[3].DspV = Pawn.BTime; MB[4].DspV = Pawn.Holder; MB[5].DspV = Pawn.BPrice; MB[6].DspV = Pawn.Use; MB[7].DspV = Pawn.MPrice; MB[8].DspV = Pawn.SType;
+                    MB[9].DspV = Pawn.AO; MB[10].DspV = Pawn.Seal; MB[11].DspV = Pawn.RechtNo; MovingBoxi.querySelector("textarea").value = Pawn.Remarks;
+                    LoadingBoxCtl(0); MovingBoxCTL.Open();
+                },
+                P5040106: function (InvesterInfo) {
+                    ///<summary>加载投资方信息</summary></param name="InvesterInfo">投资方信息</param>
+                    var Invester = eval('(' + InvesterInfo + ')');
+                    var MB = MovingBoxi.querySelectorAll(".ItemText");
+                    MB[0].DspV = Invester.No; MB[1].DspV = Invester.Name; MB[2].DspV = Invester.BirthDay; MB[3].DspV = Invester.Sex; MB[4].DspV = Invester.CardAddress; MB[5].DspV = Invester.CardID; MB[6].DspV = Invester.Mobile; MB[7].DspV = Invester.Email; MB[8].DspV = Invester.Marry; MB[9].DspV = Invester.Breed; MB[10].DspV = Invester.LivePro;
+                    MB[11].DspV = Invester.LiveCity; MB[12].DspV = Invester.LiveStreet; MB[13].DspV = Invester.Company; MB[14].DspV = Invester.ComProperty; MB[15].DspV = Invester.JobTime; MB[16].DspV = Invester.JobTel; MB[17].DspV = Invester.Job; MB[18].DspV = Invester.CompanyTel; MB[19].DspV = Invester.CompanyWeb; MB[20].DspV = Invester.InvestBody;
+                    MB[21].DspV = Invester.BorrowBody; MB[22].DspV = Invester.PawnRate; MB[23].DspV = Invester.AssureWay; MB[24].DspV = Invester.InvestArea1; MB[25].DspV = Invester.InvestArea2; MB[26].DspV = Invester.InvestAmt; MB[27].DspV = Invester.DayRate; MB[28].DspV = Invester.InvestLimitMin;
+                    MB[29].DspV = Invester.InvestLimitMax; MB[31].DspV = Invester.InvestCase; MB[32].DspV = Invester.CaseAmt;
+                    var SltConfigData = JSON.parse(P502.UIP.SltConfigData);
+                    Str = " <table style=\"width:100%\"><tr>"; var s = 0;
+                    for (var i in SltConfigData) {
+                        if (SltConfigData[i].Type == 7 && SltConfigData[i].Name != "混合资产") {
+                            s++;
+                            Str += "<td><div class=\"UpDownButton\" data-id=\"" + SltConfigData[i].ID + "\"></div>" + SltConfigData[i].Name + "</td>";
+                            if (s % 3 == 0) { Str += "</tr><tr>"; }
+                        }
+                    }
+                    Str += "</tr></table>";
+                    MovingBoxi.querySelectorAll(".ItemText")[30].innerHTML = Str;
+                    var PawnSlt = Invester.Pawn.split(",");
+                    for (var i = 0; i < PawnSlt.length; i++) { if (PawnSlt[i].length >= 2) { MB[30].querySelector("[data-id='" + PawnSlt[i] + "']").setAttribute("data-sw", "1"); } }
+                    MovingBoxCTL.Open(); LoadingBoxCtl(0);
+                },
+                P5040107: function (CompanyInfo) {
+                    ///<summary>加载企业信息</summary></param name="CompanyInfo">企业信息</param>
+                    var Company = eval('(' + CompanyInfo + ')');
+                    var MB = MovingBoxi.querySelectorAll(".ItemText");
+                    MB[0].DspV = Company.Name; MB[1].DspV = Company.Address; MB[2].DspV = Company.RegTime; MB[3].DspV = Company.RegPrice; MB[4].DspV = Company.Trade; MB[5].DspV = Company.LegalPerson; MB[6].DspV = Company.MaxShareHolder; MB[7].DspV = Company.ShareHolderNum; MB[8].DspV = Company.StaffNum;
+                    MB[9].DspV = Company.TotalAsset; MB[10].DspV = Company.TotalBorrow; MB[11].DspV = Company.NowBorrow; MB[12].DspV = Company.ClearAsset; MB[13].DspV = Company.SalesAmt; MB[14].DspV = Company.TaxSalesAmt; MB[15].DspV = Company.ClearProfit; MB[16].DspV = Company.CourtsExe; MB[17].DspV = Company.CreditState;
+                    LoadingBoxCtl(0); MovingBoxCTL.Open();
+                },
+            },
+        }
+    </script>
+
+    <!--已结案债权-->
+    <script type="text/javascript">
+        var P50402 = {
+            FocusItem: Object,
+            LoadItem: { First: "", From: 0, Num: 10 },
+            Del: function () {
+                if (ItemContainer.contains(this.FocusItem.parentNode)) { ItemContainer.removeChild(this.FocusItem.parentNode); };
+                ReCalcItemSize();
+            },
+            BtAction: function (BtObj, Act) {
+                switch (Act) {
+                    case 1:
+                        this.FocusItem = BtObj;
+                        var ItemSN = BtObj.parentNode.querySelector(".Hidden").DspV;
+                        if (BtObj.getAttribute("data-btst") != "D") {
+                            TransingStatus.SetStatus(1);
+                            BtObj.setAttribute("data-btst", "D");
+                            this.STR.EVP5040203(ItemSN);
+                        }
+                        break;
+                    default:
+                        BtStatusClass(BtObj, 2);
+                        break;
+                }
+            },
+            UIP: { },
+            STR: {
+                EVP5040201: function (Num) {
+                    ///<summary>页面初始化</summary><param name="Num">信息数量</param>
+                    var BorrowList = JSON.stringify([
+                    { ItemSN: "A001", No: "U12155412", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 270, PaymentWay: "月付利息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98324483", BorrowBody: "企业", FundPurpose: "日常消费", ExamineState: "审核通过", PawnName: "无", InvestPro: "已还款", AdviserFee: "2" },
+                    { ItemSN: "A002", No: "U12155418", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 360, PaymentWay: "月付利息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98343554", BorrowBody: "企业", FundPurpose: "日常经营", ExamineState: "审核未过", PawnName: "无", InvestPro: "已取消", AdviserFee: "3.5" },
+                    { ItemSN: "A003", No: "U12155413", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 180, PaymentWay: "先息后本", DayRate: 0.25, Invester: "U11111158", Borrower: "U98334548", BorrowBody: "企业", FundPurpose: "日常经营", ExamineState: "审核通过", PawnName: "汽车", InvestPro: "已取消", AdviserFee: "0.6" }]);
+                    setTimeout("P50402.UID.P5040201('U12155412');", 500);
+                    setTimeout("P50402.UID.P5040202('" + BorrowList + "');", 500);
+                },
+                EVP5040202: function (First, From, Num) {
+                    ///<summary>加载更多信息</summary><param name="First">第一条信息的编号</param><param name="From">开始位置</param><param name="Num">信息数量</param>
+                    var BorrowList = JSON.stringify([
+                    { ItemSN: "A001", No: "U12155412", BorrowAmt: 515, AssureWay: "信用", BorrowLimit: 270, PaymentWay: "月付利息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98324483", BorrowBody: "企业", FundPurpose: "日常消费", ExamineState: "审核通过", PawnName: "无", InvestPro: "已还款", AdviserFee: "2" },
+                    { ItemSN: "A002", No: "U12155418", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 360, PaymentWay: "月付利息", DayRate: 0.25, Invester: "U11111158", Borrower: "U98343554", BorrowBody: "企业", FundPurpose: "日常经营", ExamineState: "审核未过", PawnName: "无", InvestPro: "已取消", AdviserFee: "3.5" },
+                    { ItemSN: "A003", No: "U12155413", BorrowAmt: 515, AssureWay: "抵押", BorrowLimit: 180, PaymentWay: "先息后本", DayRate: 0.25, Invester: "U11111158", Borrower: "U98334548", BorrowBody: "企业", FundPurpose: "日常经营", ExamineState: "审核通过", PawnName: "汽车", InvestPro: "已取消", AdviserFee: "0.6" }])
+                    setTimeout("P50402.UID.P5040202('" + BorrowList + "');", 1000);
+                },
+                EVP5040203: function (ItemSN) {
+                    ///<summary>删除债权</summary><param name="ItemSN">债权编号</param>
+                    console.log(ItemSN);
+                    setTimeout("P50402.UID.P5040203(true);", 1000);
+                }//删除债权
+            },
+            UID: {
+                P5040201: function (First) {
+                    ///<summary>初始化页面</summary><param name="First">第一条信息的编号</param>
+                    P50402.LoadItem.First = First;
+                },
+                P5040202: function (BorrowList) {
+                    ///<summary>加载项目信息</summary>
+                    if (MToolBar.BtID != 4) { return; }
+                    if (BorrowList == "") { Continue.innerText = 1; LoadingBoxCtl(0); LastItem = 1; return; }
+                    var BorrowInfo = JSON.parse(BorrowList); P50402.LoadItem.From += BorrowInfo.length;
+                    for (var i in BorrowInfo) {
+                        var NewItemTemplate = P50402i.children[0].cloneNode(true);
+                        NewItemTemplate.querySelectorAll(".ItemText")[0].DspV = BorrowInfo[i].No;
+                        NewItemTemplate.querySelectorAll(".ItemText")[1].DspV = BorrowInfo[i].BorrowAmt;
+                        NewItemTemplate.querySelectorAll(".ItemText")[2].DspV = BorrowInfo[i].AssureWay;
+                        NewItemTemplate.querySelectorAll(".ItemText")[3].DspV = BorrowInfo[i].BorrowLimit;
+                        NewItemTemplate.querySelectorAll(".ItemText")[4].DspV = BorrowInfo[i].PaymentWay;
+                        NewItemTemplate.querySelectorAll(".ItemText")[5].DspV = BorrowInfo[i].DayRate;
+                        NewItemTemplate.querySelectorAll(".ItemText")[6].DspV = BorrowInfo[i].Invester;
+                        NewItemTemplate.querySelectorAll(".ItemText")[7].DspV = BorrowInfo[i].PawnName;
+                        NewItemTemplate.querySelectorAll(".ItemText")[8].DspV = BorrowInfo[i].Borrower;
+                        NewItemTemplate.querySelectorAll(".ItemText")[9].DspV = BorrowInfo[i].ExamineState;
+                        NewItemTemplate.querySelectorAll(".ItemText")[10].DspV = BorrowInfo[i].AdviserFee;
+                        NewItemTemplate.querySelectorAll(".ItemText")[11].DspV = BorrowInfo[i].InvestPro;
+                        NewItemTemplate.querySelector(".Hidden").DspV = BorrowInfo[i].ItemSN;
+                        ItemContainer.appendChild(NewItemTemplate);
+                    }
+                    ReCalcItemSize();
+                    Continue.innerText = 1; LoadingBoxCtl(0);
+                },
+                P5040203: function (Res) {
+                    if (Res) { P50402.Del(); TransingStatus.SetStatus(3); } else { TransingStatus.SetStatus(2); }
+                    P50402.FocusItem.setAttribute("data-btst", "E");
+                },
+            },
+        }
+    </script>
+
+    <!--选项卡-->
+    <script type="text/javascript">
+        var MToolBar = {
+            LastObj: null, BtID: 0,
+            BtAction: function (obj, act, BtID) {//1:down,2:up
+                if (BtStatusClass(obj, 0) == 4) { return; }
+                if (act == 1) { BtStatusClass(obj, 2); return; }
+                if (this.LastObj != null) { BtStatusClass(this.LastObj, 1); }
+                if (act == 2) { BtStatusClass(obj, 4); }
+                this.LastObj = obj; this.BtID = BtID;
+                switch (BtID) {
+                    case 1: LoadingBoxCtl(1); LastItem = 0; MovingBoxCTL.Close(); P502.LoadItem.First = 0; P502.LoadItem.From = 0; ItemContainer.innerHTML = ""; P502.STR.EVP50201(20); break;
+                    case 2: LoadingBoxCtl(1); LastItem = 0; MovingBoxCTL.Close(); P503.LoadItem.First = 0; P503.LoadItem.From = 0; ItemContainer.innerHTML = ""; P503.STR.EVP50301(20); break;
+                    case 3: LoadingBoxCtl(1); LastItem = 0; MovingBoxCTL.Close(); P50401.LoadItem.First = 0; P50401.LoadItem.From = 0; ItemContainer.innerHTML = ""; P50401.STR.EVP5040101(20); break;
+                    case 4: LoadingBoxCtl(1); LastItem = 0; MovingBoxCTL.Close(); P50402.LoadItem.First = 0; P50402.LoadItem.From = 0; ItemContainer.innerHTML = ""; P50402.STR.EVP5040201(20); break;
+                    default: break;
+                }
+                ReCalcItemSize();
+            }
+        };
+    </script>
+    <!--主要显示区-->
+    <div id="TopBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules\TopBar.html"></iframe></div>
+    <div id="MainZone" onscroll="ScrollTracker(this)">
+        <div class="LocationBar"><label>你的位置</label><a style="cursor: pointer;" onclick="javascript: LoadingBoxCtl(1); location.href = 'P802.html'">用户中心</a>&nbsp;-&nbsp;顾问管理</div>
+        <div id="ToolBar" class="UToolBCBG">
+            <div class="UToolBCBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 1)">预约中债权</div>
+            <div class="UToolBCBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 2)">审核中债权</div>
+            <div class="UToolBCBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 3)">已审核债权</div>
+            <div class="UToolBCBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 4)">已结案债权</div>
+        </div>
+        <div id="ItemContainer"></div>
+        <iframe style="height:0px;width:0px;visibility:collapse;" id="ItemSi" onload="ReCalcItemSize();"></iframe>
+    </div>
+    <div id="BottomBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules/BottomBar.html"></iframe></div>
+    <div class="MaskLayer" onmouseup="MovingBoxCTL.Close();"></div>
+    <div id="Continue">1</div>
+    <!--异步模版加载区-->
+    <script type="text/javascript">
+        LoadTP("P502", "", "P5"); LoadTP("P503", "", "P5");
+        LoadTP("P50401", "", "P5"); LoadTP("P50402", "", "P5");
+        LoadTP("UReasonReject01", "", "P5"); LoadTP("UReasonReject02", "", "P5");
+        LoadTP("LoadingBox"); LoadTP("TransingBox"); LoadJS("TransingBox"); LoadJS("InpRulesCk");
+        LoadTP("UInvestorInfo", "", "P5");
+        LoadTP("UCompanyInfo", "", "P5");
+        LoadTP("UFinancerInfo", "", "P5");
+        LoadTP("USecurities", "", "P5");
+        LoadTP("MovingBox", "MovingBoxi.style.display = '';"); LoadJS("MovingBox");
+    </script>
+</body>
+</html>

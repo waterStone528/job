@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="USaleApply" style="width:600px; color:white;">
+        <table class="GeneralItem" style="position:absolute; right:0px; left:0px; top:0px; bottom:95px; width:98%;">
+            <!--Sever need give the value in TD zone witch TD has id value-->
+            <tr>
+                <td class="ItemTitle">姓名</td>
+                <td class="ItemText" style="width:150px;">X</td>
+                <td class="ItemTitle">性别</td>
+                <td class="ItemText" style="width:150px;">X</td>
+            </tr>
+            <tr>
+                <td class="ItemTitle">出生日期</td>
+                <td class="ItemText">DYYYY/MM/DD</td>
+                <td class="ItemTitle">身份证号</td>
+                <td class="ItemText">X</td>
+            </tr>
+            <tr>
+                <td class="ItemTitle">手机</td>
+                <td class="ItemText">X</td>
+                <td class="ItemTitle">邮箱</td>
+                <td class="ItemTextInp"><input type="text" /></td>
+            </tr>
+            <tr>
+                <td class="ItemTitle">婚姻情况</td>
+                <td class="ItemTextInp"><select><option value="-1"></option></select></td>
+                <td class="ItemTitle">生育情况</td>
+                <td class="ItemTextInp"><select><option value="-1"></option><option value="0">未育</option><option value="1">已育</option></select></td>
+            </tr>
+            <tr><td class="ItemTitle">户口地址</td><td class="ItemText" colspan="3">X</td></tr>
+            <tr>
+                <td class="ItemTitle">当前住址</td>
+                <td colspan="3" style="white-space: nowrap; -ms-word-break: keep-all;">
+                    <label class="ItemTextInp" style="padding-bottom:2px;"><select style="width: 25%; display: inline-block;" onchange="P802.ChangeCity(this);"><option value="-1"></option></select></label>
+                    <label class="ItemTextInp" style="padding-bottom:2px;"><select style="width: 25%; display: inline-block;"><option></option></select></label>
+                    <label class="ItemTextInp"><input type="text" style="width: 47%;" /></label>
+                </td>
+            </tr>
+        </table>
+        <div class="memo" style="position:absolute; left:0px; bottom:30px;" >
+            <ul>
+                <li>非指定位置，严禁输入联系方式，违者取消发布资格。</li>
+                <li>申请资格需消费<label class="ItemText">N2D0</label>V币，账户余额<label class="ItemText">N2D0</label>V币</li>
+                <li>初始交易密码同登陆密码，可在<label class="ABtInTd" onmouseup="location.href = 'P803.html';">安全管理</label>中修改。</li>
+            </ul>
+        </div>
+        <div style="position: absolute; right:0px; bottom:5px;">
+            <div class="ABt" onmousedown="P802.BtAction(this, 0, 2)" onmouseup="P802.ASApplySubmit(this);">申请</div>
+        </div>
+        <div style="position:absolute;bottom:5px;right:150px;"><table class="GeneralItem"><tr><td class="ItemTitle">交易密码</td><td class="ItemTextInp"><input class="TradePW" type="password" /></td></tr></table> </div>
+
+        
+    </div>
+</body>
+</html>

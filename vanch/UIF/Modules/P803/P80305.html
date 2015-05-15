@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div style="float: left;" class="ItemSize GeneralItem">
+        <div class="UToolBCBG" style="position: relative; font-weight: 700; ">通知设定</div>
+        <table style="width: 100%; padding: 0px;" border="0">
+            <!--Sever need give the value in TD zone witch TD has id value-->
+            <tr>
+                <td class="ItemTitle" data-emp>通知条件</td>
+                <td class="ItemText">设定参数</td>
+            </tr>
+            <tr>
+                <td class="ItemTitle" data-emp>账单生成</td>
+                <td class="ItemTitle" data-emp><div class="UpDownButton MHand" onmouseup="P80305.ParamSet(this, 'AccountSMS');"></div>短信</td>
+                <td class="ItemTitle" data-emp><div class="UpDownButton MHand" onmouseup="P80305.ParamSet(this, 'AccountEmail');"></div>邮箱</td>
+            </tr>
+            <tr>
+                <td class="ItemTitle" data-emp>逾期提醒</td>
+                <td class="ItemTitle" data-emp><div class="UpDownButton MHand" onmouseup="P80305.ParamSet(this, 'TimeOutSMS');"></div>短信</td>
+                <td class="ItemTitle" data-emp><div class="UpDownButton MHand" onmouseup="P80305.ParamSet(this, 'TimeOutEmail');"></div>邮箱</td>
+            </tr>
+            <tr>
+                <td class="ItemTitle" data-emp>收到预约</td>
+                <td class="ItemTitle" data-emp><div class="UpDownButton MHand" onmouseup="P80305.ParamSet(this, 'BookSMS');"></div>短信</td>
+                <td class="ItemTitle" data-emp><div class="UpDownButton MHand" onmouseup="P80305.ParamSet(this, 'BookEmail');"></div>邮箱</td>
+            </tr>
+            <tr>
+                <td class="ItemTitle" data-emp>&nbsp;</td>
+            </tr>
+            <tr class="memo" style="line-height:25px;">
+                <td colspan="4">短信费用<label>N2D0</label>V币每条，邮件免费</td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">
+        parent.ItemContainer.appendChild(document.body.children[0]);
+        parent.ItemContainer.innerHTML = parent.ItemContainer.innerHTML;
+        parent.P803.STR.EVP80306();
+        parent.LoadingBoxCtl(0);
+    </script>
+</body>
+</html>

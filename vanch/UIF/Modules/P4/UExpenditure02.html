@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--资产购买预约消费-->
+    <div class="UExpenditure02" style="width:550px;">
+        <div style="position: absolute; right:50px; left:50px; bottom:50px; top:0px; color:white; overflow: auto; scrollbar-arrow-color: #313136; scrollbar-base-color: #313136; scrollbar-track-color: black; ">
+            <table class="GeneralItem">
+                <tr>
+                    <td class="ItemTitle" style="width:80px;">购买价格</td>
+                    <td><label class="ItemTextInp"><input type="text" style="width:150px;" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P401.UIP.BuyAmt);" /></label>万元</td>
+                </tr>
+            </table>
+        </div>
+        <div class="memo" style="position:absolute; left:0px;bottom:30px;">
+            <ul>
+                <li>•请确认出售方收到的款项后完成此操作</li>
+            </ul>
+        </div>
+        <div style="position: absolute; right:0px; bottom:5px;">
+            <div class="Bt BBt" onmousedown="P402.BtAction(this, 0)" onmouseup="P402.BtAction(this,1); ">确认</div>
+        </div>
+    </div>
+</body>
+</html>

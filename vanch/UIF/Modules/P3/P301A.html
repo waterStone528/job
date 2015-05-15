@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div style="float: left;" class="ItemSize GeneralItem">
+        <div id="InputDspP1" style="display: none;">
+            <table style="padding:0px;width:100%; height:140px;" border="0">
+                <tr>
+                    <td class="ItemTitle">资产类型</td>
+                    <td class="ItemTextInp" style="width:30%;"><select><option value="-1"></option></select></td>
+                    <td class="ItemTitle">资产来源</td>
+                    <td class="ItemTextInp" colspan="2"><select><option value="-1"></option></select></td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">资产区域</td>
+                    <td class="ItemTextInp"><select><option value="-1"></option></select></td>
+                    <td class="ItemTitle">获得时间</td>
+                    <td class="ItemTextInp" colspan="2"><div class="ItemDateInp" onmouseup="CControl.ItemInfoDsp(this);"></div></td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">使用情况</td>
+                    <td class="ItemTextInp"><select><option value="-1"></option></select></td>
+                    <td class="ItemTitle">获得成本</td>
+                    <td class="ItemTextInp"><input type="text" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P301.UIP.GetCost);" /></td><td>万</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">评估方</td>
+                    <td class="ItemTextInp"><input type="text" /></td>
+                    <td class="ItemTitle">市场价格</td>
+                    <td class="ItemTextInp"><input type="text" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P301.UIP.MarketAmt);" /></td><td>万</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">资产详情</td>
+                    <td class="ABtInTd" onmousedown="P301.BtAction(this, 0);" onmouseup="P301.BtAction(this, 2);">输入详情</td>
+                    <td class="ItemTitle">出售报价</td>
+                    <td class="ItemTextInp"><input type="text" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P301.UIP.SaleAmt);" /></td><td>万</td>
+                </tr>
+            </table>
+            <div class="memo" style="position:absolute; bottom:5px; display:none;"><ul><li>资产详情必须填写</li></ul></div>
+            <div style="float: right; margin-top:21px;" class="ABt" onmousedown="P301.BtAction(this, 0);" onmouseup="P301.BtAction(this, 1);">发布</div>
+        </div>
+        <div class="ABtInTd" id="Item1AMask" style="position:relative;height:inherit;width:inherit;text-align:center;cursor:pointer;" onmouseup="P301.DispSwitch(this, true);">
+            <table style="padding: 0px; width: 100%; height:144px; " border="0">
+                <tr><td class="ItemTitle" data-emp>&nbsp;</td><td colspan="2" rowspan="4" style="font-size:60px;text-align:center;vertical-align:middle;padding-top:28px;">+</td><td class="ItemTitle" data-emp>&nbsp;</td></tr>
+                <tr><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemTitle" data-emp>&nbsp;</td></tr>
+                <tr><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemTitle" data-emp>&nbsp;</td></tr>
+                <tr><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemTitle" data-emp>&nbsp;</td></tr>
+            </table>
+            <div class="ProgressBarA" style="background-color:transparent;"></div>
+            <div class="ABt-Disabled" style="background-color:transparent;">&nbsp;</div>
+        </div>
+
+    </div>
+</body>
+</html>

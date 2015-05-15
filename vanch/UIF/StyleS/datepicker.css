@@ -1,0 +1,120 @@
+﻿#datepicker {
+    position: absolute;
+    display: none;
+    left: 0px;
+    top: 0px;
+    background-color: #313136;
+    color: #b1b1b1;
+    font-family: 'Microsoft YaHei UI';
+    padding: 10px;
+    font-size: 18px;
+}
+
+    #datepicker table {
+        border: 0px;
+        text-align: center;
+        padding: 0px;
+    }
+
+    #datepicker .header {
+        height: 36px;
+    }
+
+    #datepicker .HeaderLine {
+        font-size: 1px;
+        height: 1px;
+        border-bottom: dotted 1px #b1b1b1;
+    }
+
+    #datepicker .header .prevMonth {
+        color: #2d8278;
+        cursor: pointer;
+        font-family: 'Lucida Bright';
+        font-weight: 900;
+        font-size: x-large;
+        border: solid 1px transparent;
+    }
+
+        #datepicker .header .prevMonth:hover {
+            color: #51a097;
+            border-color: #51a097;
+        }
+
+    #datepicker .header .yyyyMM {
+        font-weight: 600;
+    }
+
+    #datepicker .header .nextMonth {
+        color: #2d8278;
+        cursor: pointer;
+        font-family: 'Lucida Bright';
+        font-weight: 900;
+        font-size: x-large;
+        border: solid 1px transparent;
+    }
+
+        #datepicker .header .nextMonth:hover {
+            color: #51a097;
+            border-color: #51a097;
+        }
+
+    #datepicker .week0 {
+        height: 36px;
+        width: 50px;
+        font-weight: 700;
+    }
+
+    #datepicker .week1, #datepicker .week2, #datepicker .week3,
+    #datepicker .week4, #datepicker .week5, #datepicker .week6 {
+        width: 50px;
+        font-weight: 700;
+    }
+
+    #datepicker .disable_day {
+        cursor: auto;
+        border: solid 1px #313136;
+    }
+
+        #datepicker .disable_day:hover {
+            cursor: wait;
+        }
+
+    #datepicker .current_month {
+        color: #2d8278;
+        cursor: pointer;
+        border: solid 1px #313136;
+    }
+
+        #datepicker .current_month:hover {
+            color: #51a097;
+            border-color: #51a097;
+        }
+
+    #datepicker .other_month {
+        border: solid;
+        border-width: 1px;
+        border-color: #313136;
+        cursor: pointer;
+    }
+
+        #datepicker .other_month:hover {
+            color: #51a097;
+            border-color: #51a097;
+        }
+
+    #datepicker .today {
+        color: #2d8278;
+        cursor: pointer;
+        border: solid 1px #505058;
+    }
+
+        #datepicker .today:hover {
+            color: #51a097;
+            border-color: #51a097;
+        }
+
+    #datepicker .bottom {
+    }
+
+        #datepicker .bottom button {
+        }

@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="SearchBar">
+        <div class="DropDown" style="z-index:2;">
+            <div class="ItemDisp" onmousedown="Offset(this);">
+                <label class="text" data-sltdid="0">融资方</label><label><i class="icon-arrow-down"></i></label>
+            </div>
+            <div class="OptionContainer">
+                <label class="Option" style="background-color: #3399ff;" data-did="0" onmousedown="readvalue(this); P101.SearchSubmit('BorrowBody', this);">融资方</label>
+                <label class="Option" data-did="1" onmousedown="readvalue(this); P101.SearchSubmit('BorrowBody', this);">企业</label>
+                <label class="Option" data-did="2" onmousedown="readvalue(this); P101.SearchSubmit('BorrowBody', this);">个人</label>
+            </div>
+        </div>
+        <div class="DropDown" style="z-index:2;">
+            <div class="ItemDisp" onmousedown="Offset(this);">
+                <label class="text" data-sltdid="0">保证方式</label><label><i class="icon-arrow-down"></i></label>
+            </div>
+            <div class="OptionContainer">
+                <label class="Option" style="background-color: #3399ff;" data-did="0" onmousedown="readvalue(this); P101.SearchSubmit('AssureWay', this);">保证方式</label>
+            </div>
+        </div>
+        <div class="DropDown" style="z-index:2;">
+            <div class="ItemDisp" onmousedown="Offset(this);">
+                <label class="text" data-sltdid="0">还款方式</label><label><i class="icon-arrow-down"></i></label>
+            </div>
+            <div class="OptionContainer">
+                <label class="Option" style="background-color: #3399ff;" data-did="0" onmousedown="readvalue(this); P101.SearchSubmit('PaymentWay', this);">还款方式</label>
+            </div>
+        </div>
+        <div class="DropDown" style="z-index:2;">
+            <div class="ItemDisp" onmousedown="Offset(this);">
+                <label class="text" data-sltdid="0">资金用途</label><label><i class="icon-arrow-down"></i></label>
+            </div>
+            <div class="OptionContainer">
+                <label class="Option" style="background-color: #3399ff;" data-did="0" onmousedown="readvalue(this); P101.SearchSubmit('FundPurpose', this);">资金用途</label>
+            </div>
+        </div>
+        <div class="DropDown" style="z-index:2;">
+            <div class="ItemDisp" onmousedown="Offset(this);">
+                <label class="text" data-sltdid="0">借款期限</label><label><i class="icon-arrow-down"></i></label>
+            </div>
+            <div class="OptionContainer">
+                <label class="Option" style="background-color: #3399ff;" data-did="0" onmousedown="readvalue(this); P101.SearchSubmit('BorrowLimit', this);">借款期限</label>
+                <label class="Option" data-did="1" onmousedown="readvalue(this); P101.SearchSubmit('BorrowLimit', this);">借款期限&nbsp;&nbsp;↑</label>
+                <label class="Option" data-did="2" onmousedown="readvalue(this); P101.SearchSubmit('BorrowLimit', this);">借款期限&nbsp;&nbsp;↓</label>
+            </div>
+        </div>
+        <div class="DropDown" style="z-index:2;">
+            <div class="ItemDisp" onmousedown="Offset(this);">
+                <label class="text" data-sltdid="0">借款金额</label><label><i class="icon-arrow-down"></i></label>
+            </div>
+            <div class="OptionContainer">
+                <label class="Option" style="background-color: #3399ff;" data-did="0" onmousedown="readvalue(this); P101.SearchSubmit('BorrowAmt', this);">借款金额</label>
+                <label class="Option" data-did="1" onmousedown="readvalue(this); P101.SearchSubmit('BorrowAmt', this);">借款金额&nbsp;&nbsp;↑</label>
+                <label class="Option" data-did="2" onmousedown="readvalue(this); P101.SearchSubmit('BorrowAmt', this);">借款金额&nbsp;&nbsp;↓</label>
+            </div>
+        </div>
+        <div class="DropDown" style="z-index:2;">
+            <div class="ItemDisp" onmousedown="Offset(this);">
+                <label class="text" data-sltdid="0">日利率</label><label><i class="icon-arrow-down"></i></label>
+            </div>
+            <div class="OptionContainer">
+                <label class="Option" style="background-color: #3399ff;" data-did="0" onmousedown="readvalue(this); P101.SearchSubmit('DayRate', this);">日利率</label>
+                <label class="Option" data-did="1" onmousedown="readvalue(this); P101.SearchSubmit('DayRate', this);">日利率&nbsp;&nbsp;↑</label>
+                <label class="Option" data-did="2" onmousedown="readvalue(this); P101.SearchSubmit('DayRate', this);">日利率&nbsp;&nbsp;↓</label>
+            </div>
+        </div>
+        <div class="DropDown" style="z-index:2;">
+            <div class="ItemDisp" onmousedown="Offset(this);">
+                <label class="text" data-sltdid="0">抵押率</label><label><i class="icon-arrow-down"></i></label>
+            </div>
+            <div class="OptionContainer">
+                <label class="Option" style="background-color: #3399ff;" data-did="0" onmousedown="readvalue(this); P101.SearchSubmit('PawnRate', this);">抵押率</label>
+                <label class="Option" data-did="1" onmousedown="readvalue(this); P101.SearchSubmit('PawnRate', this);">抵押率&nbsp;&nbsp;↑</label>
+                <label class="Option" data-did="2" onmousedown="readvalue(this); P101.SearchSubmit('PawnRate', this);">抵押率&nbsp;&nbsp;↓</label>
+            </div>
+        </div>
+        <div class="DropDown" style="z-index:2;">
+            <div class="ItemDisp" onmousedown="Offset(this);">
+                <label class="text" data-sltdid="0">区域-市</label><label><i class="icon-arrow-down"></i></label>
+            </div>
+            <div class="OptionContainer">
+                <label class="Option" style="background-color: #3399ff;" data-did="-1" onmousedown="readvalue(this); P101.SearchSubmit('City', this);">区域-市</label>
+            </div>
+        </div>
+        <div class="DropDown" style="z-index:2;">
+            <div class="ItemDisp" onmousedown="Offset(this);">
+                <label class="text" data-sltdid="0">区域-省</label><label><i class="icon-arrow-down"></i></label>
+            </div>
+            <div class="OptionContainer">
+                <label class="Option" style="background-color: #3399ff;" data-did="-1" onmousedown="readvalue(this); P101.SearchSubmit('Province', this);">区域-省</label>
+            </div>
+        </div>
+        <div class="DropDown" style="z-index:1;">
+            <div style="position: relative; "><input type="text" /><div class="icon-search" style="font-size: 15px; position: absolute; top: 5px; right: 5px; color: #d51717;" onmouseup="P101.SearchSubmit('Keyword', this);"></div></div>
+        </div>
+    </div>
+</body>
+</html>

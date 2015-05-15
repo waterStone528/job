@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--结案确认-->
+    <div class="UCloseCase" style="width:550px;">
+        <div class="GeneralItem" style="position: absolute; right:0px; left:0px; bottom:80px; top:0px; ">
+            <table>
+                <tr>
+                    <td class="ItemTitle">还款日期</td>
+                    <td class="ItemTextInp"><div class="ItemDateInp" onmouseup="CControl.ItemInfoDsp(this, 0);" style="width:180px;">&nbsp;</div></td>
+                </tr>
+            </table>
+        </div>
+        <div class="memo" style="position: absolute; left:0px; bottom:30px;">
+            <ul>
+                <li>还款日期：今天 ≥ 输入日期 ≥ 今天-7日</li>
+                <li>已收到还款 或 已完成资产处置 再执行此操作</li>
+            </ul>
+        </div>
+        <div style="position: absolute; right:0px; bottom:5px;">
+            <div class="Bt BBt" onmousedown="P103.BtAction(this, 0);" onmouseup="P103.BtAction(this, 1);">确认</div>
+        </div>
+    </div>
+</body>
+</html>

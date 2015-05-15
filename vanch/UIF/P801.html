@@ -1,0 +1,1061 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>VANCH凡奇金融 - 基本信息</title>
+    <link rel="stylesheet" type="text/css" href="ComStyle.css" />
+    <script type="text/javascript" src="ComScript\CommCtrl.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body onresize="bodyresize()" onload="bodyLoad()">
+    <!--页面动态功能处理-->
+    <script type="text/javascript">
+        function bodyLoadScript() {
+            ToolBar.querySelectorAll("div")[0].onmouseup();
+        }
+        function bodyResizeScript() { }
+
+        var P801 = {
+            BtObj: null,
+            FocusItem: null,
+            ChangeCity: function (Obj) {
+                if (Obj.value.length > 2) {
+                    LoadingBoxCtl(1); this.FocusItem = Obj.parentElement.parentElement; this.STR.EVP8010105(Obj.value);
+                } else {
+                    Obj.parentNode.parentNode.querySelectorAll("select")[1].options.length = 1;
+                }
+            },
+            UpDateHint: function (InpObj, VarObj) {
+                if (InpObj.value == parseFloat(InpObj.value)) {
+                    VarObj.Min = InpObj.value;
+                    var SideInpID = InpObj.parentNode.parentNode.querySelectorAll("input")[1].uniqueID;
+                    try {
+                        if (InpObj.parentNode.parentNode.querySelectorAll("input")[1].value.length == 0 && document.querySelectorAll("#Err4" + SideInpID).length == 0) {
+                            document.querySelector("#IRC" + SideInpID).removeNode(true);
+                            VarObj.Min = InpObj.value;
+                            if (parseFloat(VarObj.Max)) {
+                                IRC.Init(InpObj.parentNode.parentNode.querySelectorAll("input")[1], VarObj, InpObj.value + "~" + VarObj.Max);
+                            } else {
+                                IRC.Init(InpObj.parentNode.parentNode.querySelectorAll("input")[1], VarObj, ">=" + VarObj.Min);
+                            }
+                        }
+
+                    } catch (err) { };
+                }
+            },
+            SltInit: function (Num) {
+                var SltConfigData = JSON.parse(P801.UIP.SltConfigData);
+                switch (Num) {
+                    case 1:
+                        P8010101i.querySelectorAll("#Mod01App .ItemTextInp>select")[0].options.length = 1;
+                        P8010101i.querySelectorAll("#Mod01App .ItemTextInp>select")[2].options.length = 1;
+                        P8010102i.querySelectorAll("#Mod02App .ItemTextInp>select")[0].options.length = 1;
+                        P8010102i.querySelectorAll("#Mod02App .ItemTextInp>select")[2].options.length = 1;
+                        P8010102i.querySelectorAll("#Mod02App .ItemTextInp>select")[3].options.length = 1;
+                        P8010103i.querySelectorAll("#Mod03App .ItemTextInp>select")[0].options.length = 1;
+                        var s = 0, Str = " <table style=\"width:100%\"><tr>";
+                        for (var i in SltConfigData) {
+                            switch (SltConfigData[i].Type) {
+                                case 0:
+                                    P8010101i.querySelectorAll("#Mod01App .ItemTextInp>select")[2].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    P8010102i.querySelectorAll("#Mod02App .ItemTextInp>select")[3].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 2:
+                                    P8010101i.querySelectorAll("#Mod01App .ItemTextInp>select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 3:
+                                    P8010103i.querySelectorAll("#Mod03App .ItemTextInp>select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 4:
+                                    P8010102i.querySelectorAll("#Mod02App .ItemTextInp>select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 6:
+                                    P8010102i.querySelectorAll("#Mod02App .ItemTextInp>select")[2].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 7:
+                                    s++;
+                                    Str += "<td><div class=\"UpDownButton MHand\" data-id=\"" + SltConfigData[i].ID + "\" onmouseup=\"if (this.getAttribute('data-sw') == '1') { this.setAttribute('data-sw', 0); this.className = this.className; } else { this.setAttribute('data-sw', 1); this.className = this.className; }\"></div>" + SltConfigData[i].Name + "</td>";
+                                    if (s % 3 == 0) { Str += "</tr><tr>"; }
+                                    break;
+                            }
+                        }
+                        Str += "</tr></table>";
+                        P8010102i.querySelectorAll("#Mod02App .ItemTextInp")[10].innerHTML = Str;
+                        break;
+                    case 2:
+                        P8010201i.querySelectorAll("#Mod01App .ItemTextInp>select")[0].options.length = 1;
+                        P8010201i.querySelectorAll("#Mod01App .ItemTextInp>select")[2].options.length = 1;
+                        P8010201i.querySelectorAll("#Mod01App .ItemTextInp>select")[4].options.length = 1;
+                        P8010201i.querySelectorAll("#Mod01App .ItemTextInp>select")[6].options.length = 1;
+                        P8010202i.querySelectorAll("#Mod02App .ItemTextInp>select")[0].options.length = 1;
+                        P8010203i.querySelectorAll("#Mod03App .ItemTextInp>select")[0].options.length = 1;
+                        P8010204i.querySelectorAll("#Mod04App .ItemTextInp>select")[1].options.length = 1;
+                        for (var i in SltConfigData) {
+                            switch (SltConfigData[i].Type) {
+                                case 0:
+                                    P8010201i.querySelectorAll("#Mod01App .ItemTextInp>select")[4].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 1:
+                                    P8010202i.querySelectorAll("#Mod02App .ItemTextInp>select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 2:
+                                    P8010201i.querySelectorAll("#Mod01App .ItemTextInp>select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 3:
+                                    P8010203i.querySelectorAll("#Mod03App .ItemTextInp>select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 8:
+                                    P8010201i.querySelectorAll("#Mod01App .ItemTextInp>select")[6].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 9:
+                                    P8010201i.querySelectorAll("#Mod01App .ItemTextInp>select")[2].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 10:
+                                    P8010204i.querySelectorAll("#Mod04App .ItemTextInp>select")[1].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                            }
+                        }
+                        break;
+                    case 3:
+                        P8010301i.querySelectorAll("#Mod01App .ItemTextInp>select")[0].options.length = 1;
+                        P8010301i.querySelectorAll("#Mod01App .ItemTextInp>select")[2].options.length = 1;
+                        for (var i in SltConfigData) {
+                            switch (SltConfigData[i].Type) {
+                                case 0:
+                                    P8010301i.querySelectorAll("#Mod01App .ItemTextInp>select")[2].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 2:
+                                    P8010301i.querySelectorAll("#Mod01App .ItemTextInp>select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                            }
+                        }
+                        break;
+                    case 4:
+                        var s = 0, Str = " <table style=\"width:100%\"><tr>";
+                        P8010401i.querySelectorAll("#Mod01App .ItemTextInp>select")[0].options.length = 1;
+                        P8010401i.querySelectorAll("#Mod01App .ItemTextInp>select")[2].options.length = 1;
+                        P8010402i.querySelectorAll("#Mod02App .ItemTextInp>select")[0].options.length = 1;
+
+                        for (var i in SltConfigData) {
+                            switch (SltConfigData[i].Type) {
+                                case 0:
+                                    P8010401i.querySelectorAll("#Mod01App .ItemTextInp>select")[2].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    P8010402i.querySelectorAll("#Mod02App .ItemTextInp>select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 2:
+                                    P8010401i.querySelectorAll("#Mod01App .ItemTextInp>select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 7:
+                                    s++;
+                                    Str += "<td><div class=\"UpDownButton MHand\" data-id=\"" + SltConfigData[i].ID + "\" onmouseup=\"if (this.getAttribute('data-sw') == '1') { this.setAttribute('data-sw', 0); this.className = this.className; } else { this.setAttribute('data-sw', 1); this.className = this.className; }\"></div>" + SltConfigData[i].Name + "</td>";
+                                    if (s % 3 == 0) { Str += "</tr><tr>"; }
+                                    break;
+                            }
+                        }
+                        Str += "</tr></table>";
+                        P8010402i.querySelectorAll("#Mod02App .ItemTextInp")[3].innerHTML = Str;
+                        break;
+                    case 5:
+                        P8010501i.querySelectorAll("#Mod01App .ItemTextInp>select")[0].options.length = 1;
+                        P8010501i.querySelectorAll("#Mod01App .ItemTextInp>select")[2].options.length = 1;
+                        P8010501i.querySelectorAll("#Mod01App .ItemTextInp>select")[4].options.length = 1;
+                        P8010502i.querySelectorAll("#Mod02App .ItemTextInp>select")[0].options.length = 1;
+                        P8010502i.querySelectorAll("#Mod02App .ItemTextInp>select")[1].options.length = 1;
+                        P8010503i.querySelectorAll("#Mod03App .ItemTextInp>select")[0].options.length = 1;
+                        for (var i in SltConfigData) {
+                            switch (SltConfigData[i].Type) {
+                                case 0:
+                                    P8010501i.querySelectorAll("#Mod01App .ItemTextInp>select")[2].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    P8010503i.querySelectorAll("#Mod03App .ItemTextInp>select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 2:
+                                    P8010501i.querySelectorAll("#Mod01App .ItemTextInp>select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 3:
+                                    P8010502i.querySelectorAll("#Mod02App .ItemTextInp>select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 8:
+                                    P8010501i.querySelectorAll("#Mod01App .ItemTextInp>select")[4].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 11:
+                                    P8010502i.querySelectorAll("#Mod02App .ItemTextInp>select")[1].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                            }
+                        }
+                        break;
+                }
+            },
+            UIP: {
+                SltConfigData: JSON.stringify([
+                    { Type: 0, ID: "A01", Name: "浙江", ParentID: 0 }, { Type: 0, ID: "A02", Name: "广东", ParentID: 0 }, { Type: 0, ID: "A03", Name: "黑龙江", ParentID: 0 },
+                    { Type: 1, ID: 31, Name: "父", Parent: 0 }, { Type: 1, ID: 32, Name: "母", Parent: 0 }, { Type: 1, ID: 33, Name: "子", Parent: 0 }, { Type: 1, ID: 34, Name: "女", Parent: 0 },
+                    { Type: 2, ID: 1, Name: "未婚", ParentID: 0 }, { Type: 2, ID: 2, Name: "已婚", ParentID: 0 }, { Type: 2, ID: 3, Name: "离异", ParentID: 0 }, { Type: 2, ID: 4, Name: "丧偶", ParentID: 0 },
+                    { Type: 3, ID: 1, Name: "国有企业", ParentID: 0 }, { Type: 3, ID: 2, Name: "外资企业", ParentID: 0 }, { Type: 3, ID: 3, Name: "合资企业", ParentID: 0 }, { Type: 3, ID: 4, Name: "民营企业", ParentID: 0 }, { Type: 3, ID: 5, Name: "个体商户", ParentID: 0 }, { Type: 3, ID: 6, Name: "政府机关", ParentID: 0 }, { Type: 3, ID: 7, Name: "事业单位", ParentID: 0 },
+                    { Type: 4, ID: 1, Name: "个人", ParentID: 0 }, { Type: 4, ID: 2, Name: "银行", ParentID: 0 }, { Type: 4, ID: 3, Name: "信托", ParentID: 0 }, { Type: 4, ID: 4, Name: "基金", ParentID: 0 }, { Type: 4, ID: 5, Name: "券商", ParentID: 0 }, { Type: 4, ID: 6, Name: "典当行", ParentID: 0 },
+                    { Type: 4, ID: 7, Name: "保险公司", ParentID: 0 }, { Type: 4, ID: 8, Name: "小贷公司", ParentID: 0 }, { Type: 4, ID: 9, Name: "投资公司", ParentID: 0 }, { Type: 4, ID: 10, Name: "其他企业", ParentID: 0 }, { Type: 4, ID: 11, Name: "政府机关", ParentID: 0 },
+                    { Type: 6, ID: 1, Name: "信用", ParentID: 0 }, { Type: 6, ID: 2, Name: "抵押", ParentID: 0 }, { Type: 6, ID: 3, Name: "担保+抵押", ParentID: 0 }, { Type: 6, ID: 4, Name: "其它", ParentID: 0 },
+                    { Type: 7, ID: "A1", Name: "住宅房", ParentID: 0 }, { Type: 7, ID: "A2", Name: "办公楼", ParentID: 0 }, { Type: 7, ID: "A3", Name: "商铺", ParentID: 0 }, { Type: 7, ID: "A4", Name: "工业用地", ParentID: 0 }, { Type: 7, ID: "A5", Name: "商业用地", ParentID: 0 }, { Type: 7, ID: "A6", Name: "汽车", ParentID: 0 },
+                    { Type: 7, ID: "A7", Name: "贵金属", ParentID: 0 }, { Type: 7, ID: "A8", Name: "收藏品", ParentID: 0 }, { Type: 7, ID: "A9", Name: "股权", ParentID: 0 }, { Type: 7, ID: "A10", Name: "债券", ParentID: 0 }, { Type: 7, ID: "A11", Name: "厂房", ParentID: 0 }, { Type: 7, ID: "A12", Name: "其它", ParentID: 0 },
+                    { Type: 8, ID: 1, Name: "博士", ParentID: 0 }, { Type: 8, ID: 2, Name: "硕士", ParentID: 0 }, { Type: 8, ID: 3, Name: "本科", ParentID: 0 }, { Type: 8, ID: 4, Name: "大专", ParentID: 0 },
+                    { Type: 8, ID: 5, Name: "高中", ParentID: 0 }, { Type: 8, ID: 6, Name: "中专", ParentID: 0 }, { Type: 8, ID: 7, Name: "初中", ParentID: 0 }, { Type: 8, ID: 8, Name: "小学", ParentID: 0 },
+                    { Type: 9, ID: 1, Name: "健康", ParentID: 0 }, { Type: 9, ID: 2, Name: "疾病", ParentID: 0 }, { Type: 9, ID: 3, Name: "伤残", ParentID: 0 },
+                    { Type: 10, ID: 1, Name: "正常", ParentID: 0 }, { Type: 10, ID: 2, Name: "逾期中", ParentID: 0 },
+                    { Type: 11, ID: 1, Name: "银行", Parent: 0 }, { Type: 11, ID: 2, Name: "信托", Parent: 0 }, { Type: 11, ID: 3, Name: "基金", Parent: 0 }, { Type: 11, ID: 4, Name: "券商", Parent: 0 }, { Type: 11, ID: 5, Name: "典当行", Parent: 0 }, { Type: 11, ID: 6, Name: "保险公司", Parent: 0 }, { Type: 11, ID: 7, Name: "小贷公司", Parent: 0 }, { Type: 11, ID: 8, Name: "投资公司", Parent: 0 }, { Type: 11, ID: 9, Name: "担保公司", Parent: 0 }, { Type: 11, ID: 10, Name: "机构组织", Parent: 0 }, { Type: 11, ID: 11, Name: "农林牧渔", Parent: 0 },
+                    { Type: 11, ID: 12, Name: "医药卫生", Parent: 0 }, { Type: 11, ID: 13, Name: "建筑建材", Parent: 0 }, { Type: 11, ID: 14, Name: "冶金矿产", Parent: 0 }, { Type: 11, ID: 15, Name: "煤炭石油", Parent: 0 }, { Type: 11, ID: 16, Name: "化工化纤", Parent: 0 }, { Type: 11, ID: 17, Name: "水电热气", Parent: 0 }, { Type: 11, ID: 16, Name: "交通运输", Parent: 0 }, { Type: 11, ID: 17, Name: "信息产业", Parent: 0 }, { Type: 11, ID: 18, Name: "商业贸易", Parent: 0 }, { Type: 11, ID: 19, Name: "机械机电", Parent: 0 },
+                    { Type: 11, ID: 20, Name: "酿酒食品", Parent: 0 }, { Type: 11, ID: 21, Name: "服装纺织", Parent: 0 }, { Type: 11, ID: 22, Name: "专业服务", Parent: 0 }, { Type: 11, ID: 23, Name: "安全防护", Parent: 0 }, { Type: 11, ID: 24, Name: "环保绿化", Parent: 0 }, { Type: 11, ID: 25, Name: "旅游休闲", Parent: 0 }, { Type: 11, ID: 26, Name: "电子电工", Parent: 0 }, { Type: 11, ID: 27, Name: "玩具礼品", Parent: 0 }, { Type: 11, ID: 28, Name: "家居用品", Parent: 0 }, { Type: 11, ID: 29, Name: "物资专材", Parent: 0 },
+                    { Type: 11, ID: 30, Name: "包装用品", Parent: 0 }, { Type: 11, ID: 31, Name: "体育用品", Parent: 0 }, { Type: 11, ID: 32, Name: "办公用品", Parent: 0 }, { Type: 11, ID: 33, Name: "集团", Parent: 0 }, { Type: 11, ID: 34, Name: "住宿餐饮", Parent: 0 }, { Type: 11, ID: 35, Name: "房地产", Parent: 0 }, { Type: 11, ID: 36, Name: "教育传媒", Parent: 0 }, { Type: 11, ID: 37, Name: "娱乐业", Parent: 0 }
+                ]),
+                PawnRate: { Min: null, Max: null },         //抵押率
+                InvestAmt: { Min: 5, Max: null },           //投资金额
+                DayRate: { Min: null, Max: null },          //日利率（利率要求）
+                InvestLimit: { Min: 0, Max: 9999 },         //投资期限
+                BayAmt: { Min: 0, Max: 9999 },              //价格区间(资产购买)
+                MTIn: { Min: null, Max: null },             //月总收入
+                MTOut: { Min: null, Max: null },            //月总支出
+                MCIn: { Min: null, Max: null },             //月净收入
+                TAsset: { Min: null, Max: null },           //总资产
+                TLiability: { Min: null, Max: null },       //总负债
+                CAsset: { Min: null, Max: null },           //净资产
+            },
+            STR: {
+                EVP8010101: function () {
+                    ///<summary>页面初始化</summary>
+                    var UserInfo = { No: "U00001", Name: "刘德华", Sex: "男", BirthDay: "1988/08/08", CardID: "330719*", Mobile: "137****5678", CardAddress: "香港特别行政区铜锣湾", Email: "liudehua@163.com", Marry: "1", Breed: "1", LProvince: "A01", LCityID: "12", LCityName: "宁波", LStreet: "皇后大道东", InvestBody: "", BorrowBody: "", PawnRate: "", AssureWay: "", InvestArea1: "A02", InvestArea2ID: "31", InvestArea2Name: "佛山", InvestAmt: "", DayRate: "", InvestLimitMin: "", InvestLimitMax: "", Pawn: ",A2,A8,A9,A4,A10,A11", JobCompany: "", ComProperty: "", JobTime: "", JobTel: "", Job: "", ComTel: "", ComWeb: "http://www.vanch.com" };
+                    P801.UID.P8010101(UserInfo);
+                    P801.UID.P8010100("刘德华");
+                },
+                EVP8010102: function (UserInfo) {
+                    ///<summary>债权投资-个人信息保存</summary>
+                    setTimeout("P801.UID.P8010102(true)", 1000);
+                },
+                EVP8010103: function (UserInfo) {
+                    ///<summary>债权投资-投资意向保存</summary>
+                    setTimeout("P801.UID.P8010102(true)", 1000);
+                },
+                EVP8010104: function (UserInfo) {
+                    ///<summary>债权投资-工作信息保存</summary>
+                    setTimeout("P801.UID.P8010102(true)", 1000);
+                },
+                EVP8010105: function (PID) {
+                    ///<summary>Ajax选择城市名</summary>
+                    var CityData = "";
+                    if (PID == "A01") { CityData = JSON.stringify([{ ID: 11, Name: "杭州" }, { ID: 12, Name: "宁波" }, { ID: 13, Name: "温州" }]) }
+                    if (PID == "A02") { CityData = JSON.stringify([{ ID: 133, Name: "深圳" }, { ID: 1325, Name: "广州" }, { ID: 31, Name: "佛山" }]) }
+                    if (PID == "A03") { CityData = JSON.stringify([{ ID: 123, Name: "哈尔滨" }, { ID: 234, Name: "齐齐哈尔" }, { ID: 345, Name: "大兴安岭" }]) }
+                    P801.UID.P8010105(CityData);
+                },
+
+                EVP8010201: function () {
+                    ///<summary>债权融资用户信息载入</summary>
+                    var UserInfo = { No: "U00001", Name: "刘德华", Sex: "男", BirthDay: "1988/08/08", CardID: "330719*", Mobile: "137****5678", CardAddress: "香港特别行政区铜锣湾", Email: "liudehua@163.com", Marry: "1", Breed: "1", Health: "2", IsSafety: "1", LProvince: "A01", LCityID: "12", LCityName: "宁波", LStreet: "皇后大道东", School: "", Edu: "", EduNo: "", FriendName: "", FriendTel: "", SpouseName: "", SpouseTel: "", SpouseCardID: "", SpouseCompany: "", FamilyName: "", FamilyRelation: "", FamilyTel: "", FamilyCardID: "", FamilyCompany: "", JobCompany: "", ComProperty: "", JobTime: "", JobTel: "", Job: "", ComTel: "", ComWeb: "", ColleagueName: "", ColleagueTel: "", MTotalIn: "", MTotalOut: "", MClearIn: "", TotalAsset: "", TotalDebt: "", ClearAsset: "", CourtsExe: "", CreditState: "" };
+                    P801.UID.P8010201(UserInfo);
+                },
+                EVP8010202: function (UserInfo) {
+                    ///<summary>债权融资-个人信息保存</summary>
+                    setTimeout("P801.UID.P8010102(true)", 1000);
+                },
+                EVP8010203: function (UserInfo) {
+                    ///<summary>债权融资-家庭信息保存</summary>
+                    setTimeout("P801.UID.P8010102(true)", 1000);
+                },
+                EVP8010204: function (UserInfo) {
+                    ///<summary>债权融资-工作信息保存</summary>
+                    setTimeout("P801.UID.P8010102(true)", 1000);
+                },
+                EVP8010205: function (UserInfo) {
+                    ///<summary>债权融资-财务信息保存</summary>
+                    setTimeout("P801.UID.P8010102(true)", 1000);
+                },
+
+                EVP8010301: function () {
+                    ///<summary>资产出售用户信息载入</summary>
+                    var UserInfo = { No: "U00001", Name: "刘德华", Sex: "男", BirthDay: "1988/08/08", CardID: "330719*", Mobile: "137****5678", CardAddress: "香港特别行政区铜锣湾", Email: "liudehua@163.com", Marry: "1", Breed: "0", LProvince: "A01", LCityID: "12", LCityName: "宁波", LStreet: "" };
+                    P801.UID.P8010301(UserInfo);
+                },
+                EVP8010302: function (UserInfo) {
+                    ///<summary>资产出售-个人信息保存</summary>
+                    setTimeout("P801.UID.P8010102(true)", 1000);
+                },
+
+                EVP8010401: function () {
+                    ///<summary>资产购买用户信息载入</summary>
+                    var UserInfo = { No: "U00001", Name: "刘德华", Sex: "男", BirthDay: "1988/08/08", CardID: "330719*", Mobile: "137****5678", CardAddress: "香港特别行政区铜锣湾", Email: "liudehua@163.com", Marry: "1", Breed: "1", LProvince: "A01", LCityID: "12", LCityName: "宁波", LStreet: "", AssetArea: "", BayAmtMin: "", BayAmtMax: "", AssetType: ",,,A7,,," };
+                    P801.UID.P8010401(UserInfo);
+                },
+                EVP8010402: function (UserInfo) {
+                    ///<summary>资产购买-个人信息保存</summary>
+                    setTimeout("P801.UID.P8010102(true)", 1000);
+                },
+                EVP8010403: function (UserInfo) {
+                    ///<summary>资产购买-购买意向保存</summary>
+                    setTimeout("P801.UID.P8010102(true)", 1000);
+                },
+
+                EVP8010501: function () {
+                    ///<summary>财务顾问用户信息载入</summary>
+                    var UserInfo = { No: "U00001", Name: "刘德华", Sex: "男", BirthDay: "1988/08/08", CardID: "330719*", Mobile: "137****5678", CardAddress: "香港特别行政区铜锣湾", Email: "liudehua@163.com", Marry: "1", Breed: "1", LProvince: "A01", LCityID: "12", LCityName: "宁波", LStreet: "", School: "", Edu: "", EduNo: "", JobCompany: "", ComProperty: "", Trade: "", JobTime: "", JobTel: "", Job: "", ComTel: "", ComWeb: "", ColleagueName: "", ColleagueTel: "", ColleagueCardID: "", SvrArea1: "A01", SvrArea2ID: "12", SvrArea2Name: "宁波", SvrItem1: "1", SvrItem2: "0", SvrItem3: "", SvrItem4: "1", Remarks: "Hi Angellababy" };
+                    P801.UID.P8010501(UserInfo);
+                },
+                EVP8010502: function (UserInfo) { 
+                    ///<summary>财务顾问-个人信息保存</summary>
+                    setTimeout("P801.UID.P8010102(true)", 1000);
+                },
+                EVP8010503: function (UserInfo) {
+                    ///<summary>财务顾问-工作信息保存</summary>
+                    setTimeout("P801.UID.P8010102(true)", 1000);
+                },
+                EVP8010504: function (UserInfo) {
+                    ///<summary>财务顾问-顾问介绍保存</summary>
+                    setTimeout("P801.UID.P8010102(true)", 1000);
+                },
+            },
+            UID: {
+                P8010100: function (UserName) {
+                    ///<summary>页面初始化</summary><param name="UserName">用户姓名</param>
+                    LoginAction(UserName);
+                },
+                P8010101: function (UserInfo) {
+                    ///<summary>债权投资用户信息载入</summary>
+                    if (MToolBar.BtID != 1) { return; }
+                    P801.SltInit(1);
+                    var Mod01 = P8010101i.children[0].cloneNode(true);
+                    var Mod02 = P8010102i.children[0].cloneNode(true);
+                    var Mod03 = P8010103i.children[0].cloneNode(true);
+                    Mod01.querySelectorAll(".ItemText")[0].DspV = UserInfo.No;
+                    Mod01.querySelectorAll(".ItemText")[1].DspV = UserInfo.Name;
+                    Mod01.querySelectorAll(".ItemText")[2].DspV = UserInfo.BirthDay;
+                    Mod01.querySelectorAll(".ItemText")[3].DspV = UserInfo.Sex;
+                    Mod01.querySelectorAll(".ItemText")[4].DspV = UserInfo.CardAddress;
+                    Mod01.querySelectorAll(".ItemText")[5].DspV = UserInfo.CardID;
+                    Mod01.querySelectorAll(".ItemText")[6].DspV = UserInfo.Mobile;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[0].value = UserInfo.Email;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[0].value = UserInfo.Marry;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[1].value = UserInfo.Breed;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[2].value = UserInfo.LProvince;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[3].options.add(new Option(UserInfo.LCityName, UserInfo.LCityID));
+                    Mod01.querySelectorAll(".ItemTextInp>select")[3].value = UserInfo.LCityID;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[1].value = UserInfo.LStreet;
+
+                    Mod02.querySelectorAll(".ItemTextInp>select")[0].value = UserInfo.InvestBody;
+                    Mod02.querySelectorAll(".ItemTextInp>select")[1].value = UserInfo.BorrowBody;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[0].value = UserInfo.PawnRate;
+                    Mod02.querySelectorAll(".ItemTextInp>select")[2].value = UserInfo.AssureWay;
+                    Mod02.querySelectorAll(".ItemTextInp>select")[3].value = UserInfo.InvestArea1;
+                    Mod02.querySelectorAll(".ItemTextInp>select")[4].options.add(new Option(UserInfo.InvestArea2Name, UserInfo.InvestArea2ID));
+                    Mod02.querySelectorAll(".ItemTextInp>select")[4].value = UserInfo.InvestArea2ID;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[1].value = UserInfo.InvestAmt;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[2].value = UserInfo.DayRate;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[3].value = UserInfo.InvestLimitMin;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[4].value = UserInfo.InvestLimitMax;
+                    var arr = UserInfo.Pawn.split(",");
+                    for (var i = 0; i < arr.length; i++) { if (arr[i].length >= 2) { Mod02.querySelector("[data-id='" + arr[i] + "']").setAttribute("data-sw", 1); }; }
+
+                    Mod03.querySelectorAll(".ItemTextInp>input")[0].value = UserInfo.JobCompany;
+                    Mod03.querySelectorAll(".ItemTextInp>select")[0].value = UserInfo.ComProperty;
+                    Mod03.querySelectorAll(".ItemTextInp>div")[0].innerText = UserInfo.JobTime + " ";
+                    Mod03.querySelectorAll(".ItemTextInp>input")[1].value = UserInfo.JobTel;
+                    Mod03.querySelectorAll(".ItemTextInp>input")[2].value = UserInfo.Job;
+                    Mod03.querySelectorAll(".ItemTextInp>input")[3].value = UserInfo.ComTel;
+                    Mod03.querySelectorAll(".ItemTextInp>input")[4].value = UserInfo.ComWeb;
+
+                    ItemContainer.appendChild(Mod01);
+                    ItemContainer.appendChild(Mod02);
+                    ItemContainer.appendChild(Mod03);
+                    ReCalcItemSize(); LoadingBoxCtl(0);
+                },
+                P8010201: function (UserInfo) {
+                    ///<summary>债权融资用户信息载入</summary>
+                    if (MToolBar.BtID != 2) { return; }
+                    P801.SltInit(2);
+                    var Mod01 = P8010201i.children[0].cloneNode(true);
+                    var Mod02 = P8010202i.children[0].cloneNode(true);
+                    var Mod03 = P8010203i.children[0].cloneNode(true);
+                    var Mod04 = P8010204i.children[0].cloneNode(true);
+                    Mod01.querySelectorAll(".ItemText")[0].DspV = UserInfo.No;
+                    Mod01.querySelectorAll(".ItemText")[1].DspV = UserInfo.Name;
+                    Mod01.querySelectorAll(".ItemText")[2].DspV = UserInfo.BirthDay;
+                    Mod01.querySelectorAll(".ItemText")[3].DspV = UserInfo.Sex;
+                    Mod01.querySelectorAll(".ItemText")[4].DspV = UserInfo.CardAddress;
+                    Mod01.querySelectorAll(".ItemText")[5].DspV = UserInfo.CardID;
+                    Mod01.querySelectorAll(".ItemText")[6].DspV = UserInfo.Mobile;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[0].value = UserInfo.Email;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[1].value = UserInfo.LStreet;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[2].value = UserInfo.School;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[3].value = UserInfo.EduNo;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[4].value = UserInfo.FriendName;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[5].value = UserInfo.FriendTel;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[0].value = UserInfo.Marry;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[1].value = UserInfo.Breed;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[2].value = UserInfo.Health;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[3].value = UserInfo.IsSafety;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[4].value = UserInfo.LProvince;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[5].options.add(new Option(UserInfo.LCityName, UserInfo.LCityID));
+                    Mod01.querySelectorAll(".ItemTextInp>select")[5].value = UserInfo.LCityID;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[6].value = UserInfo.Edu;
+
+                    Mod02.querySelectorAll(".ItemTextInp>input")[0].value = UserInfo.SpouseName;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[1].value = UserInfo.SpouseTel;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[2].value = UserInfo.SpouseCardID;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[3].value = UserInfo.SpouseCompany;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[4].value = UserInfo.FamilyName;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[5].value = UserInfo.FamilyTel;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[6].value = UserInfo.FamilyCardID;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[7].value = UserInfo.FamilyCompany;
+                    Mod02.querySelectorAll(".ItemTextInp>select")[0].value = UserInfo.FamilyRelation;
+
+                    Mod03.querySelectorAll(".ItemTextInp>input")[0].value = UserInfo.JobCompany;
+                    Mod03.querySelectorAll(".ItemTextInp>input")[1].value = UserInfo.JobTel;
+                    Mod03.querySelectorAll(".ItemTextInp>input")[2].value = UserInfo.Job;
+                    Mod03.querySelectorAll(".ItemTextInp>input")[3].value = UserInfo.ComTel;
+                    Mod03.querySelectorAll(".ItemTextInp>input")[4].value = UserInfo.ComWeb;
+                    Mod03.querySelectorAll(".ItemTextInp>input")[5].value = UserInfo.ColleagueName;
+                    Mod03.querySelectorAll(".ItemTextInp>input")[6].value = UserInfo.ColleagueTel;
+                    Mod03.querySelectorAll(".ItemTextInp>div")[0].innerText = UserInfo.JobTime;
+                    Mod03.querySelectorAll(".ItemTextInp>select")[0].value = UserInfo.ComProperty;
+
+                    Mod04.querySelectorAll(".ItemTextInp>input")[0].value = UserInfo.MTotalIn;
+                    Mod04.querySelectorAll(".ItemTextInp>input")[1].value = UserInfo.MTotalOut;
+                    Mod04.querySelectorAll(".ItemTextInp>input")[2].value = UserInfo.MClearIn;
+                    Mod04.querySelectorAll(".ItemTextInp>input")[3].value = UserInfo.TotalAsset;
+                    Mod04.querySelectorAll(".ItemTextInp>input")[4].value = UserInfo.TotalDebt;
+                    Mod04.querySelectorAll(".ItemTextInp>input")[5].value = UserInfo.ClearAsset;
+                    Mod04.querySelectorAll(".ItemTextInp>select")[0].value = UserInfo.CourtsExe;
+                    Mod04.querySelectorAll(".ItemTextInp>select")[1].value = UserInfo.CreditState;
+
+                    ItemContainer.appendChild(Mod01);
+                    ItemContainer.appendChild(Mod02);
+                    ItemContainer.appendChild(Mod03);
+                    ItemContainer.appendChild(Mod04);
+                    ReCalcItemSize(); LoadingBoxCtl(0);
+                },
+                P8010301: function (UserInfo) {
+                    ///<summary>资产出售用户信息载入</summary>
+                    if (MToolBar.BtID != 3) { return; }
+                    P801.SltInit(3);
+                    var Mod01 = P8010301i.children[0].cloneNode(true);
+                    Mod01.querySelectorAll(".ItemText")[0].DspV = UserInfo.No;
+                    Mod01.querySelectorAll(".ItemText")[1].DspV = UserInfo.Name;
+                    Mod01.querySelectorAll(".ItemText")[2].DspV = UserInfo.BirthDay;
+                    Mod01.querySelectorAll(".ItemText")[3].DspV = UserInfo.Sex;
+                    Mod01.querySelectorAll(".ItemText")[4].DspV = UserInfo.CardAddress;
+                    Mod01.querySelectorAll(".ItemText")[5].DspV = UserInfo.CardID;
+                    Mod01.querySelectorAll(".ItemText")[6].DspV = UserInfo.Mobile;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[0].value = UserInfo.Email;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[1].value = UserInfo.LStreet;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[0].value = UserInfo.Marry;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[1].value = UserInfo.Breed;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[2].value = UserInfo.LProvince;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[3].options.add(new Option(UserInfo.LCityName, UserInfo.LCityID));
+                    Mod01.querySelectorAll(".ItemTextInp>select")[3].value = UserInfo.LCityID;
+
+                    ItemContainer.appendChild(Mod01);
+                    ReCalcItemSize(); LoadingBoxCtl(0);
+                },
+                P8010401: function (UserInfo) {
+                    ///<summary>资产购买用户信息载入</summary>
+                    if (MToolBar.BtID != 4) { return; }
+                    P801.SltInit(4);
+                    var Mod01 = P8010401i.children[0].cloneNode(true);
+                    var Mod02 = P8010402i.children[0].cloneNode(true);
+                    Mod01.querySelectorAll(".ItemText")[0].DspV = UserInfo.No;
+                    Mod01.querySelectorAll(".ItemText")[1].DspV = UserInfo.Name;
+                    Mod01.querySelectorAll(".ItemText")[2].DspV = UserInfo.BirthDay;
+                    Mod01.querySelectorAll(".ItemText")[3].DspV = UserInfo.Sex;
+                    Mod01.querySelectorAll(".ItemText")[4].DspV = UserInfo.CardAddress;
+                    Mod01.querySelectorAll(".ItemText")[5].DspV = UserInfo.CardID;
+                    Mod01.querySelectorAll(".ItemText")[6].DspV = UserInfo.Mobile;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[0].value = UserInfo.Email;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[1].value = UserInfo.LStreet;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[0].value = UserInfo.Marry;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[1].value = UserInfo.Breed;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[2].value = UserInfo.LProvince;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[3].options.add(new Option(UserInfo.LCityName, UserInfo.LCityID));
+                    Mod01.querySelectorAll(".ItemTextInp>select")[3].value = UserInfo.LCityID;
+
+                    Mod02.querySelectorAll(".ItemTextInp>select")[0].value = UserInfo.AssetArea;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[0].value = UserInfo.BayAmtMin;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[1].value = UserInfo.BayAmtMin;
+                    var AssetType = UserInfo.AssetType.split(",")
+                    for (var i = 0; i < AssetType.length; i++) { if (AssetType[i].length >= 2) { Mod02.querySelector("[data-id='" + AssetType[i] + "']").setAttribute("data-sw", 1); } }
+
+                    ItemContainer.appendChild(Mod01);
+                    ItemContainer.appendChild(Mod02);
+                    ReCalcItemSize(); LoadingBoxCtl(0);
+                },
+                P8010501: function (UserInfo) {
+                    ///<summary>顾问信息载入</summary>
+                    if (MToolBar.BtID != 5) { return; }
+                    P801.SltInit(5);
+                    var Mod01 = P8010501i.children[0].cloneNode(true);
+                    var Mod02 = P8010502i.children[0].cloneNode(true);
+                    var Mod03 = P8010503i.children[0].cloneNode(true);
+                    Mod01.querySelectorAll(".ItemText")[0].DspV = UserInfo.No;
+                    Mod01.querySelectorAll(".ItemText")[1].DspV = UserInfo.Name;
+                    Mod01.querySelectorAll(".ItemText")[2].DspV = UserInfo.BirthDay;
+                    Mod01.querySelectorAll(".ItemText")[3].DspV = UserInfo.Sex;
+                    Mod01.querySelectorAll(".ItemText")[4].DspV = UserInfo.CardAddress;
+                    Mod01.querySelectorAll(".ItemText")[5].DspV = UserInfo.CardID;
+                    Mod01.querySelectorAll(".ItemText")[6].DspV = UserInfo.Mobile;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[0].value = UserInfo.Email;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[1].value = UserInfo.LStreet;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[2].value = UserInfo.School;
+                    Mod01.querySelectorAll(".ItemTextInp>input")[3].value = UserInfo.EduNo;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[0].value = UserInfo.Marry;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[1].value = UserInfo.Breed;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[2].value = UserInfo.LProvince;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[3].options.add(new Option(UserInfo.LCityName, UserInfo.LCityID));
+                    Mod01.querySelectorAll(".ItemTextInp>select")[3].value = UserInfo.LCityID;
+                    Mod01.querySelectorAll(".ItemTextInp>select")[4].value = UserInfo.Edu;
+
+                    Mod02.querySelectorAll(".ItemTextInp>input")[0].value = UserInfo.JobCompany;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[1].value = UserInfo.JobTel;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[2].value = UserInfo.Job;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[3].value = UserInfo.ComTel;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[4].value = UserInfo.ComWeb;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[5].value = UserInfo.ColleagueName;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[6].value = UserInfo.ColleagueTel;
+                    Mod02.querySelectorAll(".ItemTextInp>input")[7].value = UserInfo.ColleagueCardID;
+                    Mod02.querySelector(".ItemDateInp").innerText = UserInfo.JobTime;
+                    Mod02.querySelectorAll(".ItemTextInp>select")[0].value = UserInfo.ComProperty;
+                    Mod02.querySelectorAll(".ItemTextInp>select")[1].value = UserInfo.Trade;
+
+                    Mod03.querySelectorAll(".ItemTextInp>select")[0].value = UserInfo.SvrArea1;
+                    Mod03.querySelectorAll(".ItemTextInp>select")[1].options.add(new Option(UserInfo.SvrArea2Name, UserInfo.SvrArea2ID));
+                    Mod03.querySelectorAll(".ItemTextInp>select")[1].value = UserInfo.SvrArea2ID;
+                    Mod03.querySelectorAll(".ItemTextInp>.UpDownButton")[0].setAttribute("data-sw", UserInfo.SvrItem1);
+                    Mod03.querySelectorAll(".ItemTextInp>.UpDownButton")[1].setAttribute("data-sw", UserInfo.SvrItem2);
+                    Mod03.querySelectorAll(".ItemTextInp>.UpDownButton")[2].setAttribute("data-sw", UserInfo.SvrItem3);
+                    Mod03.querySelectorAll(".ItemTextInp>.UpDownButton")[3].setAttribute("data-sw", UserInfo.SvrItem4);
+                    Mod03.querySelector("textarea").value = UserInfo.Remarks;
+
+                    ItemContainer.appendChild(Mod01);
+                    ItemContainer.appendChild(Mod02);
+                    ItemContainer.appendChild(Mod03);
+                    ReCalcItemSize(); LoadingBoxCtl(0);
+                },
+                P8010102: function (Res) {
+                    ///<summary>修改操作返回值</summary>
+                    if (Res) {
+                        TransingStatus.SetStatus(3);
+                        P801.BtObj.parentElement.querySelectorAll(".CBt")[0].style.display = "";
+                        P801.BtObj.parentNode.parentNode.querySelector(".MLayer").style.display = "block";
+                        P801.BtObj.style.display = 'none';
+                        var InpStyle = P801.BtObj.parentNode.parentNode.querySelectorAll("[data-ctem]");
+                        for (var i = 0; i < InpStyle.length; i++) { InpStyle[i].setAttribute("data-ctem", 0); InpStyle[i].className = InpStyle[i].className; }
+                    } else {
+                        TransingStatus.SetStatus(2);
+                    }
+                    P801.BtObj.setAttribute("data-btst", "E");
+                },
+                P8010105: function (CityData) {
+                    var City = P801.FocusItem.querySelector(".City");
+                    var oldCity = City.value;
+                    City.options.length = 1;
+                    var CityData = JSON.parse(CityData);
+                    for (var i in CityData) {
+                        City.options.add(new Option(CityData[i].Name, CityData[i].ID));
+                    }
+                    City.value = oldCity;
+                    LoadingBoxCtl(0)
+                },
+            }
+        };
+
+        var P80101 = {
+            Save: function (BtObj, Act) {
+                switch (Act) {
+                    case 1:
+                        BtStatusClass(BtObj, 1); P801.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                        if (this.InterCk("01")) {
+                            var UserInfo01 = {};
+                            var MC = ItemContainer.querySelectorAll("#Mod01App .ItemTextInp");
+                            UserInfo01.Email = MC[0].querySelector("input").value;
+                            UserInfo01.Marry = MC[1].querySelector("select").value;
+                            UserInfo01.Breed = MC[2].querySelector("select").value;
+                            UserInfo01.LProvince = MC[3].querySelector("select").value;
+                            UserInfo01.LCity = MC[4].querySelector("select").value;
+                            UserInfo01.LStreet = MC[5].querySelector("input").value;
+                            TransingStatus.SetStatus(1); BtObj.setAttribute("data-btst", "D");
+                            P801.STR.EVP8010102(UserInfo01);
+                        }
+                        break;
+                    case 2:
+                        BtStatusClass(BtObj, 1); P801.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                        if (this.InterCk("02")) {
+                            var UserInfo02 = {}; 
+                            var CInp = ItemContainer.querySelectorAll("#Mod02App .ItemTextInp>input");
+                            var CSlt = ItemContainer.querySelectorAll("#Mod02App .ItemTextInp>select");
+                            UserInfo02.InvestBody = CSlt[0].value;
+                            UserInfo02.BorrowBody = CSlt[1].value;
+                            UserInfo02.PawnRate = CInp[0].value;
+                            UserInfo02.AssureWay = CSlt[2].value;
+                            UserInfo02.InvestArea1 = CSlt[3].value;
+                            UserInfo02.InvestArea2 = CSlt[4].value;
+                            UserInfo02.InvestAmt = CInp[1].value;
+                            UserInfo02.DayRate = CInp[2].value;
+                            UserInfo02.InvestLimitMin = CInp[3].value;
+                            UserInfo02.InvestLimitMax = CInp[4].value;
+                            UserInfo02.Pawn = ",";
+                            for (var i = 0; i < ItemContainer.querySelectorAll(".UpDownButton").length; i++) {
+                                if (ItemContainer.querySelectorAll(".UpDownButton")[i].getAttribute("data-sw") > 0) { UserInfo02.Pawn += ItemContainer.querySelectorAll(".UpDownButton")[i].getAttribute("data-id") + ","; } else { UserInfo02.Pawn += ","; }
+                            }
+                            if (UserInfo02.Pawn.length <= 13) { ItemContainer.querySelector(".memo>ul>li").innerText = "请选择抵押要求"; return; };
+                            TransingStatus.SetStatus(1);BtObj.setAttribute("data-btst", "D");
+                            P801.STR.EVP8010103(UserInfo02);
+                        }
+                        break;
+                    case 3:
+                        BtStatusClass(BtObj, 1); P801.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                        if (this.InterCk("03")) {
+                            var UserInfo03 = {};
+                            var CInp = ItemContainer.querySelectorAll("#Mod03App .ItemTextInp>input");
+                            var CSlt = ItemContainer.querySelectorAll("#Mod03App .ItemTextInp>select");
+                            UserInfo03.JobCompany = CInp[0].value;
+                            UserInfo03.ComProperty = CSlt[0].value;
+                            UserInfo03.JobTime = ItemContainer.querySelector("#Mod03App .ItemTextInp>div").innerText;
+                            UserInfo03.JobTel = CInp[1].value;
+                            UserInfo03.Job = CInp[2].value;
+                            UserInfo03.ComTel = CInp[3].value;
+                            UserInfo03.ComWeb = CInp[4].value;
+                            TransingStatus.SetStatus(1); BtObj.setAttribute("data-btst", "D");
+                            P801.STR.EVP8010104(UserInfo03);
+                        }
+                        break;
+                    default:
+                        BtStatusClass(BtObj, 2);
+                        break;
+                }
+            },
+            Edit: function (BtObj, Act) {
+                if (Act == 1) {
+                    BtStatusClass(BtObj, 1);
+                    if (BtObj.parentElement.parentElement.contains(BtObj.parentElement.parentElement.querySelector(".Province"))) { P801.ChangeCity(BtObj.parentElement.parentElement.querySelector(".Province")); }
+                    BtObj.parentElement.querySelectorAll("div")[1].style.display = "";
+                    BtObj.style.display = 'none';
+                    BtObj.parentNode.parentNode.querySelector(".MLayer").style.display = "none";
+                } else { BtStatusClass(BtObj, 2); }
+                var InpStyle = BtObj.parentNode.parentNode.querySelectorAll("[data-ctem]");
+                for (var i = 0; i < InpStyle.length; i++) { InpStyle[i].setAttribute("data-ctem", 1); InpStyle[i].className = InpStyle[i].className; }
+            },
+            InterCk: function (No) {
+                var Pass = true;
+                switch (No) {
+                    case "01":
+                        var BtSlt = ItemContainer.querySelectorAll("#Mod01App .ItemTextInp>select");
+                        var BtInp = ItemContainer.querySelectorAll("#Mod01App .ItemTextInp>input");
+                        if (BtInp[0].value == "") { IRC.ErrTip(BtInp[0], "必填"); Pass = false; }
+                        if (BtSlt[0].value == "" || BtSlt[0].value == "-1") { IRC.ErrTip(BtSlt[0], "必填"); Pass = false; }
+                        if (BtSlt[1].value == "" || BtSlt[1].value == "-1") { IRC.ErrTip(BtSlt[1], "必填"); Pass = false; }
+                        if (BtSlt[2].value == "" || BtSlt[2].value == "-1") { IRC.ErrTip(BtSlt[2], "必填"); Pass = false; }
+                        if (BtSlt[3].value == "" || BtSlt[3].value == "-1") { IRC.ErrTip(BtSlt[3], "必填"); Pass = false; }
+                        if (BtInp[1].value == "") { IRC.ErrTip(BtInp[1], "必填"); Pass = false; }
+                        break;
+                    case "02":
+                        var BT = ItemContainer.querySelectorAll("#Mod02App [data-ctem='1']");
+                        var BtSlt = ItemContainer.querySelectorAll("#Mod02App .ItemTextInp>select");
+                        var BtInp = ItemContainer.querySelectorAll("#Mod02App .ItemTextInp>input");
+                        if (BtSlt[0].value == "" || BtSlt[0].value == "-1") { IRC.ErrTip(BtSlt[0], "必填"); Pass = false; }
+                        if (BtSlt[1].value == "" || BtSlt[1].value == "-1") { IRC.ErrTip(BtSlt[1], "必填"); Pass = false; }
+                        if (BtSlt[2].value == "" || BtSlt[2].value == "-1") { IRC.ErrTip(BtSlt[2], "必填"); Pass = false; }
+                        if (BtSlt[3].value == "" || BtSlt[3].value == "-1") { IRC.ErrTip(BtSlt[3], "必填"); Pass = false; }
+                        if (BtSlt[4].value == "" || BtSlt[4].value == "-1") { IRC.ErrTip(BtSlt[4], "必填"); Pass = false; }
+
+                        if (!IRC.IntervalNumber(BtInp[0], BtInp[0].value, P801.UIP.PawnRate)) { Pass = false; };
+                        if (!IRC.IntervalNumber(BtInp[1], BtInp[1].value, P801.UIP.InvestAmt)) { Pass = false; };
+                        if (!IRC.IntervalNumber(BtInp[2], BtInp[2].value, P801.UIP.DayRate)) { Pass = false; };
+                        if (!IRC.IntervalNumber(BtInp[3], BtInp[3].value, P801.UIP.InvestLimit)) { Pass = false; };
+                        if (!IRC.IntervalNumber(BtInp[4], BtInp[4].value, P801.UIP.InvestLimit)) { Pass = false; };
+                        break;
+                    case "03":
+                        var BT = ItemContainer.querySelectorAll("#Mod03App [data-ctem]");
+                        if (BT[0].querySelector("input").value == "") { IRC.ErrTip(BT[0].querySelector("input"), "必填"); Pass = false; }
+                        if (BT[1].querySelector("select").value == "" || BT[1].querySelector("select").value == "-1") { IRC.ErrTip(BT[1].querySelector("select"), "必填"); Pass = false; }
+                        if (BT[2].querySelector(".ItemDateInp").innerText == "") { IRC.ErrTip(BT[2].querySelector(".ItemDateInp"), "必填"); Pass = false; }
+                        if (BT[3].querySelector("input").value == "") { IRC.ErrTip(BT[3].querySelector("input"), "必填"); Pass = false; }
+                        if (BT[4].querySelector("input").value == "") { IRC.ErrTip(BT[4].querySelector("input"), "必填"); Pass = false; }
+                        break;
+                }
+                return Pass;
+            }
+        };
+
+        var P80102 = {
+            Save: function (BtObj, Act) {
+                switch (Act) {
+                    case 1:
+                        BtStatusClass(BtObj, 1); P801.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                        if (this.InterCk("01")) {
+                            var UserInfo01 = {}; 
+                            var MC = ItemContainer.querySelectorAll("#Mod01App .ItemTextInp");
+                            UserInfo01.Email = MC[0].querySelector("input").value;
+                            UserInfo01.Marry = MC[1].querySelector("select").value;
+                            UserInfo01.Breed = MC[2].querySelector("select").value;
+                            UserInfo01.Health = MC[3].querySelector("select").value;
+                            UserInfo01.IsSafety = MC[4].querySelector("select").value;
+                            UserInfo01.LProvince = MC[5].querySelector("select").value;
+                            UserInfo01.LCity = MC[6].querySelector("select").value;
+                            UserInfo01.LStreet = MC[7].querySelector("input").value;
+                            UserInfo01.School = MC[8].querySelector("input").value;
+                            UserInfo01.Edu = MC[9].querySelector("select").value;
+                            UserInfo01.EduNo = MC[10].querySelector("input").value;
+                            UserInfo01.FriendName = MC[11].querySelector("input").value;
+                            UserInfo01.FriendTel = MC[12].querySelector("input").value;
+                            TransingStatus.SetStatus(1); BtObj.setAttribute("data-btst", "D");
+                            P801.STR.EVP8010202(UserInfo01);
+                        }
+                        break;
+                    case 2:
+                        BtStatusClass(BtObj, 1); P801.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                        if (this.InterCk("02")) {
+                            var UserInfo02 = {};
+                            var MC = ItemContainer.querySelectorAll("#Mod02App .ItemTextInp");
+                            UserInfo02.SpouseName = MC[0].querySelector("input").value;
+                            UserInfo02.SpouseTel = MC[1].querySelector("input").value;
+                            UserInfo02.SpouseCardID = MC[2].querySelector("input").value;
+                            UserInfo02.SpouseCompany = MC[3].querySelector("input").value;
+                            UserInfo02.FamilyName = MC[4].querySelector("input").value;
+                            UserInfo02.FamilyRelation = MC[5].querySelector("select").value;
+                            UserInfo02.FamilyTel = MC[6].querySelector("input").value;
+                            UserInfo02.FamilyCardID = MC[7].querySelector("input").value;
+                            UserInfo02.FamilyCompany = MC[8].querySelector("input").value;
+                            TransingStatus.SetStatus(1); BtObj.setAttribute("data-btst", "D");
+                            P801.STR.EVP8010203(UserInfo02);
+                        }
+                        break;
+                    case 3:
+                        BtStatusClass(BtObj, 1); P801.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                        if (this.InterCk("03")) {
+                            var UserInfo03 = {};
+                            var MC = ItemContainer.querySelectorAll("#Mod03App .ItemTextInp");
+                            UserInfo03.JobCompany = MC[0].querySelector("input").value;
+                            UserInfo03.ComProperty = MC[1].querySelector("select").value;
+                            UserInfo03.JobTime = MC[2].querySelector("div").innerText;
+                            UserInfo03.JobTel = MC[3].querySelector("input").value;
+                            UserInfo03.Job = MC[4].querySelector("input").value;
+                            UserInfo03.ComTel = MC[5].querySelector("input").value;
+                            UserInfo03.ComWeb = MC[6].querySelector("input").value;
+                            UserInfo03.ColleagueName = MC[7].querySelector("input").value;
+                            UserInfo03.ColleagueTel = MC[8].querySelector("input").value;
+                            TransingStatus.SetStatus(1); BtObj.setAttribute("data-btst", "D");
+                            P801.STR.EVP8010204(UserInfo03);
+                        }
+                        break;
+                    case 4:
+                        BtStatusClass(BtObj, 1); P801.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                        if (this.InterCk("04")) {
+                            var UserInfo04 = {};
+                            var MC = ItemContainer.querySelectorAll("#Mod04App .ItemTextInp");
+                            UserInfo04.MTotalIn = MC[0].querySelector("input").value;
+                            UserInfo04.MTotalOut = MC[1].querySelector("input").value;
+                            UserInfo04.MClearIn = MC[2].querySelector("input").value;
+                            UserInfo04.TotalAsset = MC[3].querySelector("input").value;
+                            UserInfo04.TotalDebt = MC[4].querySelector("input").value;
+                            UserInfo04.ClearAsset = MC[5].querySelector("input").value;
+                            UserInfo04.CourtsExe = MC[6].querySelector("select").value;
+                            UserInfo04.CreditState = MC[7].querySelector("select").value;
+                            TransingStatus.SetStatus(1); BtObj.setAttribute("data-btst", "D");
+                            P801.STR.EVP8010205(UserInfo04);
+                        }
+                        break;
+                    default:
+                        BtStatusClass(BtObj, 2); 
+                        break;
+                }
+            },
+            Edit: function (BtObj, Act) {
+                if (Act == 1) {
+                    BtStatusClass(BtObj, 1);
+                    if (BtObj.parentElement.parentElement.contains(BtObj.parentElement.parentElement.querySelector(".Province"))) { P801.ChangeCity(BtObj.parentElement.parentElement.querySelector(".Province")); }
+                    BtObj.parentElement.querySelectorAll("div")[1].style.display = "";
+                    BtObj.style.display = 'none';
+                    BtObj.parentNode.parentNode.querySelector(".MLayer").style.display = "none";
+                } else { BtStatusClass(BtObj, 2); }
+                var InpStyle = BtObj.parentNode.parentNode.querySelectorAll("[data-ctem]");
+                for (var i = 0; i < InpStyle.length; i++) { InpStyle[i].setAttribute("data-ctem", 1); InpStyle[i].className = InpStyle[i].className; }
+            },
+            InterCk: function (No) {
+                var Pass = true;
+                var BTInp = ItemContainer.querySelectorAll("#Mod" + No + "App [data-ctem]>input");
+                var BTSlt = ItemContainer.querySelectorAll("#Mod" + No + "App [data-ctem]>select");
+                for (var i = 0; i < BTInp.length; i++) { if (BTInp[i].value == "" || BTInp[i].value == "-1") { IRC.ErrTip(BTInp[i], "必填"); Pass = false; }; }
+                for (var i = 0; i < BTSlt.length; i++) { if (BTSlt[i].value == "" || BTSlt[i].value == "-1") { IRC.ErrTip(BTSlt[i], "必填"); Pass = false; }; }
+                if (No == "03") { if (ItemContainer.querySelector("#Mod03App .ItemDateInp").innerText == "") { IRC.ErrTip(ItemContainer.querySelector("#Mod03App .ItemDateInp"), "必填"); Pass = false; }; }
+                return Pass;
+            }
+        };
+
+        var P80103 = {
+            Save: function (BtObj, Act) {
+                if (Act == 1) {
+                    BtStatusClass(BtObj, 1); P801.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                    if (this.InterCk()) {
+                        var UserInfo01 = {};
+                        var MC = ItemContainer.querySelectorAll("#Mod01App .ItemTextInp");
+                        UserInfo01.Email = MC[0].querySelector("input").value;
+                        UserInfo01.Marry = MC[1].querySelector("select").value;
+                        UserInfo01.Breed = MC[2].querySelector("select").value;
+                        UserInfo01.LProvince = MC[3].querySelector("select").value;
+                        UserInfo01.LCity = MC[4].querySelector("select").value;
+                        UserInfo01.LStreet = MC[5].querySelector("input").value;
+                        TransingStatus.SetStatus(1); BtObj.setAttribute("data-btst", "D");
+                        P801.STR.EVP8010302(UserInfo01);
+                    }
+                } else { BtStatusClass(BtObj, 2); }
+            },
+            Edit: function (BtObj, Act) {
+                if (Act == 1) {
+                    BtStatusClass(BtObj, 1);
+                    if (BtObj.parentElement.parentElement.contains(BtObj.parentElement.parentElement.querySelector(".Province"))) { P801.ChangeCity(BtObj.parentElement.parentElement.querySelector(".Province")); }
+                    BtObj.parentElement.querySelectorAll("div")[1].style.display = "";
+                    BtObj.style.display = 'none';
+                    BtObj.parentNode.parentNode.querySelector(".MLayer").style.display = "none";
+                } else { BtStatusClass(BtObj, 2); }
+                var InpStyle = BtObj.parentNode.parentNode.querySelectorAll("[data-ctem]");
+                for (var i = 0; i < InpStyle.length; i++) { InpStyle[i].setAttribute("data-ctem", 1); InpStyle[i].className = InpStyle[i].className; }
+            },
+            InterCk: function () {
+                var Pass = true;
+                var BTInp = ItemContainer.querySelectorAll("#Mod01App [data-ctem]>input");
+                var BTSlt = ItemContainer.querySelectorAll("#Mod01App [data-ctem]>select");
+                for (var i = 0; i < BTInp.length; i++) { if (BTInp[i].value == "" || BTInp[i].value == "-1") { IRC.ErrTip(BTInp[i], "必填"); Pass = false; }; }
+                for (var i = 0; i < BTSlt.length; i++) { if (BTSlt[i].value == "" || BTSlt[i].value == "-1") { IRC.ErrTip(BTSlt[i], "必填"); Pass = false; }; }
+                return Pass;
+            }
+        };
+
+        var P80104 = {
+            Save: function (BtObj, Act) {
+                switch (Act) {
+                    case 1:
+                        BtStatusClass(BtObj, 1); P801.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                        if (this.InterCk("01")) {
+                            var UserInfo01 = {};
+                            var MC = ItemContainer.querySelectorAll("#Mod01App .ItemTextInp");
+                            UserInfo01.Email = MC[0].querySelector("input").value;
+                            UserInfo01.Marry = MC[1].querySelector("select").value;
+                            UserInfo01.Breed = MC[2].querySelector("select").value;
+                            UserInfo01.LProvince = MC[3].querySelector("select").value;
+                            UserInfo01.LCity = MC[4].querySelector("select").value;
+                            UserInfo01.LStreet = MC[5].querySelector("input").value;
+                            TransingStatus.SetStatus(1); BtObj.setAttribute("data-btst", "D");
+                            P801.STR.EVP8010402(UserInfo01);
+                        }
+                        break;
+                    case 2:
+                        BtStatusClass(BtObj, 1); P801.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                        if (this.InterCk("02")) {
+                            var UserInfo02 = {};
+                            var MC = ItemContainer.querySelectorAll("#Mod02App .ItemTextInp");
+                            UserInfo02.AssetArea = MC[0].querySelector("select").value;
+                            UserInfo02.BayAmtMin = MC[1].querySelector("input").value;
+                            UserInfo02.BayAmtMax = MC[2].querySelector("input").value;
+                            UserInfo02.AssetType = ",";
+                            for (var i = 0; i < ItemContainer.querySelectorAll(".UpDownButton").length; i++) {
+                                if (ItemContainer.querySelectorAll(".UpDownButton")[i].getAttribute("data-sw") > 0) { UserInfo02.AssetType += ItemContainer.querySelectorAll(".UpDownButton")[i].getAttribute("data-id") + ","; } else { UserInfo02.AssetType += ","; }
+                            }
+                            if (UserInfo02.AssetType.length <= 13) { ItemContainer.querySelector(".memo>ul>li").innerText = "请选择资产类型"; return; };
+                            TransingStatus.SetStatus(1); BtObj.setAttribute("data-btst", "D");
+                            P801.STR.EVP8010403(UserInfo02);
+                        }
+                        break
+                    default:
+                        BtStatusClass(BtObj, 2);
+                        break;
+                }
+            },
+            Edit: function (BtObj, Act) {
+                if (Act == 1) {
+                    BtStatusClass(BtObj, 1);
+                    if (BtObj.parentElement.parentElement.contains(BtObj.parentElement.parentElement.querySelector(".Province"))) { P801.ChangeCity(BtObj.parentElement.parentElement.querySelector(".Province")); }
+                    BtObj.parentElement.querySelectorAll("div")[1].style.display = "";
+                    BtObj.style.display = 'none';
+                    BtObj.parentNode.parentNode.querySelector(".MLayer").style.display = "none";
+                } else { BtStatusClass(BtObj, 2); }
+                var InpStyle = BtObj.parentNode.parentNode.querySelectorAll("[data-ctem]");
+                for (var i = 0; i < InpStyle.length; i++) { InpStyle[i].setAttribute("data-ctem", 1); InpStyle[i].className = InpStyle[i].className; }
+            },
+            InterCk: function (No) {
+                var Pass = true;
+                switch (No) {
+                    case "01":
+                        var BTInp = ItemContainer.querySelectorAll("#Mod01App [data-ctem]>input");
+                        var BTSlt = ItemContainer.querySelectorAll("#Mod01App [data-ctem]>select");
+                        for (var i = 0; i < BTInp.length; i++) { if (BTInp[i].value == "" || BTInp[i].value == "-1") { IRC.ErrTip(BTInp[i], "必填"); Pass = false; }; }
+                        for (var i = 0; i < BTSlt.length; i++) { if (BTSlt[i].value == "" || BTSlt[i].value == "-1") { IRC.ErrTip(BTSlt[i], "必填"); Pass = false; }; }
+                        break;
+                    case "02":
+                        if (ItemContainer.querySelectorAll("#Mod02App [data-ctem]>select")[0].value == "" || ItemContainer.querySelectorAll("#Mod02App [data-ctem]>select")[0].value == "-1") { IRC.ErrTip(ItemContainer.querySelectorAll("#Mod02App [data-ctem]>select")[0], "必填"); Pass = false; };
+                        if (!IRC.IntervalNumber(ItemContainer.querySelectorAll("#Mod02App .ItemTextInp>input")[0], ItemContainer.querySelectorAll("#Mod02App .ItemTextInp>input")[0].value, P801.UIP.BayAmt)) { Pass = false; };
+                        if (!IRC.IntervalNumber(ItemContainer.querySelectorAll("#Mod02App .ItemTextInp>input")[1], ItemContainer.querySelectorAll("#Mod02App .ItemTextInp>input")[1].value, P801.UIP.BayAmt)) { Pass = false; };
+                        break
+                }
+                return Pass;
+            }
+        };
+
+        var P80105 = {
+            Save: function (BtObj, Act) {
+                switch (Act) {
+                    case 1:
+                        BtStatusClass(BtObj, 1); P801.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                        if (this.InterCk("01")) {
+                            var UserInfo01 = {};
+                            var MC = ItemContainer.querySelectorAll("#Mod01App .ItemTextInp");
+                            UserInfo01.Email = MC[0].querySelector("input").value;
+                            UserInfo01.Marry = MC[1].querySelector("select").value;
+                            UserInfo01.Breed = MC[2].querySelector("select").value;
+                            UserInfo01.LProvince = MC[3].querySelector("select").value;
+                            UserInfo01.LCity = MC[4].querySelector("select").value;
+                            UserInfo01.LStreet = MC[5].querySelector("input").value;
+                            UserInfo01.School = MC[6].querySelector("input").value;
+                            UserInfo01.Edu = MC[7].querySelector("select").value;
+                            UserInfo01.EduNo = MC[8].querySelector("input").value;
+                            TransingStatus.SetStatus(1); BtObj.setAttribute("data-btst", "D");
+                            P801.STR.EVP8010502(UserInfo01);
+                        }
+                        break;
+                    case 2:
+                        BtStatusClass(BtObj, 1); P801.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                        if (this.InterCk("02")) {
+                            var UserInfo02 = {};
+                            var MC = ItemContainer.querySelectorAll("#Mod02App .ItemTextInp");
+                            UserInfo02.JobCompany = MC[0].querySelector("input").value;
+                            UserInfo02.ComProperty = MC[1].querySelector("select").value;
+                            UserInfo02.Trade = MC[2].querySelector("select").value;
+                            UserInfo02.JobTime = MC[3].querySelector(".ItemDateInp").innerText;
+                            UserInfo02.JobTel = MC[4].querySelector("input").value;
+                            UserInfo02.Job = MC[5].querySelector("input").value;
+                            UserInfo02.ComTel = MC[6].querySelector("input").value;
+                            UserInfo02.ComWeb = MC[7].querySelector("input").value;
+                            UserInfo02.ColleagueName = MC[8].querySelector("input").value;
+                            UserInfo02.ColleagueTel = MC[9].querySelector("input").value;
+                            UserInfo02.ColleagueCardID = MC[10].querySelector("input").value;
+                            TransingStatus.SetStatus(1); BtObj.setAttribute("data-btst", "D");
+                            P801.STR.EVP8010503(UserInfo02);
+                        }
+                        break;
+                    case 3:
+                        BtStatusClass(BtObj, 1); P801.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                        if (this.InterCk("03")) {
+                            var UserInfo03 = {};
+                            var MC = ItemContainer.querySelectorAll("#Mod03App .ItemTextInp");
+                            UserInfo03.SvrArea1 = MC[0].querySelector("select").value;
+                            UserInfo03.SvrArea2 = MC[1].querySelector("select").value;
+                            UserInfo03.SvrItem1 = MC[2].querySelector(".UpDownButton").getAttribute("data-sw");
+                            UserInfo03.SvrItem2 = MC[3].querySelector(".UpDownButton").getAttribute("data-sw");
+                            UserInfo03.SvrItem3 = MC[4].querySelector(".UpDownButton").getAttribute("data-sw");
+                            UserInfo03.SvrItem4 = MC[5].querySelector(".UpDownButton").getAttribute("data-sw");
+                            UserInfo03.Remarks = ItemContainer.querySelectorAll("#Mod03App textarea").value;
+                            TransingStatus.SetStatus(1); BtObj.setAttribute("data-btst", "D");
+                            P801.STR.EVP8010504(UserInfo03);
+                        }
+                        break;
+                    default:
+                        BtStatusClass(BtObj, 2);
+                        break;
+                }
+            },
+            Edit: function (BtObj, Act) {
+                if (Act == 1) {
+                    BtStatusClass(BtObj, 1);
+                    if (BtObj.parentElement.parentElement.contains(BtObj.parentElement.parentElement.querySelector(".Province"))) { P801.ChangeCity(BtObj.parentElement.parentElement.querySelector(".Province")); }
+                    BtObj.parentElement.querySelectorAll("div")[1].style.display = "";
+                    BtObj.style.display = 'none';
+                    BtObj.parentNode.parentNode.querySelector(".MLayer").style.display = "none";
+                } else { BtStatusClass(BtObj, 2); }
+                var InpStyle = BtObj.parentNode.parentNode.querySelectorAll("[data-ctem]");
+                for (var i = 0; i < InpStyle.length; i++) { InpStyle[i].setAttribute("data-ctem", 1); InpStyle[i].className = InpStyle[i].className; }
+            },
+            InterCk: function (No) {
+                var Pass = true;
+                var BTInp = ItemContainer.querySelectorAll("#Mod" + No + "App [data-ctem]>input");
+                var BTSlt = ItemContainer.querySelectorAll("#Mod" + No + "App [data-ctem]>select");
+                for (var i = 0; i < BTInp.length; i++) { if (BTInp[i].value == "" || BTInp[i].value == "-1") { IRC.ErrTip(BTInp[i], "必填"); Pass = false; }; }
+                for (var i = 0; i < BTSlt.length; i++) { if (BTSlt[i].value == "" || BTSlt[i].value == "-1") { IRC.ErrTip(BTSlt[i], "必填"); Pass = false; }; }
+                if (No == "03") {
+                    var Flag = 0;
+                    for (var i = 0; i < ItemContainer.querySelectorAll("#Mod03App .UpDownButton").length; i++) {
+                        if (ItemContainer.querySelectorAll("#Mod03App .UpDownButton")[i].getAttribute("data-sw") == "1") { Flag = 1; ItemContainer.querySelector(".memo>ul>li").innerText = ""; } else { ItemContainer.querySelectorAll("#Mod03App .UpDownButton")[i].setAttribute("data-sw", 0) }
+                    }
+                    if (Flag == 0) { ItemContainer.querySelector(".memo>ul>li").innerText = "必须选一种服务类型"; Pass = false; };
+                }
+                return Pass;
+            }
+        };
+
+        var MToolBar = {
+            LastObj: null,
+            BtID:0,
+            BtAction: function (obj, act, BtID) {//1:down,2:up
+                if (BtStatusClass(obj, 0) == 4) { return; }
+                if (act == 1) { BtStatusClass(obj, 2); return; }
+                if (this.LastObj != null) { BtStatusClass(this.LastObj, 1); }
+                if (act == 2) { BtStatusClass(obj, 4); }
+                this.LastObj = obj; this.BtID = BtID;
+                switch (BtID) {
+                    case 1:
+                        LoadingBoxCtl(1);
+                        ItemContainer.innerHTML = "";
+                        P801.STR.EVP8010101();
+                        break;
+                    case 2:
+                        LoadingBoxCtl(1);
+                        ItemContainer.innerHTML = "";
+                        P801.STR.EVP8010201();
+                        break;
+                    case 3:
+                        LoadingBoxCtl(1);
+                        ItemContainer.innerHTML = "";
+                        P801.STR.EVP8010301();
+                        break;
+                    case 4:
+                        LoadingBoxCtl(1);
+                        ItemContainer.innerHTML = "";
+                        P801.STR.EVP8010401();
+                        break;
+                    case 5:
+                        LoadingBoxCtl(1);
+                        ItemContainer.innerHTML = "";
+                        P801.STR.EVP8010501();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+
+        var ItemWidthMin = 540;
+        var ItemWidthMax = 680;
+    </script>
+
+    <!--主要显示区-->
+    <div id="TopBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules\TopBar.html"></iframe></div>
+    <div id="MainZone">
+        <div class="LocationBar"><label>你的位置</label><a style="cursor:pointer" onclick="javascript:LoadingBoxCtl(1);location.href='P802.html'">用户中心</a>&nbsp;-&nbsp;基本信息</div>
+        <div id="ToolBar" class="UToolBCBG">
+            <div class="UToolBCBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 1)">债权投资</div>
+            <div class="UToolBCBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 2)">债权融资</div>
+            <div class="UToolBCBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 3)">资产出售</div>
+            <div class="UToolBCBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 4)">资产购买</div>
+            <div class="UToolBCBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 5)">顾问信息</div>
+        </div>
+        <div id="ItemContainer"></div>
+        <iframe style="height:0px;width:0px;visibility:collapse;" id="ItemSi" onload="ReCalcItemSize();"></iframe>
+    </div>
+    <div id="BottomBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules/BottomBar.html"></iframe></div>
+
+    <!--异步数据加载区-->
+    <script type="text/javascript">
+        LoadTP("LoadingBox"); LoadTP("TransingBox");
+        LoadJS("InpRulesCk"); LoadJS("TransingBox");
+        LoadTP("DateSelector"); LoadJS("DateSelector");
+        LoadTP("P8010101", "", "P801"); LoadTP("P8010102", "", "P801"); LoadTP("P8010103", "", "P801");
+        LoadTP("P8010201", "", "P801"); LoadTP("P8010202", "", "P801"); LoadTP("P8010203", "", "P801"); LoadTP("P8010204", "", "P801");
+        LoadTP("P8010301", "", "P801");
+        LoadTP("P8010401", "", "P801"); LoadTP("P8010402", "", "P801");
+        LoadTP("P8010501", "", "P801"); LoadTP("P8010502", "", "P801"); LoadTP("P8010503", "", "P801"); 
+    </script>
+</body>
+</html>
