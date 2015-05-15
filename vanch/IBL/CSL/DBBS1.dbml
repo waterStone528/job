@@ -1,0 +1,1098 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DBBS1" Class="DBBS1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=210.83.80.34;Initial Catalog=DBBS1;Persist Security Info=True;User ID=sa" SettingsObjectName="CSL.Properties.Settings" SettingsPropertyName="DBBS1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.user_group_menu" Member="user_group_menus">
+    <Type Name="user_group_menu">
+      <Column Name="user_group_menu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fk_user_group_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fk_menu_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="delete_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.B001" Member="B001s">
+    <Type Name="B001">
+      <Column Name="actionTypeSN" Type="System.String" DbType="Char(3) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="value" Type="System.String" DbType="Char(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.F001" Member="F001s">
+    <Type Name="F001">
+      <Column Name="billSN" Type="System.String" DbType="Char(7) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="payerUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="businessSN" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="billType" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MoneyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="generateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.F002" Member="F002s">
+    <Type Name="F002">
+      <Column Name="paySN" Type="System.String" DbType="Char(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="billSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="payMoneyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="payDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.F004" Member="F004s">
+    <Type Name="F004">
+      <Column Name="rewardSN" Type="System.String" DbType="Char(9) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="rewardAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="rewardDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="referSN" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="rewardType" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.F005" Member="F005s">
+    <Type Name="F005">
+      <Column Name="rechargeSN" Type="System.String" DbType="Char(9) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="rechargeAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="rechargeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="referSN" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="ifSuccess" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.F006" Member="F006s">
+    <Type Name="F006">
+      <Column Name="groupUpSN" Type="System.String" DbType="Char(9) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="businessSN" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="businessType" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="transactionMoneyAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="groupUpValue" Type="System.Decimal" DbType="Decimal(18,8)" CanBeNull="true" />
+      <Column Name="acquireDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.menu" Member="menus">
+    <Type Name="menu">
+      <Column Name="menu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="menu_code" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="parent_menu_code" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="menu_parent_title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="menu_title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="module_code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="element_version" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="control_version" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="sequence" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P101" Member="P101s">
+    <Type Name="P101">
+      <Column Name="reserveSN" Type="System.String" DbType="Char(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="creditRightReserveSN" Type="System.String" DbType="Char(8)" CanBeNull="true" />
+      <Column Name="senderUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="receiverUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="costPercent" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="sendTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="senderCancelReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="senderCancelReserveReasonTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="senderDeleteReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="receiverRefuseReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="receiverRefuseReserveReasonTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="receiverDeleteReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P102" Member="P102s">
+    <Type Name="P102">
+      <Column Name="investSN" Type="System.String" DbType="Char(7) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="reserveSN" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="investMoneyAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="investDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="deadlineDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="verifyInvestDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="closeCaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fundSeekerDeleteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="investorDeleteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P103" Member="P103s">
+    <Type Name="P103">
+      <Column Name="paymentSN" Type="System.String" DbType="Char(7) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="investSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="repayDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ifOverdue" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P104" Member="P104s">
+    <Type Name="P104">
+      <Column Name="qualificationSN" Type="System.String" DbType="Char(9) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="consultantUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="operateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P105" Member="P105s">
+    <Type Name="P105">
+      <Column Name="financierHistoryInfoSN" Type="System.String" DbType="Char(9) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="investSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="historyDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="birthday" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="gender" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="registeredResidence" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="idCard" Type="System.String" DbType="Char(18) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="maritalStatusTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="procreateStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="healthyStatusTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="ifBasicLivingAllowance" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="currentAddressProvinceSN" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="currentAddressCitySN" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="currentAddressDetails" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="graduateSchool" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="degreeTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="degreeCard" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="friendName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="friendPhone" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="spouseName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="spousePhone" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="spouseIdCard" Type="System.String" DbType="Char(18)" CanBeNull="true" />
+      <Column Name="spouseEnterprise" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="kinName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="kinRelationshipTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="kinPhone" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="kinIdCard" Type="System.String" DbType="Char(18)" CanBeNull="true" />
+      <Column Name="kinEnterprise" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="workEnterprise" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="enterpriseTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="hiredate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="workTel" Type="System.String" DbType="Char(20) NOT NULL" CanBeNull="false" />
+      <Column Name="post" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="enterpriseSwitchboard" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="enterpriseWebsite" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="colleageName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="colleagePhone" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="monthlyTotalIncome" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="monthlyTotalExpenditure" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="monthlyNetIncome" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="totalAssets" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="totalDebt" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ifCourtImplementation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="creditStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="caseAmount" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="caseMoneyAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="currentDebtAmount" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="debtMoneyAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="currentOverdue" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="overdueMoneyAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="historyOverdueAmount" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P201" Member="P201s">
+    <Type Name="P201">
+      <Column Name="assetsSN" Type="System.String" DbType="Char(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="assetsTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="assetsSourceTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="location" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="acquireDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="assetsOwner" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="cost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="useStatusTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="marketVPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="mortgageTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="assessmentAgency" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="sealUpStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="propertyRightCard" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="details" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P202" Member="P202s">
+    <Type Name="P202">
+      <Column Name="enterpriseSN" Type="System.String" DbType="Char(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="enterpriseName" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="enterpriseAddress" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="registerDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="registerCapital" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="industryTypeSN" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="legalRepresentatived" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ultimateStockholder" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="stockholderNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="staffNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="totalAssets" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="totalLiability" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="currentLoan" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="netAssets" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="turnover" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="taxTurnover" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="netProfit" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="ifCourtImplementation" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="creditStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P401" Member="P401s">
+    <Type Name="P401">
+      <Column Name="purchaseSN" Type="System.String" DbType="Char(7) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="reserveSN" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="purchaserUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="sellerUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="assetsSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="purchasePrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="purchaseDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="purchaserDeleteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="sellerDeleteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P500" Member="P500s">
+    <Type Name="P500">
+      <Column Name="serverSN" Type="System.String" DbType="Char(7) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="reserveSN" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="consultantUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7)" CanBeNull="true" />
+      <Column Name="auditStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="consultantAuditNotPassReasonTypeSN" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="consultantDeleteCreditRightDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="acceptReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="serverDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="consultantDeleteCloseCreditRightDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P700" Member="P700s">
+    <Type Name="P700">
+      <Column Name="RegPresentVSN" Type="System.String" DbType="Char(7) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="presentAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="presentDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.U002" Member="U002s">
+    <Type Name="U002">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="birthday" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="gender" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="registeredResidence" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="idCard" Type="System.String" DbType="Char(18) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="maritalStatusTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="procreateStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="healthyStatusTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ifBasicLivingAllowance" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="currentAddressProvinceSN" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="currentAddressCitySN" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="currentAddressDetails" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="graduateSchool" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="degreeTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="degreeCard" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="friendName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="friendPhone" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="spouseName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="spousePhone" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="spouseIdCard" Type="System.String" DbType="Char(18)" CanBeNull="true" />
+      <Column Name="spouseEnterprise" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="kinName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="kinRelationshipTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="kinPhone" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="kinIdCard" Type="System.String" DbType="Char(18)" CanBeNull="true" />
+      <Column Name="kinEnterprise" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="workEnterprise" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="enterpriseTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="hiredate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="workTel" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="post" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="enterpriseSwitchboard" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="enterpriseWebsite" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="colleageName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="colleagePhone" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="colleageIdCard" Type="System.String" DbType="Char(18)" CanBeNull="true" />
+      <Column Name="monthlyTotalIncome" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="monthlyTotalExpenditure" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="monthlyNetIncome" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="totalAssets" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="totalDebt" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ifCourtImplementation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="creditStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="investMainTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="financingMain" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="maxMortgageRate" Type="System.Decimal" DbType="Decimal(8,4)" CanBeNull="true" />
+      <Column Name="guaranteeTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="investProvinceSN" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="investCitySN" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="minInvestMoneyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxInvestMoneyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="minInterestRate" Type="System.Decimal" DbType="Decimal(8,6)" CanBeNull="true" />
+      <Column Name="minInvestDays" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="maxInvestDays" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="collateralDemand" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="assetsProvince" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="minPurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxPurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="assetsType" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="industryTypeSN" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="serviceProvinceSN" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="serviceCitySN" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="investigate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="assetsEvaluate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="creditRightGuarantee" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="badLoanCollect" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="consultantDetails" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.U004" Member="U004s">
+    <Type Name="U004">
+      <Column Name="smIdentifyingCodeRecordSN" Type="System.String" DbType="Char(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="identifyingCode" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="sendTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="businessType" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.U005" Member="U005s">
+    <Type Name="U005">
+      <Column Name="senderPwdRecordSN" Type="System.String" DbType="Char(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="sendTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP801001" Member="VP801001s">
+    <Type Name="VP801001">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="birthday" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="gender" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="registeredResidence" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="idCard" Type="System.String" DbType="Char(18) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="maritalStatusType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="procreateStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="healthyStatusType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ifBasicLivingAllowance" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="currentAddressProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="currentAddressCity" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="currentAddressDetails" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="graduateSchool" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="degreeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="degreeCard" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="friendName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="friendPhone" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="spouseName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="spousePhone" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="spouseIdCard" Type="System.String" DbType="Char(18)" CanBeNull="true" />
+      <Column Name="spouseEnterprise" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="kinName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="kinRelationshipType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="kinPhone" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="kinIdCard" Type="System.String" DbType="Char(18)" CanBeNull="true" />
+      <Column Name="kinEnterprise" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="workEnterprise" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="enterpriseType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="hiredate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="workTel" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="post" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="enterpriseSwitchboard" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="enterpriseWebsite" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="colleageName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="colleagePhone" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="colleageIdCard" Type="System.String" DbType="Char(18)" CanBeNull="true" />
+      <Column Name="monthlyTotalIncome" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="monthlyTotalExpenditure" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="monthlyNetIncome" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="totalAssets" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="totalDebt" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ifCourtImplementation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="creditStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="investMainType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="financingMain" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="maxMortgageRate" Type="System.Decimal" DbType="Decimal(8,4)" CanBeNull="true" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="investProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="investCity" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="minInvestMoneyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxInvestMoneyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="minInterestRate" Type="System.Decimal" DbType="Decimal(8,6)" CanBeNull="true" />
+      <Column Name="minInvestDays" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="maxInvestDays" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="collateralDemand" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="assetsProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="minPurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxPurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="assetsType" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="industryType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="serviceProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="serviceCity" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="investigate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="assetsEvaluate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="creditRightGuarantee" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="badLoanCollect" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="consultantDetails" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP201001" Member="VP201001s">
+    <Type Name="VP201001">
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mortgageRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="publisherUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="province" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="capitalPurposeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="repaymentSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP201041" Member="VP201041s">
+    <Type Name="VP201041">
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mortgageRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="publisherUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="province" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="capitalPurposeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="repaymentSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP101001" Member="VP101001s">
+    <Type Name="VP101001">
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mortgageRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="publisherUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="province" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="capitalPurposeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="repaymentSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP101011" Member="VP101011s">
+    <Type Name="VP101011">
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="publisherUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="capitalPurposeTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="mortgageRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="provinceSN" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="citySN" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentSourceTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP202041" Member="VP202041s">
+    <Type Name="VP202041">
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mortgageRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="publisherUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="province" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="capitalPurposeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="repaymentSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="sendDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="senderCancelReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="senderCancelReserveReasonTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="senderDeleteReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="receiverRefuseReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="receiverRefuseReserveReasonTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="receiverDeleteReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="consultantUserSN" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP202061" Member="VP202061s">
+    <Type Name="VP202061">
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mortgageRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="publisherUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="province" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="capitalPurposeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="repaymentSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="sendDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="senderCancelReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="senderCancelReserveReasonTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="senderDeleteReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="receiverRefuseReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="receiverRefuseReserveReasonTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="receiverDeleteReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="consultantUserSN" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP202011" Member="VP202011s">
+    <Type Name="VP202011">
+      <Column Name="reserveType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mortgageRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="province" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="capitalPurposeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="repaymentSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="investorCancelReserveReasonType" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="investorRefuseReserveReasonType" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="reserveDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="consultantSN" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP203011" Member="VP203011s">
+    <Type Name="VP203011">
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="investMoneyAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="investDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="deadlineDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP203091" Member="VP203091s">
+    <Type Name="VP203091">
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="investMoneyAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="investDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="deadlineDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="repayDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="ifOverdue" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="repaymentSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP102031" Member="VP102031s">
+    <Type Name="VP102031">
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mortgageRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="publisherUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="province" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="capitalPurposeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="repaymentSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="consultantUserSN" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP102051" Member="VP102051s">
+    <Type Name="VP102051">
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mortgageRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="publisherUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="province" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="capitalPurposeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="repaymentSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="consultantUserSN" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP202081" Member="VP202081s">
+    <Type Name="VP202081">
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mortgageRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="publisherUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="province" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="capitalPurposeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="repaymentSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="consultantUserSN" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP105051" Member="VP105051s">
+    <Type Name="VP105051">
+      <Column Name="investSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="investMoneyAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="investDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="deadlineDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="verifyInvestDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="closeCaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fundSeekerDeleteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="investorDeleteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mortgageRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="province" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="capitalPurposeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="repaymentSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="consultantUserSN" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP105061" Member="VP105061s">
+    <Type Name="VP105061">
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="mortgageRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="province" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="capitalPurposeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="repaymentSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="investSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="reserveSN" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="investMoneyAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="investDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="deadlineDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="verifyInvestDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="closeCaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fundSeekerDeleteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="investorDeleteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="paymentSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="repayDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ifOverdue" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP801021" Member="VP801021s">
+    <Type Name="VP801021">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightInvestApplyStauts" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightFinancingApplyStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="assetsSellingApplyStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="assetsPurchaseApplyStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="consultantApplyStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="applyCreditRightInvestDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="applyCreditRightFinancingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="applyAssetsSellingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="applyAssetsPurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="applyConsultantDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="openCreditRightInvestmentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="openCreditRightFinancingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="openAssetsSellingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="openAssetsPurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="openConsultantDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="creditRightInvestStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="creditRightFinancingStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="assetsSellingStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="assetsPruchaseStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="consultantStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="creditRightInvestNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="creditRightFinancingNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="assetsSellingNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="assetsPurchaseNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="consultantNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP401001" Member="VP401001s">
+    <Type Name="VP401001">
+      <Column Name="assetsSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="publisherUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="assetsType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="assetsSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="assetsProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="acquireDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="useStatusType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="assessmentAgency" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="marketPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="sellPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="details" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP402011" Member="VP402011s">
+    <Type Name="VP402011">
+      <Column Name="assetsSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="assetsType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="assetsSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="assetsProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="acquireDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="useStatusType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="assessmentAgency" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="marketPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="sellPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="details" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="reserveSN" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="senderUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="receiverUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="reserveDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP404001" Member="VP404001s">
+    <Type Name="VP404001">
+      <Column Name="assetsSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="assetsType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="assetsSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="assetsProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="acquireDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="useStatusType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="assessmentAgency" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="marketPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="sellPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="details" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="purchaseSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="purchaserUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="sellerUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="purchasePrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="purchaseDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="purchaserDeleteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="sellerDeleteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP301011" Member="VP301011s">
+    <Type Name="VP301011">
+      <Column Name="assetsSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="publisherUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="assetsType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="assetsSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="assetsProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="acquireDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="useStatusType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="assessmentAgency" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="marketPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="sellPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="details" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP302001" Member="VP302001s">
+    <Type Name="VP302001">
+      <Column Name="assetsSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="assetsType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="assetsSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="assetsProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="acquireDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="useStatusType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="assessmentAgency" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="marketPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="sellPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="details" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="reserveSN" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="senderUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="receiverUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="reserveDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP402021" Member="VP402021s">
+    <Type Name="VP402021">
+      <Column Name="assetsSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="assetsType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="assetsSourceType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="assetsProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="acquireDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="useStatusType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="assessmentAgency" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="marketPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="sellPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="details" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="reserveSN" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="senderUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="receiverUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="reserveDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP504031" Member="VP504031s">
+    <Type Name="VP504031">
+      <Column Name="serverSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="consultantUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP502011" Member="VP502011s">
+    <Type Name="VP502011">
+      <Column Name="consultantUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="reserveSN" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="sendTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="province" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="capitalPurposeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="costPercent" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP503011" Member="VP503011s">
+    <Type Name="VP503011">
+      <Column Name="serverSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="consultantUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7)" CanBeNull="true" />
+      <Column Name="consultantDeleteCreditRightDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="acceptReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="costPercent" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="P101SenderCancelReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="P203ReceiverRefuseReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="P203SenderCancelReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="P100SenderCancelReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="P100ReceiverRefuseReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="province" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="capitalPurposeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP504041" Member="VP504041s">
+    <Type Name="VP504041">
+      <Column Name="consultantUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7)" CanBeNull="true" />
+      <Column Name="serverDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="auditStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="costPercent" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="investSN" Type="System.String" DbType="Char(7)" CanBeNull="true" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="invest_financingAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="invest_deadlineDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="invest_repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="invest_dailyRate" Type="System.Decimal" DbType="Decimal(8,6)" CanBeNull="true" />
+      <Column Name="investDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="closeCaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP504051" Member="VP504051s">
+    <Type Name="VP504051">
+      <Column Name="serverSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="sortDatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7)" CanBeNull="true" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="invest_deadlineDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="repaymentType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="consultantUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="investorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="financierUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="auditStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="costPercent" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="investStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP801031" Member="VP801031s">
+    <Type Name="VP801031">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="registerDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightFinancingStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="creditRightInvestStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="assetsSellingStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="assetsPruchaseStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="consultantStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="work_num" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="idCard" Type="System.String" DbType="Char(18) NOT NULL" CanBeNull="false" />
+      <Column Name="birthday" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="gender" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="registeredResidence" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="maritalStatusType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="procreateStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="degreeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="monthlyTotalIncome" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VF001" Member="VF001s">
+    <Type Name="VF001">
+      <Column Name="billSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="payerUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="businessSN" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="billType" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MoneyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="generateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VF002" Member="VF002s">
+    <Type Name="VF002">
+      <Column Name="paySN" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="billSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="payMoneyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="payDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VF003" Member="VF003s">
+    <Type Name="VF003">
+      <Column Name="revenueExpenditureSN" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="generetorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="generateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="revenue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="expenditure" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="balance" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="referSN" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.A008" Member="A008s">
+    <Type Name="A008">
+      <Column Name="assetsTypeSN" Type="System.String" DbType="Char(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="value" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VU000" Member="VU000s">
+    <Type Name="VU000">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="pwd" Type="System.String" DbType="Char(32) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="registerDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="lastLoginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="lastLoginIp" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VF007" Member="VF007s">
+    <Type Name="VF007">
+      <Column Name="changeAccountSN" Type="System.String" DbType="Char(9) NOT NULL" CanBeNull="false" />
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="changeAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="changeReasonType" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="changeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VA028" Member="VA028s">
+    <Type Name="VA028">
+      <Column Name="moneyParamsSN" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="needPayDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="overdueRateDaily" Type="System.Decimal" DbType="Decimal(8,6)" CanBeNull="true" />
+      <Column Name="serverStopRate" Type="System.Decimal" DbType="Decimal(18,10)" CanBeNull="true" />
+      <Column Name="serverStopDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="shortMessageCost" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

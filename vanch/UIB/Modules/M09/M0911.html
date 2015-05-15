@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="SettingsContainer">
+        <div class="ItemSize InforBox" id="M091101">
+            <h3>总设置</h3>
+            <table>
+                <tbody>
+                    <tr><td>模式选择</td><td>负载均衡&nbsp;<div style="position:absolute" class="SlideButton" data-sw="0" onmouseup="M0911.SlideSwitch(this)" data-mode="0"><div class="BG"></div><div class="switch"></div></div></td></tr>
+                    <tr><td colspan="1"></td><td>客户经理&nbsp;<div style="position:absolute" class="SlideButton" data-sw="0" onmouseup="M0911.SlideSwitch(this)" data-mode="1"><div class="BG"></div><div class="switch"></div></div></td></tr>
+                    <tr><td colspan="2" data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr><td colspan="2" data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr style="display:none;"><td colspan="2" data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                </tbody>
+                <tfoot><tr class="ReadOnlyMask" data-mask="0"><td colspan="4"><div></div></td></tr></tfoot>
+            </table>
+            <div class="ButtonBar">
+                <div data-btst="E" data-btid="1" onmouseup="M0911.Button(this)">修改</div>
+                <div data-btst="E" data-btid="2" onmouseup="M0911.Button(this)">保存</div>
+            </div>
+        </div>
+        <div class="ItemSize InforBox" id="M091102">
+            <h3>服务器端</h3>
+            <table>
+                <tbody>
+                    <tr><td>网络延迟</td><td><div><input type="text" data-type="c" onchange="M0911.CalSec(this);" /> * <label>30</label> = <label>30</label>秒 缓冲</div></td></tr>
+                    <tr><td>客服超时</td><td><div><input type="text" data-type="c" onchange="M0911.CalSec(this);" /> * <label>30</label> = <label>30</label>秒 内无动作</div></td></tr>
+                    <tr><td>客户超时</td><td><div><input type="text" data-type="c" /><label></label>秒 未收到请求</div></td></tr>
+                    <tr style="display:none;"><td>客服上限</td><td><div><input type="text" data-type="c" /><label>个 客户/客服</label></div></td></tr>
+                    <tr style="display:none;"><td colspan="2" data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                </tbody>
+                <tfoot><tr class="ReadOnlyMask" data-mask="0"><td colspan="4"><div></div></td></tr></tfoot>
+            </table>
+            <div class="ButtonBar">
+                <div data-btst="E" data-btid="1" onmouseup="M0911.Button(this)">修改</div>
+                <div data-btst="E" data-btid="2" onmouseup="M0911.Button(this)">保存</div>
+            </div>
+        </div>
+        <div class="ItemSize InforBox" id="M091103">
+            <h3>客户端倒计时</h3>
+            <table>
+                <tbody>
+                    <tr><td>空闲时长</td><td><div><input type="text" data-type="c" onchange="M0911.CalSec(this);" /> * <label>30</label> = <label>30</label>秒 最大值</div></td></tr>
+                    <tr><td>提醒起始</td><td><div><input type="text" data-type="c" onchange="M0911.CalSec(this);" /> * <label>30</label> = <label>30</label>秒 剩余时</div></td>
+                    </tr>
+                    <tr><td colspan="2" data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr><td colspan="2" data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr style="display:none;"><td colspan="2" data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                </tbody>
+                <tfoot><tr class="ReadOnlyMask" data-mask="0"><td colspan="4"><div></div></td></tr></tfoot>
+            </table>
+            <div class="ButtonBar">
+                <div data-btst="E" data-btid="1" onmouseup="M0911.Button(this)">修改</div>
+                <div data-btst="E" data-btid="2" onmouseup="M0911.Button(this)">保存</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

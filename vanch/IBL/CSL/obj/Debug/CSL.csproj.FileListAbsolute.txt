@@ -1,0 +1,6 @@
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\CSL\bin\Debug\CSL.dll.config
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\CSL\bin\Debug\CSL.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\CSL\bin\Debug\CSL.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\CSL\obj\Debug\CSL.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\CSL\obj\Debug\CSL.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\CSL\obj\Debug\CSL.csprojResolveAssemblyReference.cache

@@ -1,0 +1,14 @@
+D:\program\job\VanchBg\Model\bin\Release\Model.dll
+D:\program\job\VanchBg\Model\bin\Release\Model.pdb
+D:\program\job\VanchBg\Model\obj\Release\Model.dll
+D:\program\job\VanchBg\Model\obj\Release\Model.pdb
+C:\Users\雄\SkyDrive\job\vanch\program\code\后端\VanchBg\Model\bin\Release\Model.dll
+C:\Users\雄\SkyDrive\job\vanch\program\code\后端\VanchBg\Model\bin\Release\Model.pdb
+C:\Users\雄\SkyDrive\job\vanch\program\code\后端\VanchBg\Model\obj\Release\Model.csprojResolveAssemblyReference.cache
+C:\Users\雄\SkyDrive\job\vanch\program\code\后端\VanchBg\Model\obj\Release\Model.dll
+C:\Users\雄\SkyDrive\job\vanch\program\code\后端\VanchBg\Model\obj\Release\Model.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\后端\VanchBg\Model\bin\Release\Model.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\后端\VanchBg\Model\bin\Release\Model.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\后端\VanchBg\Model\obj\Release\Model.csprojResolveAssemblyReference.cache
+C:\Users\雄\OneDrive\job\vanch\program\code\后端\VanchBg\Model\obj\Release\Model.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\后端\VanchBg\Model\obj\Release\Model.pdb

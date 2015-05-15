@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="expires" content="0" />
+    <title></title>
+</head>
+<body>
+    <style type="text/css">
+        .LeftZone {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 200px;
+            bottom: 0px;
+        }
+
+            .LeftZone > .FocusArea {
+                position: absolute;
+                top: 0px;
+                bottom: 40%;
+                width: 100%;
+            }
+
+            .LeftZone > .CommButtons {
+                position: absolute;
+                bottom: 0px;
+                top: 60%;
+                width: 100%;
+                background-color: #232;
+            }
+
+        #MessageArea {
+            word-break: normal;
+            overflow-y: auto;
+            scrollbar-base-color: transparent;
+            background-color: transparent;
+            overflow-x: hidden;
+            scrollbar-arrow-color: transparent;
+            scrollbar-base-color: #182679;
+            scrollbar-track-color: black;
+            position: absolute;
+            left: 210px;
+            right: 210px;
+            bottom: 140px;
+            top: 0px;
+            /*background-color: #112;*/
+        }
+
+        .TextInputZone {
+            height: 80px;
+            bottom: 0px;
+            right: 0px;
+            left: 210px;
+            height: 100px;
+            position: absolute;
+        }
+
+            .TextInputZone #InputedText {
+                height: 100%;
+                width: 100%;
+                border: solid 1px #121218;
+                border-radius: 3px;
+                color: white;
+                font-size: large;
+                overflow: hidden;
+                font-family: inherit;
+                float: left;
+                height: 80%;
+                width: 80%;
+                position: absolute;
+                bottom: 2px;
+            }
+
+                .TextInputZone #InputedText:hover {
+                    box-shadow: 0 0 6px rgba(200, 220, 255, 0.50);
+                }
+
+            .TextInputZone #InputedText, .FocusArea {
+                background-color: #121218;
+            }
+
+            .TextInputZone .SendBt {
+                color: #3a6bf1;
+                cursor: pointer;
+                line-height: 80px;
+                height: 80%;
+                width: 18%;
+                left: 81%;
+                bottom: 4px;
+                font-size: 26px;
+                text-align: center;
+                border: solid 1px rgba(58, 107, 241, 0.50);
+                border-radius: 3px;
+                float: left;
+                position: absolute;
+                transition: background-color ease 1s;
+            }
+
+                .TextInputZone .SendBt:hover {
+                    transition: background-color ease 0.5s;
+                    background-color: #262a50;
+                }
+
+        .MessageA, .MessageB, .MessageC {
+            width: 80%;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 3px;
+            word-break: break-all;
+        }
+
+            .MessageA > .Time, .MessageB > .Time, .MessageC > .Time {
+                font-size: 10px;
+                opacity: 0.5;
+                float: right;
+            }
+
+        .MessageA {
+            background-color: #3c3c4d;
+            background-color: rgba(60, 60, 77, 0.90);
+            float: right;
+        }
+
+        .MessageB {
+            background-color: #505065;
+            background-color: rgba(80, 80, 101, 0.90);
+            float: left;
+        }
+
+        .MessageC {
+            background-color: #102085;
+            float: left;
+        }
+
+        .CustomList {
+            position: absolute;
+            right: 0px;
+            top: 10px;
+            bottom: 10px;
+            width: 200px;
+            /*background-color: #226;*/
+        }
+
+            .CustomList > .Title {
+                width: 100%;
+                text-align: center;
+                font-size: 18px;
+                font-weight: 600;
+            }
+
+            .CustomList > .Customer {
+                width: 90%;
+                text-align: center;
+                border: solid 1px #56f;
+                margin: 5%;
+                position: relative;
+                cursor: pointer;
+            }
+
+                .CustomList > .Customer > .MsgCount {
+                    position: absolute;
+                    height: 16px;
+                    width: 16px;
+                    line-height: 16px;
+                    font-size: 12px;
+                    background-color: #56f;
+                    border-radius: 8px;
+                    color: #fff;
+                    display: none;
+                }
+
+                .CustomList > .Customer > .CloseBt {
+                    position: absolute;
+                    height: 16px;
+                    width: 16px;
+                    line-height: 16px;
+                    font-size: 12px;
+                    background-color: #56f;
+                    border-radius: 8px;
+                    color: #fff;
+                    display: none;
+                }
+
+                .CustomList > .Customer > .Name {
+                    margin: 10px;
+                    display: inline-block;
+                    color: #67f;
+                    font-size: 14px;
+                }
+
+            .CustomList > .MsgCount > .MsgCount {
+                display: block;
+            }
+
+            .CustomList > .CloseBt > .CloseBt {
+                display: block;
+                cursor: pointer;
+            }
+
+            .CustomList > .Selected {
+                border: solid 1px #556;
+                cursor: default;
+            }
+
+                .CustomList > .Selected > .CloseBt, .CustomList > .Selected > .MsgCount {
+                    background-color: #fff;
+                    color: #226;
+                }
+
+                .CustomList > .Selected > .Name {
+                    color: #fff;
+                }
+    </style>
+    <div class="LeftZone">
+        <div class="FocusArea">
+            <div style="position: relative; top: 50%; left: 0%; margin-top: -14px; height: 28px;text-align:center; ">焦点信息区</div>
+        </div>
+        <div class="CommButtons">
+            <div style="position: relative; top: 50%; left: 0%; margin-top: -14px; height: 28px;text-align:center; ">公共按钮区</div>
+        </div>
+    </div>
+    <div id="MessageArea"></div>
+    <div class="CustomList">
+        <div class="Title">当前客户</div>
+        <!--<div class="Customer Selected CloseBt"><label class="MsgCount">1</label><label class="CloseBt">X</label><label class="Name">匿名客户1</label></div>
+        <div class="Customer Selected"><label class="MsgCount">1</label><label class="CloseBt">X</label><label class="Name">匿名客户1</label></div>
+        <div class="Customer MsgCount"><label class="MsgCount">1</label><label class="CloseBt">X</label><label class="Name">匿名客户2</label></div>
+        <div class="Customer"><label class="MsgCount">1</label><label class="CloseBt">X</label><label class="Name">匿名客户3</label></div>-->
+        <div class="Template"><div class="Customer" onmouseup="M0100.CustomerButton(this,1,1)" data-chathis=""><label class="MsgCount">0</label><label class="CloseBt" onmouseup="M0100.CustomerButton(this,2,1)">X</label><label class="Name">匿名客户</label></div></div>
+    </div>
+    <div class="TextInputZone">
+        <textarea id="InputedText"></textarea>
+        <div class="SendBt" onmousedown="M0100.Button(this, 0, 1)" onmouseup="M0100.Button(this, 1, 1);" title="按Ctrl+Enter可以快捷发送">发送</div>
+    </div>
+    <div id="MessageTemp" style="display: none;">
+        <div class="MessageA">
+            <div class="Content"></div>
+            <div class="Time">00:00</div>
+        </div>
+        <div class="MessageB">
+            <div class="Content"></div>
+            <div class="Time">00:00</div>
+        </div>
+        <div class="MessageC">
+            <div class="Content"></div>
+            <div class="Time">00:00</div>
+        </div>
+    </div>
+</body>
+</html>

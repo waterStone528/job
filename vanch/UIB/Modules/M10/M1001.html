@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+</head>
+<body>
+    <style type="text/css">
+        .PasswordReset {
+            position: absolute;
+            height: 90px;
+            width: 260px;
+            background-color: #30369d;
+            right: 10px;
+            bottom: 100%;
+            text-align: center;
+            align-items: center;
+            padding: 0px;
+            z-index: 10;
+        }
+
+            .PasswordReset > div {
+                border: solid 1px transparent;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-left: 18px;
+                height: 25px;
+                width: 220px;
+                position: relative;
+            }
+
+            .PasswordReset[data-show="0"] {
+                display: none;
+            }
+
+            .PasswordReset > div > input {
+                border: none;
+                background-color: rgba(255, 255, 255, 0.10);
+                height: 100%;
+                width: 100%;
+                color: #fff;
+            }
+
+            .PasswordReset > div > .PlaceHolder {
+                border: solid 1px transparent;
+                position: absolute;
+                left: 5px;
+                top: 3px;
+                color: #fff;
+            }
+    </style>
+    <div class="ListContainer">
+        <table class="TbList">
+            <thead><tr><td>员工工号</td><td>真实姓名</td><td>性别</td><td>注册日期</td><td>部门名称</td><td>岗位</td><td>用户组</td><td>分配日期</td><td>操作人</td><td>状态</td></tr></thead>
+            <tbody></tbody>
+            <tbody class="Template">
+                <tr onmouseup="M1001.Button(this, 0);">
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>DYYYY/MM/DD</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>DYYYY/MM/DD</td>
+                    <td>X</td><td data-state="0">X</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="InputBar" data-inp="0"><td><input type="text" /></td><td><input type="text" /></td><td><select><option value="1">男</option><option value="0">女</option> </select> </td><td></td><td><input type="text" /></td><td><input type="text" /></td><td></td><td></td><td>X</td><td>待用</td></tr>
+                <tr>
+                    <td colspan="10">
+                        <div class="PasswordReset" data-show="0">
+                            <div onmousedown="this.querySelector('.PlaceHolder').style.display = 'none'; this.querySelector('input').focus();">
+                                <input type="password" />
+                                <div class="PlaceHolder">输入新密码</div>
+                            </div>
+                            <div onmousedown="this.querySelector('.PlaceHolder').style.display = 'none'; this.querySelector('input').focus();">
+                                <input type="password" />
+                                <div class="PlaceHolder">再输入密码</div>
+                            </div>
+                        </div>
+                        <div class="ButtonBar">
+                            <div data-btst="E" onmouseup="M1001.Button(this,11);">新增</div>
+                            <div data-btst="E" onmouseup="M1001.Button(this,12);">保存</div>
+                            <div data-btst="E" onmouseup="M1001.Button(this,13);">取消</div>
+                            <div data-btst="E" onmouseup="M1001.Button(this,14);">修改</div>
+                            <div data-btst="E" onmouseup="M1001.Button(this,15);">保存</div>
+                            <div data-btst="E" onmouseup="M1001.Button(this,16);">取消</div>
+                            <div data-btst="E" onmouseup="M1001.Button(this,17);">删除</div>
+                            <div data-btst="E" onmouseup="M1001.Button(this,18);">暂停</div>
+                            <div data-btst="E" onmouseup="M1001.Button(this,19);">启用</div>
+                            <div data-btst="E" onmouseup="M1001.Button(this,20);">停用</div>
+                            <div data-btst="E" onmouseup="M1001.Button(this,21);">重设密码</div>
+                            <div data-btst="E" onmouseup="M1001.Button(this,22);">确认</div>
+                            <div data-btst="E" onmouseup="M1001.Button(this,23);">取消</div>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>

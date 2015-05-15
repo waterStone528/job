@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\雄\OneDrive\文档\desktop\IBL</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/BLL.dll">
+      <publishTime>08/28/2014 08:51:32</publishTime>
+    </File>
+    <File Include="bin/CSL.dll">
+      <publishTime>08/26/2014 14:51:37</publishTime>
+    </File>
+    <File Include="bin/DAL.dll">
+      <publishTime>08/28/2014 08:51:31</publishTime>
+    </File>
+    <File Include="bin/FBF.dll">
+      <publishTime>08/28/2014 08:51:33</publishTime>
+    </File>
+    <File Include="bin/Model.dll">
+      <publishTime>05/16/2014 08:41:18</publishTime>
+    </File>
+    <File Include="customer/customerV1.html">
+      <publishTime>08/08/2014 15:08:51</publishTime>
+    </File>
+    <File Include="customer/fonts/icomoon.eot">
+      <publishTime>08/04/2014 20:32:29</publishTime>
+    </File>
+    <File Include="customer/fonts/icomoon.svg">
+      <publishTime>08/04/2014 20:32:29</publishTime>
+    </File>
+    <File Include="customer/fonts/icomoon.ttf">
+      <publishTime>08/04/2014 20:32:29</publishTime>
+    </File>
+    <File Include="customer/fonts/icomoon.woff">
+      <publishTime>08/04/2014 20:32:29</publishTime>
+    </File>
+    <File Include="customer/index.html">
+      <publishTime>08/28/2014 08:39:31</publishTime>
+    </File>
+    <File Include="FBF/Control.ashx">
+      <publishTime>07/22/2014 15:47:46</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>08/05/2014 16:38:09</publishTime>
+    </File>
+    <File Include="UIB/ComScript/CommCtrl.js">
+      <publishTime>08/26/2014 14:51:33</publishTime>
+    </File>
+    <File Include="UIB/ComScript/InpRulesCk.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/ComScript/LoginBox.js">
+      <publishTime>08/04/2014 21:00:23</publishTime>
+    </File>
+    <File Include="UIB/ComScript/TransingBox.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/default.htm">
+      <publishTime>08/27/2014 15:39:54</publishTime>
+    </File>
+    <File Include="UIB/fonts/vanch.eot">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/fonts/vanch.svg">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/fonts/vanch.ttf">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/fonts/vanch.woff">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Images/loading.gif">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Images/TransactionRight.png">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Images/TransactionWrong.png">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Images/VANCH-LOGO.png">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/LoadingBox.html">
+      <publishTime>07/21/2014 10:30:08</publishTime>
+    </File>
+    <File Include="UIB/Modules/LoginBox.html">
+      <publishTime>08/04/2014 21:00:03</publishTime>
+    </File>
+    <File Include="UIB/Modules/M01/M0100.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M01/M0100.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M02/M0201.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M02/M0201.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M02/M0202.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M02/M0202.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M02/M0203.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M02/M0203.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M02/M0204.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M02/M0204.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M02/M0205.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M02/M0205.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M02/M0206.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M02/M0206.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M06/M0601.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M06/M0601.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M06/M0603.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M06/M0603.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M06/M0604.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M06/M0604.js">
+      <publishTime>08/20/2014 16:40:33</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0701.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0701.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0702.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0702.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0703.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0703.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0704.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0704.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0705.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0705.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0706.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0706.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0707.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M0707.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M07/M07C1.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0901.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0901.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0902.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0902.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0903.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0903.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0904.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0904.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0905.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0905.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0906.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0906.js">
+      <publishTime>08/27/2014 14:42:47</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0907.html">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0907.js">
+      <publishTime>08/20/2014 15:52:39</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0908.html">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0908.js">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0909.html">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0909.js">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0910.html">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0910.js">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0911.html">
+      <publishTime>08/20/2014 16:12:25</publishTime>
+    </File>
+    <File Include="UIB/Modules/M09/M0911.js">
+      <publishTime>08/20/2014 16:12:25</publishTime>
+    </File>
+    <File Include="UIB/Modules/M10/M1001.html">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M10/M1001.js">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M10/M1002.html">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M10/M1002.js">
+      <publishTime>08/27/2014 17:17:22</publishTime>
+    </File>
+    <File Include="UIB/Modules/M10/M1003.html">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M10/M1003.js">
+      <publishTime>08/27/2014 17:21:26</publishTime>
+    </File>
+    <File Include="UIB/Modules/M10/M1004.html">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M10/M1004.js">
+      <publishTime>08/27/2014 17:24:09</publishTime>
+    </File>
+    <File Include="UIB/Modules/M11/M1101.html">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M11/M1101.js">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M11/M1102.html">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M11/M1102.js">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M11/M1103.html">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/M11/M1103.js">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/Modules/TransingBox.html">
+      <publishTime>07/21/2014 10:30:08</publishTime>
+    </File>
+    <File Include="UIB/StyleS/ComStyle.css">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="UIB/StyleS/datepicker.css">
+      <publishTime>08/20/2014 15:52:40</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/06/2014 17:46:33</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

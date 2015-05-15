@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DBBC1" Class="DBBC1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.11.92;Initial Catalog=DBBC1;Persist Security Info=True;User ID=sa" SettingsObjectName="CSL.Properties.Settings" SettingsPropertyName="DBBC1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.B100" Member="B100s">
+    <Type Name="B100">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="cancelPublishCrAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="publishedCrAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cancelReserveAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="refuseReserveAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="reservingCrAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="repayingCrAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="repayedCrAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="overdueAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vipLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="needPayBillAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="clientManagerSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="clientManagerWorkNum" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="applyStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="serverStauts" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.B200" Member="B200s">
+    <Type Name="B200">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="cancelReserveAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="refuseReserveAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="reservingCrAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="investedCrAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="closedCaseCrAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vipLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="clientManagerSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="clientManagerWorkNum" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="applyStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="serverStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.B400" Member="B400s">
+    <Type Name="B400">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="refuseReserveAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="auditingCrAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="auditedCrAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="closedCrAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vipLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="clientManagerSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="clientManagerWorkNum" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="applyStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="serverStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.B300" Member="B300s">
+    <Type Name="B300">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="cancelReserveAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="reservingAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="purchasedAssetsAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vipLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="clientManagerSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="clientManagerWorkNum" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="applyStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="serverStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.B500" Member="B500s">
+    <Type Name="B500">
+      <Column Name="internalUserSN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="workNum" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="reg_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="clientTotalAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="financierAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="investorAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="consultantAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sellerAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="purchaserAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.B600" Member="B600s">
+    <Type Name="B600">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="cancelPublishAssetsAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="publishedAssetsAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="refuseReserveAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="reservingAssetsAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="selledAssetsAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vipLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="needPayBillAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="clientManagerSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="clientManagerWorkNum" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="applyStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="serverStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.M0601" Member="M0601s">
+    <Type Name="M0601">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="LoginName" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="vipLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="topUpAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="consumptionAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="balanceAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="needPayBillAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="needPayAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="overDueAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

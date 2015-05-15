@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DBMA1" Class="VanchBgDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.11.95;Initial Catalog=DBMA1;Persist Security Info=True;User ID=sa" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="DBMA1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.chat_records" Member="chat_records">
+    <Type Name="chat_record">
+      <Column Name="chat_records_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_num" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="cus_svr_num" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="user_send_msg" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Column Name="cus_svr_send_msg" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Column Name="date_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.config" Member="configs">
+    <Type Name="config">
+      <Column Name="config_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cusSvrMode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cusSvrUserMaxAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="webDelay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cusSvrUserDelLevel" Type="System.Int32" DbType="Int" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="maxCusSvrConnLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="maxUserConnNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="countSizeLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="showCountDownSizeLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="levelSeconds" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.internal_user" Member="internal_users">
+    <Type Name="internal_user">
+      <Column Name="internal_user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="work_num" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="pwd" Type="System.String" DbType="Char(32) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="gender" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="reg_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="department_name" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="jobs" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="user_group" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="fk_user_group_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="allocate_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="operater" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="use_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Association Name="internal_user_B005" Member="B005s" ThisKey="internal_user_id" OtherKey="internalUserSN" Type="B005" />
+      <Association Name="user_group_internal_user" Member="user_group1" ThisKey="fk_user_group_id" OtherKey="user_group_id" Type="user_group" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_group" Member="user_groups">
+    <Type Name="user_group">
+      <Column Name="user_group_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_group_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="delete_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="user_group_internal_user" Member="internal_users" ThisKey="user_group_id" OtherKey="fk_user_group_id" Type="internal_user" />
+      <Association Name="user_group_user_group_menu" Member="user_group_menus" ThisKey="user_group_id" OtherKey="fk_user_group_id" Type="user_group_menu" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_group_menu" Member="user_group_menus">
+    <Type Name="user_group_menu">
+      <Column Name="user_group_menu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fk_user_group_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fk_menu_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="delete_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="user_group_user_group_menu" Member="user_group" ThisKey="fk_user_group_id" OtherKey="user_group_id" Type="user_group" IsForeignKey="true" />
+      <Association Name="menu_user_group_menu" Member="menu" ThisKey="fk_menu_id" OtherKey="menu_id" Type="menu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.menu" Member="menus">
+    <Type Name="menu">
+      <Column Name="menu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="menu_code" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="parent_menu_code" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="menu_parent_title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="menu_title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="module_code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="element_version" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="control_version" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="sequence" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="menu_user_group_menu" Member="user_group_menus" ThisKey="menu_id" OtherKey="fk_menu_id" Type="user_group_menu" />
+    </Type>
+  </Table>
+  <Table Name="dbo.B005" Member="B005s">
+    <Type Name="B005">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="internalUserSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="assignDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="internal_user_B005" Member="internal_user" ThisKey="internalUserSN" OtherKey="internal_user_id" Type="internal_user" IsForeignKey="true" />
+      <Association Name="U000_B005" Member="U000" ThisKey="userSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.U000" Member="U000s">
+    <Type Name="U000">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="pwd" Type="System.String" DbType="Char(32) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="registerDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="lastLoginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="lastLoginIp" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+      <Column Name="ifChangePwd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="U000_B005" Member="B005" ThisKey="userSN" OtherKey="userSN" Type="B005" Cardinality="One" />
+    </Type>
+  </Table>
+</Database>

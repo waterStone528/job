@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DBMA1" Class="DBMA1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.11.91;Initial Catalog=DBMA1;Persist Security Info=True;User ID=sa" SettingsObjectName="CSL.Properties.Settings" SettingsPropertyName="DBMA1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.P200" Member="P200s">
+    <Type Name="P200">
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="publisherUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="guaranteeTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="collateralTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="mainFinancing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="capitalPurposeTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="financingAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="loanDays" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="dailyRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="mortgageRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="provinceSN" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="citySN" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="repaymentSourceTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="P200_P203" Member="P203s" ThisKey="creditRightSN" OtherKey="creditRightSN" Type="P203" />
+      <Association Name="P200_P100" Member="P100s" ThisKey="creditRightSN" OtherKey="creditRightSN" Type="P100" />
+      <Association Name="U000_P200" Member="U000" ThisKey="publisherUserSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.U001" Member="U001s">
+    <Type Name="U001">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="creditRightInvestApplyStauts" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightFinancingApplyStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="assetsSellingApplyStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="assetsPurchaseApplyStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="consultantApplyStatus" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="applyCreditRightInvestDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="applyCreditRightFinancingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="applyAssetsSellingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="applyAssetsPurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="applyConsultantDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="openCreditRightInvestmentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="openCreditRightFinancingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="openAssetsSellingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="openAssetsPurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="openConsultantDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="creditRightInvestStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="creditRightFinancingStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="assetsSellingStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="assetsPruchaseStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="consultantStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="creditRightInvestNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="creditRightFinancingNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="assetsSellingNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="assetsPurchaseNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="consultantNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="U000_U001" Member="U000" ThisKey="userSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.B002" Member="B002s">
+    <Type Name="B002">
+      <Column Name="pkSNRecordSN" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tableName" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="maxDecimalSN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P300" Member="P300s">
+    <Type Name="P300">
+      <Column Name="assetsSN" Type="System.String" DbType="Char(7) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="publisherUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="assetsTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="assetsSourceTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="assetsProvinceSN" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="acquireDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="useStatusTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="cost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="assessmentAgency" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="marketPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="sellPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="details" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="publishDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cancelDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="P300_P400" Member="P400s" ThisKey="assetsSN" OtherKey="assetsSN" Type="P400" />
+      <Association Name="U000_P300" Member="U000" ThisKey="publisherUserSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P400" Member="P400s">
+    <Type Name="P400">
+      <Column Name="reserveSN" Type="System.String" DbType="Char(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="senderUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="receiverUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="assetsSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="reserveDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="senderCancelReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="senderCancelReserveReasonTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="senderDeleteReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="receiverRefuseReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="receiverRefuseReserveReasonTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="receiverDeleteReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="P300_P400" Member="P300" ThisKey="assetsSN" OtherKey="assetsSN" Type="P300" IsForeignKey="true" />
+      <Association Name="U000_P400" Member="U000" ThisKey="senderUserSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+      <Association Name="U000_P4001" Member="U0001" ThisKey="receiverUserSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P203" Member="P203s">
+    <Type Name="P203">
+      <Column Name="reserveSN" Type="System.String" DbType="Char(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="senderUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="receiverUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="sendDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="senderCancelReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="senderCancelReserveReasonTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="senderDeleteReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="receiverRefuseReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="receiverRefuseReserveReasonTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="receiverDeleteReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="P200_P203" Member="P200" ThisKey="creditRightSN" OtherKey="creditRightSN" Type="P200" IsForeignKey="true" />
+      <Association Name="U000_P203" Member="U000" ThisKey="senderUserSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+      <Association Name="U000_P2031" Member="U0001" ThisKey="receiverUserSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P100" Member="P100s">
+    <Type Name="P100">
+      <Column Name="reserveSN" Type="System.String" DbType="Char(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="senderUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="receiverUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="creditRightSN" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="sendDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="senderCancelReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="senderCancelReserveReasonTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="senderDeleteReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="receiverRefuseReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="receiverRefuseReserveReasonTypeSN" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="receiverDeleteReserveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="P200_P100" Member="P200" ThisKey="creditRightSN" OtherKey="creditRightSN" Type="P200" IsForeignKey="true" />
+      <Association Name="U000_P100" Member="U000" ThisKey="senderUserSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+      <Association Name="U000_P1001" Member="U0001" ThisKey="receiverUserSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.internal_user" Member="internal_users">
+    <Type Name="internal_user">
+      <Column Name="internal_user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="work_num" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="pwd" Type="System.String" DbType="Char(32) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="gender" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="reg_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="department_name" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="jobs" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="user_group" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="fk_user_group_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="allocate_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="operater" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="use_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Association Name="internal_user_B005" Member="B005s" ThisKey="internal_user_id" OtherKey="internalUserSN" Type="B005" />
+      <Association Name="internal_user_U006" Member="U006s" ThisKey="internal_user_id" OtherKey="auditerUserSN" Type="U006" />
+      <Association Name="internal_user_B003" Member="B003s" ThisKey="internal_user_id" OtherKey="internalUserSN" Type="B003" />
+      <Association Name="user_group_internal_user" Member="user_group1" ThisKey="fk_user_group_id" OtherKey="user_group_id" Type="user_group" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.B005" Member="B005s">
+    <Type Name="B005">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="internalUserSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="assignDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="internal_user_B005" Member="internal_user" ThisKey="internalUserSN" OtherKey="internal_user_id" Type="internal_user" IsForeignKey="true" />
+      <Association Name="U000_B005" Member="U000" ThisKey="userSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VP801041" Member="VP801041s">
+    <Type Name="VP801041">
+      <Column Name="recordSN" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="birthday" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="gender" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="registeredResidence" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="idCard" Type="System.String" DbType="Char(18) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="maritalStatusType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="procreateStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="currentAddressProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="currentAddressCity" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="currentAddressDetails" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="graduateSchool" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="degreeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="workEnterprise" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="enterpriseType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="hiredate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="workTel" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="post" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="industryType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="serviceProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="serviceCity" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="investigate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="assetsEvaluate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="creditRightGuarantee" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="badLoanCollect" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="consultantDetails" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="backgroundNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="applyDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="auditDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="auditerName" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="auditNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.U006" Member="U006s">
+    <Type Name="U006">
+      <Column Name="recordSN" Type="System.String" DbType="Char(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="birthday" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="gender" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="registeredResidence" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="idCard" Type="System.String" DbType="Char(18) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="maritalStatusType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="procreateStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="currentAddressProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="currentAddressCity" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="currentAddressDetails" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="graduateSchool" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="degreeType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="workEnterprise" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="enterpriseType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="hiredate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="workTel" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="post" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="industryType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="serviceProvince" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="serviceCity" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="investigate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="assetsEvaluate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="creditRightGuarantee" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="badLoanCollect" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="consultantDetails" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="backgroundNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="applyDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="auditStatus" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="auditDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="auditerUserSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="auditNote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="internal_user_U006" Member="internal_user" ThisKey="auditerUserSN" OtherKey="internal_user_id" Type="internal_user" IsForeignKey="true" />
+      <Association Name="U000_U006" Member="U000" ThisKey="userSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.F000" Member="F000s">
+    <Type Name="F000">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="balance" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="lastOperate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="U000_F000" Member="U000" ThisKey="userSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.F003" Member="F003s">
+    <Type Name="F003">
+      <Column Name="revenueExpenditureSN" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="generetorUserSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="generateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="revenue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="expenditure" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="balance" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="referSN" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.F007" Member="F007s">
+    <Type Name="F007">
+      <Column Name="changeAccountSN" Type="System.String" DbType="Char(9) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="changeAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="changeReasonType" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="changeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="U000_F007" Member="U000" ThisKey="userSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.A023" Member="A023s">
+    <Type Name="A023">
+      <Column Name="investParamsSN" Type="System.Char" DbType="Char(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="openServerCost" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="minInvestMoneyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxInvestMoneyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="consultantReserveCost" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="financingReserveCost" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="minMorgageRate" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="maxMorgageRate" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="minDailyRate" Type="System.Decimal" DbType="Decimal(8,6)" CanBeNull="true" />
+      <Column Name="maxDailyRate" Type="System.Decimal" DbType="Decimal(8,6)" CanBeNull="true" />
+      <Column Name="minInvestDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="maxInvestDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.A024" Member="A024s">
+    <Type Name="A024">
+      <Column Name="financingParamsSN" Type="System.Char" DbType="Char(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="minDeadline" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="maxDeadline" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="minFinancingMoneyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxFinancingMoneyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="openServerCost" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="financePublishCost" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="investorRecommendCost" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="serviceRateDaily" Type="System.Decimal" DbType="Decimal(8,6)" CanBeNull="true" />
+      <Column Name="minServiceRateTotel" Type="System.Decimal" DbType="Decimal(8,6)" CanBeNull="true" />
+      <Column Name="maxServiceRateTotel" Type="System.Decimal" DbType="Decimal(8,6)" CanBeNull="true" />
+      <Column Name="minObtainCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxObtainCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="minDailyRate" Type="System.Decimal" DbType="Decimal(8,6)" CanBeNull="true" />
+      <Column Name="maxDailyRate" Type="System.Decimal" DbType="Decimal(8,6)" CanBeNull="true" />
+      <Column Name="minMarketValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxMarketValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="minRegisterCapital" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxRegisterCapital" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="minTotalAssets" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxTotalAssets" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="minTotalLiability" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxTotalLiability" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="minCurrentLoan" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxCurrentLoan" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="minNetAssets" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxNetAssets" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="minTurnOver" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxTurnOver" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="minTaxTurnOver" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxTaxTurnOver" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="minNetProfit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxNetProfit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="minStockHolderNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="maxStockHolderNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="minStaffNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="maxStaffNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.A025" Member="A025s">
+    <Type Name="A025">
+      <Column Name="consultantParamsSN" Type="System.Char" DbType="Char(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="openServerCost" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.A026" Member="A026s">
+    <Type Name="A026">
+      <Column Name="purchaseParamsSN" Type="System.Char" DbType="Char(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="openServerCost" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="assetsReserveCost" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="minPurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="maxPurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.A028" Member="A028s">
+    <Type Name="A028">
+      <Column Name="moneyParamsSN" Type="System.Char" DbType="Char(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="needPayDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="overdueRateDaily" Type="System.Decimal" DbType="Decimal(8,6)" CanBeNull="true" />
+      <Column Name="serverStopRate" Type="System.Decimal" DbType="Decimal(18,10)" CanBeNull="true" />
+      <Column Name="serverStopDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="shortMessageCost" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.A029" Member="A029s">
+    <Type Name="A029">
+      <Column Name="vipParamsSN" Type="System.Char" DbType="Char(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="vip1_originateValue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vip1_rewardRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="vip2_originateValue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vip2_rewardRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="vip3_originateValue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vip3_rewardRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="vip4_originateValue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vip4_rewardRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="vip5_originateValue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vip5_rewardRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="vip6_originateValue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vip6_rewardRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+      <Column Name="vip7_originateValue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vip7_rewardRate" Type="System.Decimal" DbType="Decimal(8,6) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.A034" Member="A034s">
+    <Type Name="A034">
+      <Column Name="SN" Type="System.String" DbType="Char(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="serverProvider" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="switchStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.config" Member="configs">
+    <Type Name="config">
+      <Column Name="config_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cusSvrMode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cusSvrUserMaxAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="webDelay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cusSvrUserDelLevel" Type="System.Int32" DbType="Int" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="maxCusSvrConnLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="maxUserConnNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="countSizeLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="showCountDownSizeLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="levelSeconds" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.B003" Member="B003s">
+    <Type Name="B003">
+      <Column Name="roleAssignmentSN" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="internalUserSN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="roleTypeSN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="assignDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="deleteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="internal_user_B003" Member="internal_user" ThisKey="internalUserSN" OtherKey="internal_user_id" Type="internal_user" IsForeignKey="true" />
+      <Association Name="B004_B003" Member="B004" ThisKey="roleTypeSN" OtherKey="roleTypeSN" Type="B004" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.B004" Member="B004s">
+    <Type Name="B004">
+      <Column Name="roleTypeSN" Type="System.String" DbType="Char(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="value" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="note" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="deleteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="assignDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="B004_B003" Member="B003s" ThisKey="roleTypeSN" OtherKey="roleTypeSN" Type="B003" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_group" Member="user_groups">
+    <Type Name="user_group">
+      <Column Name="user_group_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_group_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="delete_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="user_group_internal_user" Member="internal_users" ThisKey="user_group_id" OtherKey="fk_user_group_id" Type="internal_user" />
+    </Type>
+  </Table>
+  <Table Name="dbo.A027" Member="A027s">
+    <Type Name="A027">
+      <Column Name="sellingParamsSN" Type="System.Char" DbType="Char(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="minSellAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="openServerCost" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="publishAssetsCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="serviceRate" Type="System.Decimal" DbType="Decimal(8,6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.B000" Member="B000s">
+    <Type Name="B000">
+      <Column Name="bgOperateSN" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tableName" Type="System.String" DbType="Char(20) NOT NULL" CanBeNull="false" />
+      <Column Name="pkSN" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="actionTypeSN" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="operatorSN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="operateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.U000" Member="U000s">
+    <Type Name="U000">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
+      <Column Name="pwd" Type="System.String" DbType="Char(32) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="registerDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="lastLoginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="lastLoginIp" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+      <Column Name="ifChangePwd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="U000_P200" Member="P200s" ThisKey="userSN" OtherKey="publisherUserSN" Type="P200" />
+      <Association Name="U000_U001" Member="U001" ThisKey="userSN" OtherKey="userSN" Type="U001" Cardinality="One" />
+      <Association Name="U000_P300" Member="P300s" ThisKey="userSN" OtherKey="publisherUserSN" Type="P300" />
+      <Association Name="U000_P400" Member="P400s" ThisKey="userSN" OtherKey="senderUserSN" Type="P400" />
+      <Association Name="U000_P4001" Member="P400s1" ThisKey="userSN" OtherKey="receiverUserSN" Type="P400" />
+      <Association Name="U000_P203" Member="P203s" ThisKey="userSN" OtherKey="senderUserSN" Type="P203" />
+      <Association Name="U000_P2031" Member="P203s1" ThisKey="userSN" OtherKey="receiverUserSN" Type="P203" />
+      <Association Name="U000_P100" Member="P100s" ThisKey="userSN" OtherKey="senderUserSN" Type="P100" />
+      <Association Name="U000_P1001" Member="P100s1" ThisKey="userSN" OtherKey="receiverUserSN" Type="P100" />
+      <Association Name="U000_B005" Member="B005" ThisKey="userSN" OtherKey="userSN" Type="B005" Cardinality="One" />
+      <Association Name="U000_U006" Member="U006s" ThisKey="userSN" OtherKey="userSN" Type="U006" />
+      <Association Name="U000_F000" Member="F000" ThisKey="userSN" OtherKey="userSN" Type="F000" Cardinality="One" />
+      <Association Name="U000_F007" Member="F007s" ThisKey="userSN" OtherKey="userSN" Type="F007" />
+      <Association Name="U000_U003" Member="U003" ThisKey="userSN" OtherKey="userSN" Type="U003" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.U003" Member="U003s">
+    <Type Name="U003">
+      <Column Name="userSN" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="transactPwd" Type="System.String" DbType="Char(32) NOT NULL" CanBeNull="false" />
+      <Column Name="billGenerate_shortMessage" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="billGenerate_email" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="overdue_shortMessage" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="overdue_email" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="receiveReserve_shortMessage" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="receiveReserve_email" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ifChangeTransactPwd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="U000_U003" Member="U000" ThisKey="userSN" OtherKey="userSN" Type="U000" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.A035" Member="A035s">
+    <Type Name="A035">
+      <Column Name="SN" Type="System.String" DbType="Char(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SMTP" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="userName" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="pwd" Type="System.String" DbType="Char(32)" CanBeNull="true" />
+      <Column Name="port" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="switchStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

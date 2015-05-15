@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>VANCH EC CONTROL CENTER</title>
+    <link rel="stylesheet" type="text/css" href="StyleS\ComStyle.css" />
+    <script type="text/javascript" src="ComScript\CommCtrl.js"></script>
+    <!--<link rel="shortcut icon" href="Images\icon.ico" />
+    <link rel="Bookmark" href="Images\icon.ico" />-->
+</head>
+<body onresize="bodyresize()" onload="bodyLoad();">
+    <!--页面动态功能处理-->
+    <script type="text/javascript">
+        function bodyLoadScript() {
+            MToolBar.STR.EVINIT();
+        }
+
+        function bodyResizeScript() {
+        }
+
+        var MToolBar = {
+            LastObj: null,
+            BtAction: function (obj, act, MenuID) {//1:down,2:up
+                if (BtStatus(obj, "R") == "S") { return; }
+                if (act == 1) { BtStatus(obj, "M"); return; }
+                if (act == 2) {
+                    BtStatus(obj, "S"); if (this.LastObj != null) { BtStatus(this.LastObj, "E"); }; this.LastObj = obj;
+                    switch (MenuID) {
+                        case "M01":
+                            this.ClearContainer();
+                            OLCS.Show();
+                            break;
+                        default:
+                            this.ClearContainer();
+                            MToolBar.STR.EVM0002(MenuID);
+                            break;
+                    }
+                }
+                if (act == 3) { BtStatus(obj, "E"); }
+            },
+            AddButton: function (Title, MenuID) {
+                var Button = document.createElement("div");
+                Button.setAttribute("onmouseup", "MToolBar.BtAction(this, 2, \"" + MenuID + "\")");
+                Button.setAttribute("data-btst", "E");
+                Button.innerText = Title;
+                document.querySelector(".MToolBar>.Buttons").appendChild(Button);
+            },
+            ClearButtons: function () {
+                document.querySelector(".MToolBar > .Buttons").innerHTML = "";
+            },
+            ClearContainer: function () { MainZone.innerHTML = ""; if (OLCS.ShowStatus == true) { OLCS.Hidden(); }; OutTrackInfor(4, "", "Completed"); },
+            UIP: {
+                //StaffInfo: { StaffSN: "8601", Name: "小前端" }
+                StaffInfo: null
+            },
+            STR: {
+                EVINIT: function () {
+                    ///<summary>页面初始化</summary>
+                    var Buttons = [{ Name: "在线客服", ID: "M01" }, { Name: "客户管理", ID: "M02" }, { Name: "财务管理", ID: "M06" }, { Name: "数据分析", ID: "M07" }, { Name: "系统设置", ID: "M09" }, { Name: "内部用户", ID: "M10" }]
+                    MToolBar.UID.M0001();
+                    MToolBar.UID.M0005(Buttons);
+                },//页面初始化
+                EVM0002: function (MenuID) {
+                    ///<summary>加载右边菜单</summary><param name="MenuID">顶部菜单编号</param>
+                    var RMenu = [];
+                    switch (MenuID) {
+                        case "M02":
+                            RMenu = [{ Name: "债权融资", ID: "M0201" }, { Name: "债权投资", ID: "M0202" }, { Name: "资产出售", ID: "M0206" }, { Name: "资产购买", ID: "M0203" }, { Name: "财务顾问", ID: "M0204" }, { Name: "客户分配", ID: "M0205" }];
+                            break;
+                        case "M06":
+                            RMenu = [{ Name: "用户帐户", ID: "M0601" }, { Name: "流水明细", ID: "M0604" }, { Name: "手工调账", ID: "M0603" }];
+                            break;
+                        case "M07":
+                            RMenu = [{ Name: "注册统计", ID: "M0701" }, { Name: "债权数量", ID: "M0702" }, { Name: "债权金额", ID: "M0703" }, { Name: "资产数量", ID: "M0706" }, { Name: "资产金额", ID: "M0707" }, { Name: "申请统计", ID: "M0704" }, { Name: "财务统计", ID: "M0705" }];
+                            break;
+                        case "M09":
+                            RMenu = [{ Name: "债权投资", ID: "M0906" }, { Name: "债权融资", ID: "M0901" }, { Name: "顾问参数", ID: "M0903" }, { Name: "资产购买", ID: "M0907" }, { Name: "资产出售", ID: "M0910" }, { Name: "财务设置", ID: "M0908" }, { Name: "客服参数", ID: "M0911" }, { Name: "VIP参数", ID: "M0909" }, { Name: "支付接口", ID: "M0902" }, { Name: "短信接口", ID: "M0904" }, { Name: "邮件接口", ID: "M0905" }];
+                            break;
+                        case "M10":
+                            RMenu = [{ Name: "用户管理", ID: "M1001" }, { Name: "岗位分配", ID: "M1004" }, { Name: "分组用户", ID: "M1002" }, { Name: "分组权限", ID: "M1003" }];
+                            break;
+                        case "M11":
+                            RMenu = [{ Name: "密码修改", ID: "M1101" }, { Name: "安全注销", ID: "M1102" }, { Name: "系统信息", ID: "M1104" }];
+                            break;
+                        default:
+                            break;
+                    }
+                    MToolBar.UID.M0002(RMenu);
+                },//加载右边菜单
+                EVM0003: function (SN, Pwd) {
+                    ///<summary>用户登陆</summary><param name="SN">员工编号</param><param name="Pwd">登陆密码</param>
+                    console.log(SN + "    " + Pwd);
+                    setTimeout("MToolBar.UID.M0003(false);", 1000); 
+                },//用户登陆
+                EVM0004: function () {
+                    ///<summary>退出系统</summary>
+                    MToolBar.UID.M0004();
+                }//用户退出
+            },
+            UID: {
+                M0001: function () {
+                    ///<summary>显示员工信息</summary>
+                    if (MToolBar.UIP.StaffInfo == null) { LoadMod("M1102", "", "M11"); return; }
+                    document.querySelector(".MToolBar>.UserID").innerText = MToolBar.UIP.StaffInfo.StaffSN;
+                },
+                M0002: function (RMenu) {
+                    ///<summary>显示二级菜单</summary>
+                    RightToolBar.Hidden();
+                    RightToolBar.ClearButtons();
+                    for (var i in RMenu) { RightToolBar.AddBt(RMenu[i].Name, RMenu[i].ID); }
+                    RightToolBar.Show();
+                },
+                M0003: function (Res) {
+                    ///summary>返回登陆结果</summary>
+                    LoginBoxElms.querySelector(".URLBt").innerHTML = "登陆"; LoginBoxElms.querySelector(".URLBt").disabled = false;
+                    if (Res) {
+                        window.open('Default.htm', '_self');
+                    } else {
+                        LoginBoxLostPwdDis.innerText = "员工编号或密码不正确"; 
+                    }
+                },
+                M0004: function () {
+                    ///summary>退出系统</summary>
+                    MToolBar.ClearContainer();
+                    LoadMod("M1102", "", "M11");
+                },
+                M0005: function (Buttons) {
+                    ///<summary>显示一级目录</summary>
+                    MToolBar.ClearButtons();
+                    for (var i in Buttons) { MToolBar.AddButton(Buttons[i].Name, Buttons[i].ID); }
+                },
+            }
+
+        };
+
+        var RightToolBar = {
+            ShowStatus: Boolean,
+            LastObj: null,
+            TimeOutInstanceID: 0,
+            BtAction: function (obj, act, ModuleID) {//1:down,2:up
+                if (BtStatus(obj, "R") == "S") { return; }
+                if (act == 1) { BtStatus(obj, "M"); return; }
+                if (act == 2) {
+                    BtStatus(obj, "S"); if (this.LastObj != null) { BtStatus(this.LastObj, "E"); }; this.LastObj = obj;
+                    MToolBar.ClearContainer();
+                    LoadMod(ModuleID, "", ModuleID.substr(0, 3));
+                }
+                if (act == 3) { BtStatus(obj, "E"); };
+            },
+            Hidden: function () { clearTimeout(this.TimeOutInstanceID); document.querySelector(".RightToolBar").className = "RightToolBar RightToolBar-Hidden"; MainZone.className = "RTB-Hidden"; this.ShowStatus = false; setTimeout(" ReCalcItemSize();", 1000); },
+            AddBt: function (Title, BtID) {
+                var ModID = BtID;
+                var Button = document.createElement("div");
+                Button.setAttribute("onmouseup", "RightToolBar.BtAction(this, 2,\"" + BtID + "\")");
+                Button.setAttribute("data-btst", "E");
+                Button.innerText = Title;
+                document.querySelector(".RightToolBar > .Buttons").appendChild(Button);
+            },
+            ClearButtons: function () {
+                document.querySelector(".RightToolBar > .Buttons").innerHTML = "";
+            },
+            Show: function () { clearTimeout(this.TimeOutInstanceID); document.querySelector(".RightToolBar").className = "RightToolBar"; MainZone.className = "RTB-Show"; this.ShowStatus = true; setTimeout(" ReCalcItemSize();", 1000); },
+            Disable: function () { clearTimeout(this.TimeOutInstanceID); document.querySelector(".RightToolBar").className = "RightToolBar RightToolBar-Disabled"; MainZone.className = "RTB-Hidden"; this.ShowStatus = null; setTimeout(" ReCalcItemSize();", 1000); },
+            TitleButton: function () { if (this.ShowStatus) { this.Hidden(); } else { this.Show(); }; }
+        };
+        var OLCS = {
+            ShowStatus: Boolean,
+            Inited: Boolean,
+            OLCSContainer: null,
+            Init1: function () {
+                this.Inited = false;
+                LoadMod("M0100", "OLCS.Init2();", "M01");
+            },
+            Init2: function () {
+                LoadingBoxCtl(0);
+                this.Inited = true;
+                this.OLCSContainer = MainZone.cloneNode(true);
+                MainZone.innerHTML = "";
+                this.OLCSContainer.removeAttribute("id");
+                this.OLCSContainer.removeAttribute("onscroll")
+                this.OLCSContainer.style.display = "none";
+                this.OLCSContainer.className = "OLCS";
+                document.body.appendChild(this.OLCSContainer);
+                this.Show();
+            },
+            Show: function () {
+                if (this.Inited != true) { this.Init1(); return; };
+                this.OLCSContainer.style.display = "";
+                RightToolBar.Disable();
+                this.ShowStatus = true;
+            },
+            Hidden: function () {
+                this.OLCSContainer.style.display = "none";
+                this.ShowStatus = false;
+            }
+        };
+
+        var MVB = {
+            ContainerWidth: 500,
+            Shift: Boolean,
+            MBRContainer: Object || document.createElement("div"),
+            Template: Object || document.createElement("div"),
+            MBC: Object || document.createElement("div"),
+            OptLock: Object || document.createElement("div"),
+            CloseCallBack: "",
+            Buttons: [],//["按钮名称", "alert('事件名1')"]
+            Open: function (MBR, CloseCallBack, Title) {
+                this.MBC = document.querySelector('#MainZone>.MovingBox') || MainZone.appendChild(document.querySelector(".Template>.MovingBox").cloneNode(true));
+                this.OptLock = document.querySelector('#MainZone>.OptLock') || MainZone.appendChild(document.querySelector(".Template>.OptLock").cloneNode(true));
+
+                this.MBC.querySelector(".Title>label").innerText = Title;
+                this.CloseCallBack = CloseCallBack;
+
+                if (MBR != null) { this.Shift = true; this.MBCRContainer = MBR; this.MBCRContainer.style.left = this.ContainerWidth + 30 + 10 + 'px'; } else { this.Shift = false; }
+                this.MBC.style.width = this.ContainerWidth + 30 + "px";
+                this.MBC.style.left = '0px'; this.OptLock.setAttribute('data-lk', '1');
+                this.SetTemplate();
+                this.PreButton();
+            },
+            SetTemplate: function () {
+                this.MBC.querySelector(".Container").innerHTML = "";
+                this.MBC.querySelector(".Container").appendChild(this.Template.cloneNode(true));
+            },
+            PreButton: function () {
+                if (this.Buttons.length == 0) { this.MBC.querySelector(".Container").style.bottom = "10px"; } else { this.MBC.querySelector(".Container").style.bottom = ""; };
+                var OldButtons = this.MBC.querySelectorAll(".ButtonBar>div[data-btst]"); for (i = 0; i < OldButtons.length; i++) { this.MBC.querySelector(".ButtonBar").removeChild(OldButtons[i]); };
+                for (i = 0; i < this.Buttons.length; i++) {
+                    if (i / 2 == (i / 2).toFixed(0)) {
+                        var Button = this.MBC.querySelector(".ButtonBar>.Template").cloneNode(true); Button.removeAttribute("class"); Button.setAttribute("data-btst", "D");
+                        Button.innerText = this.Buttons[i]; i = i + 1;
+                        Button.setAttribute("onmouseup", "MVB.Button(this," + i + ");");
+                        this.MBC.querySelector(".ButtonBar").appendChild(Button);
+                    };
+                }
+            },
+            Close: function () {
+                if (this.Shift == true) { this.MBCRContainer.style.left = '0px'; }
+                this.Shift = false;
+                this.MBC.style.left = '-100%'; this.OptLock.setAttribute('data-lk', '0');
+                if (this.CloseCallBack.length > 1) { eval(this.CloseCallBack); }
+            },
+            Button: function (BtObj, BtID) {
+                if (BtStatus(BtObj, "R") != "E") { return; }
+                eval(this.Buttons[BtID]);
+            }
+        };
+
+    </script>
+    <!--主要显示区-->
+    <div class="MToolBar">
+        <div style="position: absolute; width: 150px; border-top: solid 38px #A50000; border-right: solid 38px transparent; transition: border-top-color 1s ease;"></div>
+        <div style="position: absolute; left:20px;top:5px; height: 28px; width: 105px; background: url('Images/VANCH-LOGO.png') no-repeat;background-position:center center;background-size:90px;z-index:5;"></div>
+        <div class="Buttons"></div>
+        <div class="BottomLine"></div>
+        <div class="UserID" data-login="1" onmouseup="MToolBar.STR.EVM0004();">8602</div>
+        <div class="Settings icon-cog" onmouseup="MToolBar.BtAction(this, 2, 'M11')"></div>
+    </div>
+    <div class="RightToolBar RightToolBar-Disabled">
+        <div class="TitleButton" onmouseup="RightToolBar.TitleButton();"><div></div><div></div><div></div></div>
+        <div class="Buttons"></div>
+    </div>
+    <div id="MainZone" onscroll="" class="RTB-Hidden">
+        <label style="font-size:22px;font-weight:700;color:#fff;margin-top:50px;margin-left:50px;opacity:0.2; display:inline-block;">Compatibility requirements:Vista/win7/win8/win8.1,IE9~IE11</label>
+    </div>
+    <div class="Template">
+        <div class="OptLock" data-lk="0" onmouseup="MVB.Close();"></div>
+        <div class="MovingBox">
+            <div class="Title"><label style="margin-left:10px;"></label></div>
+            <div class="Container"></div>
+            <div class="ButtonBar">
+                <div class="Template" onmouseup="MVB.Button(this, 1);">确认</div>
+            </div>
+            <div class="SlideButton" onmouseup="MVB.Close()"><label>3</label></div>
+        </div>
+    </div>
+    <div style="position: absolute; bottom: 20px; font-weight: 600; top: 60px; font-size: 18px; left: 20px;width:440px;  transition: left ease 0.5s" onmouseup="if (this.style.left == '20px') { this.style.left = '-410px'; } else { this.style.left = '20px'; }; ">
+        <div style="position: absolute; bottom: 0px; overflow: hidden; color: #9a9a9f; font-weight: 600; top: 0px; font-size: 18px; left: 0px; z-index: 9; text-align: center; background-color: rgba(0, 0, 0, 0.70); padding: 10px; box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.51); border-radius: 10px;">
+            集中控制&nbsp;客户服务&nbsp;业务管控&nbsp;财务管理&nbsp;决策辅助&nbsp;<br />
+            调试状态信息面板<br />
+            <label style="width:100%;text-align:left;display:block;font-size:12px;font-weight:normal;" class="MonitorInfor">System Start: Completed</label>
+        </div>
+    </div>
+    <!--数据传输--><!--1:正在加载中...,2:加载失败，请重试...,-->
+    <div class="LoadingBox" data-status="">
+        <div class="Load">
+            <div style="position:absolute;">
+                <div class="icon-yuanA icon"></div>
+                <div class="icon-yuanB icon"></div>
+            </div>
+            <div class="loadingtext">加载中...</div>
+        </div>
+        <div class="FailureLoad">
+            <div style="position:absolute"><div class="icon-ex  icon" style="font-size:50px;"></div><div class="loadingtext" style="margin-top:10px;">加载失败，请重试...</div></div>
+        </div>
+    </div>
+
+    <!--执行业务--><!--1:执行中...,2:执行成功,3:执行失败-->
+    <div class="ExecutionBox" data-status="">
+        <div class="Execution">
+            <div style="position: absolute; margin: 20px 0 20px 60px; "><div class="icon-yuanA Exicon" style="font-size:60px;"></div><div class="icon-yuanB Exicon" style="font-size:60px;"></div><div class="Exloadingtext" style="font-size:35px;margin-left:80px;margin-top:6px;">执行中...</div></div>
+        </div>
+        <div class="SucExecution">
+            <div style="position: absolute; margin: 20px 0 20px 50px;">
+                <div class="icon-Success  Exicon" style=" font-size:60px;"></div>
+                <div class="Exloadingtext" style="font-size:35px;margin-left:80px;margin-top:6px;">执行成功</div>
+            </div>
+        </div>
+        <label class="FaiExecution">
+            <label style="position: absolute; margin: 20px 0 20px 50px;">
+                <label class="icon-Error  Exicon" style=" font-size:60px;"></label>
+                <label class="icon-Error  Exicon" style=" font-size:60px;"></label>
+                <label class="Exloadingtext" style="font-size:35px;margin-left:80px;margin-top:6px;">执行失败</label>
+
+            </label>
+            <label class="FaiTextback">
+                <label class="wrap">
+                    <label class="subwrap">
+
+                        失败原因文字
+
+                    </label>
+                </label>
+            </label>
+            <label class="textBtn" onmouseup="TransingStatus.FaiTextEM()">
+                <label class=" icon-bars" style="float:right;line-height:15px;font-size:18px;"></label>
+            </label>
+
+        </label>
+    </div>
+
+
+    <!--异步数据加载区-->
+    <script type="text/javascript">
+        LoadJS("TransingBox"); LoadJS("InpRulesCk");
+    </script>
+</body>
+</html>

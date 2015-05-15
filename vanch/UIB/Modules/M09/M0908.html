@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    
+</head>
+<body>
+    <div class="SettingsContainer">
+        <div class="ItemSize InforBox" id="M090801">
+            <h3>应收帐款</h3>
+            <table>
+                <tbody>
+                    <tr><td>应收日期</td><td><div>立帐后<input type="text" data-type="c" onkeyup="FloatInp(this, 0);" />天内</div></td></tr>
+                    <tr><td>愈期罚息</td><td><div>按应付<input type="text" data-type="c" onkeyup="FloatInp(this, 2);" />%每日</div></td></tr>
+                    <tr><td data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr><td data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                </tbody>
+                <tfoot><tr class="ReadOnlyMask" data-mask="0"><td colspan="4"><div></div></td></tr></tfoot>
+            </table>
+            <div class="memo" style="position:absolute;width:90%;bottom:30px;"><p>注：罚息=应付本金*X%*(愈期天数-1)</p></div>
+            <div class="ButtonBar">
+                <div data-btst="E" data-btid="1" onmouseup="M0908.Button(this)">修改</div>
+                <div data-btst="E" data-btid="2" onmouseup="M0908.Button(this)">保存</div>
+            </div>
+        </div>
+        <div class="ItemSize InforBox" id="M090802">
+            <h3>附加收费</h3>
+            <table>
+                <tbody>
+                    <tr><td>短信费用</td><td><div><input type="text" data-type="c" onkeyup="FloatInp(this, 2);" />V币每条</div></td></tr>
+                    <tr><td data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr><td data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr><td data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                </tbody>
+                <tfoot><tr class="ReadOnlyMask" data-mask="0"><td colspan="4"><div></div></td></tr></tfoot>
+            </table>
+            <div class="ButtonBar">
+                <div data-btst="E" data-btid="1" onmouseup="M0908.Button(this)">修改</div>
+                <div data-btst="E" data-btid="2" onmouseup="M0908.Button(this)">保存</div>
+            </div>
+        </div>
+        <div class="ItemSize InforBox" id="M090803">
+            <h3>充值参数</h3>
+            <table>
+                <tbody>
+                    <tr><td>充值费率</td><td><label>充值金额</label><input type="text" data-type="c" onkeyup="FloatInp(this, 2);" />%</td></tr>
+                    <tr><td data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr><td data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr><td data-emp="1">&nbsp;</td><td>&nbsp;</td></tr>
+                </tbody>
+                <tfoot><tr class="ReadOnlyMask" data-mask="0"><td colspan="4"><div></div></td></tr></tfoot>
+            </table>
+            <div class="memo" style="position:absolute;width:90%;bottom:30px;"><p>注：实付金额=充值金额*(1+x%)</p></div>
+            <div class="ButtonBar">
+                <div data-btst="E" data-btid="1" onmouseup="M0908.Button(this)">修改</div>
+                <div data-btst="E" data-btid="2" onmouseup="M0908.Button(this)">保存</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
