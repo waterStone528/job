@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div style="float: left; cursor: pointer; height: 180px" class="ItemSize GeneralItem" onmouseup="Location('P9');">
+        <div class="UToolBCBG" style="margin-left: 10px;margin-top:10px;margin-right:10px; position: relative; font-weight: 700; ">财务管理</div>
+        <table width="100%" style="margin-left:10px;padding:0px;" border="0">
+            <!--Sever need give the value in TD zone witch TD has id value-->
+            <tr><td class="ItemTitle">可用V币</td><td class="ItemText"><div class="VBvalue"><div id="VBva" class="pbox"><p data-fmt="N0D1">0</p><p data-fmt="N0D2">0</p></div></div></td><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText">&nbsp;</td></tr>
+            <tr><td class="ItemTitle">已用V币</td><td class="ItemText" data-fmt="N0D1">0</td><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText">&nbsp;</td></tr>
+            <tr><td class="ItemTitle">应付账单</td><td class="ItemText" data-fmt="N0D1">0</td><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText">&nbsp;</td></tr>
+        </table>
+        <div id="ZS" class="userPromptboxZS" style="display: none;">
+            <div class="topred"></div>
+            <div class="boxZS-up">
+                <div class="upLeft"><i class="icon-rmb" style="color: #f9c700; font-size: 45px; margin-left: 4px; margin-right: 15px;"></i></div>
+                <div class="upRight"><p class="p1"><a>赠送</a><span style="color: #f9c700; font-size: 30px;position:absolute;left:148px;top:28px;">N0D0</span>V币 !</p><p class="p2">V币可以用来购买平台所有服务。</p></div>
+            </div>
+            <div class="btnBox">
+                <div class="VBtn" onmouseup="P7.LatePayZS();">稍后领取</div>
+                <div class="VBtn" onmouseup="P7.LatePayZS(); P7.STR.EVP70201()">领取V币</div>
+            </div>
+        </div><!--赠送V币-->
+        <div id="VBid" class="VB" style="display:none;"></div>
+    </div>
+    <div id="Continue">0</div><!--server need return a value 1 to continue load,0 means this is last one and to stop-->
+    <script type="text/javascript">
+        parent.ItemContainer.appendChild(document.body.children[0]);
+        parent.LoadSvr("P80208");
+    </script>
+</body>
+</html>

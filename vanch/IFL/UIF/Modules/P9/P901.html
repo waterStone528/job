@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <table style=" position: relative; padding: 0px; width:50%;min-width:500px;" border="0">
+            <!--Sever need give the value in TD zone witch TD has id value-->
+            <tr style="height:30px;">
+                <td class="ItemTitle">可用V币</td>
+                <td class="ItemText" colspan="3" style="font-size:20px;font-weight:bold;">N2D0</td>
+                
+            </tr>
+            <tr style="height:10px;"><td></td></tr>
+            <tr style="height:30px;">
+                <td class="ItemTitle">购买</td>
+                <td class="ItemTextInp" style="width:180px;"><input type="text" onfocus="P9.UID.P9010201()" onblur="    IRC.IntervalNumber(this, this.value, P9.UIP.MaxMin);" onkeyup="    P9.count(this)" /></td>
+                <td style="width:180px;">V币，合计<span class="ItemText">N2D0</span>元</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="tip" colspan="3" style="line-height: 30px; color: #05b9a3;display:none;">您当前VIP等级为<label>X</label>级，将赠送 <span style="color: #ff0000;"> <label>X</label> * <label>P2N0</label>=<label data-fmt="N0D0">X</label> </span> V币 !</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+
+        </table>
+        <div class="CardBox">
+        <label style="float:left;">银行卡类型</label>
+            <div class="Card">
+                <div class="CardAll" onmouseup="P9.Card(this)" data-id="01"><div class="inputRadio"><div class="small"></div></div>借记卡</div>
+                <div class="CardAll" onmouseup="P9.Card(this)" data-id="02"><div class="inputRadio"><div class="small"></div></div>信用卡</div>
+                <div  style="color: #fbf876;float:left;line-height:33px;display:none; ">提示：请选择银行卡类型！</div>
+            </div>
+        </div><!--借记卡  信用卡-->
+        <div style="position: absolute; min-width: 960px; right: 123px; left: 95px; ">
+            <div class="bankBox">
+                <label class="fuk">付款方式</label>
+                <div class="ipsLOGObox"><div class="ipsLOGO"></div></div>
+                <ul>
+                    <li onmouseup="P9.Bank(this)" data-id="00026"><div class="inputRadio"><div class="small"></div></div> <a class="ZGbank"></a></li>
+                    <li onmouseup="P9.Bank(this)" data-id="00026"><div class="inputRadio"><div class="small"></div></div> <a class="ZGJSbank"></a></li>
+                    <li onmouseup="P9.Bank(this)" data-id="00026"><div class="inputRadio"><div class="small"></div></div> <a class="ZGNYbank"></a></li>
+                    <li onmouseup="P9.Bank(this)" data-id="00026"><div class="inputRadio"><div class="small"></div></div> <a class="ZGGSbank"></a></li>
+                    <li onmouseup="P9.Bank(this)" data-id="00026"><div class="inputRadio"><div class="small"></div></div> <a class="XYbank"></a></li>
+                    <li onmouseup="P9.Bank(this)" data-id="00026"><div class="inputRadio"><div class="small"></div></div> <a class="ZGMSbank"></a></li>
+                    <li onmouseup="P9.Bank(this)" data-id="00026"><div class="inputRadio"><div class="small"></div></div> <a class="ZGYZbank"></a></li>
+                    <li onmouseup="P9.Bank(this)" data-id="00026"><div class="inputRadio"><div class="small"></div></div> <a class="SHbank"></a></li>
+                    <li onmouseup="P9.Bank(this)" data-id="-1"><div class="inputRadio"><div class="small"></div></div> <a class="QTbank"></a></li>
+                </ul>
+                <div style="clear:both"></div>     
+            </div>
+               <div class="CBt" style="margin:0px; position:-absolute;margin-left:40px;margin-top:20px;display:none;" onmousedown="P9.BtAction(this, 0)" onmouseup="P9.BtAction(this, 1)">付款</div>
+
+            <div class="tipV"><ul><li>V币仅用于本平台消费，不可转让不可提现。</li></ul></div>
+
+        </div><!--付款方式-->
+    </div>
+
+</body>
+</html>

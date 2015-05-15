@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="MRechary03" class="SettingsContainer" onscroll="ScrollTracker(this, 'M0603.LoadMoreInfo()');">
+        <div class="ItemSize InforBox" id="M060301" style="height:120px;">
+            <table>
+                <tbody>
+                    <tr><td>记帐编号</td><td>自动</td><td>真实姓名</td><td data-inp="1"><input type="text" /></td></tr>
+                    <tr><td>登陆帐号</td><td data-inp="1"><input type="text" /></td><td>交易密码</td><td data-inp="1"><input type="password" /></td></tr>
+                    <tr><td>调账金额</td><td data-inp="1"><input type="text" /></td><td>调账原因</td><td><select><option selected="selected" value="线下充值">线下充值</option><option value="意外丢单">意外丢单</option><option value="活动奖励">活动奖励</option><option value="其它原因">其它原因</option><option value="退款">退款</option></select></td></tr>
+                    <tr><td>备注说明</td><td data-inp="1" colspan="3"><input type="text" /></td></tr>
+                </tbody>
+            </table>
+            <div class="ButtonBar">
+                <div data-btst="E" onmouseup="M0603.Button(this, 1);">确定</div>
+            </div>
+        </div>
+        <div id="Continue" class="Hidden">1</div>
+    </div>
+    <div class="memo" style=" width: 800px; position: fixed; bottom: 20px; left: 26px; z-index: 6; transition: left ease 0.5s; " onmouseup="this.style.left = '-800px'; ">
+        <div style="position:absolute;top:0px;left:-16px;"><span>注</span></div>
+        <span>以上操作金额为V币</span><br />
+        <span>&nbsp;</span><br />
+        <span>&nbsp;</span><br />
+    </div>
+    <div id="template" style=" display:none;">
+        <div class="ItemSize InforBox" style="height:120px;">
+            <table>
+                <tbody>
+                    <tr><td>记帐编号</td><td>X</td><td>调账时间</td><td>DYYYY/MM/DD</td></tr>
+                    <tr><td>登陆帐号</td><td>X</td><td>真实姓名</td><td>X</tr>
+                    <tr><td>调账金额</td><td>N2D0</td><td>调账原因</td><td>X</td></tr>
+                    <tr><td>备注说明</td><td colspan="3">X</td></tr>
+                </tbody>
+            </table>
+            <div class="ButtonBar" data-bb="2"><div data-btst="H">&nbsp;</div></div>
+        </div>
+    </div>
+</body>
+</html>

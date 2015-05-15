@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://service.sfxxrz.com/IdentifierService.svc?wsdl" filename="IdentifierService.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://service.sfxxrz.com/IdentifierService.svc?disco" filename="IdentifierService.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://service.sfxxrz.com/IdentifierService.svc?xsd=xsd0" filename="IdentifierService.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://service.sfxxrz.com/IdentifierService.svc?xsd=xsd2" filename="IdentifierService0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://service.sfxxrz.com/IdentifierService.svc?wsdl=wsdl0" filename="IdentifierService0.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://service.sfxxrz.com/IdentifierService.svc?xsd=xsd1" filename="IdentifierService1.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

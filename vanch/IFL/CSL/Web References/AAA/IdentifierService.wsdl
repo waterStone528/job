@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.nciic.com.cn" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="IdentifierService" targetNamespace="http://www.nciic.com.cn" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://tempuri.org/" location="http://service.sfxxrz.com/IdentifierService.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.nciic.com.cn/Imports">
+      <xsd:import schemaLocation="http://service.sfxxrz.com/IdentifierService.svc?xsd=xsd0" namespace="http://www.nciic.com.cn" />
+      <xsd:import schemaLocation="http://service.sfxxrz.com/IdentifierService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://service.sfxxrz.com/IdentifierService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Finance.EPM" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IIdentifierService_GetVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_GetVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_BatchExactCheck_InputMessage">
+    <wsdl:part name="parameters" element="tns:BatchExactCheck" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_BatchExactCheck_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BatchExactCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_ExactCheck_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExactCheck" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_ExactCheck_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExactCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_ExactCheckByJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExactCheckByJson" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_ExactCheckByJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExactCheckByJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_SimpleCheck_InputMessage">
+    <wsdl:part name="parameters" element="tns:SimpleCheck" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_SimpleCheck_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SimpleCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_SimpleCheckByJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:SimpleCheckByJson" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_SimpleCheckByJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SimpleCheckByJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_nciicAddrExactSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:nciicAddrExactSearch" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_nciicAddrExactSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:nciicAddrExactSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QueryExactHistoryDataCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryExactHistoryDataCount" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QueryExactHistoryDataCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryExactHistoryDataCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QuerySimpleHistoryDataCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:QuerySimpleHistoryDataCount" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QuerySimpleHistoryDataCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QuerySimpleHistoryDataCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QuerySimpleHistoryData_InputMessage">
+    <wsdl:part name="parameters" element="tns:QuerySimpleHistoryData" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QuerySimpleHistoryData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QuerySimpleHistoryDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QueryExactHistoryData_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryExactHistoryData" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QueryExactHistoryData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryExactHistoryDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QuerySimpleCitizenData_InputMessage">
+    <wsdl:part name="parameters" element="tns:QuerySimpleCitizenData" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QuerySimpleCitizenData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QuerySimpleCitizenDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QueryExactCitizenData_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryExactCitizenData" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QueryExactCitizenData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryExactCitizenDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_CreateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUser" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_CreateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_ModifyUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyUser" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_ModifyUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QueryUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryUser" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QueryUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QueryAllUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryAllUser" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QueryAllUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryAllUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_IsSimpleCitizenExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsSimpleCitizenExists" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_IsSimpleCitizenExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsSimpleCitizenExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_IsExactCitizenExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsExactCitizenExists" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_IsExactCitizenExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsExactCitizenExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_ModifyPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyPassword" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_ModifyPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_ModifyPasswordByJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyPasswordByJson" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_ModifyPasswordByJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyPasswordByJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QueryBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryBalance" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_QueryBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_AllocateFund_InputMessage">
+    <wsdl:part name="parameters" element="tns:AllocateFund" />
+  </wsdl:message>
+  <wsdl:message name="IIdentifierService_AllocateFund_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllocateFundResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IIdentifierService">
+    <wsdl:operation name="GetVersion">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/GetVersion" message="tns:IIdentifierService_GetVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/GetVersionResponse" message="tns:IIdentifierService_GetVersion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchExactCheck">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/BatchExactCheck" message="tns:IIdentifierService_BatchExactCheck_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/BatchExactCheckResponse" message="tns:IIdentifierService_BatchExactCheck_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExactCheck">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/ExactCheck" message="tns:IIdentifierService_ExactCheck_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/ExactCheckResponse" message="tns:IIdentifierService_ExactCheck_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExactCheckByJson">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/ExactCheckByJson" message="tns:IIdentifierService_ExactCheckByJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/ExactCheckByJsonResponse" message="tns:IIdentifierService_ExactCheckByJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SimpleCheck">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/SimpleCheck" message="tns:IIdentifierService_SimpleCheck_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/SimpleCheckResponse" message="tns:IIdentifierService_SimpleCheck_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SimpleCheckByJson">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/SimpleCheckByJson" message="tns:IIdentifierService_SimpleCheckByJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/SimpleCheckByJsonResponse" message="tns:IIdentifierService_SimpleCheckByJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="nciicAddrExactSearch">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/nciicAddrExactSearch" message="tns:IIdentifierService_nciicAddrExactSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/nciicAddrExactSearchResponse" message="tns:IIdentifierService_nciicAddrExactSearch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryExactHistoryDataCount">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QueryExactHistoryDataCount" message="tns:IIdentifierService_QueryExactHistoryDataCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QueryExactHistoryDataCountResponse" message="tns:IIdentifierService_QueryExactHistoryDataCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QuerySimpleHistoryDataCount">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QuerySimpleHistoryDataCount" message="tns:IIdentifierService_QuerySimpleHistoryDataCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QuerySimpleHistoryDataCountResponse" message="tns:IIdentifierService_QuerySimpleHistoryDataCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QuerySimpleHistoryData">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QuerySimpleHistoryData" message="tns:IIdentifierService_QuerySimpleHistoryData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QuerySimpleHistoryDataResponse" message="tns:IIdentifierService_QuerySimpleHistoryData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryExactHistoryData">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QueryExactHistoryData" message="tns:IIdentifierService_QueryExactHistoryData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QueryExactHistoryDataResponse" message="tns:IIdentifierService_QueryExactHistoryData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QuerySimpleCitizenData">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QuerySimpleCitizenData" message="tns:IIdentifierService_QuerySimpleCitizenData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QuerySimpleCitizenDataResponse" message="tns:IIdentifierService_QuerySimpleCitizenData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryExactCitizenData">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QueryExactCitizenData" message="tns:IIdentifierService_QueryExactCitizenData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QueryExactCitizenDataResponse" message="tns:IIdentifierService_QueryExactCitizenData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/CreateUser" message="tns:IIdentifierService_CreateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/CreateUserResponse" message="tns:IIdentifierService_CreateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyUser">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/ModifyUser" message="tns:IIdentifierService_ModifyUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/ModifyUserResponse" message="tns:IIdentifierService_ModifyUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryUser">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QueryUser" message="tns:IIdentifierService_QueryUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QueryUserResponse" message="tns:IIdentifierService_QueryUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryAllUser">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QueryAllUser" message="tns:IIdentifierService_QueryAllUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QueryAllUserResponse" message="tns:IIdentifierService_QueryAllUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/Login" message="tns:IIdentifierService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/LoginResponse" message="tns:IIdentifierService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsSimpleCitizenExists">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/IsSimpleCitizenExists" message="tns:IIdentifierService_IsSimpleCitizenExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/IsSimpleCitizenExistsResponse" message="tns:IIdentifierService_IsSimpleCitizenExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExactCitizenExists">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/IsExactCitizenExists" message="tns:IIdentifierService_IsExactCitizenExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/IsExactCitizenExistsResponse" message="tns:IIdentifierService_IsExactCitizenExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPassword">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/ModifyPassword" message="tns:IIdentifierService_ModifyPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/ModifyPasswordResponse" message="tns:IIdentifierService_ModifyPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPasswordByJson">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/ModifyPasswordByJson" message="tns:IIdentifierService_ModifyPasswordByJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/ModifyPasswordByJsonResponse" message="tns:IIdentifierService_ModifyPasswordByJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryBalance">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QueryBalance" message="tns:IIdentifierService_QueryBalance_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/QueryBalanceResponse" message="tns:IIdentifierService_QueryBalance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AllocateFund">
+      <wsdl:input wsaw:Action="http://www.nciic.com.cn/IIdentifierService/AllocateFund" message="tns:IIdentifierService_AllocateFund_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.nciic.com.cn/IIdentifierService/AllocateFundResponse" message="tns:IIdentifierService_AllocateFund_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="IdentifierService">
+    <wsdl:port name="BasicHttpBinding_IIdentifierService" binding="i0:BasicHttpBinding_IIdentifierService">
+      <soap:address location="http://service.sfxxrz.com/IdentifierService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

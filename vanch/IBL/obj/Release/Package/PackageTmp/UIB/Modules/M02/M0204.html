@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="expires" content="0" />
+    <title></title>
+</head>
+<body>
+    <style type="text/css">
+    </style>
+    <div class="ListContainer" onscroll="ScrollTracker(this, 'M0204.LoadMoreInfo()')">
+        <table class="TbList">
+            <thead>
+                <tr>
+                    <td data-btid="1" data-ft="0" onmouseup="M0204.HButton(this)"> <label class="title">用户编号</label><input type="text" /><label class="FindIcon">L</label> </td>
+                    <td>真实姓名</td>
+                    <td data-btid="2" data-ft="2" onmouseup="M0204.HButton(this)">拒绝预约<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    <td data-btid="3" data-ft="2" onmouseup="M0204.HButton(this)">审核中债权<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    <td data-btid="4" data-ft="2" onmouseup="M0204.HButton(this)">已审核债权<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    <td data-btid="5" data-ft="2" onmouseup="M0204.HButton(this)">已结案债权<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    <td>VIP等级</td>
+                    <td>客户经理</td>
+                    <td>备注</td>
+                    <td>申请状态</td>
+                    <td>服务状态</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Template">
+                    <td data-slt="0" data-btid="1" onmouseup="M0204.Button(this)">X</td>
+                    <td></td>
+                    <td data-slt data-btid="2" onmouseup="M0204.Button(this)">N0D1</td>
+                    <td data-slt data-btid="3" onmouseup="M0204.Button(this)">N0D1</td>
+                    <td data-slt data-btid="4" onmouseup="M0204.Button(this)">N0D1</td>
+                    <td data-slt data-btid="5" onmouseup="M0204.Button(this)">N0D1</td>
+                    <td>X</td>
+                    <td>未指定</td>
+                    <td data-slt data-btid="6" onmouseup="M0204.Button(this)">.....</td>
+                    <td data-slt="0" data-btid="7" onmouseup="M0204.Button(this)"></td>
+                    <td><div class="SlideButton" data-sw="1" onmouseup="M0204.SlideSwitch(this)"><div class="BG"></div><div class="switch"></div></div></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="RemData" data-dsp="0"><td colspan="11"><label class="PMPText">滚动条下拉 或触摸上拖 可显示更多数据</label></td></tr>
+            </tfoot>
+        </table>
+        <div id="Continue" class="Hidden">1</div>
+    </div>
+
+    <div class="Template TP1">
+        <div class="FBoxContainer">
+            <div class="Template">
+                <table style="width:100%;">
+                    <tbody>
+                        <tr><td>用户编号</td><td>X</td><td>姓名</td><td>X</td></tr>
+                        <tr><td>出生日期</td><td>DYYYY/MM/DD</td> <td>性别</td><td>X</td></tr>
+                        <tr><td>户口地址</td><td><label>X</label></td><td>身份证号</td><td>X</td></tr>
+                        <tr><td>手机</td><td>X</td><td>邮箱</td><td>X</td></tr>
+                        <tr><td>婚姻情况</td><td>X</td><td>生育情况</td><td>X</td></tr>
+                        <tr><td>当前住址</td><td colspan="3">X</td></tr>
+                        <tr><td>毕业学校</td><td colspan="3">X</td></tr>
+                        <tr><td>学历</td><td>X</td><td>学历证号</td><td>X</td></tr>
+                        <tr><td>工作单位</td><td colspan="3">X</td></tr>
+                        <tr><td>单位性质</td><td>X</td><td>所属行业</td><td>X</td></tr>
+                        <tr><td>入职时间</td><td>DYYYY/MM/DD</td><td>工作电话</td><td>X</td></tr>
+                        <tr><td>职务</td><td>X</td><td>单位总机</td><td>X</td></tr>
+                        <tr><td>工作网址</td><td colspan="3">X</td></tr>
+                        <tr><td>同事姓名</td><td>X</td><td>手机</td><td>X</td></tr>
+                        <tr><td>身份证号</td><td colspan="3">X</td></tr>
+                        <tr><td>服务区域</td><td colspan="3"><label>X</label><label>X</label></td></tr>
+                        <tr><td>尽职调查</td><td><div class="UpDownButton" style="margin-left:50px;" data-sw="0"></div></td><td>资产评估</td> <td><div class="UpDownButton" style="margin-left:50px;" data-sw="0"></div></td></tr>
+                        <tr><td>债权担保</td><td><div class="UpDownButton" style="margin-left:50px;" data-sw="0"></div></td><td>坏账催收</td><td><div class="UpDownButton" style="margin-left:50px;" data-sw="0"></div></td></tr>
+                        <tr><td colspan="4"><textarea style="height:100px; width:95%; overflow:hidden; border: 1px solid #58585a; color:white; background-color:transparent;" readonly></textarea></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="Template TP2">
+        <div class="FBoxContainer">
+            <div class="Template">
+                <div class="InforBox">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr><td>债权编号</td><td>X</td><td>融资金额</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>保证方式</td><td>X</td><td>借款期限</td><td><label>N0D1</label>天</td></tr>
+                            <tr><td>还款方式</td><td>X</td><td>日利率</td><td>Q2D0</td></tr>
+                            <tr><td>资金用途</td><td>X</td><td>债权区域</td><td><label>X</label><label>X</label></td></tr>
+                            <tr><td>融资方</td><td>X</td><td>抵押物</td><td>X</td></tr>
+                            <tr><td>投资方</td><td>X</td><td>顾问费用</td><td><label>N2D0</label>万元</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Template TP3">
+        <div class="FBoxContainer">
+            <div class="Template">
+                <div class="InforBox">
+                    <div style="position:absolute;right:10px;top:5px;"><i style="font-size: 17px;"></i></div>
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr><td>债权编号</td><td>X</td><td>融资金额</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>保证方式</td><td>X</td><td>借款期限</td><td><label>N0D1</label>天</td></tr>
+                            <tr><td>还款方式</td><td>X</td><td>日利率</td><td>Q2D0</td></tr>
+                            <tr><td>资金用途</td><td>X</td><td>债权区域</td><td><label>X</label><label>X</label></td></tr>
+                            <tr><td>融资方</td><td>X</td><td>投资方</td><td>X</td></tr>
+                            <tr><td>抵押物</td><td>X</td><td>顾问费用</td><td><label>N2D0</label>万元</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Template TP4">
+        <div class="FBoxContainer">
+            <div class="Template">
+                <div class="InforBox">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr><td>债权编号</td><td>X</td><td>融资金额</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>保证方式</td><td>X</td><td>借款期限</td><td><label>N0D1</label>天</td></tr>
+                            <tr><td>还款方式</td><td>X</td><td>日利率</td><td>Q2D0</td></tr>
+                            <tr><td>投资方</td><td>X</td><td>抵押物</td><td>X</td></tr>
+                            <tr><td>融资方</td><td>X</td><td>审核情况</td><td>X</td></tr>
+                            <tr><td>顾问费用</td><td><label>N2D0</label>万元</td><td>投资进度</td><td>X</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Template TP5">
+        <div class="FBoxContainer">
+            <div class="Template">
+                <div class="InforBox">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr><td>债权编号</td><td>X</td><td>融资金额</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>保证方式</td><td>X</td><td>借款期限</td><td><label>N0D1</label>天</td></tr>
+                            <tr><td>还款方式</td><td>X</td><td>日利率</td><td>Q2D0</td></tr>
+                            <tr><td>投资方</td><td>X</td><td>抵押物</td><td>X</td></tr>
+                            <tr><td>融资方</td><td>X</td><td>审核情况</td><td>X</td></tr>
+                            <tr><td>顾问费用</td><td><label>N2D0</label>万元</td><td>投资进度</td><td>X</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Template TP6">
+        <div onmouseup="M0204.EnableBt(this);" style="position:absolute;top:15px;left:15px;bottom:15px;right:15px;">
+            <textarea style="background-color:#292d31;width:100%;border:none;height:100%;color:#fff;overflow:hidden;margin:-5px;padding:5px;"></textarea>
+        </div>
+    </div>
+    <div class="Template TP7">
+        <div class="ApplyPage" style="height:810px;">
+            <div class="SignStatus" data-status="9">
+                <div class="Approved">
+                    <h4 class="Result">审核通过</h4>
+                    <div class="AuditDate">DYYYY年MM月DD日</div>
+                    <div class="Auditor">审核员:<label>X</label></div>
+                </div>
+                <div class="Rejected">
+                    <h4 class="Result">审核拒签</h4>
+                    <div class="AuditDate"><label>DYYYY年MM月DD日</label></div>
+                    <div class="Auditor">审核员:<label>X</label></div>
+                </div>
+            </div>
+            <div class="Page">
+                <table>
+                    <thead>
+                        <tr><td colspan="6"><h3>顾问服务申请单</h3><hr /></td></tr>
+                    </thead>
+                    <tbody>
+                        <tr data-type="title"><td colspan="6"><h5>基本信息</h5></td></tr>
+                        <tr><td>姓名</td><td>X</td><td>性别</td><td>X</td></tr>
+                        <tr><td>出生日期</td><td>DYYYY/MM/DD</td><td>身份证号</td><td>X</td></tr>
+                        <tr><td>手机</td><td>X</td><td>邮箱</td><td>X</td></tr>
+                    </tbody>
+                    <tbody>
+                        <tr data-type="title"><td colspan="6"><h5>家庭信息</h5></td></tr>
+                        <tr><td>婚姻情况</td><td>X</td><td>生育情况</td><td>X</td></tr>
+                        <tr><td>户口地址</td><td colspan="3">X</td></tr>
+                        <tr><td>当前住址</td><td colspan="3"><label>X</label>省<label>X</label>市<label>X</label></td></tr>
+                        <tr><td>毕业学校</td><td>X</td><td>学历</td><td>X</td></tr>
+                    </tbody>
+                    <tbody>
+                        <tr data-type="title"><td colspan="6"><h5>工作信息</h5></td></tr>
+                        <tr><td>工作单位</td><td colspan="3">X</td></tr>
+                        <tr><td>单位性质</td><td>X</td><td>所属行业</td><td>X</td></tr>
+                        <tr><td>入职时间</td><td>X</td><td>工作电话</td><td>X</td></tr>
+                        <tr><td>职务</td><td colspan="3">X</td></tr>
+                    </tbody>
+                    <tbody>
+                        <tr data-type="title"><td colspan="6"><h5>服务内容</h5></td></tr>
+                        <tr><td>服务区域</td><td colspan="3">X</td></tr>
+                        <tr><td>尽职调查</td><td><div class="UpDownButton" style="margin-left: 50px;"></div></td><td>资产评估</td><td><div class="UpDownButton" style="margin-left: 50px;"></div></td></tr>
+                        <tr><td>债权担保</td><td><div class="UpDownButton" style="margin-left: 50px;"></div></td><td>坏账催收</td><td><div class="UpDownButton" style="margin-left: 50px;"></div></td></tr>
+                        <tr><td colspan="4"><textarea readonly></textarea></td></tr>
+                    </tbody>
+                    <tbody>
+                        <tr data-type="title"><td colspan="4"><h5>凡奇批注</h5></td></tr>
+                        <tr class="AppNote"><td colspan="4"><textarea style="height:60px;"></textarea></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

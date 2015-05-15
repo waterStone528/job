@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="expires" content="0" />
+    <title></title>
+</head>
+<body>
+    <style type="text/css">
+    </style>
+    <div class="ListContainer" onscroll="ScrollTracker(this, 'M0206.LoadMoreInfo()')">
+        <table class="TbList">
+            <thead>
+                <tr>
+                    <td data-btid="1" data-ft="0" onmouseup="M0206.HButton(this)"> <label class="title">用户编号</label><input type="text" /><label class="FindIcon">L</label> </td>
+                    <td>真实姓名</td>
+                    <td data-btid="2" data-ft="2" onmouseup="M0206.HButton(this)">取消发布<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    <td data-btid="3" data-ft="2" onmouseup="M0206.HButton(this)">己发布资产<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    <td data-btid="4" data-ft="2" onmouseup="M0206.HButton(this)">拒绝预约<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    <td data-btid="5" data-ft="2" onmouseup="M0206.HButton(this)">预约中资产<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    <td data-btid="6" data-ft="2" onmouseup="M0206.HButton(this)">己出售资产<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    <td>VIP等级</td>
+                    <td>应付账单</td>
+                    <td>客户经理</td>
+                    <td>备注</td>
+                    <td>申请状态</td>
+                    <td>服务状态</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Template">
+                    <td data-slt="0" data-btid="1" onmouseup="M0206.Button(this)">X</td>
+                    <td>X</td>
+                    <td data-slt data-btid="2" onmouseup="M0206.Button(this)">N0D1</td>
+                    <td data-slt data-btid="3" onmouseup="M0206.Button(this)">N0D1</td>
+                    <td data-slt data-btid="4" onmouseup="M0206.Button(this)">N0D1</td>
+                    <td data-slt data-btid="5" onmouseup="M0206.Button(this)">N0D1</td>
+                    <td data-slt data-btid="6" onmouseup="M0206.Button(this)">N0D1</td>
+                    <td>N0D0</td>
+                    <td>N0D1</td>
+                    <td>未指定</td>
+                    <td data-slt data-btid="7" onmouseup="M0206.Button(this)">.....</td>
+                    <td>X</td>
+                    <td><div class="SlideButton" data-sw="1" onmouseup="M0206.SlideSwitch(this)"><div class="BG"></div><div class="switch"></div></div></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="RemData" data-dsp="0"><td colspan="13"><label class="PMPText">滚动条下拉 或触摸上拖 可显示更多数据</label></td></tr>
+            </tfoot>
+        </table>
+        <div id="Continue" class="Hidden">1</div>
+    </div>
+    <div class="Template TP1">
+        <div class="FBoxContainer">
+            <div class="Template">
+                <table style="width:100%;">
+                    <tbody>
+                        <tr><td>用户编号</td><td>X</td><td>姓名</td><td> X </td></tr>
+                        <tr><td>出生日期</td><td>DYYYY/MM/DD</td><td>性别</td><td>X</td></tr>
+                        <tr><td>户口地址</td><td>X</td><td>身份证号</td><td>X</td></tr>
+                        <tr><td>手机</td><td> X </td><td>邮箱</td><td> X </td></tr>
+                        <tr><td>婚姻情况</td><td>X</td><td>生育情况</td><td>X</td></tr>
+                        <tr><td>当前住址</td><td colspan="3">X</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="Template TP2">
+        <div class="FBoxContainer">
+            <div class="Template">
+                <div class="InforBox">
+                    <table>
+                        <tbody>
+                            <tr><td>资产编号</td><td>X</td><td>资产类型</td><td>X</td></tr>
+                            <tr><td>资产来源</td><td>X</td><td>获得时间</td><td>DYYYY/MM/DD</td></tr>
+                            <tr><td>出售方</td><td>X</td><td>获得成本</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>评估方</td><td>X</td><td>市场价格</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>资产区域</td><td>X</td><td>出售报价</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>使用情况</td><td>X</td><td>资产详情</td><td class="MHand" onmouseup="M0206.Details(this);">......</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="Textarea"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Template TP3">
+        <div class="FBoxContainer">
+            <div class="Template">
+                <div class="InforBox" data-slt="0" onmouseup="M0206.SltBox(this)">
+                    <table>
+                        <tbody>
+                            <tr><td>资产编号</td><td>X</td><td>资产类型</td><td>X</td></tr>
+                            <tr><td>资产来源</td><td>X</td><td>获得时间</td><td>DYYYY/MM/DD</td></tr>
+                            <tr><td>出售方</td><td>X</td><td>获得成本</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>评估方</td><td>X</td><td>市场价格</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>资产区域</td><td>X</td><td>出售报价</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>使用情况</td><td>X</td><td>资产详情</td><td class="MHand" onmouseup="M0206.Details(this);">......</td></tr>
+                        </tbody>
+                    </table>
+                    <span class="Hidden">X</span>
+                    <div class="Textarea"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Template TP4">
+        <div class="FBoxContainer">
+            <div class="Template">
+                <div class="InforBox">
+                    <table>
+                        <tbody>
+                            <tr><td>资产编号</td><td>X</td><td>资产类型</td><td>X</td></tr>
+                            <tr><td>资产来源</td><td>X</td><td>使用情况</td><td>X</td></tr>
+                            <tr><td>评估方</td><td>X</td><td>市场价格</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>购买方</td><td>X</td><td>出售报价</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>预约时间</td><td>DYYYY/MM/DD</td><td>资产详情</td><td class="MHand" onmouseup="M0206.Details(this);">......</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="Textarea"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Template TP5">
+        <div class="FBoxContainer">
+            <div class="Template">
+                <div class="InforBox">
+                    <table>
+                        <tbody>
+                            <tr><td>资产编号</td><td>X</td><td>资产类型</td><td>X</td></tr>
+                            <tr><td>资产来源</td><td>X</td><td>使用情况</td><td>X</td></tr>
+                            <tr><td>评估方</td><td>X</td><td>市场价格</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>购买方</td><td>X</td><td>出售报价</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>预约时间</td><td>DYYYY/MM/DD</td><td>资产详情</td><td class="MHand" onmouseup="M0206.Details(this);">......</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="Textarea">X</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Template TP6">
+        <div class="FBoxContainer">
+            <div class="Template">
+                <div class="InforBox">
+                    <table>
+                        <tbody>
+                            <tr><td>资产编号</td><td>X</td><td>资产类型</td><td>X</td></tr>
+                            <tr><td>资产来源</td><td>X</td><td>使用情况</td><td>X</td></tr>
+                            <tr><td>评估方</td><td>X</td><td>市场价格</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>购买方</td><td>X</td><td>出售报价</td><td><label>N2D0</label>万元</td></tr>
+                            <tr><td>预约时间</td><td>DYYYY/MM/DD</td><td>资产详情</td><td class="MHand" onmouseup="M0206.Details(this);">......</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="Textarea"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Template TP7">
+        <div onmouseup="M0206.EnableBt(this);" style="position:absolute;top:15px;left:15px;bottom:15px;right:15px;">
+            <textarea style="background-color:#292d31;width:100%;border:none;height:100%;color:#fff;overflow:hidden;margin:-5px;padding:5px;"></textarea>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+</head>
+<body>
+    <div id="LoginBox" style="width:100%;height:100%;">
+        <div id="LoginBoxElms" onkeyup="M1103.MonitorKeys(this)">
+            <div style="height: 20px;">&nbsp;</div>
+            <div style="display:inline-block;border:solid 1px transparent;">
+                <input class="URLInp" id="LoginName" type="text" placeholder="工号" value="工号" onfocus="M1103.Textfocus(this)" onblur="M1103.Textblur(this)" />
+            </div>
+            <div style="height: 20px;">&nbsp;</div>
+            <div style="display:inline-block;border:solid 1px transparent;">
+                <input class="URLInp URLInpI" id="LoginPwd" type="password" style="display:none;" onblur="if (this.value.length < 1) { this.style.display = 'none'; document.querySelector('#LoginPwdP').style.display = ''; }" />
+                <input class="URLInp" id="LoginPwdP" style="position:relative;" type="text" placeholder="登陆密码" value="登陆密码" onfocus="M1103.Pwdfocus(this)" />
+            </div>
+            <div style="height: 20px;line-height:20px;">&nbsp;<a id="ForgetPWDBt" class="URLSmallTextBt" style="display:none;" onmouseup="M1103.LoginBoxBt(this,  3)">忘记密码?</a></div>
+            <button class="URLBt" onmouseup="M1103.LoginBoxBt(this, 1)">登陆</button>
+            <div style="height: 20px;">&nbsp;</div>
+            <div id="LoginBoxLostPwdDis" style="color:yellow;"></div>
+        </div>
+    </div>
+</body>
+</html>

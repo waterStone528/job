@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\雄\OneDrive\文档\desktop\IFL</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/IFL.dll">
+      <publishTime>09/23/2014 14:37:45</publishTime>
+    </File>
+    <File Include="bin/IFL.XmlSerializers.dll">
+      <publishTime>09/23/2014 14:37:47</publishTime>
+    </File>
+    <File Include="bin/UIF.dll">
+      <publishTime>09/23/2014 14:37:48</publishTime>
+    </File>
+    <File Include="FBF/Control.ashx">
+      <publishTime>09/03/2014 10:39:15</publishTime>
+    </File>
+    <File Include="FBF/SslControl.ashx">
+      <publishTime>09/03/2014 10:39:15</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>09/03/2014 10:39:13</publishTime>
+    </File>
+    <File Include="index.html">
+      <publishTime>09/03/2014 11:35:35</publishTime>
+    </File>
+    <File Include="PAY/ReturnPay.aspx">
+      <publishTime>09/03/2014 10:39:15</publishTime>
+    </File>
+    <File Include="PAY/ToPay.aspx">
+      <publishTime>09/03/2014 10:39:15</publishTime>
+    </File>
+    <File Include="UIF/BCK.html">
+      <publishTime>09/03/2014 10:39:15</publishTime>
+    </File>
+    <File Include="UIF/ComScript/CommCtrl.js">
+      <publishTime>09/01/2014 13:15:02</publishTime>
+    </File>
+    <File Include="UIF/ComScript/DateSelector.js">
+      <publishTime>09/01/2014 10:48:55</publishTime>
+    </File>
+    <File Include="UIF/ComScript/InpRulesCk.js">
+      <publishTime>09/01/2014 10:48:55</publishTime>
+    </File>
+    <File Include="UIF/ComScript/LoginBox.js">
+      <publishTime>09/01/2014 11:31:53</publishTime>
+    </File>
+    <File Include="UIF/ComScript/MovingBox.js">
+      <publishTime>09/03/2014 10:37:09</publishTime>
+    </File>
+    <File Include="UIF/ComScript/TransingBox.js">
+      <publishTime>09/01/2014 10:48:55</publishTime>
+    </File>
+    <File Include="UIF/ComScript/UserRegBox.js">
+      <publishTime>09/01/2014 11:32:14</publishTime>
+    </File>
+    <File Include="UIF/ComStyle.css">
+      <publishTime>09/01/2014 10:48:58</publishTime>
+    </File>
+    <File Include="UIF/favicon.ico">
+      <publishTime>09/03/2014 10:39:15</publishTime>
+    </File>
+    <File Include="UIF/fonts/vanch.eot">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/fonts/vanch.svg">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/fonts/vanch.ttf">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/fonts/vanch.woff">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/bank.png">
+      <publishTime>09/03/2014 10:39:15</publishTime>
+    </File>
+    <File Include="UIF/Images/bg.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/bg4.jpg">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/chunnuanhuakai01.jpg">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/fav-icon.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/FreeInfo/CompAddrMap.jpg">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/FreeInfo/FF06.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/FreeInfo/WeChat.jpg">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/FreeInfo/weibo.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/ie10logo.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/ie11logo.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/ie8logo.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/ie9logo.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/ips.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/loading.gif">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/logoJ.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/online-icon.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/RightBarClose.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/TransactionRight.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/TransactionWrong.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Images/VANCH-LOGO.png">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/index.html">
+      <publishTime>09/03/2014 10:39:15</publishTime>
+    </File>
+    <File Include="UIF/Modules/BottomBar.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/DateSelector.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/FreeInfo/FreeInfo01.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/FreeInfo/FreeInfo02.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/FreeInfo/FreeInfo03.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/FreeInfo/FreeInfo04.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/FreeInfo/FreeInfo05.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/FreeInfo/FreeInfo06.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/FreeInfo/FreeInfo07.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/FreeInfo/FreeInfo08.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/InputNum.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/LoadingBox.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/LoginBox.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/logout.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/MovingBox.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/P101.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/P10201.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/P10202.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/P103.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/P105.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/UAdviserInfo.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/UAdviserList.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/UAdviserProgress.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/UCancelReason.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/UCloseCase.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/UCompanyInfo.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/UExpenditure.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/UFinancerInfo.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/UInvestAgreem.html">
+      <publishTime>09/01/2014 10:48:56</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/UInvestApply.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/UInvestSearchBar.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/UInvestSubmit.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/URejectReason.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P1/USecurities.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/P201A.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/P201S.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/P202.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/P202S.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/P20301.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/P20302.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/UBorrowAgreem.html">
+      <publishTime>09/01/2014 10:48:56</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/UBorrowApply.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/UCancel.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/UCancelReason.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/UCompanyInfo01.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/UCompanyInfo02.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/UConsultantInfo.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/UExpenditure.html">
+      <publishTime>09/01/2014 10:48:57</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/UInvestorInfo.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/UInvestorList.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/URejectReason.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/USecurities01.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P2/USecurities02.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P3/P301.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P3/P301A.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P3/P302.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P3/P303.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P3/UAssetInfo01.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P3/UAssetInfo02.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P3/UBuyerInfo.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P3/UCancel.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P3/UCancelReason.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P3/UExpenditure.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P3/USaleAgreem.html">
+      <publishTime>09/01/2014 10:48:57</publishTime>
+    </File>
+    <File Include="UIF/Modules/P3/USaleApply.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P4/P401.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P4/P402.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P4/P404.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P4/UAssetInfo.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P4/UBuyAgreem.html">
+      <publishTime>09/01/2014 10:48:57</publishTime>
+    </File>
+    <File Include="UIF/Modules/P4/UBuyApply.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P4/UCancelReason.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P4/UExpenditure01.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P4/UExpenditure02.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P4/USalerInfo.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P5/P502.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P5/P503.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P5/P50401.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P5/P50402.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P5/UCompanyInfo.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P5/UConsultantAgreem.html">
+      <publishTime>09/01/2014 10:48:57</publishTime>
+    </File>
+    <File Include="UIF/Modules/P5/UConsultantApply.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P5/UFinancerInfo.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P5/UInvestorInfo.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P5/UReasonReject01.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P5/UReasonReject02.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P5/USecurities.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P7/P70101.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P7/P70102.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P801/P8010101.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P801/P8010102.html">
+      <publishTime>09/03/2014 10:39:17</publishTime>
+    </File>
+    <File Include="UIF/Modules/P801/P8010103.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P801/P8010201.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P801/P8010202.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P801/P8010203.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P801/P8010204.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P801/P8010301.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P801/P8010401.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P801/P8010402.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P801/P8010501.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P801/P8010502.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P801/P8010503.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P802/P80201.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P802/P80202.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P802/P80203.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P802/P80204.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P802/P80205.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P802/P80206.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P802/P80207.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P802/P80208.html">
+      <publishTime>09/01/2014 10:48:57</publishTime>
+    </File>
+    <File Include="UIF/Modules/P802/P80209.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P803/P80301.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P803/P80302.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P803/P80303.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P803/P80304.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P803/P80305.html">
+      <publishTime>09/01/2014 10:48:57</publishTime>
+    </File>
+    <File Include="UIF/Modules/P9/P901.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P9/P902.html">
+      <publishTime>09/01/2014 10:48:57</publishTime>
+    </File>
+    <File Include="UIF/Modules/P9/P903.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/P9/UPay.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/Modules/TopBar.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/TransingBox.html">
+      <publishTime>09/03/2014 10:39:16</publishTime>
+    </File>
+    <File Include="UIF/Modules/UserRegBox.html">
+      <publishTime>09/01/2014 10:48:57</publishTime>
+    </File>
+    <File Include="UIF/OC/Images/VANCH-LOGO.png">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/OC/index.html">
+      <publishTime>09/03/2014 10:39:18</publishTime>
+    </File>
+    <File Include="UIF/P1.html">
+      <publishTime>09/04/2014 13:42:28</publishTime>
+    </File>
+    <File Include="UIF/P2.html">
+      <publishTime>09/02/2014 14:40:53</publishTime>
+    </File>
+    <File Include="UIF/P3.html">
+      <publishTime>09/04/2014 11:53:53</publishTime>
+    </File>
+    <File Include="UIF/P4.html">
+      <publishTime>09/01/2014 12:02:51</publishTime>
+    </File>
+    <File Include="UIF/P5.html">
+      <publishTime>09/05/2014 11:16:19</publishTime>
+    </File>
+    <File Include="UIF/P7.html">
+      <publishTime>09/01/2014 12:02:51</publishTime>
+    </File>
+    <File Include="UIF/P801.html">
+      <publishTime>09/02/2014 15:49:54</publishTime>
+    </File>
+    <File Include="UIF/P802.html">
+      <publishTime>09/05/2014 10:42:53</publishTime>
+    </File>
+    <File Include="UIF/P803.html">
+      <publishTime>09/01/2014 12:02:51</publishTime>
+    </File>
+    <File Include="UIF/P9.html">
+      <publishTime>09/01/2014 12:02:51</publishTime>
+    </File>
+    <File Include="UIF/Pay/IPS/ReturnBridge.aspx">
+      <publishTime>08/27/2014 16:54:49</publishTime>
+    </File>
+    <File Include="UIF/Portal.html">
+      <publishTime>09/02/2014 17:34:29</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>09/04/2014 11:58:13</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

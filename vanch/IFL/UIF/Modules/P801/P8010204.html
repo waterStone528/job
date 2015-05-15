@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="expires" content="0" />
+    <title></title>
+</head>
+<body>
+    <div style="float: left;" class="ItemSize GeneralItem">
+        <div class="UToolBCBG" style="font-weight: 700; ">财务信息</div>
+        <div id="Mod04App" style="height: 300px;">
+            <div class="MLayer" style="position:absolute;top:50px;bottom:50px;left:0px; right:0px;background-color: black;opacity:.00; filter: alpha(opacity=00);z-index:10;"></div>
+            <table width=" 100%" style="position: relative; padding: 0px;" border="0">
+                <!--Sever need give the value in TD zone witch TD has id value-->
+                <tr><td class="ItemTitle">月总收入</td><td><label class="ItemTextInp"data-ctem="0"><input type="text" onkeyup="FloatInp(this, 2);" style="width:90%" /></label>万</td><td class="ItemTitle">月总支出</td><td><label class="ItemTextInp" data-ctem="0"><input type="text" onkeyup="FloatInp(this, 2);" style="width:90%" /></label>万</td></tr>
+                <tr><td class="ItemTitle">月净收入</td><td><label class="ItemTextInp" data-ctem="0"><input type="text" onkeyup="FloatInp(this, 2);" style="width:90%" /></label>万</td><td class="ItemTitle">总资产</td><td><label class="ItemTextInp" data-ctem="0"><input type="text" onkeyup="FloatInp(this, 2);" style="width:90%" /></label>万</td></tr>
+                <tr><td class="ItemTitle">总负债</td><td><label class="ItemTextInp" data-ctem="0"><input type="text" onkeyup="FloatInp(this, 2);" style="width:90%" /></label>万</td><td class="ItemTitle">净资产</td><td><label class="ItemTextInp" data-ctem="0"><input type="text" onkeyup="FloatInp(this, 2);" style="width:90%" /></label>万</td></tr>
+                <tr><td class="ItemTitle">法院执行</td><td class="ItemTextInp" data-ctem="0"><select><option value="-1"></option><option value="0">无</option><option value="1">有</option></select></td><td class="ItemTitle">信用状况</td><td class="ItemTextInp" data-ctem="0"><select><option value="-1"></option></select></td></tr>
+            </table>
+        </div>
+        <div class="ButtonBar" style="position: absolute; bottom: 10px; right: 5px;">
+            <div class="CBt" onmousedown="P80102.Edit(this, 0)" onmouseup="P80102.Edit(this, 1)">修改</div>
+            <div class="CBt" style="display:none;" onmousedown="P80102.Save(this, 0)" onmouseup="P80102.Save(this, 4)">保存</div>
+        </div>
+    </div>
+</body>
+</html>

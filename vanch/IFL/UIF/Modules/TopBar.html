@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="TopBari">
+        <div id="RedLine" style="background-color: #D51717; height: 0px;"></div>
+        <div id="TopBar">
+            <a class="HomeClickZone" href="./">
+                <div class="L1"></div>
+                <div class="L2"></div>
+                <div style="position: absolute;  text-shadow: 1px 1px 2px #940808; left:30px;top:3px;"><i style=" font-size: 30px;color:#ffffff;" class="icon-ff"></i></div>
+            </a>
+            <div id="TopBarButtons">
+                <div style="float:right;">
+                    <div onmouseup="window.open('http://cm.vanch.co/customer/index.html?userSN=' + PublicSU.UIP.UserSN, '_blank', 'menubar=no,toolbar=no,location=no,directories=no,scrollbars=yes,status=yes,resizable=yes,height=600,width=960');" class="TopBarButtonsText" style=" display: none;">
+                        <div class="icon-bubbles" style="float:left; margin:13px 3px 0 0;"></div>
+                        <div style="float: left;">在线客服</div>
+                    </div>
+                    <div onmouseup="AddFavorite()" class="TopBarButtonsText" >
+                        <div class="icon-star" style="float: left; margin: 12px 3px 0 0; "></div>
+                        <div style="float: left;">收藏本站</div>
+                    </div>
+                    <div onmouseup="if (this.getAttribute('data-islogin') == '1') { Location('P802'); } else { Login.LoginBoxCtl(1); }" class="TopBarButtonsText">
+                        <div class="icon-customer" style="float: left; margin: 12px 3px 0 0; font-size: 18px; line-height: 15px;"></div>
+                        <div style="float:left;"></div>
+                    </div>
+                    <div onmouseup="if (typeof (Login.LoginBoxCtl) == 'function') { UserRegBoxCtl(1); }" class="TopBarButtonsText Hidden">
+                        <div class="icon-bookmark2" style="float: left; margin: 13px 1px 0 0; font-size: 13px; "></div>
+                        <div style="float: left;">免费注册</div>
+                    </div>
+                    <div onmouseup="" class="TopBarButtonsText Hidden">
+                        <div class="icon-exit" style="float: left; margin: 13px 1px 0 0; font-size: 13px; "></div>
+                        <div style="float: left;" onmouseup="PublicSU.STR.EVLoginOut();">安全退出</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        parent.TopBari.innerHTML = TopBari.innerHTML;
+    </script>
+</body>
+</html>

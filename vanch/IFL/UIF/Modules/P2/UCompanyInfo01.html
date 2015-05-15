@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--企业信息-->
+    <div class="UCompanyInfo01" style="width:550px;">
+        <div style="position: absolute; right:0px; top:0px; left:0px; bottom:60px; color:white; overflow: auto; scrollbar-arrow-color: #313136; scrollbar-base-color: #313136; scrollbar-track-color: black; ">
+            <table class="GeneralItem">
+                <tr>
+                    <td class="ItemTitle">企业名称</td>
+                    <td class="ItemTextInp" colspan="3"><input type="text" /></td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">企业地址</td>
+                    <td class="ItemTextInp" colspan="3"><input type="text" /></td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">注册时间</td>
+                    <td class="ItemTextInp" style="width:130px;"><div class="ItemDateInp" onmouseup="CControl.ItemInfoDsp(this,1);"></div></td>
+                    <td class="ItemTitle">注册资金</td>
+                    <td><label class="ItemTextInp"><input type="text" onkeyup="FloatInp(this, 2);" onblur="    IRC.IntervalNumber(this, this.value, P201.UIP.RegAmt);" style=" width:90%;" /></label>万</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">所属行业</td>
+                    <td class="ItemTextInp"><select><option value="-1"></option></select></td>
+                    <td class="ItemTitle">法人代表</td>
+                    <td class="ItemTextInp"><input type="text" /></td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">最大股东</td>
+                    <td class="ItemTextInp"><input type="text" /></td>
+                    <td class="ItemTitle">股东人数</td>
+                    <td><label class="ItemTextInp"><input type="text" onkeyup="FloatInp(this, 0);" onblur="IRC.IntervalNumber(this, this.value, P201.UIP.TotalAsset);" style=" width: 90%;" /></label>人</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">员工人数</td>
+                    <td><label class="ItemTextInp"><input type="text" style="width: 80%;" onkeyup="FloatInp(this, 0);" onblur="IRC.IntervalNumber(this, this.value, P201.UIP.StaffNum);" /></label>人</td>
+                    <td class="ItemTitle">总资产</td>
+                    <td><label class="ItemTextInp"><input type="text" style="width: 90%;" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P201.UIP.TotalAsset);" /></label>万</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">总负债</td>
+                    <td><label class="ItemTextInp"><input type="text" style="width: 80%;" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P201.UIP.TotalBorrow);" /></label>万</td>
+                    <td class="ItemTitle">现有贷款</td>
+                    <td><label class="ItemTextInp"><input type="text" style="width: 90%;" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P201.UIP.NowBorrow);" /></label>万</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">净资产</td>
+                    <td><label class="ItemTextInp"><input type="text" style="width: 80%;" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P201.UIP.ClearAsset);" /></label>万</td>
+                    <td class="ItemTitle">营业额</td>
+                    <td><label class="ItemTextInp"><input type="text" style="width: 90%;" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P201.UIP.SalesAmt);" /></label>万</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle" style="width:90px;">纳税营业额</td>
+                    <td><label class="ItemTextInp"><input type="text" style="width: 80%;" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P201.UIP.TaxSalesAmt);" /></label>万</td>
+                    <td class="ItemTitle">净利润</td>
+                    <td><label class="ItemTextInp"><input type="text" style="width: 90%;" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P201.UIP.ClearAsset);" /></label>万</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">法院执行</td>
+                    <td class="ItemTextInp"><select><option value="-1"></option><option value="0">无</option><option value="1">有</option></select></td>
+                    <td class="ItemTitle">信用情况</td>
+                    <td class="ItemTextInp"><select><option value="-1"></option><option value="0">正常</option><option value="1">逾期中</option></select></td>
+                </tr>
+            </table>
+        </div>
+        <div class="memo" style="position:absolute; left:0px; bottom:0px; ">
+            <ul>
+                <li>营业额、纳税营业额、净利润 请填写上年度数据。</li>
+                <li>非指定位置，严禁输入联系方式，违者取消发布资格。</li>
+            </ul>
+        </div>
+        <div class="ABt"style="position:absolute;right:0px;bottom:5px;" onmousedown="P201.BtAction(this, 0);" onmouseup="P201.BtAction(this, 4);">确认</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <div id="LoginBox" style="width:100%;height:100%;" onkeyup="if (event.keyCode == 13) { Login.LoginBoxBt(LoginBoxElms.querySelectorAll('.URLBt')[0], 1, 2) }">
+        <div id="LoginBoxElms">
+            <div style="height: 20px;">&nbsp;</div>
+            <div class="ItemText" style="display:inline-block;border:solid 1px transparent;">
+                <input class="URLInp" id="LoginName" type="text" placeholder="手机号" value="手机号" onfocus="if (this.value == this.placeholder) { this.value = ''; this.className += ' URLInpI'; ForgetPWDBt.style.display = ''; }" onblur="    if (this.value.length < 1) { this.value = this.placeholder; this.className = this.className.replace(' URLInpI', ''); ForgetPWDBt.style.display = 'none'; }" />
+            </div>
+            <div style="height: 20px;">&nbsp;</div>
+            <div class="ItemText" style="display:inline-block;border:solid 1px transparent;">
+                <input class="URLInp URLInpI" id="LoginPwd" type="password" style="display:none;" onblur="if (this.value.length < 1) { this.style.display = 'none'; LoginPwdP.style.display = ''; }" />
+                <input class="URLInp" id="LoginPwdP" style="position:relative;" type="text" placeholder="登录密码" value="登录密码" onfocus="if (this.value == this.placeholder) { this.style.display = 'none'; LoginPwd.style.display = ''; LoginPwd.focus();}">
+            </div>
+            <div style="height: 20px;line-height:20px;">&nbsp;<a id="ForgetPWDBt" class="URLSmallTextBt" style="display:none;" onmousedown="Login.LoginBoxBt(this, 0, 3)" onmouseup="Login.LoginBoxBt(this, 1, 3)">忘记密码?</a></div>
+            <button class="URLBt" onmousedown="Login.LoginBoxBt(this, 0, 2)" onmouseup="    Login.LoginBoxBt(this, 1, 2);">登录</button>
+            <div style="height: 20px;">&nbsp;</div>
+            <button class="URLBt" onmousedown="Login.LoginBoxBt(this, 0, 1)" onmouseup="Login.LoginBoxBt(this, 1, 1)">取消</button>
+            <div id="LoginBoxLostPwdDis" style="color:yellow;"></div>
+        </div>
+    </div>
+
+</body>
+</html>

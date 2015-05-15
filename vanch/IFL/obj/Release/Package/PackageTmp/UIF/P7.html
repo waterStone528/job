@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>VANCH凡奇金融 - 成长信息</title>
+    <script type="text/javascript" src="ComScript\CommCtrl.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body onresize="bodyresize()" onload="bodyLoad()">
+    <!--页面动态功能处理-->
+    <script type="text/javascript">
+        function bodyLoadScript() {
+            P7.ToolbarBt(DefaultBt, 2, 1);
+        }
+        function bodyResizeScript() {
+        }
+        function LoadRemItems() {
+            RemItemsLoading = true;
+            LoadingBoxCtl(1);
+            switch (P7.BtID) {
+                case 2:
+                    if (parseInt(Continue.innerText) == 1) {
+                        Continue.innerText = 0;
+                        P7.STR.EVP70103(P7.LoadItem.First, P7.LoadItem.From, P7.LoadItem.Num);
+                    }
+                    break;
+            }
+            RemItemsLoading = false;
+        }
+        var LastToolbarBt;
+        
+    </script>
+    <!--主要显示区-->
+    <div id="TopBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules\TopBar.html"></iframe></div>
+    <div id="MainZone" onscroll="ScrollTracker(this)">
+        <div class="LocationBar"><label>你的位置</label><a style="cursor:pointer" onclick="javascript: LoadingBoxCtl(1); Location('P802');">用户中心</a>&nbsp;-&nbsp;成长信息</div>
+        <div id="ToolBar" style="margin-left:10px;" class="UToolBBBG">
+            <div class="UToolBBBt" onmousedown="P7.ToolbarBt(this, 1)" onmouseup="P7.ToolbarBt(this, 2, 1)" id="DefaultBt">VIP等级</div>
+            <div class="UToolBBBt" onmousedown="P7.ToolbarBt(this, 1)" onmouseup="P7.ToolbarBt(this, 2, 2)">成长明细</div>
+        </div>
+        <div id="ItemContainer">
+
+        </div>
+        <iframe style="height:0px;width:0px;visibility:collapse;" id="ItemSi" onload="ReCalcItemSize();"></iframe>
+    </div>
+    
+    <div id="BottomBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules/BottomBar.html"></iframe></div>
+    <div class="MaskLayer"></div>
+    <script type="text/javascript">
+        var P7 = {
+            BtID: 0,
+            LoadItem: { First: "", From: 0, Num: 40 },
+            CurrentX: 0,//当前段数，从0起
+            CurrentP: 0,//区间内的DIV百分比，小数表示
+            ToolbarBt: function (obj, act, BtID) {//1:down,2:up
+                this.BtID = BtID;
+                if (BtStatusClass(obj, 0) == 4) { return; }
+                if (act == 1) { BtStatusClass(obj, 2); return; }
+                if (LastToolbarBt != null) { BtStatusClass(LastToolbarBt, 1); }
+                if (act == 2) { BtStatusClass(obj, 4); }
+                LastToolbarBt = obj;
+                switch (BtID) {
+                    case 1:
+                        LoadingBoxCtl(1); LastItem = 1;
+                        ItemContainer.innerHTML = "";
+                        LoadMod("P70101", "", "P7");
+                        break;
+                    case 2:
+                        LoadingBoxCtl(1); LastItem = 0;
+                        this.LoadItem.First = ""; this.LoadItem.From = 0;
+                        ItemContainer.innerHTML = "";
+                        var NewItemTemplate = P70102i.children[0].cloneNode(true);
+                        ItemContainer.appendChild(NewItemTemplate);
+                        P7.STR.EVP70102(P7.LoadItem.Num);
+                        break;
+                    default:
+                        break;
+                }
+            },
+
+            UIP: {
+                VIPScore:{ VIP0: 0, VIP1: 5000, VIP2: 10000, VIP3: 50000, VIP4: 100000, VIP5: 200000, VIP6: 300000, VIP7: 400000, VIP8: 600000 },
+                VIPRate:{ VIP0: 0, VIP1: 0.001, VIP2: 0.002, VIP3: 0.003, VIP4: 0.004, VIP5: 0.005, VIP6: 0.006, VIP7: 0.007, VIP8: 0.008 },
+            },
+            STR: {
+                EVP70101: function () {
+                    ///<summary>当前等级</summary>
+                    if (P7.BtID != 1) { return; }
+                    //P7.UID.P7010101("刘德华")
+                    //P7.UID.P7010102(15000);
+                    //P7.UID.P7010103(15000);
+                    //P7.UID.P7010104();
+                    //P7.UID.P7010106(15000, "599.999", "VIP" + P7.CurrentX, "0.00" + P7.CurrentX);
+
+                    var busCode = "P70101";
+                    var data = "busCode=" + busCode;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        //基本检查（如是否登录）
+                        if (BasicCheck(res) == false) {
+                            return;
+                        }
+
+                        var resObj = JSON.parse(res);
+
+                        P7.STR.AssignUip(resObj.vipConfig);
+                        P7.UID.P7010101(resObj.userName.trim(), resObj.userSN);
+                        P7.UID.P7010104();
+                        P7.UID.P7010102(resObj.currentGroupValue);
+                        P7.UID.P7010103(resObj.currentGroupValue);
+                        P7.UID.P7010106(resObj.currentGroupValue, resObj.rewardV, "VIP" + resObj.vipLevel, resObj.rewardRate);
+                    }
+                    ajaxObj.start();
+                },
+                EVP70102: function (Num) {
+                    ///<summary>成长明细</summary><param name="Num">信息数量</param>
+                    //var Details = JSON.stringify([
+                    //{ AddTime: "2014/05/09", No: "MX201423431", Type: "预约消费", Price: 200, GrownValue: 200 },
+                    //{ AddTime: "2014/05/14", No: "MX202344331", Type: "账单付款", Price: 1000, GrownValue: 1000 },
+                    //{ AddTime: "2014/05/25", No: "MX201456541", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    //{ AddTime: "2014/06/03", No: "MX206788801", Type: "预约消费", Price: 200, GrownValue: 200 },
+                    //{ AddTime: "2014/06/10", No: "MX201789061", Type: "预约消费", Price: 200, GrownValue: 200 },
+                    //{ AddTime: "2014/06/14", No: "MX201465741", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    //{ AddTime: "2014/06/19", No: "MX206575641", Type: "账单付款", Price: 3000, GrownValue: 3000 },
+                    //{ AddTime: "2014/06/24", No: "MX201876841", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    //{ AddTime: "2014/06/24", No: "MX201876841", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    //{ AddTime: "2014/06/24", No: "MX201876841", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    //{ AddTime: "2014/06/24", No: "MX201876841", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    //{ AddTime: "2014/06/24", No: "MX201876841", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    //{ AddTime: "2014/06/28", No: "MX204563451", Type: "账单付款", Price: 5000, GrownValue: 5000 }]);
+                    //setTimeout("P7.UID.P70102('MX201423431')", 1000);
+                    //setTimeout("P7.UID.P70103('" + Details + "')", 1000);
+
+                    var busCode = "P70102";
+                    var data = "busCode=" + busCode + "&pageSize=" + Num;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        var resObj = JSON.parse(res);
+                        var maxDatetime = resObj.maxDatetime;
+                        var dataListBd = resObj.dataList;
+
+                        P7.UID.P70102(maxDatetime);
+
+                        var dataListFt = [];
+                        for (var i in dataListBd) {
+                            var dataFt = P7.STR.GroupDetailsBdToFt(dataListBd[i]);
+                            dataListFt.push(dataFt);
+                        }
+
+                        P7.UID.P70103(JSON.stringify(dataListFt));
+                    }
+                    ajaxObj.start();
+                },
+                EVP70103: function (First, From, Num) {
+                    ///<summary>加载更多信息</summary><param name="First">第一条信息的编号</param><param name="From">开始位置</param><param name="Num">信息数量</param>
+                    //var Details = JSON.stringify([
+                    // { AddTime: "2014/05/09", No: "MX201423431", Type: "预约消费", Price: 200, GrownValue: 200 },
+                    // { AddTime: "2014/05/14", No: "MX202344331", Type: "账单付款", Price: 1000, GrownValue: 1000 },
+                    // { AddTime: "2014/05/25", No: "MX201456541", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    // { AddTime: "2014/06/03", No: "MX206788801", Type: "预约消费", Price: 200, GrownValue: 200 },
+                    // { AddTime: "2014/06/10", No: "MX201789061", Type: "预约消费", Price: 200, GrownValue: 200 },
+                    // { AddTime: "2014/06/14", No: "MX201465741", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    // { AddTime: "2014/06/19", No: "MX206575641", Type: "账单付款", Price: 3000, GrownValue: 3000 },
+                    // { AddTime: "2014/06/24", No: "MX201876841", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    // { AddTime: "2014/06/24", No: "MX201876841", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    // { AddTime: "2014/06/24", No: "MX201876841", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    // { AddTime: "2014/06/24", No: "MX201876841", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    // { AddTime: "2014/06/24", No: "MX201876841", Type: "账单付款-免单", Price: 0, GrownValue: 0 },
+                    // { AddTime: "2014/06/28", No: "MX204563451", Type: "账单付款", Price: 5000, GrownValue: 5000 }]);
+                    //setTimeout("P7.UID.P70103('" + Details + "');", 1000);
+                    var busCode = "P70103";
+                    var data = "busCode=" + busCode + "&maxDatetime=" + First + "&pageFrom=" + From + "&pageSize=" + Num;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        var dataListBd = JSON.parse(res);
+
+                        var dataListFt = [];
+                        for (var i in dataListBd) {
+                            var dataFt = P7.STR.GroupDetailsBdToFt(dataListBd[i]);
+                            dataListFt.push(dataFt);
+                        }
+
+                        P7.UID.P70103(JSON.stringify(dataListFt));
+                    }
+                    ajaxObj.start();
+                },
+
+                //后-前 成长明细
+                GroupDetailsBdToFt: function (dataBd) {
+                    var dataFt = {};
+
+                    dataFt.AddTime = BdDateStrFormate(dataBd.acquireDate);
+                    dataFt.No = dataBd.businessSN == null ? "" : dataBd.businessSN.trim();
+                    dataFt.Type = dataBd.businessType == null ? "" : dataBd.businessType.trim();
+                    dataFt.Price = dataBd.transactionMoneyAmount;
+                    dataFt.GrownValue = dataBd.groupUpValue;
+
+                    return dataFt;
+                },
+
+                //uip赋值
+                AssignUip: function (vipConfig) {
+                    var vipOriginateValue = {};
+                    vipOriginateValue.VIP0 = 0;
+                    vipOriginateValue.VIP1 = vipConfig.vip1_originateValue;
+                    vipOriginateValue.VIP2 = vipConfig.vip2_originateValue;
+                    vipOriginateValue.VIP3 = vipConfig.vip3_originateValue;
+                    vipOriginateValue.VIP4 = vipConfig.vip4_originateValue;
+                    vipOriginateValue.VIP5 = vipConfig.vip5_originateValue;
+                    vipOriginateValue.VIP6 = vipConfig.vip6_originateValue;
+                    vipOriginateValue.VIP7 = vipConfig.vip7_originateValue;
+
+                    var rewardRate = {};
+                    rewardRate.VIP0 = 0;
+                    rewardRate.VIP1 = vipConfig.vip1_rewardRate;
+                    rewardRate.VIP2 = vipConfig.vip2_rewardRate;
+                    rewardRate.VIP3 = vipConfig.vip3_rewardRate;
+                    rewardRate.VIP4 = vipConfig.vip4_rewardRate;
+                    rewardRate.VIP5 = vipConfig.vip5_rewardRate;
+                    rewardRate.VIP6 = vipConfig.vip6_rewardRate;
+                    rewardRate.VIP7 = vipConfig.vip7_rewardRate;
+
+                    P7.UIP.VIPScore = vipOriginateValue;
+                    P7.UIP.VIPRate = rewardRate;
+                }
+            },
+            UID: {
+                P7010101: function (UserName, UserSN) {
+                    ///<summary>vip等级后面的数字</summary><param name="UserName">用户姓名</param><param name="UserName">用户编号</param>
+                    Vipszing.querySelectorAll(".vipL")[1].innerText = P7.UIP.VIPScore.VIP1;
+                    Vipszing.querySelectorAll(".vipL")[2].innerText = P7.UIP.VIPScore.VIP2;
+                    Vipszing.querySelectorAll(".vipL")[3].innerText = P7.UIP.VIPScore.VIP3;
+                    Vipszing.querySelectorAll(".vipL")[4].innerText = P7.UIP.VIPScore.VIP4;
+                    Vipszing.querySelectorAll(".vipL")[5].innerText = P7.UIP.VIPScore.VIP5;
+                    Vipszing.querySelectorAll(".vipL")[6].innerText = P7.UIP.VIPScore.VIP6;
+                    Vipszing.querySelectorAll(".vipL")[7].innerText = P7.UIP.VIPScore.VIP7;
+                    PublicSU.UID.LoginAction(UserName,UserSN);
+                },
+                P7010102: function (GrowValue) {
+                    ///<summary>红色成长块</summary><param name="GrowValue">用户当前的成长值</param>
+                    var vipGowinEM0 = document.querySelectorAll(".vipGowinA")[0]
+                    var vipGowinEM1 = document.querySelectorAll(".vipGowinA")[1]
+                    var vipGowinEM2 = document.querySelectorAll(".vipGowinA")[2]
+                    var vipGowinEM3 = document.querySelectorAll(".vipGowinA")[3]
+                    var vipGowinEM4 = document.querySelectorAll(".vipGowinA")[4]
+                    var vipGowinEM5 = document.querySelectorAll(".vipGowinA")[5]
+                    var vipGowinEM6 = document.querySelectorAll(".vipGowinA")[6]
+                    var vipGowinEM7 = document.querySelectorAll(".vipGowinA")[7]
+                    if (GrowValue >= P7.UIP.VIPScore.VIP0) {
+                        var percent = (GrowValue - P7.UIP.VIPScore.VIP0) / (P7.UIP.VIPScore.VIP1 - P7.UIP.VIPScore.VIP0);
+                        if (percent > 1) { percent = 1; }
+                        vipGowinEM0.style.width = percent * 100 + "%";
+                        P7.CurrentX = 0; P7.CurrentP = percent;
+                    }
+                    if (GrowValue >= P7.UIP.VIPScore.VIP1) {
+                        var percent = (GrowValue - P7.UIP.VIPScore.VIP1) / (P7.UIP.VIPScore.VIP2 - P7.UIP.VIPScore.VIP1);
+                        if (percent > 1) { percent = 1; }
+                        vipGowinEM1.style.width = percent * 100 + "%";
+                        P7.CurrentX = 1; P7.CurrentP = percent;
+                    }
+                    if (GrowValue >= P7.UIP.VIPScore.VIP2) {
+                        var percent = (GrowValue - P7.UIP.VIPScore.VIP2) / (P7.UIP.VIPScore.VIP3 - P7.UIP.VIPScore.VIP2);
+                        if (percent > 1) { percent = 1; }
+                        vipGowinEM2.style.width = percent * 100 + "%";
+                        P7.CurrentX = 2; P7.CurrentP = percent;
+                    }
+                    if (GrowValue >= P7.UIP.VIPScore.VIP3) {
+                        var percent = (GrowValue - P7.UIP.VIPScore.VIP3) / (P7.UIP.VIPScore.VIP4 - P7.UIP.VIPScore.VIP3);
+                        if (percent > 1) { percent = 1; }
+                        vipGowinEM3.style.width = percent * 100 + "%";
+                        P7.CurrentX = 3; P7.CurrentP = percent;
+                    }
+                    if (GrowValue >= P7.UIP.VIPScore.VIP4) {
+                        var percent = (GrowValue - P7.UIP.VIPScore.VIP4) / (P7.UIP.VIPScore.VIP5 - P7.UIP.VIPScore.VIP4);
+                        if (percent > 1) { percent = 1; }
+                        vipGowinEM4.style.width = percent * 100 + "%";
+                        P7.CurrentX = 4; P7.CurrentP = percent;
+                    }
+                    if (GrowValue >= P7.UIP.VIPScore.VIP5) {
+                        var percent = (GrowValue - P7.UIP.VIPScore.VIP5) / (P7.UIP.VIPScore.VIP6 - P7.UIP.VIPScore.VIP5);
+                        if (percent > 1) { percent = 1; }
+                        vipGowinEM5.style.width = percent * 100 + "%";
+                        P7.CurrentX = 5; P7.CurrentP = percent;
+                    }
+                    if (GrowValue >= P7.UIP.VIPScore.VIP6) {
+                        var percent = (GrowValue - P7.UIP.VIPScore.VIP6) / (P7.UIP.VIPScore.VIP7 - P7.UIP.VIPScore.VIP6);
+                        if (percent > 1) { percent = 1; }
+                        vipGowinEM6.style.width = percent * 100 + "%";
+                        P7.CurrentX = 6; P7.CurrentP = percent;
+                    }
+                    if (GrowValue >= P7.UIP.VIPScore.VIP7) {
+                        var percent = (GrowValue - P7.UIP.VIPScore.VIP7) / (P7.UIP.VIPScore.VIP8 - P7.UIP.VIPScore.VIP7);
+                        if (percent > 1) { percent = 1; }
+                        vipGowinEM7.style.width = percent * 100 + "%";
+                        P7.CurrentX = 7; P7.CurrentP = percent;
+                    }
+                    Discounting.querySelectorAll(".DiscountA")[P7.CurrentX].setAttribute("class", "DiscountA yellow");
+                    P7.UID.P7010105("VIP" + P7.CurrentX, GrowValue);
+
+                },
+                P7010103: function (GrowValue) {
+                    ///<summary>红色成长值</summary><param name="GrowValue">用户当前的成长值</param>
+                    var Growth = document.querySelector(".triangle")
+                    Growing.querySelector(".triangle-box p").innerText = GrowValue;
+                    Growth.style.left = (0.125 * P7.CurrentX + P7.CurrentP * 0.125) * 100 + "%";
+                    if (GrowValue >= 580000) {
+                        document.querySelector(".triangle-box").setAttribute("style", "margin-left:-42px");
+                        document.querySelector(".triangle-up").setAttribute("style", "margin-left:15px");
+                    }
+                },
+                P7010104: function () {
+                    ///<summary>奖励百分比</summary>
+                    Discounting.querySelectorAll(".DiscountA label")[0].DspV = P7.UIP.VIPRate.VIP0;
+                    Discounting.querySelectorAll(".DiscountA label")[1].DspV = P7.UIP.VIPRate.VIP1;
+                    Discounting.querySelectorAll(".DiscountA label")[2].DspV = P7.UIP.VIPRate.VIP2;
+                    Discounting.querySelectorAll(".DiscountA label")[3].DspV = P7.UIP.VIPRate.VIP3;
+                    Discounting.querySelectorAll(".DiscountA label")[4].DspV = P7.UIP.VIPRate.VIP4;
+                    Discounting.querySelectorAll(".DiscountA label")[5].DspV = P7.UIP.VIPRate.VIP5;
+                    Discounting.querySelectorAll(".DiscountA label")[6].DspV = P7.UIP.VIPRate.VIP6;
+                    Discounting.querySelectorAll(".DiscountA label")[7].DspV = P7.UIP.VIPRate.VIP7;
+                },
+                P7010105: function (v1, v2) {
+                    ///<summary>等级，成长值，奖励</summary>
+                    ObtainAing.querySelectorAll(".backG")[0].DspV = v1;
+                    ObtainAing.querySelectorAll(".backG")[1].DspV = v2;
+                    ObtainAing.querySelectorAll(".backG")[2].innerText = Discounting.querySelector(".yellow>label").innerText
+                },
+                P7010106: function (GrowValue, g2, g3, g4) {
+                    ///<summary>累积交易金额，奖励金额 小广告</summary><param name="GrowValue">用户当前的成长值</param><param name="g2">已奖励金额</param><param name="g3">用户当前等级</param><param name="g4">可享受的奖励</param>
+                    growAding.querySelector(".wA").DspV = GrowValue;
+                    growAding.querySelector(".wB").DspV = g2;
+                    growAding.querySelector(".wC").DspV = g3;
+                    growAding.querySelector(".wD").DspV = g4;
+                },
+                P70102: function (First) {
+                    ///<summary>页面初始化</summary></param name="First">第一条信息的编号</param>
+                    P7.LoadItem.First = First;
+                },
+                P70103: function (Details) {
+                    ///<summary>成长明细</summary>
+                    if (P7.BtID != 2) { return; }
+                    if (Details == "[]") { Continue.innerText = 1; LoadingBoxCtl(0); LastItem = 1; return; }
+                    var DetailsInfo = JSON.parse(Details); P7.LoadItem.From += DetailsInfo.length;
+                    for (var i in DetailsInfo) {
+                        var NewRow = P70102i.querySelector(".Template").cloneNode(true);
+                        NewRow.removeAttribute("class");
+                        NewRow.removeAttribute("style");
+                        var NewRowTd = NewRow.querySelectorAll("td");
+                        NewRowTd[0].DspV = DetailsInfo[i].AddTime;
+                        NewRowTd[1].DspV = DetailsInfo[i].No;
+                        NewRowTd[2].DspV = DetailsInfo[i].Type;
+                        NewRowTd[3].DspV = DetailsInfo[i].Price;
+                        NewRowTd[4].DspV = DetailsInfo[i].GrownValue;
+                        ItemContainer.querySelector(".TbList>.Ctbody").appendChild(NewRow);
+                    }
+                    Continue.innerText = 1; LoadingBoxCtl(0);
+                }
+            },
+        }
+    </script>
+    <div id="Continue">1</div><!--server need return a value 1 to continue load,0 means this is last one and to stop-->
+    <!--异步数据加载区-->
+    <script type="text/javascript">
+        LoadTP("LoadingBox"); LoadTP("TransingBox");
+        LoadJS("InpRulesCk"); LoadJS("TransingBox");
+        LoadTP("P70102", "", "P7");
+        LoadTP("logout");
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\bin\UIF.dll.config
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\bin\UIF.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\bin\UIF.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\bin\IFL.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\bin\IFL.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\bin\IFL.XmlSerializers.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\obj\Release\FBF.csprojResolveAssemblyReference.cache
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\obj\Release\UIF.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\obj\Release\UIF.pdb

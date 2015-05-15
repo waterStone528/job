@@ -1,0 +1,11 @@
+C:\Users\雄\OneDrive\job\vanch\program\code\UIF\TFS\UIF2.00\IFL1.0X\IFL1.01\CSL\bin\Debug\IFL.dll.config
+C:\Users\雄\OneDrive\job\vanch\program\code\UIF\TFS\UIF2.00\IFL1.0X\IFL1.01\CSL\bin\Debug\IFL.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\UIF\TFS\UIF2.00\IFL1.0X\IFL1.01\CSL\bin\Debug\IFL.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\UIF\TFS\UIF2.00\IFL1.0X\IFL1.01\CSL\obj\Debug\CSL.csprojResolveAssemblyReference.cache
+C:\Users\雄\OneDrive\job\vanch\program\code\UIF\TFS\UIF2.00\IFL1.0X\IFL1.01\CSL\obj\Debug\IFL.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\UIF\TFS\UIF2.00\IFL1.0X\IFL1.01\CSL\obj\Debug\IFL.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\CSL\bin\Debug\IFL.dll.config
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\CSL\bin\Debug\IFL.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\CSL\bin\Debug\IFL.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\CSL\obj\Debug\IFL.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IFL\TFS\IFL1.01\CSL\obj\Debug\IFL.pdb

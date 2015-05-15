@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.nciic.com.cn" elementFormDefault="qualified" targetNamespace="http://www.nciic.com.cn" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://service.sfxxrz.com/IdentifierService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Finance.EPM" />
+  <xs:element name="GetVersion">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVersionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetVersionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchExactCheck">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q1:BatchCheckRequest" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q2:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchExactCheckResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="BatchExactCheckResult" nillable="true" type="q3:BatchCheckResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExactCheck">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q4:CheckRequest" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q5:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExactCheckResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="ExactCheckResult" nillable="true" type="q6:CheckResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExactCheckByJson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cred" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExactCheckByJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExactCheckByJsonResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SimpleCheck">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q7:CheckRequest" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q8:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SimpleCheckResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="SimpleCheckResult" nillable="true" type="q9:CheckResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SimpleCheckByJson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cred" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SimpleCheckByJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SimpleCheckByJsonResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="nciicAddrExactSearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inLicense" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="inConditions" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="nciicAddrExactSearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nciicAddrExactSearchResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryExactHistoryDataCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q10:QueryHistoryRequest" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q11:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryExactHistoryDataCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="QueryExactHistoryDataCountResult" nillable="true" type="q12:QueryRecordCountResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QuerySimpleHistoryDataCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q13:QueryHistoryRequest" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q14:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QuerySimpleHistoryDataCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="QuerySimpleHistoryDataCountResult" nillable="true" type="q15:QueryRecordCountResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QuerySimpleHistoryData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q16:QueryHistoryRequest" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q17:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QuerySimpleHistoryDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="QuerySimpleHistoryDataResult" nillable="true" type="q18:QueryHistoryResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryExactHistoryData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q19:QueryHistoryRequest" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q20:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryExactHistoryDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="QueryExactHistoryDataResult" nillable="true" type="q21:QueryHistoryResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QuerySimpleCitizenData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q22:CheckRequest" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q23:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QuerySimpleCitizenDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="QuerySimpleCitizenDataResult" nillable="true" type="q24:CheckResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryExactCitizenData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q25:CheckRequest" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q26:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryExactCitizenDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="QueryExactCitizenDataResult" nillable="true" type="q27:CheckResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="user" nillable="true" type="q28:LoginUser" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q29:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="CreateUserResult" nillable="true" type="q30:BaseResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="user" nillable="true" type="q31:LoginUser" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q32:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="ModifyUserResult" nillable="true" type="q33:BaseResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q34:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="QueryUserResult" nillable="true" type="q35:QueryUserResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryAllUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q36:QueryUserRequest" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q37:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryAllUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="QueryAllUserResult" nillable="true" type="q38:QueryUserResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Login">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q39:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="LoginResult" nillable="true" type="q40:LoginResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsSimpleCitizenExists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q41:CheckRequest" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q42:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsSimpleCitizenExistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="IsSimpleCitizenExistsResult" nillable="true" type="q43:IsExistsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsExactCitizenExists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q44:CheckRequest" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q45:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsExactCitizenExistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="IsExactCitizenExistsResult" nillable="true" type="q46:IsExistsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyPassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q47:ModifyPwdRequest" />
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q48:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyPasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="ModifyPasswordResult" nillable="true" type="q49:BaseResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyPasswordByJson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cred" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyPasswordByJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ModifyPasswordByJsonResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryBalance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cred" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryBalanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="QueryBalanceResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AllocateFund">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="request" nillable="true" type="q50:AllocateFundRequest" />
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="cred" nillable="true" type="q51:Credential" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AllocateFundResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/Finance.EPM" minOccurs="0" name="AllocateFundResult" nillable="true" type="q52:BaseResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

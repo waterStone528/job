@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="OpenInfoi">
+        <div class="FreeInfo">
+            <div class="ArticleContainer">
+                <h2>联系我们</h2>
+                <article>
+                    <p>
+                        <img id="ImgFF03" src="Images\FreeInfo\CompAddrMap.jpg" class="ImgSmall" onmouseup="if (this.runtimeStyle.width.indexOf('px')>0) { this.runtimeStyle.width = ''; }; if (this.className == 'ImgSmall') { this.className = 'ImgActure'; } else { this.className = 'ImgSmall'; }" />
+                    </p>
+                    <h4>公司地址：浙江省宁波市光华路299号 研发园C6幢2层</h4>
+                    <h4>全国统一服务热线：0574-87155555</h4>
+                    <h4>应聘邮箱<a href="mailto:hr@vanch.com">hr@vanch.com</a></h4>
+                </article>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        parent.ItemContainer.innerHTML = OpenInfoi.innerHTML;
+        parent.LoadingBoxCtl(0);
+        parent.LastItem = 1;
+
+        parent.ImgFF03.runtimeStyle.width = 'auto';
+        parent.ImgFF03.runtimeStyle.height = parent.document.documentElement.clientHeight - 300 + "px";
+        parent.ImgFF03.runtimeStyle.width = parent.ImgFF03.clientWidth + 'px';
+        parent.ImgFF03.runtimeStyle.height = '';
+    </script>
+</body>
+</html>

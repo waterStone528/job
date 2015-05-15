@@ -1,0 +1,866 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        /*#region 图标字体*/
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?hgq8p5');
+            src: url('fonts/icomoon.eot?#iefixhgq8p5') format('embedded-opentype'), url('fonts/icomoon.woff?hgq8p5') format('woff'), url('fonts/icomoon.ttf?hgq8p5') format('truetype'), url('fonts/icomoon.svg?hgq8p5#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        [class^="icon-"], [class*=" icon-"] {
+            font-family: 'icomoon';
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            /* Better Font Rendering =========== */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .icon-ff:before {
+            content: "\e603";
+        }
+
+        .icon-ff:before {
+            color: #FFF;
+            font-size: 30px;
+        }
+
+        .icon-comtime:before {
+            content: "\e60a";
+        }
+
+        .icon-enter:before {
+            content: "\e60b";
+        }
+
+        .icon-key:before {
+            content: "\e60c";
+        }
+
+        .icon-customer:before {
+            content: "\e611";
+        }
+
+        .icon-time:before {
+            content: "\e60e";
+        }
+
+        .icon-ex:before {
+            content: "\e610";
+        }
+
+        .icon-information:before {
+            content: "\e60f";
+        }
+
+        .icon-time:before, .icon-information:before, .icon-customer:before {
+            color: #868686;
+        }
+
+        .icon-information:before, .icon-customer:before {
+            font-size: 40px;
+        }
+        /*#endregion*/
+        /*#region 全局定义*/
+        html {
+            height: 100%;
+            overflow: auto;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        html, body {
+            background-color: #000000;
+            border: none;
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+            font-family: 'Microsoft YaHei UI','Tahoma',"Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            min-height: 600px;
+            min-width: 960px;
+        }
+
+        .clearfix {
+            clear: both;
+        }
+        /*#endregion*/
+        /*#region 头部*/
+        .customer_Top {
+            width: 100%;
+            height: 50px;
+            background-color: #222226;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .customer-topleft {
+            width: 230px;
+            height: 50px;
+            border-top: 100px solid #d51717;
+            border-right: 100px solid transparent;
+            position: absolute;
+        }
+
+        .vanch_logo {
+            position: absolute;
+            margin: 10px 30px;
+        }
+
+        .customer_Top p {
+            position: absolute;
+            left: 140px;
+            top: -8px;
+            color: white;
+            font-size: 20px;
+        }
+        /*#endregion*/
+        /*#region 左边对话框区域*/
+        .customer_Left {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            margin: 10px;
+            /*border: 1px solid #e4e4e4;*/
+            transition: right ease 0.5s 0.1s;
+            /*margin-right: 195px;*/
+            overflow-x: hidden;
+            -ms-word-break: break-all;
+            scrollbar-base-color: rgb(49, 49, 54);
+            Scrollbar-Arrow-Color: rgb(49, 49, 54);
+            Scrollbar-Track-Color: #000;
+            height: 73%;
+        }
+
+        .customer_Left_Show {
+            right: 195px;
+        }
+
+        .customer_Left_Hidden {
+            right: 0;
+        }
+
+
+        .language_boxLeft > .language_box > .infor { /*左话框*/
+            background-color: #e4e4e4;
+            padding: 16px 30px 16px 16px;
+            position: absolute;
+            border: 1px solid #e4e4e4;
+            position: relative;
+            line-height: 28px;
+            top: 30px;
+            left: 70px;
+            float: left;
+            margin-bottom: 30px;
+            min-width: 100px;
+        }
+
+        .language_boxRight > .language_box > .infor { /*右话框*/
+            background-color: #fce09c;
+            padding: 16px 30px 16px 16px;
+            position: absolute;
+            border: 1px solid #fce09c;
+            position: relative;
+            line-height: 28px;
+            top: 30px;
+            left: 70px;
+            margin-bottom: 30px;
+            float: right;
+            min-width: 100px;
+        }
+
+        .language_boxLeft > .language_box > .triangle { /*左对话框三角*/
+            width: 0;
+            height: 0;
+            border-top: 20px solid #e4e4e4;
+            border-left: 20px solid transparent;
+            position: absolute;
+            top: 40px;
+            left: 51px;
+        }
+
+        .language_boxRight > .language_box > .triangle { /*右对话框三角*/
+            width: 0;
+            height: 0;
+            border-top: 20px solid #fce09c;
+            border-left: 20px solid transparent;
+            position: absolute;
+            bottom: -19px;
+            right: -50px;
+        }
+
+        .language_boxLeft > .language_box > .infor > span + span {
+            position: absolute;
+            bottom: -3px;
+            right: 10px;
+            font-size: 11px;
+            color: #8c8c8c;
+        }
+
+        .language_boxRight > .language_box > .infor > span + span {
+            position: absolute;
+            bottom: -3px;
+            right: 10px;
+            font-size: 11px;
+            color: #8c8c8c;
+        }
+
+        .language_boxLeft {
+            /*float: left;*/
+            /*border: 1px solid red;*/
+            width: 50%;
+        }
+
+        .language_boxRight {
+            float: right;
+            width: 50%;
+            /*border: 1px solid red;*/
+            margin-right: 150px;
+        }
+
+        .language_box {
+            position: relative;
+            min-width: 300px;
+            height: 100%;
+            margin: 10px;
+            width: 100%;
+            float: left;
+        }
+        /*#endregion*/
+        /*#region 底部文本输入区域*/
+        .customer_LeftBottomA {
+            margin: 10px 20px 10px 10px;
+            position: absolute;
+            bottom: 0px;
+            left: 10px;
+            right: 0px;
+            /*border: 1px solid #8a99a7;*/
+            height: 60px;
+            transition: right ease 0.5s 0.1s;
+            min-width: 500px;
+        }
+
+        .customer_LeftBottomA_Show {
+            right: 170px;
+        }
+
+        .TitleButton {
+            position: absolute;
+            right: 30px;
+            top: 15px;
+            cursor: pointer;
+        }
+
+            .TitleButton > div {
+                background-color: #393f4f;
+                width: 25px;
+                height: 4px;
+                border-radius: 2px;
+                margin-top: 4px;
+                margin-bottom: 4px;
+            }
+
+        .customer_LeftBottom {
+            position: absolute;
+            left: 10px;
+            right: 100px;
+            border-radius: 3px;
+            padding: 0;
+            /*border: solid 1px #ffc000;*/
+            background-color: #8a99a7;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .customer_LeftBottomA_Show {
+            right: 170px;
+        }
+
+        .customer_LeftBottomA_Hidden {
+            right: 0px;
+        }
+
+        .text_boxbox {
+            left: 70px;
+            right: 150px;
+            top: 0;
+            bottom: 0;
+            position: absolute;
+        }
+
+        .text_box {
+            position: absolute;
+            border-radius: 3px;
+            font-size: 20px;
+            border: none;
+            background-color: #8a99a7;
+            font-family: 'Microsoft YaHei UI','Tahoma',"Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #3a444e;
+            width: 100%;
+            height: 30px;
+            padding: 15px 15px 15px 5px;
+            margin-left: 5px;
+        }
+
+        .enter {
+            color: #515151;
+            font-size: 40px;
+            cursor: pointer;
+            line-height: 60px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            top: 0;
+            border-radius: 3px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            width: 150px;
+            text-align: center;
+            float: right; /*border:solid 1px #d51717;*/
+        }
+
+            .enter:hover {
+                color: #192632;
+            }
+
+            .enter:active {
+                color: #ffffff;
+                background-color: #192632;
+            }
+
+        .key {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            top: 0;
+            /*border: 1px solid red;*/
+            width: 60px;
+            font-size: 60px;
+            color: #697581;
+            text-align: center;
+            line-height: 63px;
+            cursor: default;
+        }
+
+        .cnot {
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            background-color: #454d53;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 3px;
+            bottom: 0;
+            z-index: 1000;
+            height: 60px;
+            bottom: 0px;
+            width: 100%;
+        }
+
+            .cnot p {
+                margin: 10px 0px 0 5px;
+                padding: 0;
+                color: #353b41;
+                font-size: 92PX;
+                display: block;
+                position: absolute;
+                line-height: 30px;
+                cursor: default;
+            }
+        /*#endregion*/
+        /*#region right右边移出*/
+        .customer_RightToolBar {
+            width: 185px;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            bottom: 0;
+            background-color: #21242e;
+            transition: right ease 0.5s 0.1s;
+        }
+
+        .customer_RightToolBar_Hidden {
+            right: -185px;
+        }
+
+        .Right_time {
+            height: 90px;
+            color: #919192;
+        }
+
+            .Right_time > div + div {
+                font-size: 18px;
+                position: absolute;
+                left: 50px;
+                top: 35px;
+            }
+
+        .Right_column {
+            color: #fff;
+        }
+
+        .Right_columnTitle {
+            background-color: #393f4f;
+            text-align: center;
+            line-height: 40px;
+            color: #d6d6d6;
+        }
+
+        .Right_columnContent {
+            text-align: left;
+            padding: 20px;
+        }
+
+            .Right_columnContent > .p1 {
+                font-size: 18px;
+                margin: 5px;
+            }
+
+            .Right_columnContent > .p2 {
+                margin: 5px;
+            }
+
+        .triangle-down {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 6px solid #393f4f;
+            position: absolute;
+            left: 80px;
+        }
+
+        .Prompt {
+            height: 28px;
+            position: absolute;
+            bottom: 60px;
+            text-align: right;
+            margin: 0;
+            color: #ffc000;
+        }
+
+        .Timeout {
+            height: 28px;
+            position: absolute;
+            bottom: 60px;
+            text-align: right;
+            margin: 0;
+            color: #ffc000;
+        }
+
+        .template {
+            display: none;
+        }
+        /*#endregion*/
+    </style>
+
+</head>
+<body>
+    <div class="customer_Top">
+        <div class="customer-topleft"></div>
+        <div class="vanch_logo icon-ff"></div>
+        <p>客户服务中心</p>
+    </div><!--top-->
+    <div id="rightA" class="customer_RightToolBar customer_RightToolBar_Hidden">
+        <!--right的A信息-->
+        <div class="Right_time">
+            <div class="icon-time" style="font-size:30px;position:absolute;top:30px;left:15px; "></div>
+            <div>08:30~17:30</div>
+        </div>
+        <div class="Right_column">
+            <div class="Right_columnTitle">客服经理</div>
+            <div class="triangle-down"></div>
+            <div class="Right_columnContent"><p class="p1">工号</p><p class="p2 svrno">208</p></div>
+        </div>
+        <div class="Right_column" id="con">
+            <div class="Right_columnTitle">我的信息</div>
+            <div class="triangle-down"></div>
+            <div class="Right_columnContent"><p class="p1">账号</p><p class="p2 conno">13586570011</p></div>
+        </div>
+        <div class="Right_column">
+            <div class="Right_columnTitle">服务热线</div>
+            <div class="triangle-down"></div>
+            <div class="Right_columnContent"><p class="p2">0574-87155555</p></div>
+        </div>
+    </div>
+    <div id="LeftA" class="customer_Left ">
+        <!--left的A信息-->
+        <div class="template">
+            <div class="language_boxLeft clearfix">
+                <div class="language_box ">
+                    <div class="icon-information" style="position:absolute; top:20px;"></div>
+                    <div class="triangle"></div>
+                    <div class="infor">
+                        <span><span class="icon-comtime" style="font-size:20px; color: #717171;line-height:25px;display:block;float:left;margin-top:3px; margin-right:3px;"></span>正在为您连接客服……</span>
+                        <span class="Time">11:20</span>
+                    </div>
+                </div>
+            </div>
+            <div class="language_boxLeft clearfix">
+                <div class="language_box">
+                    <div class="icon-information" style="position:absolute; top:20px;">
+                    </div>
+                    <div class="triangle"></div>
+                    <div class="infor"><span>温馨提醒：客服经理<span style="color:red;font-size:16px;display: inline-block;margin:0 5px 0 5px;" class="EmpNo">208</span>正在为你服务！</span><span class="Time">11:20</span></div>
+                </div>
+            </div>
+            <div class="language_boxLeft ">
+                <div class="language_box">
+                    <div class="icon-information" style="position:absolute; top:20px;">
+                    </div>
+                    <div class="triangle"></div>
+                    <div class="infor"><span>抱歉！您的客服经理不在线，您也可拨打服务热线<span style="color:red;font-size:16px;display: inline-block;margin:0 5px 0 5px;">0574-87155555</span>为您服务！</span><span class="Time">11:20</span></div>
+                </div>
+            </div>
+            <div class="language_boxLeft clearfix">
+                <div class="language_box">
+                    <div style="position:relative;">
+                        <div class="icon-customer" style="position:absolute; top:20px;"> </div>
+                        <div style="color: black; position: absolute; top:42px;left:10px;font-size:12px;">208</div>
+                    </div>
+                    <div class="triangle"></div>
+                    <div class="infor"><span>您好，有什么需要帮助的么？</span><span class="Time">11:20</span></div>
+                </div>
+            </div>
+            <div class="language_boxRight">
+                <div class="language_box">
+                    <div class="infor"><span class="Con">X</span><span class="Time">11:20</span></div>
+                    <div class="triangle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="LeftB" class="customer_LeftBottomA ">
+        <!--left的B信息-->
+        <div class="Prompt">
+            <div style="width: 100%; padding-left: 25px; text-align: left; background-color: rgba(0,0,0,0.5); background: #000\9; filter: alpha(opacity=50); ">
+                <span class="icon-ex" style="color: #ff3600; font-size: 20px;position:absolute;top:0px; margin-right:5px;left:25px;"></span>
+                <span style="font-size: 18px; display: inline-block; margin-right: 3px; margin-left:23px;" class="leftsec"></span>
+                <span style="">秒后停止会话…</span>
+            </div>
+        </div>
+        <div class="Timeout" style="display: none">
+            <div style="width: 100%; padding-left: 25px; text-align: left; background-color: rgba(0,0,0,0.5); background: #000\9; filter: alpha(opacity=50); ">
+                <span class="icon-ex" style="color: #ff3600; font-size: 20px;position:absolute;top:-1px; margin-right:5px;left:25px;"></span>
+                <span style="display: inline-block; margin-left: 23px; ">会话超时!</span>
+            </div>
+        </div>
+
+        <div class="TitleButton" onclick="class1.input1()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="customer_LeftBottom ">
+            <div class="cnot" style="display: none;"><p>×</p></div>
+            <div class="key icon-key"></div>
+            <div class="text_boxbox">
+                <input name="textfield" class="text_box" value="输入文本" onmousedown="    class1.prompt(0); class1.CountDown(0); OC.STR.EVRestartCountDown();" onmouseover="    this.style.borderColor = '#FF6600'" onmouseout="    this.style.borderColor = ''" onfocus="    if (value == '输入文本') { value = '' }" onblur="    if (value == '') { value = '输入文本' }" id="InputedText" />
+            </div>
+            <div class="enter icon-enter" onmouseup="class1.prompt(0); class1.CountDown(0); class1.TextSend();"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var countSize = 35;
+        var class1 = {
+            count: countSize,
+            input1: function () {
+                if (rightA.getAttribute("class") == "customer_RightToolBar customer_RightToolBar_Hidden") {
+                    rightA.setAttribute("class", "customer_RightToolBar");
+                    LeftA.setAttribute("class", "customer_Left customer_Left_Show");
+                    LeftB.setAttribute("class", "customer_LeftBottomA customer_LeftBottomA_Show");
+                }
+                else {
+                    {
+                        rightA.setAttribute("class", "customer_RightToolBar customer_RightToolBar_Hidden");
+                        LeftA.setAttribute("class", "customer_Left");
+                        LeftB.setAttribute("class", "customer_LeftBottomA");
+                    }
+                }
+            },//控制右边移出结束
+            TextSend: function () {
+                var msg = LeftB.querySelector(".text_boxbox").children[0].value;
+                if (msg.length < 1) { return; }
+                OC.STR.EVMsgSend(msg);
+                LeftB.querySelector(".text_boxbox").children[0].value = "";//发送后文本输入框为空
+            },
+            GetTIme: function () {
+                var h = (new Date()).getHours(); var m = (new Date()).getMinutes(); var s = (new Date()).getSeconds();
+                h = ("0" + h).substr(("0" + h).length - 2, 2); m = ("0" + m).substr(("0" + m).length - 2, 2); s = ("0" + s).substr(("0" + s).length - 2, 2);
+                return h + ":" + m + ":" + s;
+            },//调用时间
+            setleftsec: function () {
+                var leftsec = LeftB.querySelector(".Prompt .leftsec").innerText;
+                leftsec = leftsec - 1;
+                LeftB.querySelector(".Prompt .leftsec").innerText = leftsec;
+                if (leftsec < 1) { OC.STR.EVLeftTimeout(); }
+            },
+            ScrollToNew: function () { LeftA.scrollTop = LeftA.scrollHeight - LeftA.clientHeight; },//消息高度自适应
+            prompt: function (sw) {
+                if (sw == 1) {
+                    LeftB.querySelector(".Prompt .leftsec").innerText = "30";
+                    LeftB.querySelector(".Prompt").style.display = "";
+                    this.leftsecins = setInterval("class1.setleftsec()", 1000);
+                }
+                if (sw == 0) {
+                    LeftB.querySelector(".Prompt").style.display = "none";
+                    clearInterval(this.leftsecins);
+                }
+            },//倒计时提示
+            CountDown: function (sw) {
+                if (sw == 1) {
+                    if (this.count == 30) {
+                        this.prompt(1);
+
+                        clearInterval(this.CountDownLoop);
+                    }
+                }
+                if (sw == 0) {
+                    this.count = countSize;
+                    clearInterval(this.CountDownLoop);
+                    this.CountDownLoop = setInterval("class1.count--;class1.CountDown(1);", 1000);
+                }
+            },
+        }
+        document.onkeyup = function () { if (event.keyCode == 13 && OC.UID.inputctlstat == true) { class1.prompt(0); class1.CountDown(0); class1.TextSend(); } };//enter发送
+
+        var OC = {
+            UIP: {//页面打开时服务器调入到页面的初始数据
+                usrNum:null,
+            },
+            STR: {
+                EVINIT: function () {//页面就绪后触动结果需传输给服务器,再由服务器传输到页面上
+                    OC.UID.Connecting();
+
+                    //get user number and time identity from url
+                    var url = document.URL;
+                    //OC.UIP.userNum = GetURLQueryString("userNum");
+                    //var timeIdentity = GetURLQueryString("timeIdentity");
+                    OC.UIP.userNum = Math.round(Math.random() * 10000);
+                    var timeIdentity = this.TimeIdentity();
+
+                    //verify the time identity and get user phone and connect
+                    var busCode = "K0101";
+                    var opeType = "startConnect";
+                    var intervalMinites = 5;
+                    var data = "busCode=" + busCode + "&opeType=" + opeType + "&timeIdentity=" + timeIdentity + "&intervalMinites=" + intervalMinites + "&userNum=" + OC.UIP.userNum;
+
+                    var ajaxObj = new this.AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        var jsonObj = eval("(" + res + ")");
+                        //安全性验证没有通过
+                        if (jsonObj.isTimeIdentityRight == "false") {
+                            OC.UID.svr("安全性验证没有通过");
+
+                            return;
+                        }
+                        //分配成功
+                        else if (jsonObj.isConnected == "true") {
+                            OC.UID.discusno(jsonObj.userName);
+
+                            OC.UID.startsvr(jsonObj.cusSvrNum);
+
+                            OC.UID.inputctl(1);
+
+                            //start count down
+                            CountDown.StartMainCountDown();
+
+                            //开始轮询接收消息
+                            OC.STR.ReveiveMsg();
+                        }
+                        //客服经理不在线（负载均衡模式时，不需要）
+                        else if (jsonObj.isConnected == "disconnected") {
+                            OC.UID.nosvr();
+                        }
+                        //没有可分配的客服（客户经理模式时，不需要）
+                        //else if (jsonObj.isConnected == "false") {
+                        //  OC.UID.nosvr();
+                        //}
+                    }
+                    ajaxObj.start();
+                },
+                TimeIdentity:function() {
+                    var time = new Date();
+                    time = parseInt((time.getTime() + 8 * 60 * 60 * 1000) / (1000 * 5 * 60));
+                    time *= 12113;
+                    time = time.toString().substr(3, 6);
+
+                    return time;
+                },
+                EVMsgSend: function (msg) {
+                    var busCode = "K0101";
+                    var opeType = "sendMsg";
+                    var data = "busCode=" + busCode + "&opeType=" + opeType + "&userNum=" + OC.UIP.userNum + "&msg=" + msg;
+
+                    var ajaxObj = new this.AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.start();
+                    OC.UID.customer(msg);
+                },//客户输入的文字信息发送
+                EVKeepConnected: function () {
+                    var busCode = "K0101";
+                    var opeType = "keepUserConnect";
+                    var data = "busCode=" + busCode + "&opeType=" + opeType + "&userNum=" + OC.UIP.userNum;
+
+                    var ajaxObj = new this.AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.start();
+                },
+                GetURLQueryString: function (name) {
+                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                    var r = window.location.search.substr(1).match(reg);
+                    if (r != null) {
+                        return unescape(r[2]); 
+                    }
+                    else {
+                        return null;
+                    }
+                },
+                ReveiveMsg: function () {
+                    var busCode = "K0101";
+                    var opeType = "receiveMsg";
+                    var data = "busCode=" + busCode + "&opeType=" + opeType + "&userNum=" + OC.UIP.userNum;
+
+                    var ajaxObj = new this.AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        if (res == "&*") {
+                        //    UIOPT.MessageSys("您在2分钟以内没有回复消息，已经自动结束客服会话。如需客服帮助，请刷新页面重新连接客服。");
+                        //    setTimeout("UIOPT.MessageSys('已经断开连接。')", 1000);
+                        //    UIOPT.DisableInput();
+                        //    UIOPT.SetSvrEMPNo("");
+                        //    UIOPT.HiddenCusSvrNum();
+                            return;
+                        }
+                        if (res != "") {
+                            var msgList = res.split("&&");
+                            for (var i in msgList) {
+                                OC.UID.svr(msgList[i]);
+                            }
+                        }
+
+                        setTimeout("OC.STR.ReveiveMsg();", 1000);
+                    };
+                    ajaxObj.error = function (xmlhttpObj) {
+                        alert("ajax error!\nreadyState:" + xmlhttpObj.readyState + "\nstatus:" + xmlhttpObj.status + "\nstatusText:" + xmlhttpObj.statustext);
+
+                        setTimeout("OC.STR.ReveiveMsg();", 1000);
+                    };
+                    ajaxObj.start();
+                },
+                AJAXC:function() {
+                    this.xmlhttp = null;
+                    this.url = "../Control.ashx";
+                    this.data = null;
+                    this.type = "post";
+                    this.async = true;
+                    this.success = function (res) { };
+                    this.defaultError = function (xmlhttpObj) {
+                        alert("ajax error!\nreadyState:" + xmlhttpObj.readyState + "\nstatus:" + xmlhttpObj.status + "\nstatusText:" + xmlhttpObj.statustext);
+                    };
+                    this.error = this.defaultError;
+                    this.onReadystate = function () {
+                        if (this.xmlhttp.readyState == 4) {
+                            if (this.xmlhttp.status == 200) {
+                                this.success(this.xmlhttp.responseText);
+                            }
+                            else {
+                                this.error(this.xmlhttp);
+                            }
+                        }
+                    };
+                    this.start = function () {
+                        this.xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                        if (this.xmlhttp != null) {
+                            try {
+                                var loader = this;
+                                this.xmlhttp.onreadystatechange = function () {
+                                    loader.onReadystate.call(loader);
+                                }
+                                this.xmlhttp.open(this.type, this.url, this.async);
+                                this.xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                                this.xmlhttp.send(this.data);
+                            }
+                            catch (err) {
+                                this.error(this.xmlhttp);
+                            }
+                        }
+                        else {
+                            alert("请使用IE8及IE8以上版本浏览器");
+                            return;
+                        }
+                    };
+                }
+            },
+            UID: {//页面显示内容事件
+                inputctlstat: true,
+                leftsecins: null,
+                Connecting: function () {
+                    var elm = LeftA.querySelector(".template").children[0].cloneNode(true);
+                    elm.querySelector(".Time").innerText = class1.GetTIme();
+                    LeftA.appendChild(elm);
+                },//显示正在连接客服
+                startsvr: function (empno) {
+                    var elm = LeftA.querySelector(".template").children[1].cloneNode(true);
+                    elm.querySelector(".EmpNo").innerText = empno;
+                    elm.querySelector(".Time").innerText = class1.GetTIme();
+                    LeftA.appendChild(elm);
+                    rightA.querySelector(".svrno").innerText = empno;
+                },//显示XXX客服正在服务
+                nosvr: function () {
+                    var elm = LeftA.querySelector(".template").children[2].cloneNode(true);
+                    elm.querySelector(".Time").innerText = class1.GetTIme();
+                    LeftA.appendChild(elm);
+                },//客户经理不在线提示
+                svr: function (msg) {
+                    var elm = LeftA.querySelector(".template").children[3].cloneNode(true);
+                    elm.querySelector(".Time").innerText = class1.GetTIme();
+                    LeftA.appendChild(elm); elm.querySelector("span").innerText = msg;
+                    class1.ScrollToNew();
+                },//客服消息
+                customer: function (content) {
+                    var elm = LeftA.querySelector(".template").children[4].cloneNode(true);
+                    elm.querySelector(".Con").innerText = content;
+                    elm.querySelector(".Time").innerText = class1.GetTIme();
+                    LeftA.appendChild(elm);
+                    class1.ScrollToNew();
+                },//客户消息
+                discusno: function (conNO) {
+                    con.querySelector(".conno").innerText = conNO;
+                },//我的帐号信息显示
+                inputctl: function (sw) {
+                    if (sw == 1) {
+                        LeftB.querySelector(".cnot").style.display = "none";
+                        LeftB.querySelector(".text_boxbox").children[0].disabled = false;
+                        this.inputctlstat = true;
+                    }
+                    if (sw == 0) {
+                        LeftB.querySelector(".cnot").style.display = "";
+                        LeftB.querySelector(".text_boxbox").children[0].disabled = true; this.inputctlstat = false;
+                    }
+                },//输入框控制
+                prompt2: function (sw) {
+                    if (sw == 1) { LeftB.querySelector(".Timeout").style.display = ""; }
+                    if (sw == 0) { LeftB.querySelector(".Timeout").style.display = "none"; }
+                },//会话停止提示
+            }
+        }
+        OC.UID.inputctl(0);
+        class1.prompt(0);
+        OC.STR.EVINIT();
+    </script>
+</body>
+</html>  

@@ -1,0 +1,1495 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>VANCH凡奇金融 - 用户中心</title>
+    <script type="text/javascript" src="ComScript\CommCtrl.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body onresize="bodyresize()" onload="bodyLoad();">
+    <!--页面动态功能处理-->
+    <script type="text/javascript">
+        ItemWidthMin = 390;// 控制方块最小值，跟据排版而定
+        function bodyLoadScript() {
+            LoadSvr("P80201");
+        }
+        function bodyResizeScript() {
+
+        }
+
+        var InvestInfo = { Marry: "1", Breed: "0", LivePro: "A01", LiveCity: "12", LiveStreet: "高新区", Company: "凡奇投资有限公司", ComProperty: "", CompanyTel: "0574-88888888", JobTime: "2010/08/09", JobTel: "0574-88888888", Job: "演员", InvestBody: "1", BorrowBody: "1", PawnRate: "0.2259", AssureWay: "", InvestArea1: "A01", InvestArea2: "12", InvestAmt: "", DayRate: "0.1259", InvestLimitMin: "1", InvestLimitMax: "999", Pawn: ",A1,A5,A7,A9,", MyVB: "10000" };
+        var BorrowInfo = { Marry: "1", Breed: "0", Health: "", IsSafe: "1", LivePro: "A01", LiveCity: "12", LiveStreet: "高新区", School: "", Edu: "", Company: "凡奇投资有限公司", ComProperty: "", CompanyTel: "0574-88888888", JobTime: "2010/08/09", JobTel: "0574-88888888", Job: "演员", MonthTotalIn: "1.8", MonthTotalOut: "0.9", MonthClearIn: "", TotalAsset: "", TotalBorrow: "", ClearAsset: "18", CourtExe: "0", CreditState: "1", MyVB: "10000" };
+        var AssetSaleInfo = { Marry: "1", Breed: "0", LivePro: "A01", LiveCity: "12", LiveStreet: "高新区", MyVB: "10000" };
+        var AssetBuyInfo = { Marry: "1", Breed: "0", LivePro: "A01", LiveCity: "12", LiveStreet: "高新区", AssetArea: "", AssetAmtMin: "0.1", AssetAmtMax: "", Pawn: ",A5,A7,A9,", MyVB: "10000" };
+        var AdviserInfo = { Marry: "1", Breed: "0", LivePro: "A01", LiveCity: "12", LiveStreet: "高新区", Company: "凡奇投资有限公司", ComProperty: "", Trade: "", CompanyTel: "0574-88888888", JobTime: "2010/08/09", JobTel: "0574-88888888", Job: "演员", School: "", Edu: "", SvrArea1: "A01", SvrArea2: "12", SvrItem1: "", SvrItem2: "1", SvrItem3: "1", SvrItem4: "0", Remarks: "", MyVB: "10000" };
+
+        var P802 = {
+            BtObj: null,
+            FocusItem: null,
+            ShowStatus: 0,
+            City:null,
+            CIApplySubmit: function (BtObj) {
+                ///<summary>债权投资服务申请</summary>
+                BtStatusClass(BtObj, 1); this.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                if (P802.DataIntegrityCk("P1")) {
+                    BtObj.setAttribute("data-btst", "D");
+                    TransingStatus.SetStatus(1);
+                    var CInp = MovingBoxi.querySelectorAll(".ItemTextInp>input");
+                    var CSlt = MovingBoxi.querySelectorAll(".ItemTextInp>select");
+                    InvestInfo.Marry = CSlt[0].value;
+                    InvestInfo.Breed = CSlt[1].value;
+                    InvestInfo.LivePro = CSlt[2].value;
+                    InvestInfo.LiveCity = CSlt[3].value;
+                    InvestInfo.LiveStreet = CInp[0].value;
+                    InvestInfo.Company = CInp[1].value;
+                    InvestInfo.ComProperty = CSlt[4].value;
+                    InvestInfo.JobTime = MovingBoxi.querySelector(".ItemDateInp").innerText;
+                    InvestInfo.JobTel = CInp[2].value;
+                    InvestInfo.Job = CInp[3].value;
+                    InvestInfo.InvestBody = CSlt[5].value;
+                    InvestInfo.BorrowBody = CSlt[6].value;
+                    InvestInfo.PawnRate = (CInp[4].value / 100).ToNum(2, 4);
+                    InvestInfo.AssureWay = CSlt[7].value;
+                    InvestInfo.InvestArea1 = CSlt[8].value;
+                    InvestInfo.InvestArea2 = CSlt[9].value;
+                    InvestInfo.InvestAmt = CInp[5].value;
+                    InvestInfo.DayRate = (CInp[6].value / 1000).ToNum(2, 6);
+                    InvestInfo.InvestLimitMin = CInp[7].value;
+                    InvestInfo.InvestLimitMax = CInp[8].value;
+                    InvestInfo.Pawn = ",";
+                    for (var i = 0; i < MovingBoxi.querySelectorAll(".UpDownButton").length; i++) {
+                        if (MovingBoxi.querySelectorAll(".UpDownButton")[i].getAttribute("data-sw") > 0) { InvestInfo.Pawn += MovingBoxi.querySelectorAll(".UpDownButton")[i].getAttribute("data-id") + ","; } else { InvestInfo.Pawn += ","; }
+                    }
+                    this.STR.EVP802010106(InvestInfo, MovingBoxi.querySelector(".TradePW").value);
+                }
+            },
+            CBApplySubmit: function (BtObj) {
+                ///<summary>债权融资服务申请</summary>
+                BtStatusClass(BtObj, 1); this.BtObj = BtObj;
+                if (BtObj.getAttribute("data-btst") == "D") { return; };
+                if (P802.DataIntegrityCk("P2")) {
+                    TransingStatus.SetStatus(1);
+                    var CInp = MovingBoxi.querySelectorAll(".ItemTextInp>input");
+                    var CSlt = MovingBoxi.querySelectorAll(".ItemTextInp>select");
+                    BorrowInfo.Marry = CSlt[0].value;
+                    BorrowInfo.Breed = CSlt[1].value;
+                    BorrowInfo.Health = CSlt[2].value;
+                    BorrowInfo.IsSafe = CSlt[3].value;
+                    BorrowInfo.LivePro = CSlt[4].value;
+                    BorrowInfo.LiveCity = CSlt[5].value;
+                    BorrowInfo.LiveStreet = CInp[0].value;
+                    BorrowInfo.School = CInp[1].value;
+                    BorrowInfo.Edu = CSlt[6].value;
+                    BorrowInfo.Company = CInp[2].value;
+                    BorrowInfo.ComProperty = CSlt[7].value;
+                    BorrowInfo.JobTime = MovingBoxi.querySelector(".ItemDateInp").innerText;
+                    BorrowInfo.JobTel = CInp[3].value;
+                    BorrowInfo.Job = CInp[4].value;
+                    BorrowInfo.MonthTotalIn = CInp[5].value;
+                    BorrowInfo.MonthTotalOut = CInp[6].value;
+                    BorrowInfo.MonthClearIn = CInp[7].value;
+                    BorrowInfo.TotalAsset = CInp[8].value;
+                    BorrowInfo.TotalBorrow = CInp[9].value;
+                    BorrowInfo.ClearAsset = CInp[10].value;
+                    BorrowInfo.CourtExe = CSlt[8].value;
+                    BorrowInfo.CreditState = CSlt[9].value;
+                    BtObj.setAttribute("data-btst", "D");
+                    this.STR.EVP802010207(BorrowInfo, MovingBoxi.querySelector(".TradePW").value);
+                }
+            },
+            ASApplySubmit: function (BtObj) {
+                ///<summary>资产出售服务申请</summary>
+                BtStatusClass(BtObj, 1); this.BtObj = BtObj;
+                if (BtObj.getAttribute("data-btst") == "D") { return; };
+                if (P802.DataIntegrityCk("P3")) {
+                    TransingStatus.SetStatus(1);
+                    BtObj.setAttribute("data-btst", "D");
+                    var CInp = MovingBoxi.querySelectorAll(".ItemTextInp>input");
+                    var CSlt = MovingBoxi.querySelectorAll(".ItemTextInp>select");
+                    AssetSaleInfo.Marry = CSlt[0].value;
+                    AssetSaleInfo.Breed = CSlt[1].value;
+                    AssetSaleInfo.LivePro = CSlt[2].value;
+                    AssetSaleInfo.LiveCity = CSlt[3].value;
+                    AssetSaleInfo.LiveStreet = CInp[0].value;
+                    this.STR.EVP802010304(AssetSaleInfo, MovingBoxi.querySelector(".TradePW").value);
+                }
+            },
+            ABApplySubmit: function (BtObj) {
+                ///<summary>资产购买服务申请</summary>
+                BtStatusClass(BtObj, 1); this.BtObj = BtObj; if (BtObj.getAttribute("data-btst") == "D") { return; };
+                if (P802.DataIntegrityCk("P4")) {
+                    TransingStatus.SetStatus(1);
+                    var CInp = MovingBoxi.querySelectorAll(".ItemTextInp>input");
+                    var CSlt = MovingBoxi.querySelectorAll(".ItemTextInp>select");
+                    AssetBuyInfo.Marry = CSlt[0].value;
+                    AssetBuyInfo.Breed = CSlt[1].value;
+                    AssetBuyInfo.LivePro = CSlt[2].value;
+                    AssetBuyInfo.LiveCity = CSlt[3].value;
+                    AssetBuyInfo.LiveStreet = CInp[0].value;
+                    AssetBuyInfo.AssetArea = CSlt[4].value;
+                    AssetBuyInfo.AssetAmtMin = CInp[1].value;
+                    AssetBuyInfo.AssetAmtMax = CInp[2].value;
+                    for (var i = 0; i < MovingBoxi.querySelectorAll(".UpDownButton").length; i++) {
+                        if (MovingBoxi.querySelectorAll(".UpDownButton")[i].getAttribute("data-sw") > 0) { AssetBuyInfo.Pawn += MovingBoxi.querySelectorAll(".UpDownButton")[i].getAttribute("data-id") + ","; } else { AssetBuyInfo.Pawn += ","; }
+                    }
+                    BtObj.setAttribute("data-btst", "D");
+                    P802.STR.EVP802010405(AssetBuyInfo, MovingBoxi.querySelector(".TradePW").value);
+                }
+            },
+            CSApplySubmit: function (BtObj) {
+                ///<summary>财务顾问服务申请</summary>
+                BtStatusClass(BtObj, 1); this.BtObj = BtObj;
+                if (BtObj.getAttribute("data-btst") == "D") { return; };
+                if (P802.DataIntegrityCk("P5")) {
+                    TransingStatus.SetStatus(1);
+                    var CInp = MovingBoxi.querySelectorAll(".ItemTextInp>input");
+                    var CSlt = MovingBoxi.querySelectorAll(".ItemTextInp>select");
+                    AdviserInfo.Marry = CSlt[0].value;
+                    AdviserInfo.Breed = CSlt[1].value;
+                    AdviserInfo.LivePro = CSlt[2].value;
+                    AdviserInfo.LiveCity = CSlt[3].value;
+                    AdviserInfo.LiveStreet = CInp[0].value;
+                    AdviserInfo.School = CInp[1].value;
+                    AdviserInfo.Edu = CSlt[4].value;
+                    AdviserInfo.Company = CInp[2].value;
+                    AdviserInfo.ComProperty = CSlt[5].value;
+                    AdviserInfo.Trade = CSlt[6].value;
+                    AdviserInfo.JobTime = MovingBoxi.querySelector(".ItemDateInp").innerText;
+                    AdviserInfo.JobTel = CInp[3].value;
+                    AdviserInfo.Job = CInp[4].value;
+                    AdviserInfo.SvrArea1 = CSlt[7].value;
+                    AdviserInfo.SvrArea2 = CSlt[8].value;
+                    AdviserInfo.SvrItem1 = MovingBoxi.querySelectorAll(".UpDownButton")[0].getAttribute("data-sw"),
+                    AdviserInfo.SvrItem2 = MovingBoxi.querySelectorAll(".UpDownButton")[1].getAttribute("data-sw"),
+                    AdviserInfo.SvrItem3 = MovingBoxi.querySelectorAll(".UpDownButton")[2].getAttribute("data-sw"),
+                    AdviserInfo.SvrItem4 = MovingBoxi.querySelectorAll(".UpDownButton")[3].getAttribute("data-sw"),
+                    AdviserInfo.Remarks = MovingBoxi.querySelector("textarea").value,
+                    BtObj.setAttribute("data-btst", "D");
+                    P802.STR.EVP802010506(AdviserInfo, MovingBoxi.querySelector(".TradePW").value);
+                };
+            },
+            //日期大小比较
+            DateContrast: function (Date1, Date2) {
+                ///<summary>日期大小比较</summary><param name="Date1">被比较日期</param><param name="对比日期"></param>
+                var Arr1 = Date1.split("/");
+                if (Date2 == "" || Date2 == null) { Date2 = new Date().getFullYear() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getDate() }
+                var Arr2 = Date2.split("/");
+                var Date1 = new Date(Arr1[0], Arr1[1], Arr1[2]).getTime();
+                var Date2 = new Date(Arr2[0], Arr2[1], Arr2[2]).getTime();
+                if (Date1 <= Date2) { return false; } else { return true; }
+            },
+            UpDateHint: function (InpObj, VarObj) {
+                if (InpObj.value == parseFloat(InpObj.value)) {
+                    VarObj.Min = InpObj.value;
+                    var SideInpID = InpObj.parentNode.parentNode.querySelectorAll("input")[1].uniqueID;
+                    try {
+                        if (InpObj.parentNode.parentNode.querySelectorAll("input")[1].value.length == 0 && document.querySelectorAll("#Err4" + SideInpID).length == 0) {
+                            document.querySelector("#IRC" + SideInpID).removeNode(true);
+                            VarObj.Min = InpObj.value;
+                            if (parseFloat(VarObj.Max)) {
+                                IRC.Init(InpObj.parentNode.parentNode.querySelectorAll("input")[1], VarObj, InpObj.value + "~" + VarObj.Max);
+                            } else {
+                                IRC.Init(InpObj.parentNode.parentNode.querySelectorAll("input")[1], VarObj, ">=" + VarObj.Min);
+                            }
+                        }
+
+                    } catch (err) { };
+                }
+            },
+            DispStatus: function (P1Svr, P2Svr, P3Svr, P4Svr, P5Svr,P1State,P2State,P3State,P4State,P5State,IsOverdue, IsFirstLogin) {
+                ///<summary>服务申请状态</summary>
+                ///<param name="P1Svr">投资服务是否开通;0:未开通;1:已开通</param>
+                ///<param name="P2Svr">融资服务是否开通;0:未开通;1:已开通</param>
+                ///<param name="P3Svr">资产出售是否开通;0:未开通;1:已开通</param>
+                ///<param name="P4Svr">资产购买是否开通;0:未开通;1:已开通</param>
+                ///<param name="P5Svr">财务顾问是否开通;0:未开通;1:已开通</param>
+                ///<param name="P1State">投资服务状态;0:关闭;1:打开</param>
+                ///<param name="P2State">融资服务状态;0:关闭;1:打开</param>
+                ///<param name="P3State">资产出售状态;0:关闭;1:打开</param>
+                ///<param name="P4State">资产购买状态;0:关闭;1:打开</param>
+                ///<param name="P5State">财务顾问状态;0:关闭;1:打开</param>
+                ///<param name="IsOverdue">付款状态;1:有未付款;2:逾期中</param>
+                ///<param name="IsFirstLogin">首次登陆;0:否;1:是</param>
+              
+                var Model = ItemContainer.querySelectorAll(".ItemSize");
+                if (IsOverdue > 1) { ZT.removeAttribute("style"); ZT.querySelector(".downUp>span").DspV = P802.UIP.OverdueTip.Rate; ZT.parentNode.setAttribute("onmouseup", ""); document.querySelector('.Maskblack').style.display = 'block'; }
+                if (IsOverdue == 1) { WF.removeAttribute("style"); WF.querySelector(".p2>span").DspV = P802.UIP.OverdueTip.Day; WF.querySelector(".downUp>span").DspV = P802.UIP.OverdueTip.Rate; WF.parentNode.setAttribute("onmouseup", ""); document.querySelector('.Maskblack').style.display = 'block'; }
+
+                if (IsFirstLogin == 1) { ZS.removeAttribute("style"); ZS.querySelector(".p1>span").DspV = P802.UIP.SentScore; ZS.parentNode.setAttribute("onmouseup", ""); VBid.innerHTML = "+" + P802.UIP.SentScore; }
+                if (P1Svr == 1) { applyRight.querySelectorAll(".applyButton li")[0].setAttribute("data-kt", "1"); if (P1State == 1) { Model[0].style.display = ""; Model[0].querySelector("#NeedProt").style.display = "none"; Model[0].querySelector("#UDataSvr").style.display = ""; } else { Model[0].style.display = "none"; } };
+                if (P2Svr == 1) { applyRight.querySelectorAll(".applyButton li")[1].setAttribute("data-kt", "1"); if (P2State == 1) { Model[1].style.display = ""; Model[1].querySelector("#NeedProt").style.display = "none"; Model[1].querySelector("#UDataSvr").style.display = ""; } else { Model[1].style.display = "none"; } };
+                if (P3Svr == 1) { applyRight.querySelectorAll(".applyButton li")[3].setAttribute("data-kt", "1"); if (P3State == 1) { Model[2].style.display = ""; Model[2].querySelector("#NeedProt").style.display = "none"; Model[2].querySelector("#UDataSvr").style.display = ""; } else { Model[2].style.display = "none"; } };
+                if (P4Svr == 1) { applyRight.querySelectorAll(".applyButton li")[4].setAttribute("data-kt", "1"); if (P4State == 1) { Model[3].style.display = ""; Model[3].querySelector("#NeedProt").style.display = "none"; Model[3].querySelector("#UDataSvr").style.display = ""; } else { Model[3].style.display = "none"; } };
+                if (P5Svr == 1) { applyRight.querySelectorAll(".applyButton li")[2].setAttribute("data-kt", "1"); if (P5State == 1) { Model[4].style.display = ""; Model[4].querySelector("#NeedProt").style.display = "none"; Model[4].querySelector("#UDataSvr").style.display = ""; } else { Model[4].style.display = "none"; } }
+                else if (P5Svr == 2) { applyRight.querySelectorAll(".applyButton li")[2].setAttribute("data-kt", "1"); if (P5State == 1) { Model[4].style.display = ""; Model[4].querySelector("#NeedProt").style.display = ""; Model[4].querySelector("#UDataSvr").style.display = "none"; Model[4].setAttribute("onmouseup", "") } else { Model[4].style.display = "none"; } }
+                
+            },
+            OpenSvr:function(ItemNo,State) {
+                ///<summary>服务开通</summary>
+                ///<param name="ItemNo">服务号</param>
+                var Model = ItemContainer.querySelectorAll(".ItemSize");
+                switch (ItemNo) {
+                    case 0: applyRight.querySelectorAll(".applyButton li")[0].setAttribute("data-kt", "1"); Model[ItemNo].style.display = ""; Model[ItemNo].querySelector("#NeedProt").style.display = "none"; Model[ItemNo].querySelector("#UDataSvr").style.display = ""; break;
+                    case 1: applyRight.querySelectorAll(".applyButton li")[1].setAttribute("data-kt", "1"); Model[ItemNo].style.display = ""; Model[ItemNo].querySelector("#NeedProt").style.display = "none"; Model[ItemNo].querySelector("#UDataSvr").style.display = ""; break;
+                    case 2: applyRight.querySelectorAll(".applyButton li")[3].setAttribute("data-kt", "1"); Model[ItemNo].style.display = ""; Model[ItemNo].querySelector("#NeedProt").style.display = "none"; Model[ItemNo].querySelector("#UDataSvr").style.display = ""; break;
+                    case 3: applyRight.querySelectorAll(".applyButton li")[4].setAttribute("data-kt", "1"); Model[ItemNo].style.display = ""; Model[ItemNo].querySelector("#NeedProt").style.display = "none"; Model[ItemNo].querySelector("#UDataSvr").style.display = ""; break;
+                    case 4: applyRight.querySelectorAll(".applyButton li")[2].setAttribute("data-kt", "1"); Model[ItemNo].style.display = ""; Model[ItemNo].querySelector("#NeedProt").style.display = ""; Model[ItemNo].querySelector("#UDataSvr").style.display = "none"; Model[ItemNo].setAttribute("onmouseup", ""); break;
+                }
+                //开通财务顾问服务的结果
+                
+            },
+            ChangeCity: function (Obj) {
+                ///<summary>添加城市Option</summary><param name="Obj">省份元素</param>
+                this.City = Obj;
+                if (Obj.value.length > 2) {
+                    var CObj = P802.City.parentNode.parentNode;
+                    CObj.querySelectorAll("select")[1].options.length = 0;
+                    CObj.querySelectorAll("select")[1].options.add(new Option("", "-1"));
+                    for (var i in this.UIP.CityData) {
+                        if (this.UIP.CityData[i].ParentID == Obj.value) { CObj.querySelectorAll("select")[1].options.add(new Option(this.UIP.CityData[i].Name, this.UIP.CityData[i].ID)); }
+                    }
+                } else {
+                    Obj.parentNode.parentNode.querySelectorAll("select")[1].options.length = 0;
+                    Obj.parentNode.parentNode.querySelectorAll("select")[1].options.add(new Option("", "-1"));
+                }
+            },
+            BtAction: function (Obj, Act) {
+                if (Act == 0) { BtStatusClass(Obj, 2); }
+            },
+            AgreeBt: function (Obj, Item) {
+                ///<summary>申请协议同意按键事件</summary>
+                ///<param name="Status">1:投资服务申请;2:融资服务申请;3:资产出售服务申请;4:资产购买服务申请;5:顾问服务申请;</param>
+                var SltConfigData = JSON.parse(this.UIP.SltConfigData);
+                switch (Item) {
+                    case 1:
+                        var s = 0;            //抵押要求分行作用
+                        var Str = " <table style=\"width:100%\"><tr>";
+                        BtStatusClass(Obj, 2);
+                        MovingBoxCTL.Prepare("投资申请", document.querySelector(".UInvestApply"));
+                        var MI = MovingBoxi.querySelectorAll(".ItemTextInp input");
+                        if (InvestInfo.PawnRate == "") { IRC.Init(MI[4], this.UIP.PawnRate, "融资额/抵押物"); }
+                        if (InvestInfo.InvestAmt == "") { IRC.Init(MI[5], this.UIP.InvestAmt, ">" + this.UIP.InvestAmt.Min); }
+                        if (InvestInfo.DayRate == "") { IRC.Init(MI[6], this.UIP.InterestRate, "日利率"); }
+                        if (InvestInfo.InvestLimitMin == "") { IRC.Init(MI[7], this.UIP.InvestLimit, "0~9999"); }
+                        if (InvestInfo.InvestLimitMax == "") { IRC.Init(MI[8], this.UIP.InvestLimit, "0~9999"); }
+                        for (var i in SltConfigData) {
+                            switch (SltConfigData[i].Type) {
+                                case 0:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[2].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[8].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 2:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 3:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[4].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 4:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[5].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 6:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[7].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 7:
+                                    s++;
+                                    Str += "<td><div class=\"UpDownButton MHand\" data-id=\"" + SltConfigData[i].ID + "\" onmouseup=\"if (this.getAttribute('data-sw') == '1') { this.setAttribute('data-sw', 0); this.className = this.className; } else { this.setAttribute('data-sw', 1); this.className = this.className; }\"></div>" + SltConfigData[i].Name + "</td>";
+                                    if (s % 3 == 0) { Str += "</tr><tr>"; }
+                                    break;
+                            }
+                        }
+                        Str += "</tr></table>";
+                        MovingBoxi.querySelectorAll(".ItemText")[7].innerHTML = Str;
+
+                        P802.STR.EVP802010105();
+                        break;
+                    case 2:
+                        BtStatusClass(Obj, 2);
+                        MovingBoxCTL.Prepare("融资申请", document.querySelector(".UBorrowApply"));
+                        if (BorrowInfo.MonthTotalIn == "") { IRC.Init(MovingBoxi.querySelectorAll(".ItemTextInp input")[5], this.UIP.MTIn, "0~99999"); }
+                        if (BorrowInfo.MonthTotalOut == "") { IRC.Init(MovingBoxi.querySelectorAll(".ItemTextInp input")[6], this.UIP.MTOut, "0~99999"); }
+                        if (BorrowInfo.MonthClearIn == "") { IRC.Init(MovingBoxi.querySelectorAll(".ItemTextInp input")[7], this.UIP.MCIn, "0~99999"); }
+                        if (BorrowInfo.TotalAsset == "") { IRC.Init(MovingBoxi.querySelectorAll(".ItemTextInp input")[8], this.UIP.TAsset, "0~99999"); }
+                        if (BorrowInfo.TotalBorrow == "") { IRC.Init(MovingBoxi.querySelectorAll(".ItemTextInp input")[9], this.UIP.TBorrow, "0~99999"); }
+                        if (BorrowInfo.ClearAsset == "") { IRC.Init(MovingBoxi.querySelectorAll(".ItemTextInp input")[10], this.UIP.CAsset, "0~99999"); }
+                        for (var i in SltConfigData) {
+                            switch (SltConfigData[i].Type) {
+                                case 0:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[4].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID)); 
+                                    break;
+                                case 2:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 3:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[7].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+
+                                case 8:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[6].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 9:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[2].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 10:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[9].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                            }
+                        }
+                        P802.STR.EVP802010206();
+                        break;
+                    case 3:
+                        BtStatusClass(Obj, 2);
+                        MovingBoxCTL.Prepare("资产出售申请", document.querySelector(".USaleApply"));
+                        for (var i in SltConfigData) {
+                            switch (SltConfigData[i].Type) {
+                                case 0:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[2].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 2:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                            }
+                        }
+                        P802.STR.EVP802010303();
+                        break;
+                    case 4:
+                        var s = 0;            //资产类型分行作用
+                        var Str = " <table style=\"width:100%\"><tr>";
+                        BtStatusClass(Obj, 2);
+                        MovingBoxCTL.Prepare("资产购买申请", document.querySelector(".UBuyApply"));
+                        if (AssetBuyInfo.AssetAmtMin == "") { IRC.Init(MovingBoxi.querySelectorAll(".ItemTextInp input")[1], this.UIP.BayAmt, "0~99999"); }
+                        if (AssetBuyInfo.AssetAmtMax == "") { IRC.Init(MovingBoxi.querySelectorAll(".ItemTextInp input")[2], this.UIP.BayAmt, "0~99999"); }
+                        for (var i in SltConfigData) {
+                            switch (SltConfigData[i].Type) {
+                                case 0:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[2].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[4].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 2:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 7:
+                                    s++;
+                                    Str += "<td><div class=\"UpDownButton MHand\" data-id=\"" + SltConfigData[i].ID + "\" onmouseup=\"if (this.getAttribute('data-sw') == '1') { this.setAttribute('data-sw', 0); this.className = this.className; } else { this.setAttribute('data-sw', 1); this.className = this.className; }\"></div>" + SltConfigData[i].Name + "</td>";
+                                    if (s % 3 == 0) { Str += "</tr><tr>"; }
+                                    break;
+                            }
+                        }
+                        Str += "</tr></table>"; 
+                        MovingBoxi.querySelectorAll(".ItemText")[7].innerHTML = Str;
+                        P802.STR.EVP802010404();
+                        break;
+                    case 5:
+                        BtStatusClass(Obj, 2);
+                        MovingBoxCTL.Prepare("顾问申请", document.querySelector(".UConsultantApply"));
+                        for (var i in SltConfigData) {
+                            switch (SltConfigData[i].Type) {
+                                case 0:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[2].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[7].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 2:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[0].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 4:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[5].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                                case 11:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[6].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break
+                                case 8:
+                                    MovingBoxi.querySelectorAll(".ItemTextInp select")[4].options.add(new Option(SltConfigData[i].Name, SltConfigData[i].ID));
+                                    break;
+                            }
+                        }
+                        P802.STR.EVP802010505();
+                        break;
+                }
+
+                MovingBoxi.querySelectorAll(".ItemText")[0].DspV = this.UIP.UserInfo.Name;
+                MovingBoxi.querySelectorAll(".ItemText")[1].DspV = this.UIP.UserInfo.Sex;
+                MovingBoxi.querySelectorAll(".ItemText")[2].DspV = this.UIP.UserInfo.BirthDay;
+                MovingBoxi.querySelectorAll(".ItemText")[3].DspV = this.UIP.UserInfo.CardID;
+                MovingBoxi.querySelectorAll(".ItemText")[4].DspV = this.UIP.UserInfo.Mobile;
+                MovingBoxi.querySelectorAll(".ItemText")[5].DspV = this.UIP.SafeManage.Email;
+                MovingBoxi.querySelectorAll(".ItemText")[6].DspV = this.UIP.UserInfo.CardAddress;
+            },
+            DataIntegrityCk: function (PageNo) {
+                var Pass = true;
+                var CInp = MovingBoxi.querySelectorAll(".ItemTextInp>input");
+                var CSlt = MovingBoxi.querySelectorAll(".ItemTextInp>select");
+                switch (PageNo) {
+                    case "P1":
+                        if (!IRC.IntervalNumber(CInp[4], CInp[4].value, this.UIP.PawnRate)) { Pass = false; };
+                        if (!IRC.IntervalNumber(CInp[5], CInp[5].value, this.UIP.InvestAmt)) { Pass = false; };
+                        if (!IRC.IntervalNumber(CInp[6], CInp[6].value, this.UIP.DayRate)) { Pass = false; };
+                        if (!IRC.IntervalNumber(CInp[7], CInp[7].value, this.UIP.InvestLimit)) { Pass = false; };
+                        if (!IRC.IntervalNumber(CInp[8], CInp[8].value, this.UIP.InvestLimit)) { Pass = false; };
+                        if (CInp[0].value == "") { IRC.ErrTip(CInp[0], "必填"); Pass = false; }
+                        if (CInp[1].value == "") { IRC.ErrTip(CInp[1], "必填"); Pass = false; }
+                        if (CInp[2].value == "") { IRC.ErrTip(CInp[2], "必填"); Pass = false; }
+                        if (CInp[3].value == "") { IRC.ErrTip(CInp[3], "必填"); Pass = false; }
+                        if (CSlt[0].value == "" || CSlt[0].value == "-1") { IRC.ErrTip(CSlt[0], "必填"); Pass = false; }
+                        if (CSlt[1].value == "" || CSlt[1].value == "-1") { IRC.ErrTip(CSlt[1], "必填"); Pass = false; }
+                        if (CSlt[2].value == "" || CSlt[2].value == "-1") { IRC.ErrTip(CSlt[2], "必填"); Pass = false; }
+                        if (CSlt[3].value == "" || CSlt[3].value == "-1") { IRC.ErrTip(CSlt[3], "必填"); Pass = false; }
+                        if (CSlt[4].value == "" || CSlt[4].value == "-1") { IRC.ErrTip(CSlt[4], "必填"); Pass = false; }
+                        if (CSlt[5].value == "" || CSlt[5].value == "-1") { IRC.ErrTip(CSlt[5], "必填"); Pass = false; }
+                        if (CSlt[6].value == "" || CSlt[6].value == "-1") { IRC.ErrTip(CSlt[6], "必填"); Pass = false; }
+                        if (CSlt[7].value == "" || CSlt[7].value == "-1") { IRC.ErrTip(CSlt[7], "必填"); Pass = false; }
+                        if (CSlt[8].value == "" || CSlt[8].value == "-1") { IRC.ErrTip(CSlt[8], "必填"); Pass = false; }
+                        if (CSlt[9].value == "" || CSlt[9].value == "-1") { IRC.ErrTip(CSlt[9], "必填"); Pass = false; }
+                        if (this.DateContrast(MovingBoxi.querySelector(".ItemDateInp").innerText)) { IRC.ErrTip(MovingBoxi.querySelector(".ItemDateInp"), "日期有误"); Pass = false; }
+                        if (MovingBoxi.querySelector(".ItemDateInp").innerText == "") { IRC.ErrTip(MovingBoxi.querySelector(".ItemDateInp"), "必填"); Pass = false; }
+                        if (MovingBoxi.querySelectorAll(".UpDownButton[data-sw='1']").length == 0) { MovingBoxi.querySelectorAll(".ItemTitle")[23].querySelector("label").removeAttribute("class"); Pass = false; } else { MovingBoxi.querySelectorAll(".ItemTitle")[23].querySelector("label").className = "Hidden"; }
+                        if (MovingBoxi.querySelector(".TradePW").value == "") { IRC.ErrTip(MovingBoxi.querySelector(".TradePW"), "必填"); Pass = false; };
+                        break;
+                    case "P2":
+                        if (!IRC.IntervalNumber(CInp[5], CInp[5].value, this.UIP.MTIn)) { Pass = false; };
+                        if (!IRC.IntervalNumber(CInp[6], CInp[6].value, this.UIP.MTOut)) { Pass = false; };
+                        if (!IRC.IntervalNumber(CInp[7], CInp[7].value, this.UIP.MCIn)) { Pass = false; };
+                        if (!IRC.IntervalNumber(CInp[8], CInp[8].value, this.UIP.TAsset)) { Pass = false; };
+                        if (!IRC.IntervalNumber(CInp[9], CInp[9].value, this.UIP.TBorrow)) { Pass = false; };
+                        if (!IRC.IntervalNumber(CInp[10], CInp[10].value, this.UIP.CAsset)) { Pass = false; };
+                        if (CInp[0].value == "") { IRC.ErrTip(CInp[0], "必填"); Pass = false; }
+                        if (CInp[1].value == "") { IRC.ErrTip(CInp[1], "必填"); Pass = false; }
+                        if (CInp[2].value == "") { IRC.ErrTip(CInp[2], "必填"); Pass = false; }
+                        if (CInp[3].value == "") { IRC.ErrTip(CInp[3], "必填"); Pass = false; }
+                        if (CInp[4].value == "") { IRC.ErrTip(CInp[4], "必填"); Pass = false; }
+                        if (CSlt[0].value == "" || CSlt[0].value == "-1") { IRC.ErrTip(CSlt[0], "必填"); Pass = false; }
+                        if (CSlt[1].value == "" || CSlt[1].value == "-1") { IRC.ErrTip(CSlt[1], "必填"); Pass = false; }
+                        if (CSlt[2].value == "" || CSlt[2].value == "-1") { IRC.ErrTip(CSlt[2], "必填"); Pass = false; }
+                        if (CSlt[3].value == "" || CSlt[3].value == "-1") { IRC.ErrTip(CSlt[3], "必填"); Pass = false; }
+                        if (CSlt[4].value == "" || CSlt[4].value == "-1") { IRC.ErrTip(CSlt[4], "必填"); Pass = false; }
+                        if (CSlt[5].value == "" || CSlt[5].value == "-1") { IRC.ErrTip(CSlt[5], "必填"); Pass = false; }
+                        if (CSlt[6].value == "" || CSlt[6].value == "-1") { IRC.ErrTip(CSlt[6], "必填"); Pass = false; }
+                        if (CSlt[7].value == "" || CSlt[7].value == "-1") { IRC.ErrTip(CSlt[7], "必填"); Pass = false; }
+                        if (CSlt[8].value == "" || CSlt[8].value == "-1") { IRC.ErrTip(CSlt[8], "必填"); Pass = false; }
+                        if (CSlt[9].value == "" || CSlt[9].value == "-1") { IRC.ErrTip(CSlt[9], "必填"); Pass = false; }
+                        if (this.DateContrast(MovingBoxi.querySelector(".ItemDateInp").innerText)) { IRC.ErrTip(MovingBoxi.querySelector(".ItemDateInp"), "日期有误"); Pass = false; }
+                        if (MovingBoxi.querySelector(".ItemDateInp").innerText == "") { IRC.ErrTip(MovingBoxi.querySelector(".ItemDateInp"), "必填"); Pass = false; }
+                        if (MovingBoxi.querySelector(".TradePW").value == "") { IRC.ErrTip(MovingBoxi.querySelector(".TradePW"), "必填"); Pass = false; };
+                        break;
+                    case "P3":
+                        if (CInp[0].value == "") { IRC.ErrTip(CInp[0], "必填"); Pass = false; }
+                        if (CSlt[0].value == "" || CSlt[0].value == "-1") { IRC.ErrTip(CSlt[0], "必填"); Pass = false; }
+                        if (CSlt[1].value == "" || CSlt[1].value == "-1") { IRC.ErrTip(CSlt[1], "必填"); Pass = false; }
+                        if (CSlt[2].value == "" || CSlt[2].value == "-1") { IRC.ErrTip(CSlt[2], "必填"); Pass = false; }
+                        if (CSlt[3].value == "" || CSlt[3].value == "-1") { IRC.ErrTip(CSlt[3], "必填"); Pass = false; }
+                        if (MovingBoxi.querySelector(".TradePW").value == "") { IRC.ErrTip(MovingBoxi.querySelector(".TradePW"), "必填"); Pass = false; };
+                        break;
+                    case "P4":
+                        if (!IRC.IntervalNumber(CInp[1], CInp[1].value, this.UIP.BayAmt)) { Pass = false; };
+                        if (!IRC.IntervalNumber(CInp[2], CInp[2].value, this.UIP.BayAmt)) { Pass = false; };
+                        if (CInp[0].value == "") { IRC.ErrTip(CInp[0], "必填"); Pass = false; }
+                        if (CInp[1].value == "") { IRC.ErrTip(CInp[1], "必填"); Pass = false; }
+                        if (CSlt[0].value == "" || CSlt[0].value == "-1") { IRC.ErrTip(CSlt[0], "必填"); Pass = false; }
+                        if (CSlt[1].value == "" || CSlt[1].value == "-1") { IRC.ErrTip(CSlt[1], "必填"); Pass = false; }
+                        if (CSlt[2].value == "" || CSlt[2].value == "-1") { IRC.ErrTip(CSlt[2], "必填"); Pass = false; }
+                        if (CSlt[3].value == "" || CSlt[3].value == "-1") { IRC.ErrTip(CSlt[3], "必填"); Pass = false; }
+                        if (CSlt[4].value == "" || CSlt[4].value == "-1") { IRC.ErrTip(CSlt[4], "必填"); Pass = false; }
+                        if (MovingBoxi.querySelectorAll(".UpDownButton[data-sw='1']").length == 0) { MovingBoxi.querySelectorAll(".ItemTitle")[12].querySelector("label").removeAttribute("class"); Pass = false; } else { MovingBoxi.querySelectorAll(".ItemTitle")[12].querySelector("label").className = "Hidden";}
+                        if (MovingBoxi.querySelector(".TradePW").value == "") { IRC.ErrTip(MovingBoxi.querySelector(".TradePW"), "必填"); Pass = false; };
+                        break;
+                    case "P5":
+                        if (CInp[0].value == "") { IRC.ErrTip(CInp[0], "必填"); Pass = false; }
+                        if (CInp[1].value == "") { IRC.ErrTip(CInp[1], "必填"); Pass = false; }
+                        if (CInp[2].value == "") { IRC.ErrTip(CInp[2], "必填"); Pass = false; }
+                        if (CInp[3].value == "") { IRC.ErrTip(CInp[3], "必填"); Pass = false; }
+                        if (CInp[4].value == "") { IRC.ErrTip(CInp[4], "必填"); Pass = false; }
+                        if (CSlt[0].value == "" || CSlt[0].value == "-1") { IRC.ErrTip(CSlt[0], "必填"); Pass = false; }
+                        if (CSlt[1].value == "" || CSlt[1].value == "-1") { IRC.ErrTip(CSlt[1], "必填"); Pass = false; }
+                        if (CSlt[2].value == "" || CSlt[2].value == "-1") { IRC.ErrTip(CSlt[2], "必填"); Pass = false; }
+                        if (CSlt[3].value == "" || CSlt[3].value == "-1") { IRC.ErrTip(CSlt[3], "必填"); Pass = false; }
+                        if (CSlt[4].value == "" || CSlt[4].value == "-1") { IRC.ErrTip(CSlt[4], "必填"); Pass = false; }
+                        if (CSlt[5].value == "" || CSlt[5].value == "-1") { IRC.ErrTip(CSlt[5], "必填"); Pass = false; }
+                        if (CSlt[6].value == "" || CSlt[6].value == "-1") { IRC.ErrTip(CSlt[6], "必填"); Pass = false; }
+                        if (CSlt[7].value == "" || CSlt[7].value == "-1") { IRC.ErrTip(CSlt[7], "必填"); Pass = false; }
+                        if (CSlt[8].value == "" || CSlt[8].value == "-1") { IRC.ErrTip(CSlt[8], "必填"); Pass = false; }
+                        if (this.DateContrast(MovingBoxi.querySelector(".ItemDateInp").innerText)) { IRC.ErrTip(MovingBoxi.querySelector(".ItemDateInp"), "日期有误"); Pass = false; }
+                        if (MovingBoxi.querySelector(".ItemDateInp").innerText == "") { IRC.ErrTip(MovingBoxi.querySelector(".ItemDateInp"), "必填"); Pass = false; }
+                        if (MovingBoxi.querySelector(".TradePW").value == "") { IRC.ErrTip(MovingBoxi.querySelector(".TradePW"), "必填"); Pass = false; };
+                        if (MovingBoxi.querySelectorAll(".UpDownButton[data-sw='1']").length == 0) {
+                            MovingBoxi.querySelectorAll(".ItemTextInp")[16].setAttribute("data-ctem", "1");
+                            MovingBoxi.querySelectorAll(".ItemTextInp")[17].setAttribute("data-ctem", "1");
+                            MovingBoxi.querySelectorAll(".ItemTextInp")[18].setAttribute("data-ctem", "1");
+                            MovingBoxi.querySelectorAll(".ItemTextInp")[19].setAttribute("data-ctem", "1");
+                            Pass = false;
+                        }
+
+                        break;
+                    default:
+                        break;
+                }
+                return Pass;
+            },
+            LatePay: function () {
+                WF.style.display = 'none';
+                document.querySelector('.Maskblack').style.display = 'none';
+            },
+            NowPay: function () {
+                Location("P9", "", "html", "Sec=2");
+            },
+            UIP: {
+                SltConfigData: JSON.stringify([
+                    { Type: 0, ID: "A01", Name: "浙江" }, { Type: 0, ID: "A02", Name: "广东" }, { Type: 0, ID: "A03", Name: "黑龙江" },
+                    { Type: 2, ID: 1, Name: "未婚" }, { Type: 2, ID: 2, Name: "已婚" }, { Type: 2, ID: 3, Name: "离异" }, { Type: 2, ID: 4, Name: "丧偶" },
+                    { Type: 3, ID: 1, Name: "国有企业" }, { Type: 3, ID: 2, Name: "外资企业" }, { Type: 3, ID: 3, Name: "合资企业" }, { Type: 3, ID: 4, Name: "民营企业" }, { Type: 3, ID: 5, Name: "个体商户" }, { Type: 3, ID: 6, Name: "政府机关" }, { Type: 3, ID: 7, Name: "事业单位" },
+                    { Type: 4, ID: 1, Name: "个人" },{ Type: 4, ID: 2, Name: "银行" },{ Type: 4, ID: 3, Name: "信托" },{ Type: 4, ID: 4, Name: "基金" }, { Type: 4, ID: 5, Name: "券商" },{ Type: 4, ID: 6, Name: "典当行" },
+                    { Type: 4, ID: 7, Name: "保险公司" }, { Type: 4, ID: 8, Name: "小贷公司" }, { Type: 4, ID: 9, Name: "投资公司" }, { Type: 4, ID: 10, Name: "其他企业" }, { Type: 4, ID: 11, Name: "政府机关" },
+                    { Type: 6, ID: 1, Name: "信用" }, { Type: 6, ID: 2, Name: "抵押" }, { Type: 6, ID: 3, Name: "担保+抵押" }, { Type: 6, ID: 4, Name: "其它" },
+                    { Type: 7, ID: "A1", Name: "住宅房" }, { Type: 7, ID: "A2", Name: "办公楼" }, { Type: 7, ID: "A3", Name: "商铺" }, { Type: "A7", ID: 4, Name: "工业用地" }, { Type: 7, ID: "A5", Name: "商业用地" }, { Type: 7, ID: 6, Name: "汽车" },
+                    { Type: 7, ID: "A7", Name: "贵金属" }, { Type: 7, ID: "A8", Name: "收藏品" }, { Type: 7, ID: "A9", Name: "股权" }, { Type: 7, ID: "A10", Name: "债券" }, { Type: 7, ID: 11, Name: "厂房" }, { Type: 7, ID: 12, Name: "其它" },
+                    { Type: 8, ID: 1, Name: "博士" }, { Type: 8, ID: 2, Name: "硕士" }, { Type: 8, ID: 3, Name: "本科" }, { Type: 8, ID: 4, Name: "大专" },
+                    { Type: 8, ID: 5, Name: "高中" }, { Type: 8, ID: 6, Name: "中专" }, { Type: 8, ID: 7, Name: "初中" }, { Type: 8, ID: 8, Name: "小学" },
+                    { Type: 9, ID: 1, Name: "健康" }, { Type: 9, ID: 2, Name: "疾病" }, { Type: 9, ID: 3, Name: "伤残" },
+                    { Type: 10, ID: 1, Name: "正常" }, { Type: 10, ID: 2, Name: "逾期中" },
+                    { Type: 11, ID: 1, Name: "银行"}, { Type: 11, ID: 2, Name: "信托"}, { Type: 11, ID: 3, Name: "基金"}, { Type: 11, ID: 4, Name: "券商"}, { Type: 11, ID: 5, Name: "典当行"}, { Type: 11, ID: 6, Name: "保险公司"}, { Type: 11, ID: 7, Name: "小贷公司"}, { Type: 11, ID: 8, Name: "投资公司"}, { Type: 11, ID: 9, Name: "担保公司"}, { Type: 11, ID: 10, Name: "机构组织"}, { Type: 11, ID: 11, Name: "农林牧渔"},
+                    { Type: 11, ID: 12, Name: "医药卫生"}, { Type: 11, ID: 13, Name: "建筑建材"}, { Type: 11, ID: 14, Name: "冶金矿产"}, { Type: 11, ID: 15, Name: "煤炭石油"}, { Type: 11, ID: 16, Name: "化工化纤"}, { Type: 11, ID: 17, Name: "水电热气"}, { Type: 11, ID: 16, Name: "交通运输"}, { Type: 11, ID: 17, Name: "信息产业"}, { Type: 11, ID: 18, Name: "商业贸易"}, { Type: 11, ID: 19, Name: "机械机电"},
+                    { Type: 11, ID: 20, Name: "酿酒食品"}, { Type: 11, ID: 21, Name: "服装纺织"}, { Type: 11, ID: 22, Name: "专业服务"}, { Type: 11, ID: 23, Name: "安全防护"}, { Type: 11, ID: 24, Name: "环保绿化"}, { Type: 11, ID: 25, Name: "旅游休闲"}, { Type: 11, ID: 26, Name: "电子电工"}, { Type: 11, ID: 27, Name: "玩具礼品"}, { Type: 11, ID: 28, Name: "家居用品"}, { Type: 11, ID: 29, Name: "物资专材"},
+                    { Type: 11, ID: 30, Name: "包装用品"}, { Type: 11, ID: 31, Name: "体育用品"}, { Type: 11, ID: 32, Name: "办公用品"}, { Type: 11, ID: 33, Name: "集团"}, { Type: 11, ID: 34, Name: "住宿餐饮"}, { Type: 11, ID: 35, Name: "房地产"}, { Type: 11, ID: 36, Name: "教育传媒"}, { Type: 11, ID: 37, Name: "娱乐业"}
+                ]),
+                CityData:[{ID: "11",ParentID:"A01", Name: "杭州"},{ID: "12",ParentID:"A01", Name: "宁波"},{ID: "13",ParentID:"A01", Name: "温州"},{ID: "133",ParentID:"A02", Name: "深圳"},{ID: "1325",ParentID:"A02", Name: "广州"},{ID: "31",ParentID:"A02", Name: "佛山"}, {ID: "123",ParentID:"A03", Name: "哈尔滨"},{ID: "234",ParentID:"A03", Name: "齐齐哈尔"},{ID: "345",ParentID:"A03", Name: "大兴安岭"}],
+                UserInfo: { No: "GC007", Name: "刘德华", Sex: "男", BirthDay: "1988/08/08", CardID: "330719*", Mobile: "13712345678", CardAddress: "香港特别行政区铜锣湾", MyGrow: 500 },
+
+                PawnRate: { Min: null, Max: null },     //抵押率
+                InvestAmt: { Min: 5, Max: null },       //投资金额
+                DayRate: { Min: null, Max: null },      //日利率（利率要求）
+                InvestLimit: { Min: 0, Max: 9999 },     //投资期限
+                BayAmt: { Min: null, Max: null },       //价格区间(资产购买)
+                MTIn: { Min: null, Max: null },         //月总收入
+                MTOut: { Min: null, Max: null },        //月总支出
+                MCIn: { Min: null, Max: null },         //月净收入
+                TAsset: { Min: null, Max: null },       //总资产
+                TBorrow: { Min: null, Max: null },      //总负债
+                CAsset: { Min: null, Max: null },       //净资产
+
+                CreditInvest: { TotalPrice: 0.00, TotalNum: 0, TotalIncome: 0 },        //(债权投资) 债权总额，债权数量，投资收益
+                CreditBorrow: { Borrowing: 1, Paying: 2, Overdue: 3 },                  //(债权融资) 正在融资，正在还款，即将逾期
+                AssetsSales: { Publish: 0, Booking: 0, Close: 0 },                      //(资产出售) 已发布，预约中，已成交
+                AssetsBuy: { Booking: 0, Close: 0 },                                    //(资产购买) 预约中，已成交
+                AdviserServer: { Booking: 0, Serving: 0, Close: 0 },                    //(财务顾问) 预约中，服务中，已服务，已成交
+                Finace: { RemainVB: 15000, UsedVB: 1530, Payable: 14 },                 //(财务管理) 可用V币，已用V币，应付账单
+                GrowUpInfo: { Leval: 7,  Award: 0.7 },                                  //(成长信息)VIP等级，奖励
+                SafeManage: { Leval: "高", Mobile: "137****5678", Email: "liudehua@163.com" },//(安全管理)安全等级，绑定手机，绑定邮箱
+                SvrFee: { Invest: 300, Borrow: 500, AssetSale: 500, AssetBuy: 300, Adviser: 1000 },
+                OverdueTip: { Day: 3, Rate: 0.2 },
+                SentScore: 700                          //v币赠送值
+            },
+            STR: {
+                EVP80200: function () {
+                    ///<summary>页面加载就绪后</summary>
+                    //P802.UID.P80200(0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0);
+                    var busCode = "P80200";
+                    var data = "busCode=" + busCode;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.timeout = 30000;
+                    ajaxObj.ontimeout = function () {
+                        P802.UID.P80200(0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1);
+                    }
+                    ajaxObj.success = function (res) {
+                        //基本检查（如是否登录）
+                        if (BasicCheck(res) == false) {
+                            return;
+                        }
+
+                        var uipObj = JSON.parse(res);
+
+                        //2.10不需要
+                        uipObj.DayRate.Min = (parseFloat(uipObj.DayRate.Min) * 1000).ToNum(2, 2);
+                        uipObj.DayRate.Max = (parseFloat(uipObj.DayRate.Max) * 1000).ToNum(2, 2);
+
+                        uipObj.SltConfigData.push({ Type: 10, ID: 1, Name: "正常" });
+                        uipObj.SltConfigData.push({ Type: 10, ID: 0, Name: "逾期中" });
+                        P802.UIP.SltConfigData = JSON.stringify(uipObj.SltConfigData);
+                        P802.UIP.CityData = uipObj.cityData;
+                        P802.UIP.UserInfo = P802.STR.BdToFtBasicUserData(uipObj.UserInfo);
+                        P802.UIP.PawnRate = uipObj.PawnRate;
+                        P802.UIP.InvestAmt = uipObj.InvestAmt;
+                        P802.UIP.DayRate = uipObj.DayRate;
+                        P802.UIP.InvestLimit = uipObj.InvestLimit;
+                        P802.UIP.BayAmt = uipObj.BayAmt;
+                        P802.UIP.TAsset = uipObj.TAsset;
+                        P802.UIP.TBorrow = uipObj.TBorrow;
+                        P802.UIP.CAsset = uipObj.CAsset;
+                        P802.UIP.CreditInvest = uipObj.CreditInvest;
+                        P802.UIP.CreditBorrow = uipObj.CreditBorrow;
+                        P802.UIP.AssetsSales = uipObj.AssetsSales;
+                        P802.UIP.AssetsBuy = uipObj.AssetsBuy;
+                        if (uipObj.consultantApplyStatus == 1) {
+                            P802.UIP.AdviserServer = uipObj.AdviserServer;
+                        }
+                        P802.UIP.Finace = uipObj.Finace;
+                        P802.UIP.GrowUpInfo = uipObj.GrowUpInfo;
+                        P802.UIP.SafeManage = uipObj.SafeManage;
+                        P802.UIP.SvrFee = uipObj.SvrFee;
+                        P802.UIP.SvrStopTip = uipObj.SvrStopTip;
+                        P802.UIP.OverdueTip = uipObj.OverdueTip;
+                        P802.UIP.SentScore = uipObj.SentScore;
+
+                        var investStatus = uipObj.investStatus == "True" ? "1" : "0";
+                        var financingStatus = uipObj.financingStatus == "True" ? "1" : "0";
+                        var sellStatus = uipObj.sellStatus == "True" ? "1" : "0";
+                        var purchaseStatus = uipObj.purchaseStatus == "True" ? "1" : "0";
+                        var consultantStatus = uipObj.consultantStatus == "True" ? "1" : "0";
+
+                        P802.UID.P80200(uipObj.investApplyStatus, uipObj.financingApplyStatus, uipObj.sellApplyStatus, uipObj.purchaseApplyStatus, uipObj.consultantApplyStatus, investStatus, financingStatus, sellStatus, purchaseStatus, consultantStatus, uipObj.billStatus, uipObj.ifGetV);
+                    }
+                    ajaxObj.start();
+                },
+                EVP8020001: function (PID, Default) {
+                    ///<summary>Ajax选择城市名</summary>
+                    //var CityData = "";
+                    //if (PID == 1) { CityData = JSON.stringify([{ ID: 11, Name: "杭州" }, { ID: 12, Name: "宁波" }, { ID: 13, Name: "温州" }]) }
+                    //if (PID == 2) { CityData = JSON.stringify([{ ID: 133, Name: "深圳" }, { ID: 1325, Name: "广州" }, { ID: 31, Name: "佛山" }]) }
+                    //if (PID == 3) { CityData = JSON.stringify([{ ID: 123, Name: "哈尔滨" }, { ID: 234, Name: "齐齐哈尔" }, { ID: 345, Name: "大兴安岭" }]) }
+                    //P802.UID.P8020001(CityData);
+
+                    var busCode = "P8020001";
+                    var data = "busCode=" + busCode + "&provinceSN=" + PID;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        P802.UID.P8020001(res, Default);
+                    }
+                    ajaxObj.start();
+                },
+
+                EVP802010105: function () {
+                    ///<summary>投资协议</summary>
+                    //P802.UID.P802010105(InvestInfo);
+                    var busCode = "P802010105";
+                    var data = "busCode=" + busCode;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        var resObj = JSON.parse(res);
+                        var userDataFt = comm.UserDataBdToFt(resObj.userData, resObj.balance);
+
+                        P802.UID.P802010105(userDataFt);
+                    }
+                    ajaxObj.start();
+                },
+                EVP802010106: function (UserInfo, Passwrod) {
+                    ///<summary>提交投资申请表单</summary>
+                    //setTimeout("P802.UID.P802010106(1);", 1000);
+
+                    var investSvrDataObj = this.FtToBgInvest(UserInfo);
+
+                    var busCode = "P802010106";
+                    var data = "busCode=" + busCode + "&investSvrData=" + JSON.stringify(investSvrDataObj) + "&pwd=" + Passwrod;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        P802.UID.P802010106(res);
+                    }
+                    //ajaxObj.error = function () {
+                    //    P802.UID.P802010106(0);
+                    //}
+                    ajaxObj.start();
+                },
+
+                EVP802010206: function () {
+                    ///<summary>融资协议</summary>
+                    //P802.UID.P802010206(BorrowInfo);
+
+                    var busCode = "P802010206";
+                    var data = "busCode=" + busCode;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        var resObj = JSON.parse(res);
+                        var userDataFt = comm.UserDataBdToFt(resObj.userData, resObj.balance);
+
+                        P802.UID.P802010206(userDataFt);
+                    }
+                    ajaxObj.start();
+                },
+                EVP802010207: function (UserInfo, Passwrod) {
+                    ///<summary>提交融资申请表单</summary>
+                    //setTimeout("P802.UID.P802010207(1);", 1000);
+
+                    var financingSvrObj = this.FtToBgFinancing(UserInfo);
+
+                    var busCode = "P802010207";
+                    var data = "busCode=" + busCode + "&financingSvrData=" + JSON.stringify(financingSvrObj) + "&pwd=" + Passwrod;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        P802.UID.P802010207(res);
+                    }
+                    ajaxObj.error = function () {
+                        P802.UID.P802010207(0);
+                    }
+                    ajaxObj.start();
+                },
+
+                EVP802010303: function () {
+                    ///<summary>资产出售协议</summary>
+                    //P802.UID.P802010303(AssetSaleInfo);
+
+                    var busCode = "P802010303";
+                    var data = "busCode=" + busCode;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        var resObj = JSON.parse(res);
+                        var userDataFt = comm.UserDataBdToFt(resObj.userData, resObj.balance);
+
+                        P802.UID.P802010303(userDataFt);
+                    }
+                    ajaxObj.start();
+                },
+                EVP802010304: function (UserInfo, Passwrod) {
+                    ///<summary>提交资产出售申请表单</summary>
+                    //setTimeout("P802.UID.P802010304(1);", 1000);
+
+                    var sellingSvrObj = this.FtToBgSelling(UserInfo);
+
+                    var busCode = "P802010304";
+                    var data = "busCode=" + busCode + "&SellingSvrData=" + JSON.stringify(sellingSvrObj) + "&pwd=" + Passwrod;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        P802.UID.P802010304(res);
+                    }
+                    ajaxObj.error = function () {
+                        P802.UID.P802010304(0);
+                    }
+                    ajaxObj.start();
+                },
+
+                EVP802010404: function () {
+                    ///<summary>资产购买协议</summary>
+                    //P802.UID.P802010404(AssetBuyInfo);
+
+                    var busCode = "P802010404";
+                    var data = "busCode=" + busCode;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        var resObj = JSON.parse(res);
+                        var userDataFt = comm.UserDataBdToFt(resObj.userData, resObj.balance);
+
+                        P802.UID.P802010404(userDataFt);
+                    }
+                    ajaxObj.start();
+                },
+                EVP802010405: function (UserInfo, Passwrod) {
+                    ///<summary>提交资产购买申请表单</summary>
+                    //setTimeout("P802.UID.P802010405(1);", 1000);
+
+                    var PurchaseSvrObj = this.FtToBgPurchase(UserInfo);
+
+                    var busCode = "P802010405";
+                    var data = "busCode=" + busCode + "&PurchaseSvrData=" + JSON.stringify(PurchaseSvrObj) + "&pwd=" + Passwrod;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        P802.UID.P802010405(res);
+                    }
+                    ajaxObj.error = function () {
+                        P802.UID.P802010405(0);
+                    }
+                    ajaxObj.start();
+                },
+
+                EVP802010505: function () {
+                    ///<summary>财务顾问协议</summary>
+                    //P802.UID.P802010505(AdviserInfo);
+
+                    var busCode = "P802010505";
+                    var data = "busCode=" + busCode;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        var resObj = JSON.parse(res);
+                        var userDataFt = comm.UserDataBdToFt(resObj.userData, resObj.balance);
+
+                        P802.UID.P802010505(userDataFt);
+                    }
+                    ajaxObj.start();
+                },
+                EVP802010506: function (UserInfo, Passwrod) {
+                    ///<summary>提交财务顾问申请表单</summary>
+                    //setTimeout("P802.UID.P802010506(1);", 1000);
+
+                    var consultantSvrObj = this.FtToBgConsultant(UserInfo);
+
+                    var busCode = "P802010506";
+                    var data = "busCode=" + busCode + "&consultantSvrData=" + JSON.stringify(consultantSvrObj) + "&pwd=" + Passwrod;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        P802.UID.P802010506(res);
+                    }
+                    ajaxObj.error = function () {
+                        P802.UID.P802010506(0);
+                    }
+                    ajaxObj.start();
+                },
+                //后-前，最基础用户信息
+                BdToFtBasicUserData: function (userDataBd) {
+                    var userDataFt = {};
+
+                    userDataFt.No = userDataBd.No;
+                    userDataFt.Name = userDataBd.Name == null ? "" : userDataBd.Name.trim();
+                    userDataFt.Sex = userDataBd.Sex == true ? "男" : "女";
+                    userDataFt.BirthDay = BdDateStrFormate(userDataBd.BirthDay);
+                    userDataFt.CardID = userDataBd.CardID == null ? "" : userDataBd.CardID.trim();
+                    userDataFt.Mobile = userDataBd.Mobile == null ? "" : userDataBd.Mobile.trim();
+                    userDataFt.CardAddress = userDataBd.CardAddress == null ? "" : userDataBd.CardAddress.trim();
+                    userDataFt.MyGrow = userDataBd.MyGrow;
+
+                    return userDataFt;
+                },
+
+                //前-后，投资申请
+                FtToBgInvest: function (InvestInfoObj) {
+                    var investSvrObj = {};
+
+                    investSvrObj.maritalStatusTypeSN = InvestInfoObj.Marry;
+                    investSvrObj.procreateStatus = InvestInfoObj.Breed == 0 ? false : true;
+                    investSvrObj.currentAddressProvinceSN = InvestInfoObj.LivePro;
+                    investSvrObj.currentAddressCitySN = InvestInfoObj.LiveCity;
+                    investSvrObj.currentAddressDetails = InvestInfoObj.LiveStreet;
+                    investSvrObj.workEnterprise = InvestInfoObj.Company;
+                    investSvrObj.enterpriseTypeSN = InvestInfoObj.ComProperty;
+                    investSvrObj.hiredate = InvestInfoObj.JobTime;
+                    investSvrObj.workTel = InvestInfoObj.JobTel;
+                    investSvrObj.post = InvestInfoObj.Job;
+                    investSvrObj.investMainTypeSN = InvestInfoObj.InvestBody;
+                    investSvrObj.financingMain = InvestInfoObj.BorrowBody == 0 ? false : true;
+                    investSvrObj.maxMortgageRate = InvestInfoObj.PawnRate;
+                    investSvrObj.guaranteeTypeSN = InvestInfoObj.AssureWay;
+                    investSvrObj.investProvinceSN = InvestInfoObj.InvestArea1;
+                    investSvrObj.investCitySN = InvestInfoObj.InvestArea2;
+                    investSvrObj.minInvestMoneyAmount = InvestInfoObj.InvestAmt;
+                    investSvrObj.minInterestRate = InvestInfoObj.DayRate;
+                    investSvrObj.minInvestDays = InvestInfoObj.InvestLimitMin;
+                    investSvrObj.maxInvestDays = InvestInfoObj.InvestLimitMax;
+                    investSvrObj.collateralDemand = InvestInfoObj.Pawn;
+
+                    return investSvrObj;
+                },
+
+                //前-后，融资申请
+                FtToBgFinancing: function (BorrowInfo) {
+                    var financingSvrObj = {};
+
+                    financingSvrObj.maritalStatusTypeSN = BorrowInfo.Marry;
+                    financingSvrObj.procreateStatus = BorrowInfo.Breed == 0 ? false : true;
+                    financingSvrObj.currentAddressProvinceSN = BorrowInfo.LivePro;
+                    financingSvrObj.currentAddressCitySN = BorrowInfo.LiveCity;
+                    financingSvrObj.currentAddressDetails = BorrowInfo.LiveStreet;
+                    financingSvrObj.workEnterprise = BorrowInfo.Company;
+                    financingSvrObj.enterpriseTypeSN = BorrowInfo.ComProperty;
+                    financingSvrObj.hiredate = BorrowInfo.JobTime;
+                    financingSvrObj.workTel = BorrowInfo.JobTel;
+                    financingSvrObj.post = BorrowInfo.Job;
+                    financingSvrObj.healthyStatusTypeSN = BorrowInfo.Health;
+                    financingSvrObj.ifBasicLivingAllowance = BorrowInfo.IsSafe == 0 ? false : true;
+                    financingSvrObj.graduateSchool = BorrowInfo.School;
+                    financingSvrObj.degreeTypeSN = BorrowInfo.Edu;
+                    financingSvrObj.monthlyTotalIncome = BorrowInfo.MonthTotalIn;
+                    financingSvrObj.monthlyTotalExpenditure = BorrowInfo.MonthTotalOut;
+                    financingSvrObj.monthlyNetIncome = BorrowInfo.MonthClearIn;
+                    financingSvrObj.totalAssets = BorrowInfo.TotalAsset;
+                    financingSvrObj.totalDebt = BorrowInfo.TotalBorrow;
+                    financingSvrObj.ifCourtImplementation = BorrowInfo.CourtExe == 0 ? false : true;
+                    financingSvrObj.creditStatus = BorrowInfo.CreditState == 0 ? false : true;
+
+                    return financingSvrObj;
+                },
+
+                //前-后，购买申请
+                FtToBgPurchase: function (PurchaserInfo) {
+                    var financingSvrObj = {};
+
+                    financingSvrObj.maritalStatusTypeSN = PurchaserInfo.Marry;
+                    financingSvrObj.procreateStatus = PurchaserInfo.Breed == 0 ? false : true;
+                    financingSvrObj.currentAddressProvinceSN = PurchaserInfo.LivePro;
+                    financingSvrObj.currentAddressCitySN = PurchaserInfo.LiveCity;
+                    financingSvrObj.currentAddressDetails = PurchaserInfo.LiveStreet;
+                    financingSvrObj.assetsProvince = PurchaserInfo.AssetArea;
+                    financingSvrObj.minPurchasePrice = PurchaserInfo.AssetAmtMin;
+                    financingSvrObj.maxPurchasePrice = PurchaserInfo.AssetAmtMax;
+                    financingSvrObj.assetsType = PurchaserInfo.Pawn;
+
+                    return financingSvrObj;
+                },
+
+                //前-后，出售申请
+                FtToBgSelling: function (SellerInfo) {
+                    var sellingSvrObj = {};
+
+                    sellingSvrObj.maritalStatusTypeSN = SellerInfo.Marry;
+                    sellingSvrObj.procreateStatus = SellerInfo.Breed == 0 ? false : true;
+                    sellingSvrObj.currentAddressProvinceSN = SellerInfo.LivePro;
+                    sellingSvrObj.currentAddressCitySN = SellerInfo.LiveCity;
+                    sellingSvrObj.currentAddressDetails = SellerInfo.LiveStreet;
+
+                    return sellingSvrObj;
+                },
+
+                //前-后，顾问申请
+                FtToBgConsultant: function (ConsultantInfo) {
+                    var consultantSvrObj = {};
+
+                    consultantSvrObj.maritalStatusTypeSN = ConsultantInfo.Marry;
+                    consultantSvrObj.procreateStatus = ConsultantInfo.Breed == 0 ? false : true;
+                    consultantSvrObj.currentAddressProvinceSN = ConsultantInfo.LivePro;
+                    consultantSvrObj.currentAddressCitySN = ConsultantInfo.LiveCity;
+                    consultantSvrObj.currentAddressDetails = ConsultantInfo.LiveStreet;
+                    consultantSvrObj.workEnterprise = ConsultantInfo.Company;
+                    consultantSvrObj.enterpriseTypeSN = ConsultantInfo.ComProperty;
+                    consultantSvrObj.industryTypeSN = ConsultantInfo.Trade;
+                    consultantSvrObj.hiredate = ConsultantInfo.JobTime;
+                    consultantSvrObj.workTel = ConsultantInfo.JobTel;
+                    consultantSvrObj.post = ConsultantInfo.Job;
+                    consultantSvrObj.graduateSchool = ConsultantInfo.School;
+                    consultantSvrObj.degreeTypeSN = ConsultantInfo.Edu;
+                    consultantSvrObj.serviceProvinceSN = ConsultantInfo.SvrArea1 == -1 ? null : ConsultantInfo.SvrArea1;
+                    consultantSvrObj.serviceCitySN = ConsultantInfo.SvrArea2 == -1 ? null : ConsultantInfo.SvrArea2;
+                    consultantSvrObj.investigate = ConsultantInfo.SvrItem1 == 1 ? true : false;
+                    consultantSvrObj.assetsEvaluate = ConsultantInfo.SvrItem2 == 1 ? true : false;
+                    consultantSvrObj.creditRightGuarantee = ConsultantInfo.SvrItem3 == 1 ? true : false;
+                    consultantSvrObj.badLoanCollect = ConsultantInfo.SvrItem4 == 1 ? true : false;
+                    consultantSvrObj.consultantDetails = ConsultantInfo.Remarks;
+
+                    return consultantSvrObj;
+                },
+            },
+            UID: {
+                P80200: function (P1Svr, P2Svr, P3Svr, P4Svr, P5Svr, P1State, P2State, P3State, P4State, P5State, IsOverdue, IsFirstLogin) {
+                    ///<summary>页面初始化</summary>
+                    ///<param name="P1Svr">投资服务是否开通;0:未开通;1:已开通</param>
+                    ///<param name="P2Svr">融资服务是否开通;0:未开通;1:已开通</param>
+                    ///<param name="P3Svr">资产出售是否开通;0:未开通;1:已开通</param>
+                    ///<param name="P4Svr">资产购买是否开通;0:未开通;1:已开通</param>
+                    ///<param name="P5Svr">财务顾问是否开通;0:未开通;1:已开通</param>
+                    ///<param name="P1State">投资服务状态;0:关闭;1:打开</param>
+                    ///<param name="P2State">融资服务状态;0:关闭;1:打开</param>
+                    ///<param name="P3State">资产出售状态;0:关闭;1:打开</param>
+                    ///<param name="P4State">资产购买状态;0:关闭;1:打开</param>
+                    ///<param name="P5State">财务顾问状态;0:关闭;1:打开</param>
+                    ///<param name="IsOverdue">付款状态;1:有未付款;2:逾期中</param>
+                    ///<param name="IsFirstLogin">首次登陆;0:否;1:是</param>
+                    var Model = ItemContainer.querySelectorAll(".ItemSize");
+                    PublicSU.UID.LoginAction(P802.UIP.UserInfo.Name, P802.UIP.UserInfo.No);
+                    P802.DispStatus(P1Svr, P2Svr, P3Svr, P4Svr, P5Svr, P1State, P2State, P3State, P4State, P5State, IsOverdue, IsFirstLogin)
+
+                    if (P1Svr > 0 && P1State) {
+                        Model[0].querySelectorAll(".ItemText")[0].DspV = P802.UIP.CreditInvest.TotalPrice;
+                        Model[0].querySelectorAll(".ItemText")[2].DspV = P802.UIP.CreditInvest.TotalNum;
+                        Model[0].querySelectorAll(".ItemText")[4].DspV = P802.UIP.CreditInvest.TotalIncome;
+                    }
+                    if (P2Svr > 0 && P2State) {
+                        Model[1].querySelectorAll(".ItemText")[0].DspV = P802.UIP.CreditBorrow.Borrowing;
+                        Model[1].querySelectorAll(".ItemText")[1].DspV = P802.UIP.CreditBorrow.Paying;
+                        Model[1].querySelectorAll(".ItemText")[2].DspV = P802.UIP.CreditBorrow.Overdue;
+                    }
+                    if (P3Svr > 0 && P3State) {
+                        Model[2].querySelectorAll(".ItemText")[0].DspV = P802.UIP.AssetsSales.Publish;
+                        Model[2].querySelectorAll(".ItemText")[3].DspV = P802.UIP.AssetsSales.Booking;
+                        Model[2].querySelectorAll(".ItemText")[6].DspV = P802.UIP.AssetsSales.Close;
+                    }
+                    if (P4Svr > 0 && P4State) {
+                        Model[3].querySelectorAll(".ItemText")[0].DspV = P802.UIP.AssetsBuy.Booking;
+                        Model[3].querySelectorAll(".ItemText")[3].DspV = P802.UIP.AssetsBuy.Close;
+                    }
+                    if (P5Svr > 0 && P5State) {
+                        Model[4].querySelectorAll(".ItemText")[0].DspV = P802.UIP.AdviserServer.Booking;
+                        Model[4].querySelectorAll(".ItemText")[1].DspV = P802.UIP.AdviserServer.Serving;
+                        Model[4].querySelectorAll(".ItemText")[2].DspV = P802.UIP.AdviserServer.Close;
+                    }
+                    Model[5].querySelectorAll(".ItemText")[0].DspV = P802.UIP.UserInfo.No;
+                    Model[5].querySelectorAll(".ItemText")[1].DspV = P802.UIP.UserInfo.Name;
+                    Model[5].querySelectorAll(".ItemText")[2].DspV = P802.UIP.UserInfo.CardID;
+
+                    Model[6].querySelectorAll(".ItemText")[0].querySelectorAll("p")[0].innerText = P802.UIP.Finace.RemainVB;
+                    Model[6].querySelectorAll(".ItemText")[2].DspV = P802.UIP.Finace.UsedVB;
+                    Model[6].querySelectorAll(".ItemText")[4].DspV = P802.UIP.Finace.Payable;
+
+                    Model[7].querySelectorAll(".ItemText")[0].DspV = P802.UIP.UserInfo.MyGrow;
+                    Model[7].querySelectorAll(".ItemText")[2].DspV = P802.UIP.GrowUpInfo.Leval;
+                    Model[7].querySelectorAll(".ItemText")[4].DspV = P802.UIP.GrowUpInfo.Award;
+
+                    Model[8].querySelectorAll(".ItemText")[0].DspV = P802.UIP.SafeManage.Leval;
+                    Model[8].querySelectorAll(".ItemText")[2].DspV = P802.UIP.SafeManage.Mobile;
+                    Model[8].querySelectorAll(".ItemText")[4].DspV = P802.UIP.SafeManage.Email;
+
+                    applyRight.querySelectorAll(".applyButton li")[0].setAttribute("data-kt", P1Svr);
+                    applyRight.querySelectorAll(".applyButton li")[1].setAttribute("data-kt", P2Svr);
+                    applyRight.querySelectorAll(".applyButton li")[3].setAttribute("data-kt", P3Svr);
+                    applyRight.querySelectorAll(".applyButton li")[4].setAttribute("data-kt", P4Svr);
+                    if (P5Svr > "0") { applyRight.querySelectorAll(".applyButton li")[2].setAttribute("data-kt", "1"); }
+                    if (P1Svr > "0" && P2Svr > "0" && P3Svr > "0" && P4Svr > "0" && P5Svr > "0") { applyRightHidden(); applyRightDisab(); }
+                    else if (P1Svr > "0" || P2Svr > "0" || P3Svr > "0" || P4Svr > "0" || P5Svr > "0") { applyRightHidden(); }
+                    else{ BottomBarInfo.setAttribute("onmouseup", "P802.Disabled();"); applyRightShow(); }
+                    
+                },
+
+                P802010105: function (UserInfo) {
+                    var CSlt = MovingBoxi.querySelectorAll(".ItemTextInp>select");
+                    var CInp = MovingBoxi.querySelectorAll(".ItemTextInp>input");
+                    CSlt[0].value = UserInfo.Marry;
+                    CSlt[1].value = UserInfo.Breed;
+                    CSlt[2].value = UserInfo.LivePro;
+                    P802.ChangeCity(CSlt[2]);
+                    CSlt[3].value = UserInfo.LiveCity;
+                    CInp[0].value = UserInfo.LiveStreet;
+                    CInp[1].value = UserInfo.Company;
+                    CSlt[4].value = UserInfo.ComProperty;
+                    MovingBoxi.querySelector(".ItemDateInp").innerText = UserInfo.JobTime;
+                    CInp[2].value = UserInfo.JobTel;
+                    CInp[3].value = UserInfo.Job;
+                    CSlt[5].value = UserInfo.InvestBody;
+                    CSlt[6].value = UserInfo.BorrowBody;
+                    CInp[4].value = (UserInfo.PawnRate * 100).ToNum(2, 2);
+                    FloatInp(CInp[4], 2);
+                    CSlt[7].value = UserInfo.AssureWay;
+                    CInp[5].value = UserInfo.InvestAmt;
+                    CInp[6].value = (UserInfo.DayRate * 1000).ToNum(2, 2);
+                    FloatInp(CInp[6], 2);
+                    CSlt[8].value = UserInfo.InvestArea1;
+                    P802.ChangeCity(CSlt[8]);
+                    CSlt[9].value = UserInfo.InvestArea2;
+                    CInp[7].value = UserInfo.InvestLimitMin;
+                    CInp[8].value = UserInfo.InvestLimitMax;
+                    var arr = UserInfo.Pawn.split(",");
+                    for (var i in arr) { if (arr[i].length >= 2) { MovingBoxi.querySelector("[data-id='" + arr[i] + "']").setAttribute("data-sw", "1"); } }
+                    MovingBoxi.querySelectorAll(".memo .ItemText")[0].DspV = P802.UIP.SvrFee.Invest;
+                    MovingBoxi.querySelectorAll(".memo .ItemText")[1].DspV = UserInfo.MyVB;
+                    P802.Disabled();
+                },
+                P802010106: function (Res) {
+                    ///<summary>提交投资申请表单后返回结果</summary>
+                    ///<param name="Res">1:修改成功;0:交易密码错误 </param>
+                    if (Res == 2) { TransingStatus.SetStatus(2, "账户余额不足"); }
+                    if (Res == 1) { P802.OpenSvr(0); applyRightHidden(); TransingStatus.SetStatus(3); MovingBoxCTL.Close(); P802.STR.EVP80200(); }
+                    if (Res == 0) { TransingStatus.SetStatus(2, "交易密码错误"); }
+                    P802.BtObj.setAttribute("data-btst", "E");
+                },
+
+                P802010206: function (UserInfo) {
+                    var CSlt = MovingBoxi.querySelectorAll(".ItemTextInp>select");
+                    var CInp = MovingBoxi.querySelectorAll(".ItemTextInp>input");
+                    CSlt[0].value = UserInfo.Marry;
+                    CSlt[1].value = UserInfo.Breed;
+                    CSlt[2].value = UserInfo.Health;
+                    CSlt[3].value = UserInfo.IsSafe;
+                    CSlt[4].value = UserInfo.LivePro;
+                    P802.ChangeCity(CSlt[4]);
+                    CSlt[5].value = UserInfo.LiveCity;
+                    CInp[0].value = UserInfo.LiveStreet;
+                    CInp[1].value = UserInfo.School;
+                    CSlt[6].value = UserInfo.Edu;
+                    CInp[2].value = UserInfo.Company;
+                    CSlt[7].value = UserInfo.ComProperty;
+                    MovingBoxi.querySelector(".ItemDateInp").innerText = UserInfo.JobTime;//入职时间起
+                    CInp[3].value = UserInfo.JobTel;
+                    CInp[4].value = UserInfo.Job;
+                    CInp[5].value = UserInfo.MonthTotalIn;
+                    CInp[6].value = UserInfo.MonthTotalOut;
+                    CInp[7].value = UserInfo.MonthClearIn;      //月净收入
+                    CInp[8].value = UserInfo.TotalAsset;
+                    CInp[9].value = UserInfo.TotalBorrow;
+                    CInp[10].value = UserInfo.ClearAsset;
+                    CSlt[8].value = UserInfo.CourtExe;
+                    CSlt[9].value = UserInfo.CreditState;
+                    MovingBoxi.querySelectorAll(".memo .ItemText")[0].DspV = P802.UIP.SvrFee.Borrow;
+                    MovingBoxi.querySelectorAll(".memo .ItemText")[1].DspV = UserInfo.MyVB;
+                    P802.Disabled(); 
+                },
+                P802010207: function (Res) {
+                    ///<summary>提交融资申请表单后返回结果</summary>
+                    ///<param name="Res">1:修改成功;0:交易密码错误 </param>
+                    if (Res == 2) { TransingStatus.SetStatus(2, "账户余额不足"); }
+                    if (Res == 1) { P802.OpenSvr(1); applyRightHidden(); TransingStatus.SetStatus(3); MovingBoxCTL.Close(); P802.STR.EVP80200();}
+                    if (Res == 0) { TransingStatus.SetStatus(2, "交易密码错误"); }
+                    P802.BtObj.setAttribute("data-btst", "E");
+                },
+
+                P802010303: function (UserInfo) {
+                    var CSlt = MovingBoxi.querySelectorAll(".ItemTextInp>select");
+                    var CInp = MovingBoxi.querySelectorAll(".ItemTextInp>input");
+                    CSlt[0].value = UserInfo.Marry;
+                    CSlt[1].value = UserInfo.Breed;
+                    CSlt[2].value = UserInfo.LivePro;
+                    P802.ChangeCity(CSlt[2]);
+                    CSlt[3].value = UserInfo.LiveCity;
+                    CInp[0].value = UserInfo.LiveStreet;
+                    MovingBoxi.querySelectorAll(".memo .ItemText")[0].DspV = P802.UIP.SvrFee.AssetSale;
+                    MovingBoxi.querySelectorAll(".memo .ItemText")[1].DspV = UserInfo.MyVB;
+                    P802.Disabled();
+                },
+                P802010304: function (Res) {
+                    ///<summary>提交资产出售申请表单后返回结果</summary>
+                    ///<param name="Res">1:修改成功;0:交易密码错误 </param>
+                    if (Res == 2) { TransingStatus.SetStatus(2, "账户余额不足"); }
+                    if (Res == 1) { P802.OpenSvr(2); applyRightHidden(); TransingStatus.SetStatus(3); MovingBoxCTL.Close(); P802.STR.EVP80200(); }
+                    if (Res == 0) { TransingStatus.SetStatus(2, "交易密码错误"); }
+                    P802.BtObj.setAttribute("data-btst", "E");
+                },
+
+                P802010404: function (UserInfo) {
+                    var CSlt = MovingBoxi.querySelectorAll(".ItemTextInp>select");
+                    var CInp = MovingBoxi.querySelectorAll(".ItemTextInp>input");
+                    CSlt[0].value = UserInfo.Marry;
+                    CSlt[1].value = UserInfo.Breed;
+                    CSlt[2].value = UserInfo.LivePro;
+                    P802.ChangeCity(CSlt[2]);
+                    CSlt[3].value = UserInfo.LiveCity;
+                    CInp[0].value = UserInfo.LiveStreet;
+                    CSlt[4].value = UserInfo.AssetArea;
+                    CInp[1].value = UserInfo.AssetAmtMin;
+                    CInp[2].value = UserInfo.AssetAmtMax;
+                    var arr = UserInfo.Pawn.split(",");
+                    for (var i in arr) { if (arr[i].length >= 2) { MovingBoxi.querySelector("[data-id='" + arr[i] + "']").setAttribute("data-sw", "1"); } }
+
+                    MovingBoxi.querySelectorAll(".memo .ItemText")[0].DspV = P802.UIP.SvrFee.AssetBuy;
+                    MovingBoxi.querySelectorAll(".memo .ItemText")[1].DspV = UserInfo.MyVB;
+                    P802.Disabled(); 
+                },
+                P802010405: function (Res) {
+                    ///<summary>提交资产购买申请表单后返回结果</summary>
+                    ///<param name="Res">1:修改成功;0:交易密码错误 </param>
+                    if (Res == 2) { TransingStatus.SetStatus(2, "账户余额不足"); }
+                    if (Res == 1) { P802.OpenSvr(3); applyRightHidden(); TransingStatus.SetStatus(3); MovingBoxCTL.Close(); P802.STR.EVP80200(); }
+                    if (Res == 0) { TransingStatus.SetStatus(2, "交易密码错误"); }
+                    P802.BtObj.setAttribute("data-btst", "E");
+                },
+                
+                P802010505: function (UserInfo) {
+                    var CSlt = MovingBoxi.querySelectorAll(".ItemTextInp>select");
+                    var CInp = MovingBoxi.querySelectorAll(".ItemTextInp>input");
+                    CSlt[0].value = UserInfo.Marry;
+                    CSlt[1].value = UserInfo.Breed;
+                    CSlt[2].value = UserInfo.LivePro;        //当前住址（省份）起
+                    P802.ChangeCity(CSlt[2]);
+                    CSlt[3].value = UserInfo.LiveCity; 
+                    CInp[0].value = UserInfo.LiveStreet;
+
+                    CInp[1].value = UserInfo.School;
+                    CSlt[4].value = UserInfo.Edu;
+                    CInp[2].value = UserInfo.Company;
+
+                    CSlt[5].value = UserInfo.ComProperty;        //单位性质起
+                    CSlt[6].value = UserInfo.Trade;
+                    MovingBoxi.querySelector(".ItemDateInp").innerText = UserInfo.JobTime;//入职时间起
+                    CInp[3].value = UserInfo.JobTel;
+                    CInp[4].value = UserInfo.Job;
+
+                    CSlt[7].value = UserInfo.SvrArea1;        //服务区域起
+                    P802.ChangeCity(CSlt[7]);
+                    CSlt[8].value = UserInfo.SvrArea2;
+                    MovingBoxi.querySelectorAll(".UpDownButton")[0].setAttribute("data-sw", UserInfo.SvrItem1);
+                    MovingBoxi.querySelectorAll(".UpDownButton")[1].setAttribute("data-sw", UserInfo.SvrItem2);
+                    MovingBoxi.querySelectorAll(".UpDownButton")[2].setAttribute("data-sw", UserInfo.SvrItem3);
+                    MovingBoxi.querySelectorAll(".UpDownButton")[3].setAttribute("data-sw", UserInfo.SvrItem4);
+                    MovingBoxi.querySelector("textarea").value = UserInfo.Remarks;
+
+                    MovingBoxi.querySelectorAll(".memo .ItemText")[0].DspV = P802.UIP.SvrFee.Adviser;
+                    MovingBoxi.querySelectorAll(".memo .ItemText")[1].DspV = UserInfo.MyVB;
+                    P802.Disabled();
+                },
+                P802010506: function (Res) {
+                    ///<summary>提交财务顾问申请表单后返回结果</summary>
+                    ///<param name="Res">1:修改成功;0:交易密码错误 </param>
+                    if (Res == 2) { TransingStatus.SetStatus(2, "账户余额不足"); }
+                    if (Res == 1) { P802.OpenSvr(4); applyRightHidden(); TransingStatus.SetStatus(3); MovingBoxCTL.Close(); P802.STR.EVP80200(); }
+                    if (Res == 0) { TransingStatus.SetStatus(2, "交易密码错误"); }
+                    P802.BtObj.setAttribute("data-btst", "E");
+                },
+            },
+
+            TitleButton: function () { if (this.ShowStatus) { applyRightShow() } else { applyRightHidden(); }; },
+            Disabled: function () { this.ShowStatus = null; applyRight.querySelector(".TitleButton").setAttribute("style", "left:0px;"); MainZone.className = "RTB-Hidden"; applyRight.style.right = "-280px"; ItemContainer.className = "RTB-Hidden"; }
+        }
+
+        var P7 = {
+            LatePayZS: function () { ZS.style.display = 'none'; setTimeout("ZS.parentNode.setAttribute(\"onmouseup\", \"Location('P9')\");", 100); },
+            UIP: {},
+            STR: {
+                EVP70201: function () {
+                    //P7.UID.P70201(true);
+                    var busCode = "P70201";
+                    var data = "busCode=" + busCode;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function () {
+                        P7.UID.P70201(true);
+                    }
+                    ajaxObj.error = function () {
+                        P7.UID.P70201(false);
+                    }
+                    ajaxObj.start();
+                },
+            },
+            UID: {
+                P70201: function (res) {//财务管理新用户赠送V币
+                    if (res == true) {
+                        VBid.style.display = 'block';
+                        setTimeout("VBva.style.top = '-20px';", 1000);
+                        setTimeout("VBid.setAttribute('style', 'display:none');", 2000);
+                        setTimeout("ZS.parentNode.setAttribute(\"onmouseup\", \"Location('P9')\");", 200);
+                        VBva.querySelectorAll("p")[1].innerText = parseInt(VBva.querySelectorAll("p")[0].innerText) + parseInt(P802.UIP.SentScore);
+                    }
+                    if (res == false) {
+                        ZS.style.display = 'none';
+                    }
+                },
+            }
+        }
+
+        function LoadSvr(SvrNo) {
+            LoadingBoxCtl(1);
+            LoadMod(SvrNo, "ReCalcItemSize();", "P802");
+        }
+    </script>
+
+    <!--公共 STR-->
+    <script type="text/javascript">
+        var comm = {
+            //后-前，基本信息
+            UserDataBdToFt: function (userDataBd, balance) {
+                var userDataFt = {};
+
+                userDataFt.MyVB = balance;
+                userDataFt.No = userDataBd.userSN;
+                userDataFt.Name = userDataBd.name == null ? "" : userDataBd.name.trim();
+                userDataFt.Sex = userDataBd.gender == true ? "男" : "女";
+                userDataFt.BirthDay = BdDateStrFormate(userDataBd.birthday);
+                userDataFt.CardID = userDataBd.idCard.substr(0, 6) + "*";
+                userDataFt.Mobile = userDataBd.phone == null ? "" : userDataBd.phone.trim();
+                userDataFt.CardAddress = userDataBd.registeredResidence == null ? "" : userDataBd.registeredResidence.trim();
+                userDataFt.Email = userDataBd.email == null ? "无" : userDataBd.email.trim();
+                userDataFt.Marry = userDataBd.maritalStatusTypeSN;
+                if (userDataBd.procreateStatus == null) {
+                    userDataFt.Breed = userDataBd.procreateStatus = "-1";
+                }
+                else {
+                    userDataFt.Breed = userDataBd.procreateStatus == true ? "1" : "0";
+                }
+                userDataFt.Health = userDataBd.healthyStatusTypeSN == null ? "" : userDataBd.healthyStatusTypeSN.trim();
+                userDataFt.IsSafety = userDataBd.ifBasicLivingAllowance == true ? "1" : "0";
+                userDataFt.LivePro = userDataBd.currentAddressProvinceSN == null ? "" : userDataBd.currentAddressProvinceSN.trim();
+                userDataFt.LiveCity = userDataBd.currentAddressCitySN == null ? "" : userDataBd.currentAddressCitySN.trim();
+                userDataFt.LiveStreet = userDataBd.currentAddressDetails == null ? "" : userDataBd.currentAddressDetails.trim();
+                userDataFt.School = userDataBd.graduateSchool == null ? "" : userDataBd.graduateSchool.trim();;
+                userDataFt.Edu = userDataBd.degreeTypeSN == null ? "" : userDataBd.degreeTypeSN.trim();
+                userDataFt.EduNo = userDataBd.degreeCard == null ? "" : userDataBd.degreeCard.trim();
+                userDataFt.FriendName = userDataBd.friendName == null ? "" : userDataBd.friendName.trim();
+                userDataFt.FriendTel = userDataBd.friendPhone == null ? "" : userDataBd.friendPhone.trim();
+                userDataFt.SpouseName = userDataBd.spouseName == null ? "" : userDataBd.spouseName.trim();
+                userDataFt.SpouseTel = userDataBd.spousePhone == null ? "" : userDataBd.spousePhone.trim();
+                userDataFt.SpouseCardID = userDataBd.spouseIdCard == null ? "" : userDataBd.spouseIdCard.trim();
+                userDataFt.SpouseCompany = userDataBd.spouseEnterprise == null ? "" : userDataBd.spouseEnterprise.trim();
+                userDataFt.FamilyName = userDataBd.kinName == null ? "" : userDataBd.kinName.trim();
+                userDataFt.FamilyRelation = userDataBd.kinRelationshipTypeSN == null ? "" : userDataBd.kinRelationshipTypeSN.trim();
+                userDataFt.FamilyTel = userDataBd.kinPhone == null ? "" : userDataBd.kinPhone.trim();
+                userDataFt.FamilyCardID = userDataBd.kinIdCard == null ? "" : userDataBd.kinIdCard.trim();
+                userDataFt.FamilyCompany = userDataBd.kinEnterprise == null ? "" : userDataBd.kinEnterprise.trim();
+                userDataFt.InvestBody = userDataBd.investMainTypeSN == null ? "" : userDataBd.investMainTypeSN.trim();
+                if (userDataBd.financingMain == null) {
+                    userDataFt.BorrowBody = 3;
+                }
+                else if (userDataBd.financingMain == true) {
+                    userDataFt.BorrowBody = 2;
+                }
+                else if (userDataBd.financingMain == false) {
+                    userDataFt.BorrowBody = 1;
+                }
+                userDataFt.PawnRate = userDataBd.maxMortgageRate;
+                userDataFt.AssureWay = userDataBd.guaranteeTypeSN == null ? "" : userDataBd.guaranteeTypeSN;
+                userDataFt.InvestArea1 = userDataBd.investProvinceSN == null ? "" : userDataBd.investProvinceSN;
+                userDataFt.InvestArea2 = userDataBd.investCitySN == null ? "" : userDataBd.investCitySN;
+                userDataFt.InvestAmt = userDataBd.minInvestMoneyAmount == null ? "" : userDataBd.minInvestMoneyAmount;
+                userDataFt.DayRate = userDataBd.minInterestRate == null ? "" : userDataFt.DayRate = userDataBd.minInterestRate;
+                userDataFt.InvestLimitMin = userDataBd.minInvestDays == null ? "" : userDataBd.minInvestDays;
+                userDataFt.InvestLimitMax = userDataBd.maxInvestDays == null ? "" : userDataBd.maxInvestDays;
+                userDataFt.Pawn = userDataBd.collateralDemand == null ? "," : userDataBd.collateralDemand.trim();
+                userDataFt.Company = userDataBd.workEnterprise == null ? "" : userDataBd.workEnterprise.trim();
+                userDataFt.ComProperty = userDataBd.enterpriseTypeSN == null ? "" : userDataBd.enterpriseTypeSN;
+                userDataFt.JobTime = userDataBd.hiredate == null ? "" : BdDateStrFormate(userDataBd.hiredate);
+                userDataFt.JobTel = userDataBd.workTel == null ? "" : userDataBd.workTel.trim();
+                userDataFt.Job = userDataBd.post == null ? "" : userDataBd.post.trim();
+                userDataFt.ComWeb = userDataBd.enterpriseWebsite == null ? "" : userDataBd.enterpriseWebsite.trim();
+                userDataFt.ComTel = userDataBd.enterpriseSwitchboard == null ? "" : userDataBd.enterpriseSwitchboard.trim();
+                userDataFt.ColleagueName = userDataBd.colleageName == null ? "" : userDataBd.colleageName.trim();
+                userDataFt.ColleagueTel = userDataBd.colleagePhone == null ? "" : userDataBd.colleagePhone.trim();
+                userDataFt.ColleagueCardID = userDataBd.colleageIdCard == null ? "" : userDataBd.colleageIdCard.trim();
+                userDataFt.MonthTotalIn = userDataBd.monthlyTotalIncome;
+                userDataFt.MonthTotalOut = userDataBd.monthlyTotalExpenditure;
+                userDataFt.MonthClearIn = userDataBd.monthlyNetIncome;
+                userDataFt.TotalAsset = userDataBd.totalAssets;
+                userDataFt.TotalBorrow = userDataBd.totalDebt;
+                if (userDataBd.totalAssets != null && userDataBd.totalDebt != null) {
+                    userDataFt.ClearAsset = userDataBd.totalAssets - userDataBd.totalDebt;
+                }
+                else {
+                    userDataFt.ClearAsset = "";
+                }
+                userDataFt.CourtsExe = userDataBd.ifCourtImplementation == true ? "1" : "0";
+                if (userDataBd.creditStatus == null) {
+                    userDataFt.CreditState = -1;
+                }
+                else if (userDataBd.creditStatus == false) {
+                    userDataFt.CreditState = 0;
+                }
+                else if (userDataBd.creditStatus == true) {
+                    userDataFt.CreditState = 1;
+                }
+                userDataFt.AssetArea = userDataBd.assetsProvince == null ? "" : userDataBd.assetsProvince.trim();
+                userDataFt.AssetAmtMin = userDataBd.minPurchasePrice == null ? "" : userDataBd.minPurchasePrice;
+                userDataFt.AssetAmtMax = userDataBd.maxPurchasePrice == null ? "" : userDataBd.maxPurchasePrice;
+                userDataFt.AssetType = userDataBd.assetsType == null ? "," : userDataBd.assetsType.trim();
+                userDataFt.SvrArea1 = userDataBd.serviceProvinceSN == null ? "" : userDataBd.serviceProvinceSN;
+                userDataFt.SvrArea2ID = userDataBd.serviceCitySN == null ? "" : userDataBd.serviceCitySN;
+                userDataFt.SvrArea2Name = userDataBd.serviceCity == null ? "" : userDataBd.serviceCity.trim();
+                userDataFt.SvrItem1 = userDataBd.investigate == true ? "1" : "0";
+                userDataFt.SvrItem2 = userDataBd.assetsEvaluate == true ? "1" : "0";
+                userDataFt.SvrItem3 = userDataBd.creditRightGuarantee == true ? "1" : "0";
+                userDataFt.SvrItem4 = userDataBd.badLoanCollect == true ? "1" : "0";
+                userDataFt.Remarks = userDataBd.consultantDetails == null ? "" : userDataBd.consultantDetails;
+
+                return userDataFt;
+            },
+        }
+    </script>
+
+    <!--主要显示区-->
+    <div id="TopBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules\TopBar.html"></iframe></div>
+    <div id="MainZone" style="position:absolute;left:0px;" onscroll="ScrollTracker(this)">
+        <div class="LocationBar"><label>你的位置</label>用户中心</div>
+        <div id="ItemContainer"></div>
+        <iframe style="height:0px;width:0px;visibility:collapse;" id="ItemSi" onload="ReCalcItemSize();"></iframe>
+   </div>
+    <div id="applyRight">
+        <div class="TitleButton" onmouseup="P802.TitleButton();"><div></div><div></div><div></div></div>
+        <p style="font-size: 14px; color: #b3b3c6;">服务资格申请</p>
+        <div class="applyButton">
+            <ul>
+                <li><a onmousedown="ExbuttonB(this)" onmouseup="ExbuttonA(this, 'P1')"><div><span class="icon-uniE606 span1"></span></div><span class="span2">债权投资</span><span class="icon-fuhao span3"></span></a></li>
+                <li><a onmousedown="ExbuttonB(this)" onmouseup="ExbuttonA(this, 'P2')"><div><span class="icon-uniE605 span1"></span></div><span class="span2">债权融资</span><span class="icon-fuhao span3"></span></a></li>
+                <li><a onmousedown="ExbuttonB(this)" onmouseup="ExbuttonA(this, 'P5')"><div><span class="icon-uniE601 span1"></span></div><span class="span2">财务顾问</span><span class="icon-fuhao span3"></span></a></li>
+                <li><a onmousedown="ExbuttonB(this)" onmouseup="ExbuttonA(this, 'P3')"><div><span class="icon-uniE602 span1"></span></div><span class="span2">资产出售</span><span class="icon-fuhao span3"></span></a></li>
+                <li><a onmousedown="ExbuttonB(this)" onmouseup="ExbuttonA(this, 'P4')"><div><span class="icon-uniE600 span1"></span></div><span class="span2">资产购买</span><span class="icon-fuhao span3"></span></a></li>
+            </ul>
+        </div><!--5个申请按钮-->
+    </div>
+    <div id="BottomBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules/BottomBar.html"></iframe></div>
+    <div class="Maskblack" style="display:none;"></div>
+ 
+        <!--未付账单-->
+        <div id="WF" class="centerBox" style="display: none;">
+            <div class="userPromptbox">
+                <div class="box-up">
+                    <div class="upLeft"><i class="icon-ex" style="color: #f9c700; font-size: 60px; display:block; margin-bottom:10px;"></i></div>
+                    <div class="upRight"><p class="p1" style="margin:10px 0 ;">您已有未付账单 !</p><p class="p2">请出帐后 <span>X</span>天 内支付。</p></div>
+                </div>
+                <div class="box-down"><div class="downUp">逾期后按账单金额的 <span>P2D0</span> 每日收取滞纳金。</div><div class="box-downBottn" onmouseup="P802.LatePay();">稍后支付</div><div class="box-downBottn" onmouseup="P802.NowPay();">立即支付</div></div>
+
+            </div>
+        </div>
+        <!--服务已被暂停-->
+    <div class="centerBox" id="ZT" style="display: none;">
+        <div class="userPromptbox">
+            <div class="box-up">
+                <div class="upLeft"><i class="icon-ex" style="color: #f9c700; font-size: 60px;"></i></div>
+                <div class="upRight"><p class="p1">服务已被暂停 !</p><p class="p2">您已有逾期账单，请立即支付。逾期超过30天 将追究法律责任。</p></div>
+            </div>
+            <div class="box-down">
+                <div class="downUp">逾期后按账单金额的 <span>P2D0</span> 每日收取滞纳金。</div><div class="box-downBottn" onmouseup="P802.NowPay();">立即支付</div>
+            </div>
+        </div>
+    </div>
+
+    <!--登录退出提示-->
+    <div id="LogoutTIPS" class="LogoutBox" style="display:none;">
+        <div class="LogoutPromptbox">
+        <div class="box-left"><i class="icon-ex" style="color: #f9c700; font-size: 60px; display:block; margin-bottom:10px;"></i></div>
+        <div class="box-right"><label style="font-size:20px;">X</label></div>
+        <div class="box-downBottn" style="margin-top:70px;margin-right:20px;" onmouseup="location.href='Portal.html?V=' + GetVer() + '&Login'">立即登录</div>
+        </div>
+    </div>
+
+    <div class="MaskLayer" onmouseup="MovingBoxCTL.Close(); applyRightHidden();"></div>
+    <!--业务申请按钮区开始-->
+    <script type="text/javascript">
+        //业务申请按钮区开始
+        var RIGshow = document.querySelector("#applyRight")//移出的右边块
+        var EXbuttonbg = document.querySelector(".applyButton ul li a")//
+        //显示右边块
+        function applyRightShow() {
+            P802.ShowStatus = 0;
+            RIGshow.style.right = "0px";
+            MainZone.className = "RTB-Show";
+            RIGshow.querySelector(".TitleButton").className = "TitleButton";
+            setTimeout("ReCalcItemSize()", 1000);
+            applyRight.querySelector(".TitleButton").removeAttribute("style");
+        }
+        //隐藏右边块
+        function applyRightHidden() {
+            P802.ShowStatus = 1;
+            RIGshow.style.right = "-280px";
+            MainZone.className = "RTB-Hidden";
+            RIGshow.querySelector(".TitleButton").className = "TitleButton TitleButtonHide";
+            setTimeout("ReCalcItemSize()", 300);
+            applyRight.querySelector(".TitleButton").removeAttribute("style");
+        }
+        //屏蔽右边块
+        function applyRightDisab() {
+            RIGshow.style.right = "-280px";
+            RIGshow.querySelector(".TitleButton").style.display = "none";
+        }
+        //鼠标点击后按钮背景颜色改变
+        function ExbuttonA(obj, SvrNo) {
+            obj.setAttribute("style", "background-color:#18181a");
+            applyRightHidden();
+            switch (SvrNo) {
+                case "P1":
+                    MovingBoxCTL.Prepare("投资服务协议", document.querySelector(".UInvestAgreem"));
+                    break;
+                case "P2":
+                    MovingBoxCTL.Prepare("融资服务协议", document.querySelector(".UBorrowAgreem"));
+                    break;
+                case "P3":
+                    MovingBoxCTL.Prepare("资产出售服务协议", document.querySelector(".USaleAgreem"));
+                    break;
+                case "P4":
+                    MovingBoxCTL.Prepare("资产购买服务协议", document.querySelector(".UBuyAgreem"));
+                    break;
+                case "P5":
+                    MovingBoxCTL.Prepare("顾问服务协议", document.querySelector(".UConsultantAgreem"));
+                    break;
+            }
+            setTimeout("MovingBoxCTL.Open();", 1000);
+        }
+        //鼠标点击后按钮背景颜色恢复
+        function ExbuttonB(obj) {
+            obj.setAttribute("style", "background-color:#353539");
+        }
+        //业务申请按钮区结束
+
+    </script>
+    <!--业务申请按钮区结束-->
+
+    <!--异步数据加载区-->
+    <script type="text/javascript">
+        LoadTP("TransingBox"); LoadJS("TransingBox");
+        LoadTP("LoadingBox"); LoadJS("InpRulesCk");
+        LoadTP("MovingBox", "MovingBoxi.style.display = '';"); LoadJS("MovingBox");
+        LoadTP("UinvestAgreem", "", "P1"); LoadTP("UInvestApply", "", "P1");
+        LoadTP("UBorrowAgreem", "", "P2"); LoadTP("UBorrowApply", "", "P2");
+        LoadTP("USaleAgreem", "", "P3"); LoadTP("USaleApply", "", "P3");
+        LoadTP("UBuyAgreem", "", "P4"); LoadTP("UBuyApply", "", "P4");
+        LoadTP("UConsultantAgreem", "", "P5"); LoadTP("UConsultantApply", "", "P5");
+        LoadTP("DateSelector"); LoadJS("DateSelector");
+        LoadTP("logout");
+    </script>
+</body>
+</html>

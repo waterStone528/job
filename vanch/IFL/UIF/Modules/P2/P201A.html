@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div style="float: left;" class="ItemSize GeneralItem ">
+        <div id="InputDspP1" style="display: none;">
+            <table width="100%" style="padding:0px;" border="0">
+                <!--Sever need give the value in TD zone witch TD has id value-->
+                <tr>
+                    <td class="ItemTitle">债权编号</td>
+                    <td style="width:120px;">自动</td>
+                    <td class="ItemTitle">融资金额</td>
+                    <td class="ItemTextInp"><input type="text" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P201.UIP.BorrowAmt); if (Pawn.MPrice > 0) { ItemContainer.querySelector('#InputDspP1').querySelectorAll('.ItemText')[2].innerText = (parseFloat(this.value) / parseFloat(Pawn.MPrice) * 100).toFixed(2) + '%' }" /></td>
+                    <td class="ItemText" style="width:20px;">万</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">保证方式</td>
+                    <td class="ItemTextInp"><select><option value="-1"></option></select></td>
+                    <td class="ItemTitle">借款期限</td>
+                    <td class="ItemTextInp"><input type="text" onkeyup="FloatInp(this, 0);" onblur="IRC.IntervalNumber(this, this.value, P201.UIP.BorrowLimit);" /></td>
+                    <td class="ItemText" style="width:20px;">天</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">还款方式</td>
+                    <td class="ItemTextInp"><select><option value="-1"></option></select></td>
+                    <td class="ItemTitle">日利率</td>
+                    <td class="ItemTextInp"><input type="text" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P201.UIP.DayRate);" /></td>
+                    <td>‰</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">抵押物</td>
+                    <td class="ABtInTd" onmousedown="P201.BtAction(this, 0);" onmouseup="P201.BtAction(this, 1);">输入详情</td>
+                    <td class="ItemTitle">抵押率</td>
+                    <td class="ItemText">自动</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">融资主体</td>
+                    <td>
+                        <label><input type="radio" name="Financiers" data-id="1" checked="checked" />个人</label>&nbsp;
+                        <label onmouseup="P201.BtAction(this, 3);"><input type="radio" data-id="2" name="Financiers" />企业</label>
+                    </td>
+                    <td class="ItemTitle">债权区域</td>
+                    <td colspan="2">
+                        <div class="ItemTextInp" style="width: 43%; float: left;"><input type="text" readonly data-id="-1" style="text-align:center;" value="省份" onmouseup="P201.AreaSltShow(this)"><div class="SelectDIV" style="display:none;"><div class="SltItem" onmouseup="P201.AreaSltCK(this);" style="text-align:center;" data-id="-1">省份</div></div></div>
+                        <div class="ItemTextInp" style="width: 50%; float: left;"><input type="text" readonly data-id="-1" style="text-align:center;" value="市" onmouseup="P201.AreaSltShow(this)"><div class="SelectDIV" style="display:none;"><div class='SltItem' onmouseup='P201.AreaSltCK(this);' style='text-align:center;' data-id='-1'> 市</div></div></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">资金用途</td>
+                    <td class="ItemTextInp"><select><option value="-1"></option></select></td>
+                    <td class="ItemTitle">还款来源</td>
+                    <td class="ItemTextInp" colspan="2"><select><option value="-1"></option></select></td>
+                </tr>
+            </table>
+            <div style="position:absolute;bottom:5px;display:none;" class="memo"><ul><li>必须填写抵押物信息</li></ul></div>
+            <div style="float: right; margin-top:6px;margin-bottom:0px;" class="ABt" onmousedown="P201.BtAction(this,0);" onmouseup="P201.BtAction(this, 5)">发布</div>
+        </div>
+        <div class="ABtInTd" id="Item1AMask" style="position:relative;height:inherit;width:inherit;text-align:center;cursor:pointer;" onmouseup="P201.DispSwitch(this, true);">
+            <table width="100%" height="100%" style="padding:0px;" border="0">
+                <tr><td class="ItemTitle" data-emp>&nbsp;</td><td colspan="2" rowspan="4" style="font-size:60px;text-align:center;vertical-align:middle;padding-top:35px;">+</td><td class="ItemTitle" data-emp>&nbsp;</td></tr>
+                <tr><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemTitle" data-emp>&nbsp;</td></tr>
+                <tr><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemTitle" data-emp>&nbsp;</td></tr>
+                <tr><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemTitle" data-emp>&nbsp;</td></tr>
+                <tr><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemTitle" data-emp>&nbsp;</td></tr>
+            </table>
+            <div class="ProgressBarA" style="background-color:transparent;"></div>
+            <div class="ABt-Disabled" style="background-color:transparent;">&nbsp;</div>
+        </div>
+    </div>
+</body>
+</html>

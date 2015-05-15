@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="expires" content="0" />
+    <title></title>
+</head>
+<body>
+    <div style="float: left;" class="ItemSize GeneralItem">
+        <div class="UToolBCBG" style="font-weight: 700; ">购买意向</div>
+        <div id="Mod02App" style="height: 300px;">
+            <div class="MLayer" style="position:absolute;top:50px;bottom:50px;left:0px; right:0px;background-color: black;opacity:.00; filter: alpha(opacity=00);z-index:10;"></div>
+            <table style="padding: 0px; width:100%" border="0">
+                <!--Sever need give the value in TD zone witch TD has id value-->
+                <tr>
+                    <td class="ItemTitle">资产区域</td>
+                    <td class="ItemTextInp" data-ctem="0"><select><option value="-1"></option></select></td>
+                    <td class="ItemTitle">价格区间</td>
+                    <td style="width:37%; white-space: nowrap; -ms-word-break: keep-all;"> <label class="ItemTextInp" data-ctem="0" style="display: inline-block; width: 40%"><input type="text" onblur="IRC.IntervalNumber(this, this.value, P801.UIP.BayAmt);" onkeyup="FloatInp(this, 2); P801.UpDateHint(this, P801.UIP.BayAmt);" /></label>~<label class="ItemTextInp" data-ctem="0" style="display: inline-block; width: 40%"><input type="text" onkeyup="    FloatInp(this, 2);" onblur="    IRC.IntervalNumber(this, this.value, P801.UIP.InvestAmt);" /></label>万</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">资产类型</td>
+                    <td colspan="3" class="ItemTextInp" data-ctem="0"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="memo" style="position:absolute;left:0px; bottom:5px;">
+            <ul>
+                <li style="list-style-type:none;"></li>
+            </ul>
+        </div>
+        <div class="ButtonBar" style="position: absolute; bottom: 10px; right: 5px;">
+            <div class="CBt" onmousedown="P80104.Edit(this, 0)" onmouseup="P80104.Edit(this, 1)">修改</div>
+            <div class="CBt" style="display:none;" onmousedown="P80104.Save(this, 0)" onmouseup="P80104.Save(this, 2)">保存</div>
+        </div>
+    </div>
+</body>
+</html>

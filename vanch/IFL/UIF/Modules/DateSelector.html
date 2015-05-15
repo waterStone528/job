@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="DateSelector">
+        <div class="YearUp" style=" left: 2.5%;" onmousedown="CControl.YearSelector(true, 0);" onmouseup="    CControl.YearSelector(true, 1);">5</div>
+        <div class="YearSelector" style=" left: 2.5%;">
+            <div class="Year" style="top:0px;"></div>
+        </div>
+        <div class="YearDown" style=" left: 2.5%;" onmousedown="CControl.YearSelector(false, 0);" onmouseup="CControl.YearSelector(false, 1);">6</div>
+
+        <div class="MonthUp" style="left: 35%;" onmousedown="CControl.MonthSelector(true, 0);" onmouseup="CControl.MonthSelector(true, 1);">5</div>
+        <div class="MonthSelector" style=" left: 35%;">
+            <div class="Month" style="top:0px;"></div>
+        </div>
+        <div class="MonthDown" style=" left: 35%;" onmousedown="CControl.MonthSelector(false, 0);" onmouseup="CControl.MonthSelector(false,1);">6</div>
+
+        <div class="DayUp" style="left: 67.5%;" onmousedown="CControl.DaySelector(true, 0);" onmouseup="CControl.DaySelector(true, 1);">5</div>
+        <div class="DaySelector" style=" left: 67.5%;">
+            <div class="Day" style="top:0px;"></div>
+        </div>
+        <div class="DayDown" style=" left: 67.5%;" onmousedown="CControl.DaySelector(false, 0);" onmouseup="    CControl.DaySelector(false, 1);">6</div>
+    </div>
+</body>
+</html>
+

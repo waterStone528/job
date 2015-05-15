@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link href="ComStyle.css" rel="stylesheet" type="text/css" />
+    <title>VANCH凡奇金融</title>
+    <meta name="Keywords" content="凡奇,凡奇金融,投融资,投融资服务">
+    <script type="text/javascript" src="ComScript\CommCtrl.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <style type="text/css">
+        .Mainbox {
+            width: 100%;
+            min-width: 240px;
+            display: table;
+            _position: absolute;
+            height: 100%;
+        }
+
+        .main {
+            max-width: 980px;
+            line-height: 22px;
+            vertical-align: middle;
+            display: table-cell;
+            _position: absolute;
+            _top: 50%;
+            _left: 50%;
+            margin: 0;
+            padding: 0;
+            /*border: 1px solid #808080;*/
+        }
+
+        .portfoliocont {
+            text-align: center;
+        }
+
+            .portfoliocont i {
+                font-size: 60px;
+                display: block;
+                margin: 5px;
+            }
+
+
+            .portfoliocont span {
+                display: inline-block;
+                width: 135px;
+                height: 100px;
+                background: #c41010;
+                text-align: center;
+                color: white;
+                padding: 5px;
+                border: 3px solid black;
+                margin: 20px;
+                padding-top: 10px;
+                cursor: pointer;
+                overflow: hidden;
+            }
+
+                .portfoliocont span:hover {
+                    border: #FFF solid 3px;
+                    background-color: #d70909;
+                }
+
+                .portfoliocont span a {
+                    font-size: 18px;
+                }
+
+                .portfoliocont span p {
+                    line-height: 0.6;
+                }
+
+                .portfoliocont span:hover i {
+                    -webkit-animation: toTopFromBottom .3s forwards;
+                    -moz-animation: toTopFromBottom .3s forwards;
+                    animation: toTopFromBottom .3s forwards;
+                }
+
+        @-webkit-keyframes toTopFromBottom {
+            49% {
+                -webkit-transform: translateY(-100%);
+            }
+
+            50% {
+                opacity: .3;
+                -webkit-transform: translateY(40%);
+            }
+
+            51% {
+                opacity: 1;
+            }
+        }
+
+        @-moz-keyframes toTopFromBottom {
+            49% {
+                -moz-transform: translateY(-100%);
+            }
+
+            50% {
+                opacity: .3;
+                -moz-transform: translateY(80%);
+            }
+
+            51% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes toTopFromBottom {
+            49% {
+                transform: translateY(-200%);
+            }
+
+            50% {
+                opacity: .3;
+                transform: translateY(40%);
+            }
+
+            51% {
+                opacity: 1;
+            }
+        }
+
+        .vanchTitle {
+            text-align: center;
+        }
+
+            .vanchTitle h1 {
+                border-bottom: dashed;
+                border-bottom-color: #606060;
+                padding-bottom: 15px;
+                font-size: 55px;
+                color: white;
+                font-weight: normal;
+                line-height: 55px;
+                display: inline-block;
+                margin-bottom: 15px;
+            }
+
+            .vanchTitle h2 {
+                font-size: 22px;
+                color: #606060;
+                margin-bottom: 60px;
+                margin-top: 0px;
+                text-align: center;
+                font-weight: normal;
+            }
+    </style>
+
+</head>
+<body onresize="bodyresize()" onload="bodyLoad()">
+    <!--页面动态功能处理-->
+    <script type="text/javascript">
+        function bodyLoadScript() {
+            Portal.STR.EVINIT();
+            BottomBar.onmouseup();
+        }
+        function bodyResizeScript() {
+
+        }
+
+        var Portal = {
+            UIP: {},
+            STR: {
+                EVINIT: function () {
+                    //Portal.UID.INIT(false, "范特西");
+
+                    var busCode = "INIT";
+                    var data = "busCode=" + busCode;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.timeout = 0;
+                    ajaxObj.success = function (res) {
+                        var resObj = JSON.parse(res);
+
+                        if (resObj.isLogin == "false") {
+                            Portal.UID.INIT(false);
+                        }
+                        else {
+                            Portal.UID.INIT(true, resObj.userName, resObj.userSN);
+                        }
+                    }
+                    ajaxObj.start();
+                },
+                EVLoadSvr: function (FwdFunc) {
+                    //Portal.UID.LoadSvr(FwdFunc, false);
+
+                    var busCode = "LoadSvr";
+                    var data = "busCode=" + busCode + "&whichSvr=" + FwdFunc;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.timeout = 0;
+                    ajaxObj.success = function (res) {
+                        var resObj = JSON.parse(res);
+
+                        if (resObj.isLogin == "false") {
+                            Portal.UID.LoadSvr(FwdFunc, false);
+                        }
+                        else {
+                            if (resObj.isAvailable == "True") {
+                                Portal.UID.LoadSvr(FwdFunc, true);
+                            }
+                            else {
+                                Portal.UID.LoadSvr(0, true);
+                            }
+                        }
+                    }
+                    ajaxObj.start();
+                }
+            },
+            UID: {
+                INIT: function (IsLogin, UserName, UserSN) {
+                    if (IsLogin) {
+                        PublicSU.UID.LoginAction(UserName, UserSN);
+                        TopBarButtons.querySelectorAll(".TopBarButtonsText")[0].removeAttribute("style");
+                    } else {
+                        TopBarButtons.querySelectorAll(".TopBarButtonsText")[3].setAttribute("class", "TopBarButtonsText");
+                        TopBarButtons.querySelectorAll('.TopBarButtonsText>div')[5].innerText = '用户登录';
+                        if (location.search.indexOf("Login") > 0) { Login.LoginBoxCtl(1); LoadingBoxCtl(0); }
+                    }
+                },
+                LoadSvr: function (SvrItem, IsLogin) {
+                    if (!IsLogin) {
+                        Login.LoginBoxCtl(1); LoadingBoxCtl(0);
+                    } else {
+                        if (SvrItem > 0) { Location("P" + SvrItem); } else { Location("P802"); }; LoadingBoxCtl(0);
+                    }
+                }
+            }
+        }
+
+    </script> 
+    <!--主要显示区-->
+    <div id="TopBari">
+        <iframe style="height:0px;width:0px;visibility:collapse;" src="Modules\TopBar.html"></iframe>
+    </div>
+    <div id="MainZone">
+        <div id="MainSvrItem" class="Mainbox">
+            <div class="main">
+                <div style="padding-bottom:120px;">
+                    <div class="vanchTitle"><h1>VANCH INTERNET OF FINANCE</h1><h2>WWW.VANCH.COM</h2></div>
+                    <div class="portfoliocont">
+                        <span onmouseup="LoadingBoxCtl(1); Portal.STR.EVLoadSvr(1);"><i class="icon-uniE606"></i><a>债权投资</a></span>
+                        <span onmouseup="LoadingBoxCtl(1); Portal.STR.EVLoadSvr(2)"><i class="icon-uniE605"></i><a>债权融资</a></span>
+                        <span onmouseup="LoadingBoxCtl(1); Portal.STR.EVLoadSvr(5)"><i class="icon-uniE601"></i><a>财务顾问</a></span>
+                        <span onmouseup="LoadingBoxCtl(1); Portal.STR.EVLoadSvr(3)"><i class="icon-uniE602"></i><a>资产出售</a></span>
+                        <span onmouseup="LoadingBoxCtl(1); Portal.STR.EVLoadSvr(4)"><i class="icon-uniE600"></i><a>资产购买</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">MainZone.style.height = document.documentElement.clientHeight - TopBari.clientHeight - 23 + "px";//为免除网络延时导致的画面抖动</script>
+        <div id="ItemContainer" onload="MainZoneResize();"></div>
+    </div>
+
+    <div id="BottomBari">
+        <iframe style="height:0px;width:0px;visibility:collapse;" src="Modules\BottomBar.html" onload="MainZoneResize();"></iframe>
+    </div>
+    <div class="MaskLayer"></div>
+    <iframe style="height:0px;width:0px;visibility:collapse;" id="ItemSi" onload="ReCalcItemSize();"></iframe>
+    <!--异步数据加载区-->
+    <script type="text/javascript">
+        LoadTP("LoginBox"); LoadTP("LoadingBox"); LoadTP("UserRegBox"); LoadTP("TransingBox");
+        LoadJS("LoginBox"); LoadJS("UserRegBox"); LoadJS("InpRulesCk"); LoadJS("TransingBox"); </script>
+</body>
+</html>

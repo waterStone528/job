@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <style>
+        body {
+            background-color: #2b2b2b;
+            margin: 0;
+            padding: 0;
+            font-family: '微软雅黑', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            -webkit-user-drag: none;
+            -webkit-text-size-adjust: 100%;
+        }
+        .top {
+            background-color: #222226;
+            height: 38px;
+            width: 100%;
+            border-bottom: 2px solid black;
+            position: absolute;
+            _position: inherit;
+            _margin-bottom: 10%;
+        }
+        .left{float:left;}
+        .newMaskAll {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: 10020;
+            left: 0;
+            padding-bottom: -38px;
+            min-width: 960px;
+        }
+        .newMaskText {
+            top: 30%;
+            position: absolute;
+            _position: inherit;
+            width: 100%;
+            color: #fff;
+            font-size: 1.7em;
+            text-align: center;
+        }
+        .newMaskLogo {
+            background: #fff;
+            color: #000;
+            position: absolute;
+            _position: inherit;
+            width: 100%;
+            top: 41%;
+            text-align: center;
+            margin: 20px 0;
+            padding: 30px 0;
+            height: 97px;
+            min-width: 1000px;
+        }
+            .newMaskLogo a {
+                width: 230px;
+                height: 97px;
+                display: inline-block;
+                position: relative;
+                margin: 0 auto;
+            
+            }
+        .newMaskIE8{
+            background:url(Images/ie8logo.png) no-repeat; 
+        }
+        .newMaskIE9 {
+            background: url(Images/ie9logo.png) no-repeat;
+        }
+        .newMaskIE10{
+            background: url(Images/ie10logo.png) no-repeat;
+        }
+        .newMaskIE11 {
+            background: url(Images/ie11logo.png) no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+    <div class="left"><div class="left"><img src="Images/logoJ.png" width="339" height="38"></div></div>
+    </div>
+
+    <div class="newMaskAll">
+        <div class="newMaskText">请使用以下浏览器进行访问：</div>
+        <div class="newMaskLogo">
+            <a title="点击跳转到该浏览器下载页" class="newMaskIE8" href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie"></a>
+            <a  class="newMaskIE9" ></a>
+            <a  class="newMaskIE10" style="width:253px;"></a>
+            <a  class="newMaskIE11" style="width:220px;"></a>
+        </div>
+    </div>
+</body>
+</html>

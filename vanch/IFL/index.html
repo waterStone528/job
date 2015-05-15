@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        function AJAXC() {
+            this.xmlhttp = null;
+            this.url = "/FBF/Control.ashx";
+            this.data = null;
+            this.type = "post";
+            this.async = true;
+            this.onReadystate = function () {
+                if (this.xmlhttp.readyState == 4) {
+                    if (this.xmlhttp.status == 200) {
+                        //alert("suc");
+                    }
+                    else {
+                        //alert("error");
+                    }4414
+                }
+            };
+            this.start = function () {
+                this.xmlhttp = new XMLHttpRequest();
+                if (this.xmlhttp != null) {
+                    try {
+                        var loader = this;
+                        this.xmlhttp.onreadystatechange = function () {
+                            loader.onReadystate.call(loader);
+                        }
+                        this.xmlhttp.open(this.type, this.url, this.async);
+                        this.xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        this.xmlhttp.send(this.data);
+                    }
+                    catch (err) {
+                        //alert("error");
+                    }
+                }
+                else {
+                    //alert("请使用IE8及IE8以上版本浏览器");
+                    return;
+                }
+            };
+        }
+
+        var a = new AJAXC();
+        var busCode = "recordUserAgent";
+        a.data = "busCode=" + busCode + "&userAgent=" + navigator.userAgent;
+        a.start();
+
+        location.href = "uif/";
+    </script>
+</head>
+<body>
+
+</body>
+</html>

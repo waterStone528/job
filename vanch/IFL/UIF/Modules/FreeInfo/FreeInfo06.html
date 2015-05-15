@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="OpenInfoi">
+        <div class="FreeInfo">
+            <div class="ArticleContainer">
+                <h2>权威认证</h2>
+                <article>
+                    <h3>网站运营备案</h3>
+                    <p>
+                        我们己通过了浙江省相关政府审核，获得备案号<a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">浙ICP备13024458号</a>
+                    </p>
+                    <h3>工商监管</h3>
+                    <p>
+                        公司注册资本一千万元人民币，可在<a href="http://www.nbaic.gov.cn/col/col1061/index.html" target="_blank">工商局</a>查证
+                    </p>
+                    <h3>Symantec安全认证</h3>
+                    <p>
+                        网络数据传输使用了世界顶尖的<a href="http://www.symantec.com/index.jsp" target="_blank">symantec</a> 公司提供的加密技术，安全性保障更上一层楼
+                    </p>
+                    <h3>宁波市电子商务协会推荐单位</h3>
+                    <p>
+
+                    </p>
+                </article>
+                <h2 onmouseup="LoadMod('FreeInfo061')">安全保障</h2>
+                <article>
+                    <p>
+                        <img id="ImgFF06" src="Images/FreeInfo/FF06.png" data-size="int" class="ImgSmall" onmouseup="if (this.runtimeStyle.width.indexOf('px') > 0) { this.runtimeStyle.width = ''; }; if (this.className == 'ImgSmall') { this.className = 'ImgActure'; } else { this.className = 'ImgSmall'; }" />
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        parent.ItemContainer.innerHTML = OpenInfoi.innerHTML;
+        parent.ImgFF06.runtimeStyle.width = 'auto';
+        parent.ImgFF06.runtimeStyle.height = parent.document.documentElement.clientHeight - 170 + "px";
+        parent.ImgFF06.runtimeStyle.width = parent.ImgFF06.clientWidth + 'px';
+        parent.ImgFF06.runtimeStyle.height = '';
+        parent.LoadingBoxCtl(0);
+        parent.LastItem = 1;
+    </script>
+</body>
+</html>

@@ -1,0 +1,590 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>VANCH凡奇金融 - 财务管理</title>
+    <script type="text/javascript" src="ComScript\CommCtrl.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body onresize="bodyresize()" onload="bodyLoad()">
+    <!--页面动态功能处理-->
+    <script type="text/javascript">
+        function bodyLoadScript() {
+            if (location.search.indexOf("Sec=2") != -1) { ToolBar.querySelectorAll("div")[1].onmouseup(); } else { ToolBar.querySelectorAll("div")[0].onmouseup();  }
+        }
+
+        function bodyResizeScript() {
+        }
+        function LoadRemItems() {
+            RemItemsLoading = true;
+            LoadingBoxCtl(1);
+            switch (MToolBar.BtID) {
+                case 2:
+                    if (parseInt(Continue.innerText) == 1) {
+                        Continue.innerText = 0;
+                        P9.STR.EVP90203(P9.LoadItem.First, P9.LoadItem.From, P9.LoadItem.Num);
+                    }
+                    break;
+                case 3:
+                    if (parseInt(Continue.innerText) == 1) {
+                        Continue.innerText = 0;
+                        P9.STR.EVP90302(P9.LoadItem.First, P9.LoadItem.From, P9.LoadItem.Num);
+                    }
+                    break;
+            }
+            RemItemsLoading = false;
+        }
+
+        var P9 = {
+            FocusItem: Object,
+            LoadItem: { First: "", From: 0, Num: 40 },
+            OrderSN: "",
+            Del: function () {
+                if (ItemContainer.contains(this.FocusItem.parentNode)) { ItemContainer.removeChild(this.FocusItem.parentNode); };
+                ReCalcItemSize();
+            },
+            PaymentBack:function(){
+                var Payment = document.querySelectorAll('.TCK')[0];
+                if (Payment.style.display == 'block') {
+                    document.querySelector('.MaskLayer').style.display = 'none';
+                    Payment.setAttribute("style", "none");
+                } else {
+                    document.querySelector('.MaskLayer').style.display = 'block';
+                    Payment.setAttribute("style", "display:block");
+                }
+            },//付款结果反馈框
+            BtAction: function (BtObj, Act) {
+                switch (Act) {
+                    case 1:
+                        this.FocusItem = BtObj;
+                        BtStatusClass(BtObj, 1);
+                        if (this.InterCk()) {
+                            var DoCredit = 1;
+                            var Amt = ItemContainer.querySelector(".ItemTextInp>input").value;
+                            var CardType = this.lastcardobj.getAttribute("data-id");
+                            var BankID = this.lastobj.getAttribute("data-id");
+                            if (BankID == "-1") { DoCredit = 0; }
+                            P9.STR.EVP90102(Amt, CardType, DoCredit, BankID);
+                        }
+                        break;
+                    case 2:
+                        this.FocusItem = BtObj;
+                        BtStatusClass(BtObj, 1); LoadingBoxCtl(1);
+                        MovingBoxCTL.Prepare(BtObj.parentNode.querySelectorAll(".ItemText")[0].innerText + " - 付款", document.querySelector(".UPay"));
+                        MovingBoxi.querySelectorAll(".ItemText")[1].DspV = BtObj.parentNode.querySelectorAll(".ItemText")[7].innerText;
+                        this.STR.EVP90204();
+                        break;
+                    case 3:
+                        BtStatusClass(BtObj, 1); 
+                        if (MovingBoxi.querySelector(".TradePW").value != "") {
+                            BtObj.setAttribute("data-btst", "D"); TransingStatus.SetStatus(1);
+                            this.STR.EVP90202(this.FocusItem.parentNode.querySelectorAll(".ItemText")[0].innerText, MovingBoxi.querySelector(".TradePW").value);
+                        } else { IRC.ErrTip(MovingBoxi.querySelector(".TradePW"), "必填"); }
+                        break;
+                    default:
+                        BtStatusClass(BtObj, 2);
+                        break;
+                }
+            },
+            Pclose: function () {//关闭付款反馈弹出框
+                document.querySelectorAll('.TCK')[0].style.display = 'none';
+                document.querySelector('.MaskLayer').style.display = 'none';
+
+            },
+            count: function (obj) {//等级与计算赠送V币
+                ItemContainer.querySelectorAll(".tip>span>label")[1].DspV = P9.UIP.JLBL;//赠送V币比率
+                ItemContainer.querySelectorAll('.ItemText')[1].DspV = parseFloat(obj.value);
+                ItemContainer.querySelectorAll(".tip>span>label")[0].DspV = parseFloat(obj.value);
+                ItemContainer.querySelectorAll(".tip>span>label")[2].DspV = parseFloat(obj.value) * P9.UIP.JLBL;//计算后得出的V币数
+                //ItemContainer.querySelectorAll(".tipS>span>label")[1].innerText = P9.UIP.SXF;
+                //ItemContainer.querySelectorAll(".tipS>span>label")[0].DspV = parseFloat(obj.value);
+                //ItemContainer.querySelectorAll(".tipS>span>label")[2].DspV = parseFloat(obj.value) * P9.UIP.SXF;
+                FloatInp(obj, 2);
+            },
+            InterCk: function () {
+                ///<summary>提交前数字判断</summary>
+                var Pass = true;
+                if (ItemContainer.querySelectorAll(".CardAll[data-card='1']").length == 0) { ItemContainer.querySelectorAll(".Card>div")[2].style.display = ""; Pass = false; } else { ItemContainer.querySelectorAll(".Card>div")[2].style.display = "none"; }
+                if (ItemContainer.querySelectorAll("li[data-bank='1']").length == 0) { Pass = false; }
+                if (!IRC.IntervalNumber(ItemContainer.querySelectorAll(".ItemTextInp>input")[0], ItemContainer.querySelectorAll(".ItemTextInp>input")[0].value, this.UIP.MaxMin)) { Pass = false; };
+                return Pass;
+            },
+            Suc: function () {
+                LoadingBoxCtl(1);
+                this.STR.EVP901020101(ItemContainer.querySelector(".ItemTextInp>input").value, this.OrderSN);
+            },//付款成功
+            Konwclose: function () {
+                document.querySelectorAll('.TCK')[1].style.display = 'none';
+                document.querySelector('.MaskLayer').style.display = 'none';
+                ItemContainer.querySelector(".ItemTextInp>input").value = '';
+                ItemContainer.querySelectorAll(".tip>span>label")[0].DspV = 0;
+                ItemContainer.querySelectorAll(".tip>span>label")[2].DspV = 0;
+                ItemContainer.querySelectorAll('.ItemText')[1].DspV = 0;
+            },
+            Fai: function () {
+                this.STR.EVP901020101(2);
+            },//付款遇到问题
+            lastobj: null,
+            lastcardobj:null,
+            Bank:function(obj){
+                if (this.lastobj != null) { this.lastobj.setAttribute("data-bank", "0"); obj.className = this.lastobj.className; this.lastobj.className = this.lastobj.className; };
+                obj.setAttribute("data-bank", "1");
+                obj.className = obj.className;
+                document.querySelector('.CBt').style.display = 'block';
+                this.lastobj = obj;
+            },//选择付款银行
+            Card: function (obj) {
+                if (this.lastcardobj != null) { this.lastcardobj.setAttribute("data-card", "0"); obj.className = this.lastcardobj.className; this.lastcardobj.className = this.lastcardobj.className; };
+                obj.setAttribute("data-card", "1");
+                obj.className = obj.className; 
+                this.lastcardobj = obj;
+            },//选择银行卡类型
+            UIP: {
+                MaxMin: { Min: 1, Max: 999999, },
+                JLBL: 0.02,//V币奖励比率
+                VIP: 2,//VIP等级
+            },
+            STR: {
+                EVP90101: function () {
+                    ///<summary>账户信息</summary>
+                    //P9.UID.P90101(15000, "刘德华");
+
+                    var busCode = "P90101";
+                    var data = "busCode=" + busCode;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        //基本检查（如是否登录）
+                        if (BasicCheck(res) == false) {
+                            return;
+                        }
+
+                        var resObj = JSON.parse(res);
+
+                        P9.UIP.JLBL = resObj.vipRate == null ? "" : resObj.vipRate;
+                        P9.UIP.VIP = resObj.vipLevel == null ? "" : resObj.vipLevel;
+
+                        P9.UID.P90101(resObj.balance, resObj.name.trim(), resObj.userSN);
+                    }
+                    ajaxObj.start();
+                },
+                EVP90102: function (Amt, CardType, DoCredit, BankID) {
+                    ///<summary>账户充值</summary>                 
+
+                    window.open("http://www.vanch.co/PAY/ToPay.aspx?t=" + Math.random() + "&Amount=" + Amt + "&DoCredit=" + DoCredit + "&Gateway_Type=" + CardType + "&Bankco=" + BankID);
+                    //window.open("http://www.vanch.cd/PAY/ToPay.aspx?t=" + Math.random() + "&Amount=" + Amt + "&DoCredit=" + DoCredit + "&Gateway_Type=" + CardType + "&Bankco=" + BankID);
+                    P9.PaymentBack();
+                },
+                EVP901020101: function (AMT, OrderSN) {
+                    ///<summary>充值反馈</summary>
+                    /// <param name="ST">付款成功与否</param><param name="AMT">购买输入的值</param>
+                    //setTimeout("P9.UID.P901020101(1)", 1000);
+
+                    var busCode = "P901020101";
+                    var data = "busCode=" + busCode + "&billNo=" + OrderSN;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        P9.UID.P901020101(res);
+                    }
+                    ajaxObj.start();
+                    //付款成功与付款遇到问题
+                },
+                EVP90201: function (Num) {
+                    ///<summary>账单信息</summary><param name="Num">信息数量</param>
+                    //var Payable = JSON.stringify([
+                    //{ No: "ZD20140321", AOTime: "2014/03/14", AType: "资产出售", BNo: "ZC0234031", APrice: 899, PayableTime: "2014/04/14", LageFee: 100, PayablePrice: 999 },
+                    //{ No: "ZD20142331", AOTime: "2014/03/14", AType: "债权融资", BNo: "ZC0234431", APrice: 1232, PayableTime: "2014/05/14", LageFee: 0, PayablePrice: 1232 },
+                    //{ No: "ZD20141231", AOTime: "2014/03/14", AType: "资产出售", BNo: "ZC7657631", APrice: 43221, PayableTime: "2014/04/02", LageFee: 100, PayablePrice: 43321 },
+                    //{ No: "ZD20435551", AOTime: "2014/03/14", AType: "债权融资", BNo: "ZC0678831", APrice: 2032, PayableTime: "2014/04/24", LageFee: 100, PayablePrice: 2132 },
+                    //{ No: "ZD20444541", AOTime: "2014/03/14", AType: "债权融资", BNo: "ZC0345631", APrice: 65143, PayableTime: "2014/02/14", LageFee: 300, PayablePrice: 65443 },
+                    //{ No: "ZD20163541", AOTime: "2014/03/14", AType: "资产出售", BNo: "ZC0067451", APrice: 34443, PayableTime: "2014/07/14", LageFee: 100, PayablePrice: 34543 },
+                    //{ No: "ZD20146341", AOTime: "2014/03/14", AType: "债权融资", BNo: "ZC0045341", APrice: 23253, PayableTime: "2014/05/14", LageFee: 100, PayablePrice: 23353 },
+                    //{ No: "ZD20146341", AOTime: "2014/03/14", AType: "债权融资", BNo: "ZC0045341", APrice: 23253, PayableTime: "2014/05/14", LageFee: 100, PayablePrice: 23353 },
+                    //{ No: "ZD20146341", AOTime: "2014/03/14", AType: "债权融资", BNo: "ZC0045341", APrice: 23253, PayableTime: "2014/05/14", LageFee: 100, PayablePrice: 23353 }]);
+                    //setTimeout("P9.UID.P90201('ZD20140321')", 1000);
+                    //setTimeout("P9.UID.P90203('" + Payable + "')", 1000);
+
+                    var busCode = "P90201";
+                    var data = "busCode=" + busCode + "&pageSize=" + Num;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        //基本检查（如是否登录）
+                        if (BasicCheck(res) == false) {
+                            return;
+                        }
+
+                        var resObj = JSON.parse(res);
+                        var userName = resObj.userName;
+                        var maxDatetime = resObj.maxDatetime;
+                        var dataListBd = resObj.dataList;
+
+                        P9.UID.P90201(maxDatetime, userName.trim(), resObj.userSN);
+
+                        var dataListFt = [];
+                        for (var i in dataListBd) {
+                            var dataFt = P9.STR.BillDataBdToFt(dataListBd[i]);
+                            dataListFt.push(dataFt);
+                        }
+
+                        P9.UID.P90203(JSON.stringify(dataListFt));
+                    }
+                    ajaxObj.start();
+                },
+                EVP90202: function (No, TradePW) {
+                    ///<summary>账单付款</summary>
+                    //setTimeout("P9.UID.P90202(true)", 1000)
+
+                    var busCode = "P90202";
+                    var data = "busCode=" + busCode + "&billSN=" + No + "&pwd=" + TradePW;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        if (res == "true") {
+                            P9.UID.P90202(true);
+                        }
+                        else {
+                            P9.UID.P90202(false);
+                        }
+                    }
+                    ajaxObj.error = function () {
+                        P9.UID.P90202(false);
+                    }
+                    ajaxObj.start();
+                },
+                EVP90203: function (First, From, Num) {
+                    ///<summary>加载更多信息</summary><param name="First">第一条信息的编号</param><param name="From">开始位置</param><param name="Num">信息数量</param>
+                    //var Payable = JSON.stringify([
+                    //{ No: "ZD20140321", AOTime: "2014/03/14", AType: "资产出售", BNo: "ZC0234031", APrice: 899, PayableTime: "2014/04/14", LageFee: 100, PayablePrice: 999 },
+                    //{ No: "ZD20142331", AOTime: "2014/03/14", AType: "债权融资", BNo: "ZC0234431", APrice: 1232, PayableTime: "2014/05/14", LageFee: 0, PayablePrice: 1232 },
+                    //{ No: "ZD20141231", AOTime: "2014/03/14", AType: "资产出售", BNo: "ZC7657631", APrice: 43221, PayableTime: "2014/04/02", LageFee: 100, PayablePrice: 43321 },
+                    //{ No: "ZD20435551", AOTime: "2014/03/14", AType: "债权融资", BNo: "ZC0678831", APrice: 2032, PayableTime: "2014/04/24", LageFee: 100, PayablePrice: 2132 },
+                    //{ No: "ZD20444541", AOTime: "2014/03/14", AType: "债权融资", BNo: "ZC0345631", APrice: 65143, PayableTime: "2014/02/14", LageFee: 300, PayablePrice: 65443 },
+                    //{ No: "ZD20163541", AOTime: "2014/03/14", AType: "资产出售", BNo: "ZC0067451", APrice: 34443, PayableTime: "2014/07/14", LageFee: 100, PayablePrice: 34543 },
+                    //{ No: "ZD20146341", AOTime: "2014/03/14", AType: "债权融资", BNo: "ZC0045341", APrice: 23253, PayableTime: "2014/05/14", LageFee: 100, PayablePrice: 23353 },
+                    //{ No: "ZD20146341", AOTime: "2014/03/14", AType: "债权融资", BNo: "ZC0045341", APrice: 23253, PayableTime: "2014/05/14", LageFee: 100, PayablePrice: 23353 },
+                    //{ No: "ZD20146341", AOTime: "2014/03/14", AType: "债权融资", BNo: "ZC0045341", APrice: 23253, PayableTime: "2014/05/14", LageFee: 100, PayablePrice: 23353 }]);
+                    //setTimeout("P9.UID.P90203('" + Payable + "')", 1000);
+
+                    var busCode = "P90203";
+                    var data = "busCode=" + busCode + "&maxDatetime=" + First + "&pageFrom=" + From + "&pageSize=" + Num;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        var dataListBd = JSON.parse(res);
+
+                        var dataListFt = [];
+                        for (var i in dataListBd) {
+                            var dataFt = P9.STR.BillDataBdToFt(dataListBd[i]);
+                            dataListFt.push(dataFt);
+                        }
+
+                        P9.UID.P90203(JSON.stringify(dataListFt));
+                    }
+                    ajaxObj.start();
+                },
+                EVP90204: function () {
+                    ///<summary>账单付款移出框</summary>
+                    //P9.UID.P90204(15000);
+
+                    var busCode = "P90204";
+                    var data = "busCode=" + busCode;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        P9.UID.P90204(res);
+                    }
+                    ajaxObj.start();
+                },
+
+                EVP90301: function (Num) {
+                    ///<summary>明细查询页面初始化</summary><param name="Num">信息数量</param>
+                    //var Details = JSON.stringify([
+                    //{ No: "MX201423431", AOTime: "2014/05/09", AType: "账户充值", InPrice: 10000, OutPrice: 0, Balance: 10000 },
+                    //{ No: "MX202344331", AOTime: "2014/05/14", AType: "债权融资", InPrice: 0, OutPrice: 5000, Balance: 5000 },
+                    //{ No: "MX201456541", AOTime: "2014/05/25", AType: "资产出售", InPrice: 0, OutPrice: 2000, Balance: 3000 },
+                    //{ No: "MX206788801", AOTime: "2014/06/03", AType: "账户充值", InPrice: 20000, OutPrice: 0, Balance: 23000 },
+                    //{ No: "MX201789061", AOTime: "2014/06/10", AType: "债权融资", InPrice: 0, OutPrice: 3000, Balance: 20000 },
+                    //{ No: "MX201465741", AOTime: "2014/06/14", AType: "债权融资", InPrice: 0, OutPrice: 1500, Balance: 18500 },
+                    //{ No: "MX206575641", AOTime: "2014/06/19", AType: "债权融资", InPrice: 0, OutPrice: 3500, Balance: 15000 },
+                    //{ No: "MX201876841", AOTime: "2014/06/24", AType: "资产出售", InPrice: 0, OutPrice: 3000, Balance: 12000 },
+                    //{ No: "MX201876841", AOTime: "2014/06/24", AType: "资产出售", InPrice: 0, OutPrice: 3000, Balance: 12000 },
+                    //{ No: "MX201876841", AOTime: "2014/06/24", AType: "资产出售", InPrice: 0, OutPrice: 3000, Balance: 12000 },
+                    //{ No: "MX201876841", AOTime: "2014/06/24", AType: "资产出售", InPrice: 0, OutPrice: 3000, Balance: 12000 },
+                    //{ No: "MX201876841", AOTime: "2014/06/24", AType: "资产出售", InPrice: 0, OutPrice: 3000, Balance: 12000 },
+                    //{ No: "MX201876841", AOTime: "2014/06/24", AType: "资产出售", InPrice: 0, OutPrice: 3000, Balance: 12000 },
+                    //{ No: "MX201876841", AOTime: "2014/06/24", AType: "资产出售", InPrice: 0, OutPrice: 3000, Balance: 12000 },
+                    //{ No: "MX201876841", AOTime: "2014/06/24", AType: "资产出售", InPrice: 0, OutPrice: 3000, Balance: 12000 },
+                    //{ No: "MX201876841", AOTime: "2014/06/24", AType: "资产出售", InPrice: 0, OutPrice: 3000, Balance: 12000 },
+                    //{ No: "MX204563451", AOTime: "2014/06/28", AType: "债权融资", InPrice: 0, OutPrice: 2000, Balance: 10000 }]);
+                    //setTimeout("P9.UID.P90301('MX201423431')", 1000);
+                    //setTimeout("P9.UID.P90302('" + Details + "')", 1000);
+
+                    var busCode = "P90301";
+                    var data = "busCode=" + busCode + "&pageSize=" + Num;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        var resObj = JSON.parse(res);
+                        var maxDatetime = resObj.maxDatetime;
+                        var dataListBd = resObj.dataList;
+
+                        P9.UID.P90301(maxDatetime);
+
+                        var dataListFt = [];
+                        for (var i in dataListBd) {
+                            var dataFt = P9.STR.HistoryDataBdToFt(dataListBd[i]);
+                            dataListFt.push(dataFt);
+                        }
+
+                        P9.UID.P90302(JSON.stringify(dataListFt));
+                    }
+                    ajaxObj.start();
+                },
+                EVP90302: function (First, From, Num) {
+                    ///<summary>加载更多信息</summary><param name="First">第一条信息的编号</param><param name="From">开始位置</param><param name="Num">信息数量</param>
+                    //var Details = JSON.stringify([
+                    //    { No: "MX201423431", AOTime: "2014/05/09", AType: "账户充值", InPrice: 10000, OutPrice: 0, Balance: 10000 },
+                    //    { No: "MX202344331", AOTime: "2014/05/14", AType: "债权融资", InPrice: 0, OutPrice: 5000, Balance: 5000 },
+                    //    { No: "MX201456541", AOTime: "2014/05/25", AType: "资产出售", InPrice: 0, OutPrice: 2000, Balance: 3000 },
+                    //    { No: "MX206788801", AOTime: "2014/06/03", AType: "账户充值", InPrice: 20000, OutPrice: 0, Balance: 23000 },
+                    //    { No: "MX201789061", AOTime: "2014/06/10", AType: "债权融资", InPrice: 0, OutPrice: 3000, Balance: 20000 },
+                    //    { No: "MX201465741", AOTime: "2014/06/14", AType: "债权融资", InPrice: 0, OutPrice: 1500, Balance: 18500 },
+                    //    { No: "MX206575641", AOTime: "2014/06/19", AType: "债权融资", InPrice: 0, OutPrice: 3500, Balance: 15000 },
+                    //    { No: "MX201876841", AOTime: "2014/06/24", AType: "资产出售", InPrice: 0, OutPrice: 3000, Balance: 12000 },
+                    //    { No: "MX204563451", AOTime: "2014/06/28", AType: "债权融资", InPrice: 0, OutPrice: 2000, Balance: 10000 }]);
+                    //    setTimeout("P9.UID.P90301('MX201423431')", 1000);
+                    //    setTimeout("P9.UID.P90302('" + Details + "')", 1000);
+
+                    var busCode = "P90302";
+                    var data = "busCode=" + busCode + "&maxDatetime=" + First + "&pageFrom=" + From + "&pageSize=" + Num;
+                    var ajaxObj = new AJAXC();
+                    ajaxObj.data = data;
+                    ajaxObj.success = function (res) {
+                        var dataListBd = JSON.parse(res);
+
+                        var dataListFt = [];
+                        for (var i in dataListBd) {
+                            var dataFt = P9.STR.HistoryDataBdToFt(dataListBd[i]);
+                            dataListFt.push(dataFt);
+                        }
+
+                        P9.UID.P90302(JSON.stringify(dataListFt));
+                    }
+                    ajaxObj.start();
+                },
+
+                //后-前，历史明细
+                HistoryDataBdToFt: function (dataBd) {
+                    var dataFt = {};
+
+                    dataFt.No = dataBd.revenueExpenditureSN;
+                    dataFt.AOTime = BdDateStrFormate(dataBd.generateDate);
+                    dataFt.AType = dataBd.type == null ? "" : dataBd.type.trim();
+                    dataFt.InPrice = dataBd.revenue == null ? 0 : dataBd.revenue;
+                    dataFt.OutPrice = dataBd.expenditure == null ? 0 : dataBd.expenditure;
+                    dataFt.Balance = dataBd.balance;
+
+                    return dataFt;
+                },
+
+                //后-前，账单信息
+                BillDataBdToFt: function (dataBd) {
+                    var dataFt = {};
+
+                    dataFt.No = dataBd.billSN;
+                    dataFt.AOTime = BdDateStrFormate(dataBd.generateDate);
+                    dataFt.AType = dataBd.billType == null ? "" : dataBd.billType.trim();
+                    dataFt.BNo = dataBd.businessSN == null ? "" : dataBd.businessSN.trim();
+                    dataFt.APrice = dataBd.MoneyAmount;
+                    dataFt.PayableTime = BdDateStrFormate(dataBd.needPayDate);
+                    dataFt.LageFee = dataBd.lateFee;
+                    dataFt.PayablePrice = dataBd.MoneyAmount + dataBd.lateFee;
+
+                    return dataFt;
+                }
+                },
+            UID: {
+                P90101: function (MyVB, UserName, UserSN) {
+                    ///<summary>账户信息</summary><param name="MyVB">账户余额</param><param name="UserName">用户姓名</param><param name="UserSN">用户编号</param>
+                    if (MToolBar.BtID != 1) { return; }
+                    PublicSU.UID.LoginAction(UserName, UserSN);
+                    var NewItemTemplate = P901i.children[0].cloneNode(true);
+                    NewItemTemplate.querySelectorAll(".ItemText")[0].DspV = MyVB;
+                    ItemContainer.appendChild(NewItemTemplate);
+                    IRC.Init(NewItemTemplate.querySelector(".ItemTextInp>input"), P9.UIP.MaxMin, "1~999999");
+                    LoadingBoxCtl(0); return;
+                },
+                P90102: function (Amt, CardType, DoCredit, BankID) {
+                    ///<summary>账户充值</summary><param name="Amt">购买输入的值</param><param name="DoCredit">银行直连方式</param>
+                    ///<param name="CardType">银行卡类型</param><param name="BankID">银行代码</param>
+                    this.IPSWIN = window.open("http://www.vanch.co/PAY/ToPay.aspx?t=" + Math.random() + "&Amount=" + Amt + "&DoCredit=" + DoCredit + "&Gateway_Type=" + CardType + "&Bankco=" + BankID, 'IPSWIN', 'menubar=no,toolbar=no,location=no,directories=no,scrollbars=yes,status=yes,resizable=yes');
+                    P9.PaymentBack();
+                },
+                P9010201: function (JLBL, VIP, SXF) {
+                    ///<summary>提交付款反馈</summary><param name="VIP">等级</param><param name="JLBL">奖励比率</param><param name="SXF">手续费比率</param>
+                    var SR = ItemContainer.querySelector(".ItemTextInp>input").value;//购买-输入框的值
+                    if (SR == "") { SR = 0; }//判断输入为空
+                    ItemContainer.querySelectorAll(".tip>label")[0].DspV = P9.UIP.VIP;//VIP等级
+                    ItemContainer.querySelectorAll(".tip>span>label")[0].DspV = SR;//赠送文字里和输入框里的值相同
+                    ItemContainer.querySelectorAll(".tip>span>label")[1].DspV = P9.UIP.JLBL;//奖励比率
+                    ItemContainer.querySelectorAll(".tip>span>label")[2].DspV = SR * P9.UIP.JLBL;//赠送的V币数
+                    ItemContainer.querySelector(".tip").style.display = "";
+                    //ItemContainer.querySelector(".tipS").style.display = "";
+                    //ItemContainer.querySelectorAll(".tipS>span>label")[1].DspV = P9.UIP.SXF//手续费比率
+
+                },
+                P901020101: function (Suc) {
+                    ///<summary>提交付款反馈</summary>
+                    ///<param name="Suc">付款状态;1:付款成功;2:付款遇到问题;</param>
+                    LoadingBoxCtl(0);//loading图标隐藏
+                    if (Suc == 1) {
+                        document.querySelectorAll('.TCK')[0].style.display = 'none';
+                        document.querySelectorAll('.TCK')[1].style.display = 'block';
+                        document.querySelector('.MaskLayer').style.display = 'block';
+                        //document.querySelectorAll('.Ctext>label')[1].innerText = ItemContainer.querySelector(".ItemTextInp>input").value
+                        var Amt = ItemContainer.querySelector(".ItemTextInp>input").value;
+                        document.querySelectorAll('.Ctext>label')[1].DspV = parseFloat(Amt) //输入值加上手续费得出付款值
+                        ItemContainer.querySelectorAll(".ItemText")[0].DspV = parseFloat(Amt) + parseFloat(ItemContainer.querySelectorAll(".ItemText")[0].DspV); //输入值加上手续费得出付款值
+                    }
+                },
+                P90201: function (First, UserName, UserSN) {
+                    ///<summary>页面初始化</summary></param name="First">第一条信息的编号</param></param name="UserName">用户姓名</param><param name="UserSN">用户编号</param>
+                    P9.LoadItem.First = First;
+                    PublicSU.UID.LoginAction(UserName, UserSN);
+                },
+                P90202: function (Res) {
+                    ///<summary>应付账单提交付款后返回的结果</summary>
+                    if (Res == 1) { P9.Del(); MovingBoxCTL.Close(); TransingStatus.SetStatus(3); }
+                    if (Res == 0) { TransingStatus.SetStatus(2); }
+                    if (Res == 2) { TransingStatus.SetStatus(2,"余额不足"); }
+                    P9.FocusItem.setAttribute("data-btst", "E");
+                },
+                P90203: function (PayableList) {
+                    ///<summary>账单管理</summary>
+                    if (MToolBar.BtID != 2) { return; }
+                    if (PayableList == "[]") { Continue.innerText = 1; LoadingBoxCtl(0); LastItem = 1; return; }
+                    var PayableInfo = JSON.parse(PayableList); P9.LoadItem.From += PayableInfo.length;
+                    for (var i in PayableInfo) {
+                        var NewItemTemplate = P902i.children[0].cloneNode(true);
+                        NewItemTemplate.querySelectorAll(".ItemText")[0].DspV = PayableInfo[i].No;
+                        NewItemTemplate.querySelectorAll(".ItemText")[1].DspV = PayableInfo[i].BNo;
+                        NewItemTemplate.querySelectorAll(".ItemText")[2].DspV = PayableInfo[i].AType;
+                        NewItemTemplate.querySelectorAll(".ItemText")[3].querySelectorAll("label")[0].DspV = PayableInfo[i].APrice;
+                        NewItemTemplate.querySelectorAll(".ItemText")[4].DspV = PayableInfo[i].AOTime;
+                        NewItemTemplate.querySelectorAll(".ItemText")[5].querySelectorAll("label")[0].DspV = PayableInfo[i].LageFee;
+                        NewItemTemplate.querySelectorAll(".ItemText")[6].DspV = PayableInfo[i].PayableTime;
+                        NewItemTemplate.querySelectorAll(".ItemText")[7].querySelectorAll("label")[0].DspV = PayableInfo[i].PayablePrice;
+                        ItemContainer.appendChild(NewItemTemplate);
+                    }
+                    Continue.innerText = 1; LoadingBoxCtl(0); ReCalcItemSize();
+                },
+                P90204: function (MyVB) {
+                    ///<summary>账单付款移出框</summary></param name="MyVB">账户余额</param>
+                    MovingBoxi.querySelectorAll(".ItemText")[0].DspV = MyVB;
+                    MovingBoxCTL.Open(); LoadingBoxCtl(0);
+                },
+                P90301: function (First) {
+                    ///<summary>明细查询页面初始化</summary><param name="First">第一条信息的编号</param>
+                    P9.LoadItem.First = First;
+                },
+                P90302: function (Details) {
+                    ///<summary>明细查询</summary>
+                    if (MToolBar.BtID != 3) { return; }
+                    if (Details == "[]") { Continue.innerText = 1; LoadingBoxCtl(0); LastItem = 1; return; }
+                    var DetailsInfo = JSON.parse(Details); P9.LoadItem.From += DetailsInfo.length;
+                    for (var i in DetailsInfo) {
+                        var NewRow = P903i.querySelector(".Template").cloneNode(true);
+                        NewRow.removeAttribute("class");
+                        NewRow.removeAttribute("style");
+                        var NewRowTd = NewRow.querySelectorAll("td");
+                        NewRowTd[0].DspV = DetailsInfo[i].No;
+                        NewRowTd[1].DspV = DetailsInfo[i].AOTime;
+                        NewRowTd[2].DspV = DetailsInfo[i].AType;
+                        NewRowTd[3].DspV = DetailsInfo[i].InPrice;
+                        NewRowTd[4].DspV = DetailsInfo[i].OutPrice;
+                        NewRowTd[5].DspV = DetailsInfo[i].Balance;
+                        ItemContainer.querySelector(".TbList>tbody").appendChild(NewRow);
+                    }
+                    Continue.innerText = 1; LoadingBoxCtl(0);
+                },
+            },
+        }
+        var MToolBar = {
+            LastObj: null,
+            BtID: 1,
+            BtAction: function (obj, act, BtID) {//1:down,2:up
+                if (BtStatusClass(obj, 0) == 4) { return; }
+                if (act == 1) { BtStatusClass(obj, 2); return; }
+                if (this.LastObj != null) { BtStatusClass(this.LastObj, 1); }
+                if (act == 2) { BtStatusClass(obj, 4); }
+                this.LastObj = obj; this.BtID = BtID;
+                switch (BtID) {
+                    case 1: LoadingBoxCtl(1); LastItem = 1; ItemContainer.innerHTML = ""; P9.STR.EVP90101(); break;
+                    case 2: P9.LoadItem.First = ""; P9.LoadItem.From = 0; LoadingBoxCtl(1); LastItem = 0; ItemContainer.innerHTML = ""; P9.STR.EVP90201(P9.LoadItem.Num); ReCalcItemSize(); break;
+                    case 3: P9.LoadItem.First = ""; P9.LoadItem.From = 0; LoadingBoxCtl(1); LastItem = 0; ItemContainer.innerHTML = ""; var NewItemTemplate = P903i.children[0].cloneNode(true); ItemContainer.appendChild(NewItemTemplate); P9.STR.EVP90301(P9.LoadItem.Num); break;
+                    default: break;
+                }
+            }
+        };
+    </script>
+    <!--主要显示区-->
+    <div id="TopBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules\TopBar.html"></iframe></div>
+    <div id="MainZone" onscroll="ScrollTracker(this)">
+        <div class="LocationBar"><label>你的位置</label><a style="cursor:pointer" onclick="javascript: LoadingBoxCtl(1); Location('P802')">用户中心</a>&nbsp;-&nbsp;财务管理</div>
+        <div id="ToolBar" class="UToolBCBG">
+            <div class="UToolBCBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 1)">账户充值</div>
+            <div class="UToolBCBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 2)">账单信息</div>
+            <div class="UToolBCBt" onmousedown="MToolBar.BtAction(this, 1)" onmouseup="MToolBar.BtAction(this, 2, 3)">历史明细</div>
+        </div>
+        <div id="ItemContainer"></div>
+        <iframe style="height:0px;width:0px;visibility:collapse;" id="ItemSi" onload="ReCalcItemSize();"></iframe>
+    </div>
+    <div id="BottomBari"><iframe style="height:0px;width:0px;visibility:collapse;" src="Modules/BottomBar.html"></iframe></div>
+    <div class="MaskLayer" onmouseup="MovingBoxCTL.Close();"></div>
+    <div class="TCK" style="display:none;">
+        <!--付款反馈-->
+        <div class="paymentBox">
+            <div class="cross" onmouseup="P9.Pclose()"><i class="icon-cross"></i></div>
+            <div class="INbox">
+                <div class="text">
+                    <div class="upLeft"><i class="icon-ex" style="color: #f9c700; font-size: 60px; display:block; margin-bottom:10px;"></i></div>
+                    <div class="upRight">请您在新打开的网上银行页面进行支付，<br />支付完成前请不要关闭该窗口。</div>
+                </div>
+                <div class="Btnb">
+                    <div class="btn" style="margin-right:20px;" onmouseup="P9.Pclose(),P9.Suc()">付款成功</div>
+                    <div class="btn" onmouseup="P9.Pclose()">付款遇到问题</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="TCK" style="display:none;">
+        <!--付款成功-->
+        <div class="paymentBox">
+            <div class="INboxT KnowINbox">
+                <div class="text">
+                    <div class="upLeft"><i class="icon-CG" style="color: #f9c700; font-size: 45px; display:block; margin-bottom:10px;"></i></div>
+                    <div class="upRight Ctext"><label>操作成功！充值金额：</label><i class="icon-cny" style="position: absolute; top: 7px; color: #e71f19;"></i><label style="color: #e71f19; padding-left:10px;">N2D0</label></div>
+                </div>
+                <div class="Btnb" style="float:right;">
+                    <div class="Knowbtn" onmouseup="P9.Konwclose()">我知道了</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Continue">1</div><!--server need return a value 1 to continue load,0 means this is last one and to stop-->
+    <!--异步数据加载区-->
+    <script type="text/javascript"> 
+        LoadTP("P901", "", "P9"); LoadTP("P902", "", "P9");
+        LoadTP("P903", "", "P9"); LoadTP("UPay", "", "P9");
+        LoadTP("MovingBox", "MovingBoxi.style.display = '';"); LoadJS("MovingBox");
+        LoadTP("LoadingBox"); LoadTP("TransingBox");
+        LoadJS("InpRulesCk"); LoadJS("TransingBox");
+        LoadTP("logout");
+    </script>
+
+</body>
+</html>

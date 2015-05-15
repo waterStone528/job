@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+
+    <title></title>
+</head>
+<body>
+    <style type="text/css">
+    </style>
+    <div class="ListContainer" onscroll="ScrollTracker(this, 'M0601.LoadMoreInfo()')">
+        <table class="TbList">
+            <thead>
+                <tr>
+                    <td data-btid="1" data-ft="0" onmouseup="M0601.HButton(this)"> <label class="title">用户编号</label><input type="text" /><label class="FindIcon">L</label> </td>
+                    <td>登陆帐号</td>
+                    <td>真实姓名</td>
+                    <td>VIP等级</td>
+                    <td>充值总额</td>
+                    <td data-btid="2" data-ft="2" onmouseup="M0601.HButton(this)">消费总额<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    <td data-btid="3" data-ft="2" onmouseup="M0601.HButton(this)">帐户余额<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    <td data-btid="4" data-ft="2" onmouseup="M0601.HButton(this)">应收帐单<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    <td data-btid="5" data-ft="2" onmouseup="M0601.HButton(this)">应收金额<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    <td data-btid="6" data-ft="2" onmouseup="M0601.HButton(this)">逾期金额<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tbody>
+                <tr class="Template"><td data-btid="0"></td><td></td><td></td><td></td><td></td><td></td><td></td><td data-slt="0" data-btid="1" onmouseup="M0601.Button(this);"></td><td></td><td></td></tr>
+            </tbody>
+            <tfoot>
+                <tr class="RemData" data-dsp="0"><td colspan="10"><label class="PMPText">滚动条下拉 或触摸上拖 可显示更多数据</label></td></tr>
+                <tr class="Summary"><td>合计</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>N0D0</td><td>N0D0</td><td>N0D0</td><td>N0D0</td><td>N0D0</td><td>N0D0</td></tr>
+            </tfoot>
+        </table>
+        <div id="Continue" class="Hidden">1</div>
+    </div>
+    <div class="Template TP1">
+        <!--时间大的在上方,以下模板均是-->
+        <div class="FBoxContainer">
+            <div class="Template">
+                <div class="InforBox">
+                    <table>
+                        <tbody>
+                            <tr><td>账单编号</td><td>X</td><td>业务编号</td><td>X</td></tr>
+                            <tr><td>账单类型</td><td>X</td><td>账单金额</td><td>N2D0</td></tr>
+                            <tr><td>出账时间</td><td>DYYYY/MM/DD</td><td>滞纳金</td><td>N2D0</td></tr>
+                            <tr><td>应付时间</td><td>DYYYY/MM/DD</td><td>应付金额</td><td>N2D0</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

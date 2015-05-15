@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .Progress {
+            width: 110px;
+            display: inline-block;
+            position: relative;
+            border-bottom: 10px solid red;
+            margin-left: 15px;
+            margin-right: 15px;
+            height: 7px;
+        }
+        .Pointer {
+            position: relative;
+            font-family: Webdings;
+            margin-top: 5px;
+            margin-left: -8px;
+            width: 15px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="InputControl" onmouseup="InputNum.MoveFlag = false;">
+        <input type="text" class="SalePrice" onkeydown="InputNum.InvsetStep();" onkeyup="InputNum.InvsetStep();" />
+        <span class="NumberMin" onmousedown="InputNum.NumberAdj(false, 0)" onmouseup="InputNum.NumberAdj(false, 1)">00</span>
+        <div class="Progress" onmousemove="InputNum.NumberMove();">
+            <div onmousedown="InputNum.MoveFlag = true;" class="Pointer">5</div>
+        </div>
+        <span class="NumberMax" onmousedown="InputNum.NumberAdj(true, 0)" onmouseup="InputNum.NumberAdj(true, 1)">100</span>
+    </div>
+    <script type="text/javascript">
+        var InputNum = {
+            NumberMin: 0,
+            NumberMax: 100,
+            CoordMin: 208,
+            CoordMax: 315,
+            MoveFlag: false,
+            FocusItem: Object,
+            ForwardNumber: 0,
+            NumberIntvID: 0,
+            Unit: "万",//需后从服务器读取
+            ForwardInit: function (Min, Max, Uint, Obj) {
+                ///<summary>控件初始化</summary>
+                ///<param name="Min">数据最小值</param><param name="Max">数据最大值</param><param name="Unit">单位</param><param name="Min">Obj</param>
+                this.FocusItem = Obj;
+                this.NumberMin = Min;//需后从服务器读取
+                this.NumberMax = Max;//需后从服务器读取
+                this.Unit = Uint;
+                this.FocusItem.querySelector(".InputControl>.NumberMin").innerText = this.NumberMin + this.Unit;
+                this.FocusItem.querySelector(".InputControl>.NumberMax").innerText = this.NumberMax + this.Unit;
+                this.ForwardNumber = parseInt((this.NumberMax + this.NumberMin) / 2);
+                this.NumberShow();
+            },
+            NumberAdj: function (Add, MAct) {
+                if (MAct == 1) { window.clearInterval(this.NumberIntvID); };
+                if (MAct == 0) {
+                    window.clearInterval(this.NumberIntvID);
+                    if (this.ForwardNumber <= this.NumberMax) { if (Add == false && this.ForwardNumber > this.NumberMin) { this.NumberAdj(false, 2); this.NumberIntvID = window.setInterval("InputNum.NumberAdj(false,2)", 100); } }
+                    if (this.ForwardNumber >= this.NumberMin) { if (Add == true && this.ForwardNumber < this.NumberMax) { this.NumberAdj(true, 2); this.NumberIntvID = window.setInterval("InputNum.NumberAdj(true,2)", 100); } }
+                }
+                if (MAct == 2) {
+                    if (Add == true) { this.ForwardNumber++; };
+                    if (Add == false) { this.ForwardNumber--; };
+                    if (this.ForwardNumber >= this.NumberMax || this.ForwardNumber <= this.NumberMin) { window.clearInterval(this.NumberIntvID); };
+                    this.NumberShow();
+                }
+            },
+            InvsetStep: function () {
+                var NowNumber = this.FocusItem.querySelector(".InputControl>.SalePrice").value;
+                if (NowNumber == "") { this.ForwardNumber = this.NumberMin; this.NumberShow(); return; }
+                if (NowNumber == parseInt(NowNumber) && parseInt(NowNumber) <= this.NumberMax && parseInt(NowNumber) >= this.NumberMin) { this.ForwardNumber = parseInt(NowNumber); }
+                else { this.FocusItem.querySelector(".InputControl>.SalePrice").value = this.ForwardNumber; }
+                this.NumberShow();
+            },
+            NumberMove: function (MAct) {
+                if (this.MoveFlag == true) {
+                    var NowCoord = event.clientX;
+                    var LeftD = 0;
+                    if (NowCoord <= this.CoordMin) { NowCoord = this.CoordMin; }
+                    if (NowCoord >= this.CoordMax) { NowCoord = this.CoordMax; }
+                    LeftD = (NowCoord - this.CoordMin) / (this.CoordMax - this.CoordMin) * 100;
+                    this.FocusItem.querySelector(".Pointer").style.left = LeftD + "%";
+                    this.FocusItem.querySelector(".Pointer").style.cursor = "pointer";
+                    this.ForwardNumber = parseInt((LeftD * this.NumberMax - (LeftD - 100) * this.NumberMin) / 100);
+                    this.NumberShow();
+                }
+            },
+            NumberShow: function () {
+                this.FocusItem.querySelector(".SalePrice").innerText = this.ForwardNumber;
+                this.FocusItem.querySelector("div>.Pointer").style.left = (this.ForwardNumber - this.NumberMin) / (this.NumberMax - this.NumberMin) * 100 + "%";
+            }
+        }
+
+        InputNum.ForwardInit(1, 2000, "万", document.body);
+    </script>
+</body>
+
+</html>
+

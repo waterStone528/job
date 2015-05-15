@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+</head>
+<body>
+    <div class="ListContainer" onscroll="ScrollTracker(this, 'M0604.LoadMoreInfo()')">
+        <table class="TbList">
+            <thead><tr><td>流水号</td><td data-btid="1" data-ft="0" onmouseup="M0604.HButton(this)"><label class="title">日期</label><input type="text" /><label class="FindIcon">L</label></td><td>用户编号</td><td data-btid="2" data-ft="0" onmouseup="M0604.HButton(this)"><label class="title">科目名称</label><input type="text" /><label class="FindIcon">L</label></td><td>充值金额</td><td>消费金额</td></tr></thead>
+            <tbody></tbody>
+            <tbody>
+                <tr class="Template"><td>U0051259</td><td></td><td></td><td></td><td></td><td></td></tr>
+            </tbody>
+            <tfoot>
+                <tr class="RemData" data-dsp="1"><td colspan="6"><label class="PMPText">滚动条下拉 或触摸上拖 可显示更多数据</label></td></tr>
+                <tr class="Summary"><td>合计</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>N0D0</td><td>N0D0</td></tr>
+            </tfoot>
+        </table>
+        <div id="Continue" class="Hidden">1</div>
+    </div>
+    <div class="memo" style=" width: 800px; position: fixed; bottom: 20px; left: 26px; z-index: 6; transition: left ease 0.5s; " onmouseup="this.style.left = '-800px'; ">
+        <div style="position:absolute;top:0px;left:-16px;"><span>注</span></div>
+        <span>标题栏 充值金额 为 该用户帐户增加金额,消费金额 为 该用户帐户 减少金额。 </span><br />
+        <span>科目名称 为方便 财务对帐，在系统中为交易类型， 其中VIP赠送 目前系统是在充值操作成功后进行赠送</span><br />
+    </div>
+</body>
+</html>

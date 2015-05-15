@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div style="float: left;" class="ItemSize GeneralItem">
+        <div class="UToolBCBG" style="position: relative; font-weight: 700; ">交易密码</div>
+        <div class="MLayer" style="position:absolute;top:50px;bottom:50px;left:0px; right:0px;background-color: black;opacity:.00; filter: alpha(opacity=00);z-index:10;"></div>
+        <table width=" 100%" style="padding: 0px;" border="0">
+            <!--Sever need give the value in TD zone witch TD has id value-->
+            <tr><td id="Send3" style="width:90px;" class="ItemTitle CBtInTd" onmousedown="P80303.BtAction(this, 0)" onmouseup="P80303.BtAction(this, 2)">发验证码</td><td class="ItemTextInp" data-ctem="0"><input type="text" /></td><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText">&nbsp;</td></tr>
+            <tr><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText">&nbsp;</td><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText">&nbsp;</td></tr>
+            <tr><td class="ItemTitle">新密码</td><td class="ItemTextInp" data-ctem="0"><input type="password" /></td><td class="ItemTitle">新密码</td><td class="ItemTextInp" data-ctem="0"><input type="password" /></td></tr>
+            <tr><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText">&nbsp;</td><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText">&nbsp;</td></tr>
+            <tr><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText"></td><td class="ItemTitle" data-emp>&nbsp;</td><td class="ItemText">&nbsp;</td></tr>
+        </table>
+        <div id="M3Bind" class="CBt" style="float: right;" onmousedown="P80303.Edit(this, 0)" onmouseup="P80303.Edit(this, 1)">修改</div>
+        <div id="M3Submit" class="CBt" style="float: right; display:none;" onmousedown="P80303.BtAction(this, 0)" onmouseup="P80303.BtAction(this, 1)">确定</div>
+    </div>
+    <div id="Continue">0</div><!--server need return a value 1 to continue load,0 means this is last one and to stop-->
+    <script type="text/javascript">
+        parent.ItemContainer.appendChild(document.body.children[0]);
+        parent.ModLoad("04");
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="UBuyApply" style="width:600px; color:white;">
+        <div class="GeneralItem" style="position: absolute; left:0px; right:0px; top:0px; bottom:105px; overflow: auto; scrollbar-arrow-color:#313136; scrollbar-base-color: #313136; scrollbar-track-color: black; ">
+            <table>
+                <!--Sever need give the value in TD zone witch TD has id value-->
+                <tr style="height:30px;">
+                    <td class="ItemTitle">姓名</td>
+                    <td class="ItemText" style="width:30%;">X</td>
+                    <td class="ItemTitle">性别</td>
+                    <td class="ItemText">X</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td class="ItemTitle">出生日期</td>
+                    <td class="ItemText">DYYYY/MM/DD</td>
+                    <td class="ItemTitle">身份证号</td>
+                    <td class="ItemText">X</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">手机</td>
+                    <td class="ItemText">X</td>
+                    <td class="ItemTitle">邮箱</td>
+                    <td class="ItemText">X</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">婚姻情况</td>
+                    <td class="ItemTextInp"><select><option value="-1"></option></select></td>
+                    <td class="ItemTitle">生育情况</td>
+                    <td class="ItemTextInp"><select><option value="-1"></option><option value="0">未育</option><option value="1">已育</option></select></td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">户口地址</td>
+                    <td colspan="3"><label class="ItemText">X</label></td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">当前住址</td>
+                    <td colspan="3" style="white-space: nowrap; -ms-word-break: keep-all;">
+                        <label class="ItemTextInp" style="padding-bottom:2px;"><select style="width: 25%; display: inline-block;" onchange="P802.ChangeCity(this);"><option value="-1"></option></select></label>
+                        <label class="ItemTextInp" style="padding-bottom:2px;"><select style="width: 25%; display: inline-block;"><option></option></select></label>
+                        <label class="ItemTextInp"><input type="text" style="width: 47%;" /></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">资产区域</td>
+                    <td class="ItemTextInp">
+                        <select><option value="-1"></option></select>
+                    </td>
+                    <td class="ItemTitle">价格区间</td>
+                    <td style="WHITE-SPACE: nowrap; WORD-BREAK: keep-all;"><label class="ItemTextInp"><input type="text" style="width:41%;" onblur="IRC.IntervalNumber(this, this.value, P802.UIP.BayAmt);" onkeyup="FloatInp(this, 2);P802.UpDateHint(this, P802.UIP.BayAmt);" /></label>~<label class="ItemTextInp"><input type="text" style="width:42%;" onkeyup="FloatInp(this, 2);" onblur="IRC.IntervalNumber(this, this.value, P802.UIP.BayAmt);" /></label>万</td>
+                </tr>
+                <tr>
+                    <td class="ItemTitle">资产类型<label class="Hidden" style="color:red;position:absolute;top:250px;left:4px;">（必选）</label></td>
+                    <td colspan="3" class="ItemText"></td>
+            </table>
+        </div>
+        <div class="memo" style="position:absolute;left:0px; bottom:20px;">
+            <ul>
+                <li>非指定位置，严禁输入联系方式，违者取消发布资格。</li>
+                <li>申请资格需消费<label class="ItemText">N2D0</label>V币，账户余额<label class="ItemText">N2D0</label>V币</li>
+                <li>初始交易密码同登陆密码，可在<label class="BBtInTd" onmouseup="Location('P803');">安全管理</label>中修改。</li>
+            </ul>
+        </div>
+        <div style="position:absolute;right:0px; bottom:5px;">
+            <div class="BBt" onmousedown="P802.BtAction(this, 0, 2)" onmouseup="    P802.ABApplySubmit(this);">申请</div>
+        </div>
+        <div style="position:absolute;bottom:5px;right:150px;"><table class="GeneralItem"><tr><td class="ItemTitle">交易密码</td><td class="ItemTextInp"><input class="TradePW" type="password" /></td></tr></table> </div>
+    </div>
+</body>
+</html>

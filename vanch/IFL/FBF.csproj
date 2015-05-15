@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{03F21C7D-1FE3-462C-B0D5-6268DF010B4C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UIF</RootNamespace>
+    <AssemblyName>UIF</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FBF\Control.ashx" />
+    <Content Include="FBF\SslControl.ashx" />
+    <None Include="FBF\Properties\PublishProfiles\IFL.pubxml" />
+    <Content Include="Global.asax" />
+    <Content Include="index.html" />
+    <Content Include="PAY\ToPay.aspx" />
+    <Content Include="PAY\ReturnPay.aspx" />
+    <Content Include="UIF\BCK.html" />
+    <Content Include="UIF\ComScript\CommCtrl.js" />
+    <Content Include="UIF\ComScript\DateSelector.js" />
+    <Content Include="UIF\ComScript\InpRulesCk.js" />
+    <Content Include="UIF\ComScript\LoginBox.js" />
+    <Content Include="UIF\ComScript\MovingBox.js" />
+    <Content Include="UIF\ComScript\TransingBox.js" />
+    <Content Include="UIF\ComScript\UserRegBox.js" />
+    <Content Include="UIF\ComStyle.css" />
+    <Content Include="UIF\favicon.ico" />
+    <Content Include="UIF\fonts\vanch.svg" />
+    <Content Include="UIF\Images\bank.png" />
+    <Content Include="UIF\Images\bg.png" />
+    <Content Include="UIF\Images\bg4.jpg" />
+    <Content Include="UIF\Images\chunnuanhuakai01.jpg" />
+    <Content Include="UIF\Images\fav-icon.png" />
+    <Content Include="UIF\Images\FreeInfo\CompAddrMap.jpg" />
+    <Content Include="UIF\Images\FreeInfo\FF06.png" />
+    <Content Include="UIF\Images\FreeInfo\WeChat.jpg" />
+    <Content Include="UIF\Images\FreeInfo\weibo.png" />
+    <Content Include="UIF\Images\ie10logo.png" />
+    <Content Include="UIF\Images\ie11logo.png" />
+    <Content Include="UIF\Images\ie8logo.png" />
+    <Content Include="UIF\Images\ie9logo.png" />
+    <Content Include="UIF\Images\ips.png" />
+    <Content Include="UIF\Images\loading.gif" />
+    <Content Include="UIF\Images\logoJ.png" />
+    <Content Include="UIF\Images\online-icon.png" />
+    <Content Include="UIF\Images\RightBarClose.png" />
+    <Content Include="UIF\Images\TransactionRight.png" />
+    <Content Include="UIF\Images\TransactionWrong.png" />
+    <Content Include="UIF\Images\VANCH-LOGO.png" />
+    <Content Include="UIF\index.html" />
+    <Content Include="UIF\Modules\BottomBar.html" />
+    <Content Include="UIF\Modules\DateSelector.html" />
+    <Content Include="UIF\Modules\FreeInfo\FreeInfo01.html" />
+    <Content Include="UIF\Modules\FreeInfo\FreeInfo02.html" />
+    <Content Include="UIF\Modules\FreeInfo\FreeInfo03.html" />
+    <Content Include="UIF\Modules\FreeInfo\FreeInfo04.html" />
+    <Content Include="UIF\Modules\FreeInfo\FreeInfo05.html" />
+    <Content Include="UIF\Modules\FreeInfo\FreeInfo06.html" />
+    <Content Include="UIF\Modules\FreeInfo\FreeInfo07.html" />
+    <Content Include="UIF\Modules\FreeInfo\FreeInfo08.html" />
+    <Content Include="UIF\Modules\InputNum.html" />
+    <Content Include="UIF\Modules\LoadingBox.html" />
+    <Content Include="UIF\Modules\LoginBox.html" />
+    <Content Include="UIF\Modules\logout.html" />
+    <Content Include="UIF\Modules\MovingBox.html" />
+    <Content Include="UIF\Modules\P1\P101.html" />
+    <Content Include="UIF\Modules\P1\P10201.html" />
+    <Content Include="UIF\Modules\P1\P10202.html" />
+    <Content Include="UIF\Modules\P1\P103.html" />
+    <Content Include="UIF\Modules\P1\P105.html" />
+    <Content Include="UIF\Modules\P1\UAdviserInfo.html" />
+    <Content Include="UIF\Modules\P1\UAdviserList.html" />
+    <Content Include="UIF\Modules\P1\UAdviserProgress.html" />
+    <Content Include="UIF\Modules\P1\UCancelReason.html" />
+    <Content Include="UIF\Modules\P1\UCloseCase.html" />
+    <Content Include="UIF\Modules\P1\UCompanyInfo.html" />
+    <Content Include="UIF\Modules\P1\UExpenditure.html" />
+    <Content Include="UIF\Modules\P1\UFinancerInfo.html" />
+    <Content Include="UIF\Modules\P1\UInvestAgreem.html" />
+    <Content Include="UIF\Modules\P1\UInvestApply.html" />
+    <Content Include="UIF\Modules\P1\UInvestSearchBar.html" />
+    <Content Include="UIF\Modules\P1\UInvestSubmit.html" />
+    <Content Include="UIF\Modules\P1\URejectReason.html" />
+    <Content Include="UIF\Modules\P1\USecurities.html" />
+    <Content Include="UIF\Modules\P2\P201A.html" />
+    <Content Include="UIF\Modules\P2\P201S.html" />
+    <Content Include="UIF\Modules\P2\P202.html" />
+    <Content Include="UIF\Modules\P2\P202S.html" />
+    <Content Include="UIF\Modules\P2\P20301.html" />
+    <Content Include="UIF\Modules\P2\P20302.html" />
+    <Content Include="UIF\Modules\P2\UBorrowAgreem.html" />
+    <Content Include="UIF\Modules\P2\UBorrowApply.html" />
+    <Content Include="UIF\Modules\P2\UCancel.html" />
+    <Content Include="UIF\Modules\P2\UCancelReason.html" />
+    <Content Include="UIF\Modules\P2\UCompanyInfo01.html" />
+    <Content Include="UIF\Modules\P2\UCompanyInfo02.html" />
+    <Content Include="UIF\Modules\P2\UConsultantInfo.html" />
+    <Content Include="UIF\Modules\P2\UExpenditure.html" />
+    <Content Include="UIF\Modules\P2\UInvestorInfo.html" />
+    <Content Include="UIF\Modules\P2\UInvestorList.html" />
+    <Content Include="UIF\Modules\P2\URejectReason.html" />
+    <Content Include="UIF\Modules\P2\USecurities01.html" />
+    <Content Include="UIF\Modules\P2\USecurities02.html" />
+    <Content Include="UIF\Modules\P3\P301.html" />
+    <Content Include="UIF\Modules\P3\P301A.html" />
+    <Content Include="UIF\Modules\P3\P302.html" />
+    <Content Include="UIF\Modules\P3\P303.html" />
+    <Content Include="UIF\Modules\P3\UAssetInfo01.html" />
+    <Content Include="UIF\Modules\P3\UAssetInfo02.html" />
+    <Content Include="UIF\Modules\P3\UBuyerInfo.html" />
+    <Content Include="UIF\Modules\P3\UCancel.html" />
+    <Content Include="UIF\Modules\P3\UCancelReason.html" />
+    <Content Include="UIF\Modules\P3\UExpenditure.html" />
+    <Content Include="UIF\Modules\P3\USaleAgreem.html" />
+    <Content Include="UIF\Modules\P3\USaleApply.html" />
+    <Content Include="UIF\Modules\P4\P401.html" />
+    <Content Include="UIF\Modules\P4\P402.html" />
+    <Content Include="UIF\Modules\P4\P404.html" />
+    <Content Include="UIF\Modules\P4\UAssetInfo.html" />
+    <Content Include="UIF\Modules\P4\UBuyAgreem.html" />
+    <Content Include="UIF\Modules\P4\UBuyApply.html" />
+    <Content Include="UIF\Modules\P4\UCancelReason.html" />
+    <Content Include="UIF\Modules\P4\UExpenditure01.html" />
+    <Content Include="UIF\Modules\P4\UExpenditure02.html" />
+    <Content Include="UIF\Modules\P4\USalerInfo.html" />
+    <Content Include="UIF\Modules\P5\P502.html" />
+    <Content Include="UIF\Modules\P5\P503.html" />
+    <Content Include="UIF\Modules\P5\P50401.html" />
+    <Content Include="UIF\Modules\P5\P50402.html" />
+    <Content Include="UIF\Modules\P5\UCompanyInfo.html" />
+    <Content Include="UIF\Modules\P5\UConsultantAgreem.html" />
+    <Content Include="UIF\Modules\P5\UConsultantApply.html" />
+    <Content Include="UIF\Modules\P5\UFinancerInfo.html" />
+    <Content Include="UIF\Modules\P5\UInvestorInfo.html" />
+    <Content Include="UIF\Modules\P5\UReasonReject01.html" />
+    <Content Include="UIF\Modules\P5\UReasonReject02.html" />
+    <Content Include="UIF\Modules\P5\USecurities.html" />
+    <Content Include="UIF\Modules\P7\P70101.html" />
+    <Content Include="UIF\Modules\P7\P70102.html" />
+    <Content Include="UIF\Modules\P801\P8010101.html" />
+    <Content Include="UIF\Modules\P801\P8010102.html" />
+    <Content Include="UIF\Modules\P801\P8010103.html" />
+    <Content Include="UIF\Modules\P801\P8010201.html" />
+    <Content Include="UIF\Modules\P801\P8010202.html" />
+    <Content Include="UIF\Modules\P801\P8010203.html" />
+    <Content Include="UIF\Modules\P801\P8010204.html" />
+    <Content Include="UIF\Modules\P801\P8010301.html" />
+    <Content Include="UIF\Modules\P801\P8010401.html" />
+    <Content Include="UIF\Modules\P801\P8010402.html" />
+    <Content Include="UIF\Modules\P801\P8010501.html" />
+    <Content Include="UIF\Modules\P801\P8010502.html" />
+    <Content Include="UIF\Modules\P801\P8010503.html" />
+    <Content Include="UIF\Modules\P802\P80201.html" />
+    <Content Include="UIF\Modules\P802\P80202.html" />
+    <Content Include="UIF\Modules\P802\P80203.html" />
+    <Content Include="UIF\Modules\P802\P80204.html" />
+    <Content Include="UIF\Modules\P802\P80205.html" />
+    <Content Include="UIF\Modules\P802\P80206.html" />
+    <Content Include="UIF\Modules\P802\P80207.html" />
+    <Content Include="UIF\Modules\P802\P80208.html" />
+    <Content Include="UIF\Modules\P802\P80209.html" />
+    <Content Include="UIF\Modules\P803\P80301.html" />
+    <Content Include="UIF\Modules\P803\P80302.html" />
+    <Content Include="UIF\Modules\P803\P80303.html" />
+    <Content Include="UIF\Modules\P803\P80304.html" />
+    <Content Include="UIF\Modules\P803\P80305.html" />
+    <Content Include="UIF\Modules\P9\P901.html" />
+    <Content Include="UIF\Modules\P9\P902.html" />
+    <Content Include="UIF\Modules\P9\P903.html" />
+    <Content Include="UIF\Modules\P9\UPay.html" />
+    <Content Include="UIF\Modules\TopBar.html" />
+    <Content Include="UIF\Modules\TransingBox.html" />
+    <Content Include="UIF\Modules\UserRegBox.html" />
+    <Content Include="UIF\OC\Images\VANCH-LOGO.png" />
+    <Content Include="UIF\OC\index.html" />
+    <Content Include="UIF\P1.html" />
+    <Content Include="UIF\P2.html" />
+    <Content Include="UIF\P3.html" />
+    <Content Include="UIF\P4.html" />
+    <Content Include="UIF\P5.html" />
+    <Content Include="UIF\P7.html" />
+    <Content Include="UIF\P801.html" />
+    <Content Include="UIF\P802.html" />
+    <Content Include="UIF\P803.html" />
+    <Content Include="UIF\P9.html" />
+    <Content Include="UIF\Pay\IPS\ReturnBridge.aspx" />
+    <Content Include="UIF\Portal.html" />
+    <Content Include="web.config" />
+    <None Include="IFL.pubxml" />
+    <Content Include="UIF\fonts\vanch.eot" />
+    <Content Include="UIF\fonts\vanch.ttf" />
+    <Content Include="UIF\fonts\vanch.woff" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FBF\Control.ashx.cs">
+      <DependentUpon>Control.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="FBF\Properties\AssemblyInfo.cs" />
+    <Compile Include="FBF\SslControl.ashx.cs">
+      <DependentUpon>SslControl.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <None Include="PAY\ToPay.aspx.cs">
+      <DependentUpon>ToPay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </None>
+    <None Include="PAY\ReturnPay.aspx.cs">
+      <DependentUpon>ReturnPay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </None>
+    <Compile Include="UIF\Pay\IPS\ReturnBridge.aspx.cs">
+      <DependentUpon>ReturnBridge.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="CSL\CSL.csproj">
+      <Project>{df452d94-6ff2-4980-b690-87778c035c77}</Project>
+      <Name>CSL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49959</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49959/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--财务顾问列表-->
+    <div class="UAdviserList" style="width:1000px;">
+        <div class="AdviserList" style="left: 0px; top: 0px; bottom: 110px; right: 0px; position: absolute; color: white; overflow: auto; scrollbar-arrow-color: #313136; scrollbar-base-color: #313136; scrollbar-track-color: black; transition: right ease 0.5s; ">
+            <table class="TbList Btr">
+                <thead>
+                    <tr>
+                        <td>用户编号</td>
+                        <td>服务区域</td>
+                        <td data-btid="1" data-ft="2" onmouseup="P102.HButton(this)">成功案例<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                        <td data-btid="2" data-ft="2" onmouseup="P102.HButton(this)">案例数量<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <table>
+                <tbody class="TemplateTBody">
+                    <tr class="Template" style="text-align:center;display:none;"><td>X</td><td><label>X</label><label>X</label></td><td>N0D1</td><td>N0D1</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="GeneralItem" style="left: 1000px; right: -480px; top: 0px; bottom: 110px; position: absolute; color: white; overflow: auto; scrollbar-arrow-color: #313136; scrollbar-base-color: #313136; scrollbar-track-color: black; transition: all ease 0.5s;">
+            <div class="AdviserInfo">
+                <table style="width:98%">
+                    <tr>
+                        <td class="ItemTitle">用户编号</td>
+                        <td class="ItemText">X</td>
+                        <td class="ItemTitle">姓名</td>
+                        <td class="ItemText"> *** </td>
+                    </tr>
+                    <tr>
+                        <td class="ItemTitle">出生日期</td>
+                        <td class="ItemText">DYYYY/MM/DD</td>
+                        <td class="ItemTitle">性别</td>
+                        <td class="ItemText">X</td>
+                    </tr>
+                    <tr>
+                        <td class="ItemTitle">户口地址</td>
+                        <td>
+                            <label class="ItemText" style="max-width:98px;overflow:hidden;display:block;float:left;">X</label>
+                            <div class="HKQudizA" style="display:none;">...</div>
+                            <div class="HKlongTextA" style="top:15px;">温州温州温州温州温州温州温州</div>
+
+                        </td>
+                        <td class="ItemTitle">身份证号</td>
+                        <td class="ItemText">X</td>
+                    </tr>
+                    <tr>
+                        <td class="ItemTitle">手机</td>
+                        <td class="ItemText"> *** </td>
+                        <td class="ItemTitle">邮箱</td>
+                        <td class="ItemText"> *** </td>
+                    </tr>
+                    <tr>
+                        <td class="ItemTitle">婚姻情况</td>
+                        <td class="ItemText">X</td>
+                        <td class="ItemTitle">生育情况</td>
+                        <td class="ItemText">X</td>
+                    </tr>
+                    <tr>
+                        <td class="ItemTitle">当前住址</td>
+                        <td class="ItemText" colspan="3"> *** </td>
+                    </tr>
+                    <tr>
+                        <td class="ItemTitle">毕业学校</td>
+                        <td class="ItemText">X</td>
+                        <td class="ItemTitle">学历</td>
+                        <td class="ItemText">X</td>
+                    </tr>
+                    <tr>
+                        <td class="ItemTitle">所属行业</td>
+                        <td class="ItemText">X</td>
+                        <td class="ItemTitle">单位性质</td>
+                        <td class="ItemText">X</td>
+                    </tr>
+                    <tr>
+                        <td class="ItemTitle">服务区域</td>
+                        <td><label class="ItemText">X</label><label class="ItemText">X</label></td>
+                        <td class="ItemTitle">注册时间</td>
+                        <td class="ItemText">DYYYY/MM/DD</td>
+                    </tr>
+                    <tr>
+                        <td class="ItemTitle">案例数量</td>
+                        <td class="ItemText">N0D1</td>
+                        <td class="ItemTitle">成功案例</td>
+                        <td class="ItemText">N0D1</td>
+                    </tr>
+                    <tr>
+                        <td class="ItemTitle">坏账数量</td>
+                        <td class="ItemText">N0D1</td>
+                        <td class="ItemTitle">当前坏账</td>
+                        <td class="ItemText">N0D1</td>
+                    </tr>
+                    <tr>
+                        <td class="ItemTitle">尽职调查</td>
+                        <td class="ItemTextInp"><div class="UpDownButton" style="margin-left:44%;" data-sw="1"></div></td>
+                        <td class="ItemTitle">资产评估</td>
+                        <td class="ItemTextInp"><div class="UpDownButton" style="margin-left: 44%;" data-sw="0"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="ItemTitle">债权担保</td>
+                        <td class="ItemTextInp"><div class="UpDownButton" style="margin-left: 44%;" data-sw="0"></div></td>
+                        <td class="ItemTitle">坏账催收</td>
+                        <td class="ItemTextInp"><div class="UpDownButton" style="margin-left: 44%;" data-sw="1"></div></td>
+                    </tr>
+                    <tr style="height:15px; vertical-align:bottom;"></tr>
+                    <tr><td colspan="4"><textarea readonly></textarea></td></tr>
+                    <tr class="MyQuota" style="display:none;">
+                        <td class="ItemTitle">我的报价</td>
+                        <td colspan="3">投资金额 * <label class="ItemTextInp"><input type="text" style="width:80px;" onkeyup="FloatInp(this, 2);" onblur="    IRC.IntervalNumber(this, this.value, P101.UIP.MyQuotaRatio);" /></label>%</td>
+                    </tr>
+                    <tr><td></td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="memo" style="position: absolute; left: 350px; bottom: 20px;">
+            <ul>
+                <li>按 预约 后显示隐藏内容并扣除<label class="ItemText">N2D0</label>V币，账户余额<label class="ItemText">N2D0</label>V币。</li>
+                <li>用户可自行决定是否选择财务顾问。</li>
+                <li style="display:none;">我的报价为财务顾问费，请线下确认价格后完成此操作。</li>
+            </ul>
+        </div>
+        <div class="Bt BBt" style="position:absolute;bottom:5px;right:0px;" onmousedown="P102.BtAction(this, 0);" onmouseup="P102.BtAction(this,7);">预约</div>
+        <div style="position:absolute;bottom:5px;right:150px;">
+            <table class="GeneralItem" style="display:none;"><tr><td class="ItemTitle">交易密码</td><td class="ItemTextInp"><input class="TradePW" type="password" /></td></tr></table>
+        </div>
+    </div>
+</body>
+</html>

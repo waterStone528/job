@@ -1,0 +1,14 @@
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\bin\FBF.dll.config
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\bin\FBF.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\bin\FBF.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\obj\Debug\FBF.csprojResolveAssemblyReference.cache
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\obj\Debug\FBF.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\obj\Debug\FBF.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\bin\CSL.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\bin\CSL.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\bin\BLL.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\bin\DAL.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\bin\Model.dll
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\bin\BLL.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\bin\DAL.pdb
+C:\Users\雄\OneDrive\job\vanch\program\code\IBL\TFS\IBL1.01\bin\Model.pdb

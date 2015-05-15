@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="expires" content="0" />
+    <title></title>
+</head>
+<body>
+    <style type="text/css">
+    </style>
+    <div class="ListContainer" onscroll="ScrollTracker(this, 'M0205.LoadMoreInfo()')">
+        <table class="TbList">
+            <thead>
+                <tr>
+                    <td>用户编号</td>
+                    <td>真实姓名</td>
+                    <td>注册时间</td>
+                    <td>身份证号</td>
+                    <td>出生日期</td>
+                    <td>性别</td>
+                    <td>户口地址</td>
+                    <td>手机</td>
+                    <td>邮箱</td>
+                    <td>婚姻状况</td>
+                    <td>生育状态</td>
+                    <td>学历</td>
+                    <td>月总收入</td>
+                    <td>客户类型</td>
+                    <td data-btid="1" data-ft="0" onmouseup="M0205.HButton(this)"><label class="title">客户经理</label><input type="text" /><label class="FindIcon">L</label></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Template">
+                    <td>&nbsp;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td data-slt="0" data-btid="1" onmouseup="M0205.Button(this)"></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="RemData" data-dsp="0"><td colspan="15"><label class="PMPText">滚动条下拉 或触摸上拖 可显示更多数据</label></td></tr>
+            </tfoot>
+        </table>
+        <div id="Continue" class="Hidden">1</div>
+    </div>
+    <div class="Template">
+        <div class="T1">
+            <table class="TbList">
+                <thead>
+                    <tr>
+                        <td>员工编号</td>
+                        <td>客服姓名</td>
+                        <td data-btid="2" data-ft="2" onmouseup="M0205.HButton(this)">入职时间<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                        <td data-btid="3" data-ft="2" onmouseup="M0205.HButton(this)">客户总数<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                        <td data-btid="4" data-ft="2" onmouseup="M0205.HButton(this)">债权融资<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                        <td data-btid="5" data-ft="2" onmouseup="M0205.HButton(this)">债权投资<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                        <td data-btid="6" data-ft="2" onmouseup="M0205.HButton(this)">财务顾问<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                        <td data-btid="7" data-ft="2" onmouseup="M0205.HButton(this)">资产出售<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                        <td data-btid="8" data-ft="2" onmouseup="M0205.HButton(this)">资产购买<label class="sort">2</label><label class="asc">i</label><label class="desc">h</label></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="Template" data-slt="0" onmouseup="M0205.SltMgrRow(this)">
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="memo" style="position: fixed;bottom: 0px;">
+                <ul style="position:absolute;transition:left 0.5s; bottom: 100px; left: 10px; right: 10px; width:586px; " onmouseup=" this.style.left = '-600px'; ">注：己按客户经理入职时间倒序排列</ul>
+            </div>
+        </div>
+        <div class="T2"><textarea style="background-color:transparent;width:586px;height:100%;border:1px solid #556;margin:5px;color:#fff;"></textarea></div>
+    </div>
+</body>
+</html>
